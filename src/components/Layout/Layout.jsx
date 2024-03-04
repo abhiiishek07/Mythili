@@ -5,8 +5,10 @@ import Footer from "../Footer/Footer";
 const Layout = ({ children }) => {
   return (
     <Fragment>
-      <div className="flex flex-col overflow-hidden h-screen">
-        <Header />
+      <div className="flex flex-col overflow-hidden h-screen justify-center">
+        <div className="p-8">
+          <Header />
+        </div>
         <main className="grow overflow-y-auto">
           {children}
           <Footer />

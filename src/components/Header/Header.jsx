@@ -2,7 +2,7 @@ import React from "react";
 
 const Header = () => {
   return (
-    <div className="navbar  shadow-md">
+    <div className="navbar  shadow-md border rounded-md">
       <div className="flex-1">
         <a className="btn btn-ghost text-xl">real-estate</a>
       </div>
