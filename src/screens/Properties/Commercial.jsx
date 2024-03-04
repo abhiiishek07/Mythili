@@ -1,7 +1,7 @@
 import React from "react";
 
 const CommercialS = () => {
-  return <div>Commercial fuc</div>;
+  return <div>Commercial fucnctions</div>;
 };
 
 export default CommercialS;
