@@ -6,10 +6,8 @@ const Layout = ({ children }) => {
   return (
     <Fragment>
       <div className="flex flex-col overflow-hidden h-screen justify-center">
-        <div className="p-8">
-          <Header />
-        </div>
         <main className="grow overflow-y-auto">
+          <Header />
           {children}
           <Footer />
         </main>
