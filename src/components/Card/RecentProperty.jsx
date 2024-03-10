@@ -4,9 +4,9 @@ import { FaRegSquare } from "react-icons/fa6";
 import { FaBath } from "react-icons/fa";
 import { LuIndianRupee } from "react-icons/lu";
 
-const PropertyCard = () => {
+const RecentProperty = () => {
   return (
-    <div class="container mx-auto">
+    <div class="container mx-auto max-w-md">
       <div class="flex flex-wrap ">
         <div class="w-full p-4">
           <a
@@ -57,7 +57,7 @@ const PropertyCard = () => {
               </div>
             </div>
             <div class="p-4 flex items-center justify-between">
-              <p className="flex items-center justify-center text-lg  font-semibold ">
+              <p className="flex items-center justify-center text-  font-semibold ">
                 <LuIndianRupee />
                 <span> 1.25 </span> Cr* Onwards
               </p>
@@ -72,4 +72,4 @@ const PropertyCard = () => {
   );
 };
 
-export default PropertyCard;
+export default RecentProperty;

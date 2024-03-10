@@ -14,3 +14,17 @@ body {
   @apply w-screen;
   /* @apply overflow-hidden */
 }
+/* .slick-slide { 
+  margin: 0 -4px;
+}
+
+.slick-list { 
+  padding: 0 20px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.slick-next {
+  right: 0;
+} */
+
