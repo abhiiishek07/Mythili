@@ -3,8 +3,8 @@ import React from "react";
 const Footer = () => {
   return (
     <div className="flex flex-col ">
-      <footer className="footer p-10  text-base-content px-10 justify-between bg-gray-200 flex flex-col md:flex-row">
-        <div className="flex justify-evenly w-full">
+      <footer className="footer p-10  text-base-content px-10 justify-between  bg-gray-200 flex flex-col md:flex-row">
+        <div className="flex justify-around w-full">
           <nav>
             <h6 className="footer-title">Services</h6>
             <div className="flex flex-col">
