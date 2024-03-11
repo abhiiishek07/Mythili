@@ -159,7 +159,7 @@ const Homepage = () => {
         </h2>
         <p className="text-lg text-gray-500 my-3 px-3 text-center">
           Stay Up-to-Date on New Property Options, Best Investment
-          Opportunities, and What's Coming Next.
+          Opportunities, and What&apos;s Coming Next.
         </p>
         <div role="tablist" className="tabs tabs-boxed tabs-md p-2">
           <a
@@ -244,8 +244,8 @@ const Homepage = () => {
             </div>
 
             <p className="mt-4 text-lg text-gray-600">
-              We take pride in our accomplishments and the recognition we've
-              received.
+              We take pride in our accomplishments and the recognition
+              we&apos;ve received.
             </p>
           </div>
           <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -292,7 +292,7 @@ const Homepage = () => {
         <div className="w-full">
           <Slider {...SLIDER_SETTINGS_TESTIMONIAL}>
             {REVIEWS.map((review, index) => (
-              <Testimonial review={review} index={index} />
+              <Testimonial review={review} key={index} />
             ))}
           </Slider>
         </div>

@@ -5,7 +5,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 const Header = () => {
   const [crossBar, setCrossBar] = useState(false);
   return (
-    <div className="navbar py-3 rounded-md sticky top-0 bg-base-100 z-10 backdrop-filter backdrop-blur-lg bg-opacity-45">
+    <div className="navbar py-3 rounded-md sticky top-0 bg-base-100 z-20 backdrop-filter backdrop-blur-lg bg-opacity-45">
       <div className="flex-1">
         <Link className="btn btn-ghost normal-case text-3xl font-bold" href="/">
           Real Estate
