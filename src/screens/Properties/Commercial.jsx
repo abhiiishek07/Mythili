@@ -31,10 +31,10 @@ const Commercial = () => {
             Explore our range of commercial properties for your business needs.
           </div>
         </div>
-        <div className="border w-full my-10 flex p-4 justify-evenly bg-slate-50 rounded-md">
+        <div className="border w-full my-10 flex flex-col lg:flex-row p-4 justify-evenly bg-slate-50 rounded-md gap-4">
           <div className="flex flex-col justify-center items-center">
             <p className="text-lg text-gray-900">Status</p>
-            <select className="select select-bordered w-32 font-bold">
+            <select className="select select-bordered w-full font-bold">
               <option disabled selected>
                 Select
               </option>
@@ -45,7 +45,7 @@ const Commercial = () => {
           <div className="divider divider-horizontal"></div>
           <div className="flex flex-col justify-center items-center ">
             <p className="text-lg text-gray-900">Location</p>
-            <select className="select select-bordered w-32 font-bold">
+            <select className="select select-bordered w-full font-bold">
               <option disabled selected>
                 Select
               </option>
@@ -56,7 +56,7 @@ const Commercial = () => {
           <div className="divider divider-horizontal"></div>
           <div className="flex flex-col justify-center items-center">
             <p className="text-lg text-gray-900">Min. Price</p>
-            <select className="select select-bordered w-32 font-bold">
+            <select className="select select-bordered w-full font-bold">
               <option disabled selected>
                 Select
               </option>
@@ -67,7 +67,7 @@ const Commercial = () => {
           <div className="divider divider-horizontal"></div>
           <div className="flex flex-col justify-center items-center">
             <p className="text-lg text-gray-000">Max. Price</p>
-            <select className="select select-bordered w-32 font-bold">
+            <select className="select select-bordered w-full font-bold">
               <option disabled selected>
                 Select
               </option>
@@ -76,7 +76,7 @@ const Commercial = () => {
             </select>
           </div>
           <div className="divider divider-horizontal"></div>
-          <div className="flex items-center gap-3">
+          <div className="flex  gap-3 items-center justify-center">
             <button className="btn bg-green-500 text-white hover:bg-green-500 px-4">
               Search
             </button>
