@@ -21,8 +21,8 @@ const PropertyCard = () => {
               />
             </div>
             <div class="p-4">
-              <span class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">
-                Highlight
+              <span class="inline-block px-2 py-1 leading-none bg-secondary text-white rounded-full font-semibold uppercase tracking-wide text-xs">
+                Under Construction
               </span>
               <h2 class="mt-2 mb-2  font-bold">
                 Purus Ullamcorper Inceptos Nibh
