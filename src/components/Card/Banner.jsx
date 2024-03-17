@@ -1,8 +1,8 @@
 import React from "react";
 
-const Banner = ({ image }) => {
+const Banner = ({ image, key }) => {
   return (
-    <div className="relative">
+    <div className="relative" key={key}>
       <img
         src={image}
         alt="Banner"

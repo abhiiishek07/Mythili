@@ -64,7 +64,7 @@ const Homepage = () => {
       <div className="relative w-full ">
         <Slider {...SLIDER_SETTINGS_BANNER}>
           {BANNERS.map((image, index) => {
-            return <Banner image={image} />;
+            return <Banner image={image} key={index} />;
           })}
         </Slider>
         <div className="absolute inset-0 flex flex-col items-center mt-40 w-full px-4 text-center">
