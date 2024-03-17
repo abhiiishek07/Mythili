@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Commercial = () => {
   return (
-    <div className="min-h-screen w-full flex justify-center px-4">
+    <div className=" flex justify-center px-4 ">
       <div className="flex flex-col w-full max-w-6xl  mt-8">
         <div className="text-sm breadcrumbs">
           <ul>

@@ -1,22 +1,16 @@
 import Layout from "@/components/Layout/Layout";
 import "@/styles/globals.css";
 import { ThemeProvider } from "next-themes";
-import Script from "next/script";
+import { PagesProgressBar as ProgressBar } from "next-nprogress-bar";
 
 export default function App({ Component, pageProps }) {
   return (
     <ThemeProvider defaultTheme="light">
-      {" "}
-      {/* <Script src="https://www.googletagmanager.com/gtag/js?id=G-2LY6VK042Z" />
-      <Script id="google-analytics">
-        {`
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-2LY6VK042Z');
-  `}
-      </Script> */}
+      <ProgressBar
+        height="2px"
+        color="#00FF00"
+        options={{ showSpinner: false }}
+      />
       <Layout>
         <Component {...pageProps} />
       </Layout>
