@@ -55,17 +55,17 @@ const CopyrightPolicyPage = () => {
           </ul>
           <h2 className="text-lg font-semibold mb-2">2. Designated Agent</h2>
           <p className="mb-4">
-            Name: [Your Designated Agent's Name]
+            Name: [Your Designated Agent&apos;s Name]
             <br />
             Address: [Your Address]
             <br />
-            Email: [Your Designated Agent's Email]
+            Email: [Your Designated Agent&apos;s Email]
             <br />
-            Phone: [Your Designated Agent's Phone Number]
+            Phone: [Your Designated Agent&apos;s Phone Number]
           </p>
           <p className="mb-4">
             Please note that you may be liable for damages (including costs and
-            attorneys' fees) if you materially misrepresent that material or
+            attorneys fees) if you materially misrepresent that material or
             activity is infringing your copyright.
           </p>
         </div>

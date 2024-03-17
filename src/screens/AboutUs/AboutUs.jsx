@@ -49,7 +49,7 @@ const AboutUs = () => {
             As the name suggests, we are dedicated to providing exclusive and
             superior services in terms of proficiency and quality. Since our
             inception, we have been serving the objective of elevating our
-            customers' monetary well-being. To date, we have sold an area of
+            customers monetary well-being. To date, we have sold an area of
             about 45 million sq. ft. with more than 25,000 happy and regular
             customers. From best deals to effortless transactions and property
             management, our experienced team of consultants and market experts
