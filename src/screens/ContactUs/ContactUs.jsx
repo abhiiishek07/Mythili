@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { FaPhoneAlt } from "react-icons/fa";
-import { FaGlobe, FaLocationDot, FaPhoneFlip, FaShop } from "react-icons/fa6";
+import { FaGlobe, FaLocationDot } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 
 const ContactUs = () => {
@@ -73,7 +73,7 @@ const ContactUs = () => {
             </div>
             <div className="stat-value">Phone</div>
             <div className="stat-title">
-              <a href="tel:+017903570962">7903570962</a>
+              <a href="tel:+017903570962">987654321</a>
             </div>
           </div>
 
@@ -83,7 +83,7 @@ const ContactUs = () => {
             </div>
             <div className="stat-value">Email</div>
             <div className=" stat-title">
-              <a href="mailto:abhi885990@gmail.com">abhi885990@gmail.com</a>
+              <a href="mailto:abhi885990@gmail.com">realestate@gmail.com</a>
             </div>
           </div>
 
