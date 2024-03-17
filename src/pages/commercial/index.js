@@ -1,8 +1,8 @@
 import Commercial from "@/screens/Properties/Commercial";
 import React from "react";
 
-const CommercialPage = () => {
+const Index = () => {
   return <Commercial />;
 };
 
-export default CommercialPage;
+export default Index;

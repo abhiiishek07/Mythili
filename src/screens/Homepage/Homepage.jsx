@@ -6,6 +6,7 @@ import {
   A_PLUS_DEVELOPERS,
   REVIEWS,
   SLIDER_SETTINGS_A_PLUS_DEVS,
+  SLIDER_SETTINGS_BANNER,
   SLIDER_SETTINGS_DIFF_PROP,
   SLIDER_SETTINGS_RECENT_PROP,
   SLIDER_SETTINGS_TESTIMONIAL,
@@ -27,6 +28,13 @@ import { TbMessage2Bolt } from "react-icons/tb";
 import Testimonial from "@/components/Card/Testimonial";
 import { LuTrophy } from "react-icons/lu";
 import { HiMiniRocketLaunch } from "react-icons/hi2";
+import Banner from "@/components/Card/Banner";
+
+const BANNERS = [
+  "https://u.realgeeks.media/homefrontrealtyusa/_rgg/landscape_images/BeautifulHomeExterior.jpg",
+  "https://wallpapers.com/images/hd/real-estate-buildings-in-modern-city-akg75n64dxflm7dk.jpg",
+  "https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg",
+];
 
 const Homepage = () => {
   const [collapsed, setCollapsed] = useState(true);
@@ -51,25 +59,29 @@ const Homepage = () => {
     setCollapsed(!collapsed);
   };
   return (
-    <div className="min-h-screen w-full flex flex-col items-center px-4 ">
-      <div className="w-full flex flex-col md:flex-row  max-w-6xl justify-evenly items-center h-fit mt-12 gap-3">
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-col text-5xl font-bold">
-            <p>Find your new</p>
-            <p>dream home</p>
-          </div>
-          <p className="max-w-xs text-pretty text-lg">
-            With a vast array of properties, HomeKey Props is dedicated to
-            helping you find your perfect home seamlessly. Explore our curated
-            listings today.
+    <div className=" w-full flex flex-col items-center overflow-hidden px-3 lg:px-0">
+      {/* Banner */}
+      <div className="relative w-full ">
+        <Slider {...SLIDER_SETTINGS_BANNER}>
+          {BANNERS.map((image, index) => {
+            return <Banner image={image} key={index} />;
+          })}
+        </Slider>
+        <div className="absolute inset-0 flex flex-col items-center mt-40 w-full px-4 text-center">
+          <p className=" text-white text-3xl font-bold max-w-xl">
+            Where Every Door Opens to Possibilities.
           </p>
-          <div className="relative gap-0" ref={inputRef}>
+
+          <p className=" text-white text-3xl font-bold max-w-xl ">
+            Explore our curated listings today.
+          </p>
+          <div className="relative gap-0 mt-3 " ref={inputRef}>
             <label className=" input input-bordered flex items-center gap-2">
               <IoLocationOutline />
               <input
                 type="text"
                 placeholder="Search project..."
-                className=" max-w-md w-full"
+                className="w-56 md:w-96"
                 onFocus={toggleCollapsed}
               />
               <svg
@@ -91,21 +103,21 @@ const Homepage = () => {
                 collapsed ? "opacity-0 scale-0" : "opacity-100 scale-100"
               }  duration-300 transition-transform ease-in-out flex p-2 gap-2 flex-col`}
             >
-              <select className="select select-bordered w-full max-w-xs">
+              <select className="select select-bordered w-full ">
                 <option disabled selected>
                   Location
                 </option>
                 <option>Han Solo</option>
                 <option>Greedo</option>
               </select>{" "}
-              <select className="select select-bordered w-full max-w-xs">
+              <select className="select select-bordered w-full">
                 <option disabled selected>
                   Type
                 </option>
                 <option>Han Solo</option>
                 <option>Greedo</option>
               </select>{" "}
-              <select className="select select-bordered w-full max-w-xs">
+              <select className="select select-bordered w-full ">
                 <option disabled selected>
                   Price
                 </option>
@@ -116,17 +128,17 @@ const Homepage = () => {
             </div>
           </div>
         </div>
-        <div className="bg-base-100 ">
-          <Lottie animationData={Buildings} className="max-w-xl" />
-        </div>
       </div>
-      <div className="w-full  my-12 flex flex-col gap-3 items-center justify-center border max-w-5xl p-4 rounded-lg">
+
+      {/* Trusted Partners */}
+
+      <div className="w-full  my-12 flex flex-col gap-3 items-center justify-center border max-w-6xl p-4 rounded-lg">
         <p className="font-bold text-3xl">Trusted Partners</p>
         <p className="text-lg">
           We partner with the finest to ensure your home buying experience is
           second to none. See who stands behind us.
         </p>
-        <div className="w-full max-w-5xl mt-2 py-4 relative ">
+        <div className="w-full mt-2 py-4 relative ">
           <Slider {...SLIDER_SETTINGS_A_PLUS_DEVS}>
             {A_PLUS_DEVELOPERS.map((developer, index) => (
               <div className="relative" key={index}>
@@ -138,12 +150,12 @@ const Homepage = () => {
           <div className="absolute top-0 right-0 w-10 md:w-32 h-full bg-gradient-to-l from-gray-50 rounded-lg"></div>
         </div>
       </div>
-      <div className="flex flex-col w-full max-w-5xl items-center mb-10 ">
+      <div className="flex flex-col w-full max-w-6xl items-center mb-10 ">
         <div className="flex items-center gap-4 text-3xl font-extrabold text-gray-900 sm:text-4xl justify-center">
           <h2>Our Latest Launches</h2>
           <HiMiniRocketLaunch />
         </div>
-        <div className="w-full max-w-5xl mt-2">
+        <div className="w-full mt-2">
           <Slider className="" {...SLIDER_SETTINGS_RECENT_PROP}>
             <PropertyCard />
             <PropertyCard />
@@ -153,7 +165,7 @@ const Homepage = () => {
           </Slider>
         </div>
       </div>
-      <div className="flex flex-col w-full max-w-5xl items-center justify-center mt-10 ">
+      <div className="flex flex-col w-full max-w-6xl items-center justify-center mt-10 ">
         <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
           What are you looking for ?
         </h2>
@@ -183,9 +195,16 @@ const Homepage = () => {
           >
             SCO
           </a>
+          <a
+            role="tab"
+            className={`tab ${selectedTab === "plots" && "bg-green-500"}`}
+            onClick={() => setSelectedTab("plots")}
+          >
+            Plots
+          </a>
         </div>
       </div>
-      <div className="w-full max-w-5xl mt-1 mb-10">
+      <div className="w-full max-w-6xl mt-1 mb-10">
         <Slider {...SLIDER_SETTINGS_DIFF_PROP}>
           <RecentProperty />
           <RecentProperty />
@@ -198,7 +217,7 @@ const Homepage = () => {
 
       {/* STATS */}
 
-      <div className="stats  stats-vertical md:stats-horizontal shadow my-12 w-full max-w-5xl border">
+      <div className="stats  stats-vertical md:stats-horizontal shadow my-12 w-full max-w-6xl border">
         <div className="stat">
           <div className="stat-figure text-secondary">
             <FaRegFaceSmileBeam size={28} />
@@ -235,7 +254,7 @@ const Homepage = () => {
 
       {/* AWARDS SECTION */}
 
-      <section className="bg-gray-100 py-16 max-w-5xl rounded-md my-6">
+      <section className="bg-gray-100 py-16 max-w-6xl rounded-md my-6">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="flex items-center gap-4 text-3xl font-extrabold text-gray-900 sm:text-4xl justify-center">
@@ -283,8 +302,10 @@ const Homepage = () => {
           </div>
         </div>
       </section>
+
       {/* Testimonial */}
-      <div className="w-full max-w-5xl flex flex-col items-center gap-4 my-8">
+
+      <div className="w-full max-w-6xl flex flex-col items-center gap-4 my-8">
         <div className="flex items-center gap-4 text-3xl font-extrabold text-gray-900 sm:text-4xl justify-center">
           <h2>What Our Clients Say</h2>
           <TbMessage2Bolt size={40} className="pt-2" />
@@ -299,7 +320,7 @@ const Homepage = () => {
       </div>
 
       {/* BLOGS */}
-      <section className="bg-gray-50 py-8 max-w-5xl rounded-md mt-6 px-4">
+      <section className="bg-gray-50 py-8 w-full max-w-6xl rounded-md mt-6 px-4">
         <div className="container mx-auto px-4">
           <div className="text-center mb-8">
             <div className="flex items-center gap-3 text-3xl font-extrabold text-gray-900 sm:text-4xl justify-center">
@@ -367,7 +388,7 @@ const Homepage = () => {
       </section>
 
       {/* FAQ */}
-      <div className="flex flex-col w-full max-w-5xl gap-3 my-12">
+      <div className="flex flex-col w-full max-w-6xl gap-3 my-12">
         <p className="font-bold text-3xl">FAQs</p>
         <div className="collapse collapse-arrow bg-base-200">
           <input type="radio" name="my-accordion-2" />

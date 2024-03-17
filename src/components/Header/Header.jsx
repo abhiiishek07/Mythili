@@ -4,8 +4,9 @@ import { FaBars, FaTimes } from "react-icons/fa";
 
 const Header = () => {
   const [crossBar, setCrossBar] = useState(false);
+
   return (
-    <div className="navbar py-3 rounded-md sticky top-0 bg-base-100 z-20 backdrop-filter backdrop-blur-lg bg-opacity-45">
+    <div className="navbar py-3 rounded-md sticky top-0 bg-base-100 z-20 backdrop-filter backdrop-blur-lg bg-opacity-30">
       <div className="flex-1">
         <Link className="btn btn-ghost normal-case text-3xl font-bold" href="/">
           Real Estate
@@ -15,7 +16,7 @@ const Header = () => {
       <div className=" font-medium hidden md:flex">
         <ul className="menu menu-horizontal px-1 uppercase">
           <li>
-            <a>Home</a>
+            <Link href="/">Home</Link>
           </li>
           <li>
             <a>About us</a>
@@ -53,7 +54,7 @@ const Header = () => {
             </details>
           </li>
           <li>
-            <a>contact us</a>
+            <Link href="/contact-us">Contact Us</Link>
           </li>
         </ul>
       </div>
@@ -121,7 +122,7 @@ const Header = () => {
               </details>
             </li>
             <li>
-              <a>contact us</a>
+              <Link href="/contact-us">Contact Us</Link>
             </li>
           </ul>
         </div>
