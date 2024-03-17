@@ -5,7 +5,7 @@ import { TfiWrite } from "react-icons/tfi";
 
 const TermsAndCondition = () => {
   return (
-    <div className="w-full min-h-screen flex justify-center px-3">
+    <div className=" flex justify-center px-3">
       <div className="flex flex-col w-full max-w-6xl  my-">
         <div className="text-sm breadcrumbs">
           <ul>
@@ -28,7 +28,7 @@ const TermsAndCondition = () => {
             className="rounded-md object-cover h-80 w-full"
           />
         </div>
-        <div className="text-base text-gray-700 py-4 prose text-lg">
+        <div className=" text-gray-700 py-4 prose text-lg">
           <p className="mb-4">
             These Terms and Conditions (&quot;Terms&quot;) govern your use of
             [Your Real Estate Website], accessible at [Website URL]. Please read

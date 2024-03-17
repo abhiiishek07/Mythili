@@ -1,12 +1,33 @@
 import Link from "next/link";
-import React, { useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
+import React, { useEffect, useState } from "react";
 
-const Header = () => {
+const Header = ({ isHomepage }) => {
   const [crossBar, setCrossBar] = useState(false);
+  const [showBackground, setShowBackground] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 100) {
+        setShowBackground(true);
+      } else {
+        setShowBackground(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <div className="navbar py-3 rounded-md sticky top-0 bg-base-100 z-20 backdrop-filter backdrop-blur-lg bg-opacity-30">
+    <div
+      className={`navbar py-3 rounded-md sticky top-0 z-20  ${
+        isHomepage && !showBackground
+          ? "bg-transparent text-white"
+          : "bg-base-100 backdrop-filter backdrop-blur-lg bg-opacity-30  "
+      }`}
+    >
       <div className="flex-1">
         <Link className="btn btn-ghost normal-case text-3xl font-bold" href="/">
           Real Estate
@@ -19,39 +40,29 @@ const Header = () => {
             <Link href="/">Home</Link>
           </li>
           <li>
-            <a>About us</a>
+            <Link href="/about-us">About us</Link>
           </li>
           <li>
             <details>
               <summary>Properties</summary>
-              <ul className="p-2 bg-base-100 rounded-t-none">
+              <ul className={`p-2 bg-base-100 rounded-t-none text-black`}>
                 <li>
-                  <a>Commercial</a>
+                  <Link href="/commercial">commercial</Link>
                 </li>
                 <li>
-                  <a>Residental</a>
+                  <Link href="/residential">residential</Link>
                 </li>
                 <li>
-                  <a>Sco</a>
+                  <Link href="/sco">sco</Link>
+                </li>
+                <li>
+                  <Link href="/plots">plots</Link>
                 </li>
               </ul>
             </details>
           </li>
           <li>
-            <details>
-              <summary>Resources</summary>
-              <ul className="p-2 bg-base-100 rounded-t-none">
-                <li>
-                  <a>Blogs</a>
-                </li>
-                <li>
-                  <a>Location</a>
-                </li>
-                <li>
-                  <a>Social Connect</a>
-                </li>
-              </ul>
-            </details>
+            <Link href="/blogs">Blogs</Link>
           </li>
           <li>
             <Link href="/contact-us">Contact Us</Link>
@@ -82,45 +93,33 @@ const Header = () => {
 
       {crossBar && (
         <div className="flex flex-col  absolute top-0 left-0 w-full h-screen bg-white bg-gradient-to-br from-base-200 to-bas">
-          <ul className="menu menu-vertical px-1 uppercase mt-36 text-lg font-bold">
+          <ul className="menu menu-vertical px-1 uppercase mt-36 text-lg font-bold text-black">
             <li>
-              <a>Home</a>
+              <Link href="/home">home</Link>
             </li>
             <li>
-              <a>About us</a>
+              <Link href="/about-us">About us</Link>
             </li>
             <li>
               <details>
                 <summary>Properties</summary>
                 <ul className="p-2 bg-base-100 rounded-t-none">
                   <li>
-                    <a>Commercial</a>
+                    <Link href="/commercial">commercial</Link>
                   </li>
                   <li>
-                    <a>Residental</a>
+                    <Link href="/residential">residential</Link>
                   </li>
                   <li>
-                    <a>Sco</a>
+                    <Link href="/sco">sco</Link>
+                  </li>
+                  <li>
+                    <Link href="/plots">plots</Link>
                   </li>
                 </ul>
               </details>
             </li>
-            <li>
-              <details>
-                <summary>Resources</summary>
-                <ul className="p-2 bg-base-100 rounded-t-none">
-                  <li>
-                    <a>Blogs</a>
-                  </li>
-                  <li>
-                    <a>Location</a>
-                  </li>
-                  <li>
-                    <a>Social Connect</a>
-                  </li>
-                </ul>
-              </details>
-            </li>
+
             <li>
               <Link href="/contact-us">Contact Us</Link>
             </li>

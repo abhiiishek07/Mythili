@@ -10,8 +10,7 @@
 }
 
 body {
-  @apply h-screen;
-  @apply w-screen;
+ 
   /* @apply overflow-hidden */
 }
 /* .slick-slide { 

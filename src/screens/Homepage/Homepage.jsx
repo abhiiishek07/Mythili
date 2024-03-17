@@ -29,11 +29,14 @@ import Testimonial from "@/components/Card/Testimonial";
 import { LuTrophy } from "react-icons/lu";
 import { HiMiniRocketLaunch } from "react-icons/hi2";
 import Banner from "@/components/Card/Banner";
+import Header from "@/components/Header/Header";
+import AnnouncementBar from "@/components/AnnouncementBar/AnnouncementBar";
 
 const BANNERS = [
-  "https://u.realgeeks.media/homefrontrealtyusa/_rgg/landscape_images/BeautifulHomeExterior.jpg",
-  "https://wallpapers.com/images/hd/real-estate-buildings-in-modern-city-akg75n64dxflm7dk.jpg",
-  "https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg",
+  "https://w0.peakpx.com/wallpaper/1016/821/HD-wallpaper-abstract-city-building-light-lights-night.jpg",
+  "https://www.hdwallpapers.in/download/night_city_buildings_lights_4k_hd-HD.jpg",
+  "https://www.goldmansachs.com/intelligence/pages/articles/real-estate-may-still-offer-a-hedge-for-investors/800x450.jpg",
+  "https://e0.pxfuel.com/wallpapers/422/590/desktop-wallpaper-hong-kong-abstract-city-neon-art.jpg",
 ];
 
 const Homepage = () => {
@@ -59,22 +62,27 @@ const Homepage = () => {
     setCollapsed(!collapsed);
   };
   return (
-    <div className=" w-full flex flex-col items-center overflow-hidden px-3 lg:px-0">
+    <div className="relative w-full flex flex-col items-center overflow-hidden  lg:px-0">
       {/* Banner */}
-      <div className="relative w-full ">
+
+      <div className="top-0 left-0 right-0 z-10 fixed">
+        <AnnouncementBar />
+        <Header isHomepage={true} />
+      </div>
+      <div className="relative w-full">
         <Slider {...SLIDER_SETTINGS_BANNER}>
           {BANNERS.map((image, index) => {
             return <Banner image={image} key={index} />;
           })}
         </Slider>
-        <div className="absolute inset-0 flex flex-col items-center mt-40 w-full px-4 text-center">
-          <p className=" text-white text-3xl font-bold max-w-xl">
+        <div className="absolute inset-0 flex flex-col justify-center items-center w-full px-4 text-center ">
+          <p className=" text-white text-3xl font-bold max-w-3xl ">
+            Explore our curated listings today.
+          </p>
+          <p className=" text-white text-3xl font-bold max-w-3xl mt-2">
             Where Every Door Opens to Possibilities.
           </p>
 
-          <p className=" text-white text-3xl font-bold max-w-xl ">
-            Explore our curated listings today.
-          </p>
           <div className="relative gap-0 mt-3 " ref={inputRef}>
             <label className=" input input-bordered flex items-center gap-2">
               <IoLocationOutline />
