@@ -121,6 +121,15 @@ export const SLIDER_SETTINGS_DIFF_PROP = {
   ],
 };
 
+export const SLIDER_SETTINGS_DIFF_PROP_INFO = {
+  dots: true,
+  dotsClass: "slick-dots slick-thumb",
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1
+};
+
 export const SLIDER_SETTINGS_TESTIMONIAL = {
   dots: false,
   infinite: true,
@@ -174,3 +183,7 @@ export const REVIEWS = [
     author: "Christopher White",
   },
 ];
+
+export const baseUrl = "./Images";
+
+

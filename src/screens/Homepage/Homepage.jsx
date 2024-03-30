@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Buildings from "@/assets/Lottie/Buildings.json";
-import Lottie from "lottie-react";
+// import Lottie from "lottie-react";
 import Slider from "react-slick";
 import {
   A_PLUS_DEVELOPERS,
@@ -117,7 +117,7 @@ const Homepage = () => {
           </div>
         </div>
         <div className="bg-base-100 ">
-          <Lottie animationData={Buildings} className="max-w-xl" />
+          {/* <Lottie animationData={Buildings} className="max-w-xl" /> */}
         </div>
       </div>
       <div className="w-full  my-12 flex flex-col gap-3 items-center justify-center border max-w-5xl p-4 rounded-lg">
