@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { FaPhoneAlt } from "react-icons/fa";
-import { FaGlobe, FaLocationDot, FaPhoneFlip, FaShop } from "react-icons/fa6";
+import { FaGlobe, FaLocationDot } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 
 const ContactUs = () => {
@@ -73,7 +73,7 @@ const ContactUs = () => {
             </div>
             <div className="stat-value">Phone</div>
             <div className="stat-title">
-              <a href="tel:+017903570962">7903570962</a>
+              <a href="tel:+017903570962">987654321</a>
             </div>
           </div>
 
@@ -83,7 +83,7 @@ const ContactUs = () => {
             </div>
             <div className="stat-value">Email</div>
             <div className=" stat-title">
-              <a href="mailto:abhi885990@gmail.com">abhi885990@gmail.com</a>
+              <a href="mailto:abhi885990@gmail.com">realestate@gmail.com</a>
             </div>
           </div>
 
@@ -111,8 +111,8 @@ const ContactUs = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row w-full rounded-md my-8 gap-6 md:gap-0">
-          <div className="overflow-hidden w-full">
+        <div className="flex flex-col md:flex-row w-full rounded-md my-8  gap-6 md:gap-0 ">
+          <div className="overflow-hidden mw-full  md:flex-none">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224346.54004883842!2d77.04417347155065!3d28.52725273882469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x52c2b7494e204dce!2sNew%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1710325201583!5m2!1sen!2sin"
               width="600"
@@ -124,7 +124,7 @@ const ContactUs = () => {
             ></iframe>
           </div>
 
-          <div className="flex flex-col px-3 w-full items-center bg-base-200">
+          <div className="flex flex-col px-3 w-full grow items-center bg-base-200">
             <p className="font-bold text-3xl my-2">Write To Us</p>
             <form
               className="w-full flex flex-col items-center gap-4"

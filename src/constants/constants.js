@@ -141,6 +141,24 @@ export const SLIDER_SETTINGS_TESTIMONIAL = {
   adaptiveHeight: true,
 };
 
+export const SLIDER_SETTINGS_BANNER = {
+  dots: false,
+  infinite: true,
+  speed: 2000,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 3000,
+  fade: true,
+  // cssEase: "ease-in-out",
+  arrow: false,
+  // centerMode: true,
+  dots: false,
+  pauseOnHover: false,
+  // easeing: "linear",
+  adaptiveHeight: true,
+};
+
 export const REVIEWS = [
   {
     text: "I recently bought a beautiful house through this agency. The entire process was smooth and efficient. Highly recommended!",

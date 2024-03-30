@@ -1,21 +1,35 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
+import { useRouter } from "next/router";
+import { IoMailUnreadOutline } from "react-icons/io5";
+import AnnouncementBar from "../AnnouncementBar/AnnouncementBar";
+import ContactUsModal from "../ContactUsModal/ContactUsModal";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import { IoMailUnreadOutline } from "react-icons/io5";
 
 const Layout = ({ children }) => {
+  const [openContactus, setOpenContactUs] = useState(false);
+  const router = useRouter();
+
   return (
     <Fragment>
-      <div className="flex flex-col overflow-hidden h-screen justify-center bg-white">
-        <main className="grow overflow-y-auto relative">
-          <Header />
+      <div className={` ${openContactus && "blur-md"}`}>
+        {router.pathname !== "/" && <Header />}
+        <main className="relative">
           {children}
-          <Footer />
+          <button
+            className="btn btn-circle fixed bottom-4 right-4  bg-green-600 text-white shadow-xl  rounded-full hover:bg-green-700 z-50"
+            onClick={() => setOpenContactUs(true)}
+          >
+            <IoMailUnreadOutline size={25} />
+          </button>
         </main>
-        <button className="btn btn-circle hidden md:absolute right-4 md:right-8 lg:right-16 top-[50rem] md:top-[38rem] lg:top-[40rem] bg-green-600 hover:bg-green-600 text-white shadow-xl">
-          <IoMailUnreadOutline size={25} />
-        </button>
+        <Footer />
       </div>
+
+      <ContactUsModal
+        openContactUs={openContactus}
+        setOpenContactUs={setOpenContactUs}
+      />
     </Fragment>
   );
 };

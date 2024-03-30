@@ -1,9 +1,10 @@
 import React from "react";
 import PropertyCard from "@/components/Card/PropertyCard";
-import { FaShop } from "react-icons/fa6";
 import Link from "next/link";
+import { FaHome } from "react-icons/fa";
+import { MdHomeWork } from "react-icons/md";
 
-const Commercial = () => {
+const SCO = () => {
   return (
     <div className=" flex justify-center px-4 ">
       <div className="flex flex-col w-full max-w-6xl  mt-8">
@@ -13,22 +14,22 @@ const Commercial = () => {
               <Link href="/">Home</Link>
             </li>
             <li>
-              <a>Commercial</a>
+              <a>Sco</a>
             </li>
           </ul>
         </div>
         <div className=" w-fit font-bold text-3xl flex items-center gap-2 justify-center py-2">
-          <p> Commercial Properties </p>
-          <FaShop />
+          <p> SCO Properties </p>
+          <MdHomeWork />
         </div>
         <div class="relative font-[sans-serif] before:absolute before:w-full before:h-full before:inset-0 before:bg-gray-900 before:opacity-50 before:z-10 before:rounded-md">
           <img
-            src="https://www.insight-law.co.uk/wp-content/uploads/2022/02/A-guide-to-investing-in-Londons-commercial-property-market-1024x575.png"
+            src="https://www.hindustantimes.com/ht-img/img/2023/12/20/550x309/DLF_shops_cum_office_project_in_Gurgaon_1703077004021_1703077012666.jpeg"
             alt="Banner Image"
             class="absolute inset-0 w-full h-full object-cover rounded-md"
           />
           <div class="min-h-[300px] relative  h-full z-10  flex justify-center items-center text-center text-white text-lg  p-6 rounded-md">
-            Explore our range of commercial properties for your business needs.
+            Explore our range of SCO properties for your business needs.
           </div>
         </div>
         <div className="border w-full my-10 flex flex-col lg:flex-row p-4 justify-evenly bg-slate-50 rounded-md gap-4">
@@ -96,23 +97,4 @@ const Commercial = () => {
   );
 };
 
-export default Commercial;
-{
-  /* <div className="min-h-screen w-full flex flex-col overflow-hidden px-6 md:px-10 py-2 my-6">
-
-<div className=" items-start justify-start mx-9 rounded-md max-w-md py-2">
-  <p className="text-2xl font-bold ">Commercial Property</p>
-  <p className="text-sm text-gray-600">
-    Explore our range of commercial properties for your business needs.
-  </p>
-</div>
-<span className="w-full flex border border-gray-300 my-2 mx-8"></span>
-
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-6 ">
-  <PropertyCard />
-  <PropertyCard />
-  <PropertyCard />
-  <PropertyCard />
-</div>
-</div> */
-}
+export default SCO;
