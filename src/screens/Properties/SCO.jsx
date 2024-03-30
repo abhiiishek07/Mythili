@@ -1,7 +1,5 @@
-import React from "react";
-import PropertyCard from "@/components/Card/PropertyCard";
+import Property from "@/components/Card/Property";
 import Link from "next/link";
-import { FaHome } from "react-icons/fa";
 import { MdHomeWork } from "react-icons/md";
 
 const SCO = () => {
@@ -22,16 +20,17 @@ const SCO = () => {
           <p> SCO Properties </p>
           <MdHomeWork />
         </div>
-        <div class="relative font-[sans-serif] before:absolute before:w-full before:h-full before:inset-0 before:bg-gray-900 before:opacity-50 before:z-10 before:rounded-md">
-          <img
-            src="https://www.hindustantimes.com/ht-img/img/2023/12/20/550x309/DLF_shops_cum_office_project_in_Gurgaon_1703077004021_1703077012666.jpeg"
-            alt="Banner Image"
-            class="absolute inset-0 w-full h-full object-cover rounded-md"
-          />
+        <img
+          src="https://www.hindustantimes.com/ht-img/img/2023/12/20/550x309/DLF_shops_cum_office_project_in_Gurgaon_1703077004021_1703077012666.jpeg"
+          alt="Banner Image"
+          class="w-full h-96  rounded-md"
+        />
+        {/* <div class="relative font-[sans-serif] before:absolute before:w-full before:h-full before:inset-0 before:bg-gray-900 before:opacity-50 before:z-10 before:rounded-md">
+          
           <div class="min-h-[300px] relative  h-full z-10  flex justify-center items-center text-center text-white text-lg  p-6 rounded-md">
             Explore our range of SCO properties for your business needs.
           </div>
-        </div>
+        </div> */}
         <div className="border w-full my-10 flex flex-col lg:flex-row p-4 justify-evenly bg-slate-50 rounded-md gap-4">
           <div className="flex flex-col justify-center items-center">
             <p className="text-lg text-gray-900">Status</p>
@@ -87,10 +86,11 @@ const SCO = () => {
           </div>
         </div>
         <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  ">
-          <PropertyCard />
-          <PropertyCard />
-          <PropertyCard />
-          <PropertyCard />
+          <Property />
+          <Property />
+          <Property />
+          <Property />
+          <Property />
         </div>
       </div>
     </div>

@@ -3,20 +3,24 @@ import { IoBedSharp } from "react-icons/io5";
 import { FaRegSquare } from "react-icons/fa6";
 import { FaBath } from "react-icons/fa";
 import { LuIndianRupee } from "react-icons/lu";
+import Link from "next/link";
 
-const RecentProperty = () => {
+const Property = ({ image }) => {
   return (
     <div class="container mx-auto max-w-md">
       <div class="flex flex-wrap ">
         <div class="w-full p-4">
-          <a
-            href=""
+          <Link
+            href="/property/property-id"
             class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden"
           >
             <div class="relative pb-48 overflow-hidden">
               <img
                 class="absolute inset-0 h-full w-full object-cover"
-                src="https://images.unsplash.com/photo-1475855581690-80accde3ae2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+                src={
+                  image?.src ||
+                  "https://images.unsplash.com/photo-1475855581690-80accde3ae2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+                }
                 alt=""
               />
             </div>
@@ -59,17 +63,17 @@ const RecentProperty = () => {
             <div class="p-4 flex items-center justify-between">
               <p className="flex items-center justify-center text-  font-semibold ">
                 <LuIndianRupee />
-                <span> 1.25 </span> Cr* Onwards
+                <span className="pr-2"> 1.25 </span> Cr* Onwards
               </p>
               <button className="py-1 px-3 rounded-md items-center bg-green-500 border-white text-white">
                 View Details
               </button>
             </div>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
   );
 };
 
-export default RecentProperty;
+export default Property;

@@ -1,16 +1,8 @@
-import React from "react";
-import Link from "next/link";
-import RecentProperty from "@/components/Card/RecentProperty";
-import {
-  FaVideo,
-  FaLocationDot,
-  FaHouseChimney,
-  FaList,
-  FaHouse,
-  FaPersonShelter,
-} from "react-icons/fa6";
-import { BiDetail } from "react-icons/bi";
-import { LuIndianRupee } from "react-icons/lu";
+import property_1_img from "@/assets/images/property_1.jpg";
+import property_2_img from "@/assets/images/property_2.jpg";
+import property_3_img from "@/assets/images/property_3.jpg";
+import property_4_img from "@/assets/images/property_4.jpg";
+import Property from "@/components/Card/Property";
 import {
   Accordion,
   AccordionContent,
@@ -18,18 +10,92 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import {
-  A_PLUS_DEVELOPERS,
-  REVIEWS,
-  SLIDER_SETTINGS_A_PLUS_DEVS,
   SLIDER_SETTINGS_DIFF_PROP,
   SLIDER_SETTINGS_DIFF_PROP_INFO,
   SLIDER_SETTINGS_TESTIMONIAL,
 } from "@/constants/constants";
+import Link from "next/link";
+import { useState } from "react";
+import { BiDetail } from "react-icons/bi";
+import {
+  FaArrowRight,
+  FaHouse,
+  FaHouseChimney,
+  FaList,
+  FaLocationDot,
+  FaPersonShelter,
+  FaVideo,
+} from "react-icons/fa6";
+import { IoMailUnreadOutline } from "react-icons/io5";
+import { LuIndianRupee } from "react-icons/lu";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+
+const PROPERTY_IMAGES = [
+  property_1_img,
+  property_2_img,
+  property_3_img,
+  property_4_img,
+];
+
+const settings = {
+  customPaging: function (i) {
+    return (
+      <div className="h-10 w-14 my-2 rounded-md">
+        <a>
+          <img src={PROPERTY_IMAGES[i].src} />
+        </a>
+      </div>
+    );
+  },
+  dots: true,
+  dotsClass: "slick-dots slick-thumb",
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+};
 
 const PropertyInfo = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Validation
+    if (
+      formData.name.trim() === "" ||
+      formData.email.trim() === "" ||
+      formData.phone.trim() === "" ||
+      formData.message.trim() === ""
+    ) {
+      alert("Please fill out all fields");
+      return;
+    }
+    // Send form data
+    console.log(formData);
+    // Clear form
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    });
+  };
+
   return (
     <div className="w-full min-h-screen flex flex-col items-center px-5 ">
       <div className="flex flex-col w-full max-w-7xl my-4">
@@ -38,9 +104,7 @@ const PropertyInfo = () => {
             <li>
               <Link href="/">Home</Link>
             </li>
-            <li>
-              <Link href="/commercial-page">Properties</Link>
-            </li>
+            <li>Properties</li>
             <li>
               <a>Details</a>
             </li>
@@ -48,12 +112,36 @@ const PropertyInfo = () => {
         </div>
 
         <div className="flex flex-col md:flex-row w-full my-8 md:my-0 md:space-x-6">
-          <div className="overflow-hidden w-full md:w-3/4 p-3">
-            <div className="border border-black ">
-              <div className="w-full max-w-5xl mt-1 mb-10 flex">
-                {/* Images code */}
+          <div className=" w-full max-w-4xl p-3">
+            <div className=" md:hidden w-full px-4 py-4 bg-base-200 rounded-lg relative slide-container ">
+              <Slider
+                {...SLIDER_SETTINGS_TESTIMONIAL}
+                className="w-full h-full"
+              >
+                {PROPERTY_IMAGES?.map((image, index) => (
+                  <div key={index}>
+                    <img src={image?.src} className="rounded-md h-56 w-full" />
+                  </div>
+                ))}
+              </Slider>
+              <div className="mx-auto w-full flex justify-center items-center gap-2 text-gray-400">
+                <p className="font-bold">swipe</p>
+                <FaArrowRight />
               </div>
             </div>
+            <div className="hidden md:block w-full  px-8 pt-5 pb-14 bg-base-300 rounded-lg relative slide-container ">
+              <Slider {...settings} className="w-full h-full">
+                {PROPERTY_IMAGES?.map((image, index) => (
+                  <div key={index}>
+                    <img
+                      src={image?.src}
+                      className="rounded-md h-[33rem] w-full"
+                    />
+                  </div>
+                ))}
+              </Slider>
+            </div>
+
             <div className="py-4">
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem
@@ -180,40 +268,102 @@ const PropertyInfo = () => {
               </Accordion>
             </div>
           </div>
-          <div className="flex flex-col w-full md:w-1/4 bg-base-200 md:border-l md:border-gray-300">
-            <div className="flex flex-col p-4 my-2 border">
-              <p className=" text-lg font-bold ">M3M Route 65</p>
-              <span className="text-sm flex items-center ">
-                <FaLocationDot className=" text-green-500" /> Sector 65,
-                Gurugram
-              </span>
-            </div>
-            <div className="flex flex-col p-4 my-2 border">
-              <p className=" text-lg font-bold flex items-center">
-                <LuIndianRupee /> 75 Lakh* Onwards
-              </p>
-              <span className="text-sm">
-                Status: <span className=" font-semibold">New Launch</span>
-              </span>
-            </div>
-            <div className="flex items-center p-4 my-2 border">
-              <FaHouseChimney className=" text-2xl  text-green-500" />
-              <div className="flex flex-col mx-2">
-                <span className=" font-semibold">Project Size</span>
-                <span className="text-sm">250 - 1000 Sq. Ft.</span>
+
+          <div className="flex flex-col w-full md:w-1/4 mt-4 ">
+            <div className="bg-base-200 rounded-md ">
+              <div className="flex flex-col p-4 my-2 ">
+                <p className=" text-lg font-bold ">M3M Route 65</p>
+                <span className="text-sm flex items-center ">
+                  <FaLocationDot className=" text-green-500" /> Sector 65,
+                  Gurugram
+                </span>
+              </div>
+              <div className="flex flex-col p-4 my-2 ">
+                <p className=" text-lg font-bold flex items-center">
+                  <LuIndianRupee /> 75 Lakh* Onwards
+                </p>
+                <span className="text-sm">
+                  Status: <span className=" font-semibold">New Launch</span>
+                </span>
+              </div>
+              <div className="flex items-center p-4 my-2 ">
+                <FaHouseChimney className=" text-2xl  text-green-500" />
+                <div className="flex flex-col mx-2">
+                  <span className=" font-semibold">Project Size</span>
+                  <span className="text-sm">250 - 1000 Sq. Ft.</span>
+                </div>
+              </div>
+              <div className="flex items-center p-4 my-2 justify-center">
+                <button className="py-2 px-4 rounded-md items-center bg-green-500 border-white text-white text-xl font-semibold">
+                  Contact Builder
+                </button>
               </div>
             </div>
-            <div className="flex items-center p-4 my-2 justify-center">
-              <button className="py-2 px-4 rounded-md items-center bg-green-500 border-white text-white text-xl font-semibold">
-                Contact Builder
-              </button>
+
+            {/* contact us form */}
+            <div className="flex flex-col p-3 w-full items-center bg-base-200 mt-10 rounded-md md:sticky md:top-20">
+              <p className="font-bold text-xl mb-3 flex items-center gap-3">
+                Contact Us <IoMailUnreadOutline size={24} />
+              </p>
+              <form
+                className="w-full flex flex-col items-center gap-4"
+                onSubmit={handleSubmit}
+              >
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="input input-bordered w-full"
+                  placeholder="Enter your name"
+                  required
+                />
+
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="input input-bordered w-full"
+                  placeholder="Enter your email"
+                  required
+                />
+
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="input input-bordered w-full"
+                  placeholder="Enter your phone number"
+                  required
+                />
+
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="textarea textarea-bordered w-full"
+                  placeholder="Enter your message"
+                  rows="4"
+                  required
+                ></textarea>
+
+                <button type="submit" className="btn btn-primary w-full">
+                  Submit
+                </button>
+              </form>
             </div>
           </div>
         </div>
       </div>
 
       <div className="flex flex-col w-full max-w-5xl items-center justify-center mt-10 mb-8">
-        <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-4">
+        <h2 className="text-xl text-center font-bold text-gray-900 sm:text-4xl mb-4">
           Explore Similar Properties of Interest
         </h2>
         <p className="text-lg text-gray-500 mb-6 text-center">
@@ -222,12 +372,12 @@ const PropertyInfo = () => {
         </p>
         <div className="w-full">
           <Slider {...SLIDER_SETTINGS_DIFF_PROP}>
-            <RecentProperty />
-            <RecentProperty />
-            <RecentProperty />
-            <RecentProperty />
-            <RecentProperty />
-            <RecentProperty />
+            <Property />
+            <Property />
+            <Property />
+            <Property />
+            <Property />
+            <Property />
           </Slider>
         </div>
       </div>

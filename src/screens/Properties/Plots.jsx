@@ -1,5 +1,4 @@
-import React from "react";
-import PropertyCard from "@/components/Card/PropertyCard";
+import Property from "@/components/Card/Property";
 import Link from "next/link";
 import { GiFlatPlatform } from "react-icons/gi";
 
@@ -21,16 +20,17 @@ const Plots = () => {
           <p> Plots Properties</p>
           <GiFlatPlatform size={34} />
         </div>
-        <div class="relative font-[sans-serif] before:absolute before:w-full before:h-full before:inset-0 before:bg-gray-900 before:opacity-50 before:z-10 before:rounded-md">
-          <img
-            src="https://d27p8o2qkwv41j.cloudfront.net/wp-content/uploads/2022/01/Buying-Plots-Yield-Better-Returns-Than-Investing-in-Apartments-shutterstock_2035101980.jpg"
-            alt="Banner Image"
-            class="absolute inset-0 w-full h-full object-cover rounded-md"
-          />
-          <div class="min-h-[300px] relative  h-full z-10  flex justify-center items-center text-center text-white text-lg  p-6 rounded-md">
+        <img
+          src="https://d27p8o2qkwv41j.cloudfront.net/wp-content/uploads/2022/01/Buying-Plots-Yield-Better-Returns-Than-Investing-in-Apartments-shutterstock_2035101980.jpg"
+          alt="Banner Image"
+          class=" w-full h-96 object-cover rounded-md"
+        />
+        {/* <div class="relative font-[sans-serif] before:absolute before:w-full before:h-full before:inset-0 before:bg-gray-900 before:opacity-50 before:z-10 before:rounded-md">
+         
+          <div class="min-h-[300px] relative  h-96 z-10  flex justify-center items-center text-center text-white text-lg  p-6 rounded-md">
             Explore our range of Plots for your business needs.
           </div>
-        </div>
+        </div> */}
         <div className="border w-full my-10 flex flex-col lg:flex-row p-4 justify-evenly bg-slate-50 rounded-md gap-4">
           <div className="flex flex-col justify-center items-center">
             <p className="text-lg text-gray-900">Status</p>
@@ -86,10 +86,11 @@ const Plots = () => {
           </div>
         </div>
         <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  ">
-          <PropertyCard />
-          <PropertyCard />
-          <PropertyCard />
-          <PropertyCard />
+          <Property />
+          <Property />
+          <Property />
+          <Property />
+          <Property />
         </div>
       </div>
     </div>

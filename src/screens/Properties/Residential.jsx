@@ -1,7 +1,7 @@
-import React from "react";
-import PropertyCard from "@/components/Card/PropertyCard";
+import Property from "@/components/Card/Property";
 import Link from "next/link";
 import { FaHome } from "react-icons/fa";
+import property_4_img from "@/assets/images/property_4.jpg";
 
 const Residential = () => {
   return (
@@ -21,16 +21,17 @@ const Residential = () => {
           <p> Residential Properties </p>
           <FaHome />
         </div>
-        <div class="relative font-[sans-serif] before:absolute before:w-full before:h-full before:inset-0 before:bg-gray-900 before:opacity-50 before:z-10 before:rounded-md">
-          <img
-            src="https://media.istockphoto.com/id/1319269543/photo/new-homes-on-a-quiet-street-in-raleigh-nc.jpg?s=612x612&w=0&k=20&c=qaRMP-xgYqFAXR9aTpiG0dtkyqPhJiTAovvxyG1AxvM="
-            alt="Banner Image"
-            class="absolute inset-0 w-full h-full object-cover rounded-md"
-          />
-          <div class="min-h-[300px] relative  h-full z-10  flex justify-center items-center text-center text-white text-lg  p-6 rounded-md">
+        <img
+          src={property_4_img.src}
+          alt="Banner Image"
+          class=" w-full h-96 rounded-md "
+        />
+        {/* <div class="relative card font-[sans-serif] before:absolute before:w-full before:h-full before:inset-0 before:bg-gray-900 before:opacity-50 before:z-10 before:rounded-md">
+          <div class=" relative  h-96 z-10  flex justify-center items-center text-center text-white text-lg  p-6 rounded-md">
             Explore our range of Residential properties for your personal needs.
           </div>
-        </div>
+        </div> */}
+
         <div className="border w-full my-10 flex flex-col lg:flex-row p-4 justify-evenly bg-slate-50 rounded-md gap-4">
           <div className="flex flex-col justify-center items-center">
             <p className="text-lg text-gray-900">Status</p>
@@ -86,10 +87,11 @@ const Residential = () => {
           </div>
         </div>
         <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  ">
-          <PropertyCard />
-          <PropertyCard />
-          <PropertyCard />
-          <PropertyCard />
+          <Property />
+          <Property />
+          <Property />
+          <Property />
+          <Property />
         </div>
       </div>
     </div>
