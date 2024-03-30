@@ -1,7 +1,6 @@
 import { Fragment, useState } from "react";
 import { useRouter } from "next/router";
 import { IoMailUnreadOutline } from "react-icons/io5";
-import AnnouncementBar from "../AnnouncementBar/AnnouncementBar";
 import ContactUsModal from "../ContactUsModal/ContactUsModal";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
@@ -17,7 +16,7 @@ const Layout = ({ children }) => {
         <main className="relative">
           {children}
           <button
-            className="btn btn-circle fixed bottom-4 right-4  bg-green-600 text-white shadow-xl  rounded-full hover:bg-green-700 z-50"
+            className="btn btn-circle fixed bottom-4 right-4   bg-green-600 text-white shadow-xl  rounded-full hover:bg-green-700 z-50"
             onClick={() => setOpenContactUs(true)}
           >
             <IoMailUnreadOutline size={25} />

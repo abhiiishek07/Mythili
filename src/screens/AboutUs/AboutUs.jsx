@@ -58,7 +58,7 @@ const AboutUs = () => {
           </p>
         </div>
         <p className="text-3xl font-bold mt-10">Why Choose us ?</p>
-        <div className="stats  stats-vertical md:stats-horizontal shadow my-4 w-full max-w-6xl border">
+        <div className="stats  stats-vertical md:stats-horizontal shadow my-7 w-full max-w-6xl border">
           <div className="stat">
             <div className="stat-figure text-secondary">
               <FaRegFaceSmileBeam size={28} />
@@ -94,15 +94,16 @@ const AboutUs = () => {
         </div>
         <div className="w-full max-w-6xl flex flex-col items-center gap-4 my-8">
           <div className="flex items-center gap-4 text-3xl font-extrabold text-gray-900 sm:text-4xl justify-center">
-            <h2>What Our Clients Say</h2>
+            <h2>What Our Client Say</h2>
             <TbMessage2Bolt size={40} className="pt-2" />
           </div>
           <div className="w-full">
-            <Slider {...SLIDER_SETTINGS_TESTIMONIAL}>
-              {REVIEWS.map((review, index) => (
-                <Testimonial review={review} key={index} />
-              ))}
-            </Slider>
+            <Testimonial
+              review={{
+                text: "I recently bought a beautiful house through this agency. The entire process was smooth and efficient. Highly recommended!",
+                author: "Samantha Johnson",
+              }}
+            />
           </div>
         </div>
       </div>
