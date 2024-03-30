@@ -1,7 +1,7 @@
-import React from "react";
-import PropertyCard from "@/components/Card/PropertyCard";
-import { FaShop } from "react-icons/fa6";
+import Property from "@/components/Card/Property";
 import Link from "next/link";
+import { FaShop } from "react-icons/fa6";
+import property_3_img from "@/assets/images/property_3.jpg";
 
 const Commercial = () => {
   return (
@@ -21,16 +21,13 @@ const Commercial = () => {
           <p> Commercial Properties </p>
           <FaShop />
         </div>
-        <div class="relative font-[sans-serif] before:absolute before:w-full before:h-full before:inset-0 before:bg-gray-900 before:opacity-50 before:z-10 before:rounded-md">
-          <img
-            src="https://www.insight-law.co.uk/wp-content/uploads/2022/02/A-guide-to-investing-in-Londons-commercial-property-market-1024x575.png"
-            alt="Banner Image"
-            class="absolute inset-0 w-full h-full object-cover rounded-md"
-          />
-          <div class="min-h-[300px] relative  h-full z-10  flex justify-center items-center text-center text-white text-lg  p-6 rounded-md">
-            Explore our range of commercial properties for your business needs.
-          </div>
-        </div>
+
+        <img
+          src={property_3_img.src}
+          alt="Banner Image"
+          class=" w-full rounded-md h-96"
+        />
+
         <div className="border w-full my-10 flex flex-col lg:flex-row p-4 justify-evenly bg-slate-50 rounded-md gap-4">
           <div className="flex flex-col justify-center items-center">
             <p className="text-lg text-gray-900">Status</p>
@@ -86,10 +83,11 @@ const Commercial = () => {
           </div>
         </div>
         <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  ">
-          <PropertyCard />
-          <PropertyCard />
-          <PropertyCard />
-          <PropertyCard />
+          <Property />
+          <Property />
+          <Property />
+          <Property />
+          <Property />
         </div>
       </div>
     </div>
