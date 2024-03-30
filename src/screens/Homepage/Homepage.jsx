@@ -136,6 +136,9 @@ const Homepage = () => {
             </div>
           </div>
         </div>
+        <div className="bg-base-100 ">
+          <Lottie animationData={Buildings} className="max-w-xl" />
+        </div>
       </div>
 
       {/* Trusted Partners */}
