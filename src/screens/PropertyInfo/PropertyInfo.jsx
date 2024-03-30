@@ -32,7 +32,7 @@ import "slick-carousel/slick/slick-theme.css";
 const PropertyInfo = () => {
   return (
     <div className="w-full min-h-screen flex flex-col items-center px-5 ">
-      <div className="flex flex-col w-full max-w-7xl  my-">
+      <div className="flex flex-col w-full max-w-7xl my-4">
         <div className="text-sm breadcrumbs">
           <ul>
             <li>
@@ -47,24 +47,11 @@ const PropertyInfo = () => {
           </ul>
         </div>
 
-        <div className="flex flex-col md:flex-row w-full my-8 gap-6 md:gap-0">
-          <div className="overflow-hidden w-3/4 p-3">
+        <div className="flex flex-col md:flex-row w-full my-8 md:my-0 md:space-x-6">
+          <div className="overflow-hidden w-full md:w-3/4 p-3">
             <div className="border border-black ">
               <div className="w-full max-w-5xl mt-1 mb-10 flex">
-                {/* <Slider {...SLIDER_SETTINGS_DIFF_PROP_INFO}>
-                  <div>
-                    <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8SG91c2V8ZW58MHx8MHx8fDA%3D" />
-                  </div>
-                  <div>
-                    <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8SG91c2V8ZW58MHx8MHx8fDA%3D" />
-                  </div>
-                  <div>
-                    <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8SG91c2V8ZW58MHx8MHx8fDA%3D" />
-                  </div>
-                  <div>
-                    <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8SG91c2V8ZW58MHx8MHx8fDA%3D" />
-                  </div>
-                </Slider> */}
+                {/* Images code */}
               </div>
             </div>
             <div className="py-4">
@@ -109,23 +96,33 @@ const PropertyInfo = () => {
                     <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-x-6 lg:gap-x-8 gap-y-4 md:gap-y-6 lg:gap-y-8">
                       <div className="flex flex-col items-center justify-center bg-gray-200 rounded-lg p-6 md:p-8 lg:p-10">
                         <FaList className="text-3xl text-green-500" />
-                        <p className="py-1 font-semibold tracking-widest">24*7 Security</p>
+                        <p className="py-1 font-semibold tracking-widest">
+                          24*7 Security
+                        </p>
                       </div>
                       <div className="flex flex-col items-center justify-center bg-gray-200 rounded-lg p-6 md:p-8 lg:p-10">
                         <FaList className="text-3xl text-green-500" />
-                        <p className="py-1 font-semibold tracking-widest">Elevator</p>
+                        <p className="py-1 font-semibold tracking-widest">
+                          Elevator
+                        </p>
                       </div>
                       <div className="flex flex-col items-center justify-center bg-gray-200 rounded-lg p-6 md:p-8 lg:p-10">
                         <FaList className="text-3xl text-green-500" />
-                        <p className="py-1 font-semibold tracking-widest">CCTV</p>
+                        <p className="py-1 font-semibold tracking-widest">
+                          CCTV
+                        </p>
                       </div>
                       <div className="flex flex-col items-center justify-center bg-gray-200 rounded-lg p-6 md:p-8 lg:p-10">
                         <FaList className="text-3xl text-green-500" />
-                        <p className="py-1 font-semibold tracking-widest">Parking Space</p>
+                        <p className="py-1 font-semibold tracking-widest">
+                          Parking Space
+                        </p>
                       </div>
                       <div className="flex flex-col items-center justify-center bg-gray-200 rounded-lg p-6 md:p-8 lg:p-10">
                         <FaList className="text-3xl text-green-500" />
-                        <p className="py-1 font-semibold tracking-widest">Power Backup</p>
+                        <p className="py-1 font-semibold tracking-widest">
+                          Power Backup
+                        </p>
                       </div>
                     </div>
                   </AccordionContent>
@@ -183,7 +180,7 @@ const PropertyInfo = () => {
               </Accordion>
             </div>
           </div>
-          <div className="flex flex-col w-1/4 bg-base-200 ">
+          <div className="flex flex-col w-full md:w-1/4 bg-base-200 md:border-l md:border-gray-300">
             <div className="flex flex-col p-4 my-2 border">
               <p className=" text-lg font-bold ">M3M Route 65</p>
               <span className="text-sm flex items-center ">
@@ -214,24 +211,25 @@ const PropertyInfo = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col w-full max-w-5xl items-center justify-center mt-10 ">
-        <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+
+      <div className="flex flex-col w-full max-w-5xl items-center justify-center mt-10 mb-8">
+        <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-4">
           Explore Similar Properties of Interest
         </h2>
-        <p className="text-lg text-gray-500 my-3 px-3 text-center">
+        <p className="text-lg text-gray-500 mb-6 text-center">
           Stay Up-to-Date on New Property Options, Best Investment
           Opportunities, and What&apos;s Coming Next.
         </p>
-      </div>
-      <div className="w-full max-w-5xl mt-1 mb-10">
-        <Slider {...SLIDER_SETTINGS_DIFF_PROP}>
-          <RecentProperty />
-          <RecentProperty />
-          <RecentProperty />
-          <RecentProperty />
-          <RecentProperty />
-          <RecentProperty />
-        </Slider>
+        <div className="w-full">
+          <Slider {...SLIDER_SETTINGS_DIFF_PROP}>
+            <RecentProperty />
+            <RecentProperty />
+            <RecentProperty />
+            <RecentProperty />
+            <RecentProperty />
+            <RecentProperty />
+          </Slider>
+        </div>
       </div>
     </div>
   );
