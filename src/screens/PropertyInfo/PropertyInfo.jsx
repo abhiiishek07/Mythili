@@ -270,38 +270,36 @@ const PropertyInfo = () => {
           </div>
 
           <div className="flex flex-col w-full md:w-1/4 mt-4 ">
-            <div className="bg-base-200 rounded-md ">
-              <div className="flex flex-col p-4 my-2 ">
+            <div className="bg-base-200 rounded-md p-4 ">
+              <div className="flex flex-col px-3  my-2 ">
                 <p className=" text-lg font-bold ">M3M Route 65</p>
                 <span className="text-sm flex items-center ">
-                  <FaLocationDot className=" text-green-500" /> Sector 65,
-                  Gurugram
+                  <FaLocationDot /> Sector 65, Gurugram
                 </span>
               </div>
-              <div className="flex flex-col p-4 my-2 ">
+              <div className="flex flex-col p-3 my-2 ">
                 <p className=" text-lg font-bold flex items-center">
-                  <LuIndianRupee /> 75 Lakh* Onwards
+                  <LuIndianRupee size={20} /> 75 Lakh* Onwards
                 </p>
                 <span className="text-sm">
                   Status: <span className=" font-semibold">New Launch</span>
                 </span>
               </div>
-              <div className="flex items-center p-4 my-2 ">
-                <FaHouseChimney className=" text-2xl  text-green-500" />
+              <div className="flex items-center p-3  my-2 ">
+                <FaHouseChimney className=" text-xl  " />
                 <div className="flex flex-col mx-2">
                   <span className=" font-semibold">Project Size</span>
                   <span className="text-sm">250 - 1000 Sq. Ft.</span>
                 </div>
               </div>
-              <div className="flex items-center p-4 my-2 justify-center">
-                <button className="py-2 px-4 rounded-md items-center bg-green-500 border-white text-white text-xl font-semibold">
-                  Contact Builder
-                </button>
-              </div>
+
+              <button className="py-2 px-4 w-full rounded-md items-center btn btn-success text-white text-lg  font-semibold">
+                Contact Builder
+              </button>
             </div>
 
             {/* contact us form */}
-            <div className="flex flex-col p-3 w-full items-center bg-base-200 mt-10 rounded-md md:sticky md:top-20">
+            <div className="flex flex-col p-4 w-full items-center bg-base-200 mt-10 rounded-md md:sticky md:top-20">
               <p className="font-bold text-xl mb-3 flex items-center gap-3">
                 Contact Us <IoMailUnreadOutline size={24} />
               </p>
@@ -353,8 +351,11 @@ const PropertyInfo = () => {
                   required
                 ></textarea>
 
-                <button type="submit" className="btn btn-primary w-full">
-                  Submit
+                <button
+                  type="submit"
+                  className="btn btn-success text-white text-lg w-full"
+                >
+                  Contact Now
                 </button>
               </form>
             </div>
