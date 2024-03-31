@@ -50,7 +50,6 @@ export const SLIDER_SETTINGS_RECENT_PROP = {
   slidesToScroll: 1,
   speed: 500,
   cssEase: "linear",
-
   style: { marging: "5rem", gap: "3rem" },
   nextArrow: <CustomNextArrow />,
   prevArrow: <CustomePrevArrow />,
@@ -89,7 +88,6 @@ export const SLIDER_SETTINGS_DIFF_PROP = {
   slidesToScroll: 1,
   speed: 500,
   cssEase: "linear",
-
   style: { marging: "5rem", gap: "3rem" },
   nextArrow: <CustomNextArrow />,
   prevArrow: <CustomePrevArrow />,
@@ -148,14 +146,11 @@ export const SLIDER_SETTINGS_BANNER = {
   slidesToShow: 1,
   slidesToScroll: 1,
   autoplay: true,
-  autoplaySpeed: 3500,
+  autoplaySpeed: 5000,
   fade: true,
-  // cssEase: "ease-in-out",
-  arrow: false,
-  // centerMode: true,
+  arrows: false,
   dots: false,
   pauseOnHover: false,
-  // easeing: "linear",
   adaptiveHeight: true,
 };
 
