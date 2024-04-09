@@ -1,7 +1,6 @@
 import React from "react";
 import { IoBedSharp } from "react-icons/io5";
-import { FaRegSquare } from "react-icons/fa6";
-import { FaBath } from "react-icons/fa";
+import { FaRegSquare, FaLocationDot } from "react-icons/fa6";
 import { LuIndianRupee } from "react-icons/lu";
 import Link from "next/link";
 
@@ -43,21 +42,15 @@ const Property = ({ image }) => {
             <div class="flex p-1 pt-2 justify-around">
               <div className="flex flex-col items-center justify-center">
                 <span class="items-center justify-center m-1 p-2 rounded-full bg-gray-500 text-lg text-white">
-                  <IoBedSharp />
+                  <FaLocationDot />
                 </span>
-                <p>Beds</p>
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <span class="items-center justify-center m-1 p-2 rounded-full bg-gray-500 text-lg text-white">
-                  <FaBath />
-                </span>
-                <p>Beds</p>
+                <p>New Delhi</p>
               </div>
               <div className="flex flex-col items-center justify-center">
                 <span class="items-center justify-center m-1 p-2 rounded-full bg-gray-500 text-lg text-white">
                   <FaRegSquare />
                 </span>
-                <p>Beds</p>
+                <p>1200 Sq.Ft</p>
               </div>
             </div>
             <div class="p-4 flex items-center justify-between">

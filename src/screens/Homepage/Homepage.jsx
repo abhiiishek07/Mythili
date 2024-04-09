@@ -8,6 +8,12 @@ import Property from "@/components/Card/Property";
 import Testimonial from "@/components/Card/Testimonial";
 import Header from "@/components/Header/Header";
 import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import {
   A_PLUS_DEVELOPERS,
   REVIEWS,
   SLIDER_SETTINGS_A_PLUS_DEVS,
@@ -25,8 +31,8 @@ import {
 } from "react-icons/fa6";
 import { HiMiniRocketLaunch } from "react-icons/hi2";
 import { IoLocationOutline } from "react-icons/io5";
+import { FaBuilding } from "react-icons/fa6";
 import { LuTrophy } from "react-icons/lu";
-import { RiTeamFill } from "react-icons/ri";
 import { TbMessage2Bolt } from "react-icons/tb";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
@@ -166,7 +172,6 @@ const Homepage = () => {
         <div className="flex flex-col w-full max-w-6xl items-center mb-10 ">
           <div className="flex items-center gap-4 text-3xl font-extrabold text-gray-900 sm:text-4xl justify-center">
             <h2>Our Latest Launches</h2>
-            <HiMiniRocketLaunch />
           </div>
           <div className="w-full mt-2">
             <Slider className="" {...SLIDER_SETTINGS_RECENT_PROP}>
@@ -216,7 +221,7 @@ const Homepage = () => {
               className={`tab ${selectedTab === "plots" && "bg-green-500"}`}
               onClick={() => setSelectedTab("plots")}
             >
-              Plots
+              PLOTS
             </a>
           </div>
         </div>
@@ -252,17 +257,10 @@ const Homepage = () => {
 
           <div className="stat">
             <div className="stat-figure text-secondary">
-              <RiTeamFill size={28} />
+              <FaBuilding size={30} />
             </div>
-            <div className="stat-value">500+</div>
-            <div className="stat-title"> Skilled Professionals</div>
-          </div>
-          <div className="stat">
-            <div className="stat-figure text-secondary">
-              <FaGlobe size={28} />
-            </div>
-            <div className="stat-value">750+</div>
-            <div className="stat-title"> Channel Associates</div>
+            <div className="stat-value">150+</div>
+            <div className="stat-title">Different Properties</div>
           </div>
         </div>
 
@@ -405,33 +403,41 @@ const Homepage = () => {
         {/* FAQ */}
         <div className="flex flex-col w-full max-w-6xl gap-3 my-12">
           <p className="font-bold text-3xl">FAQs</p>
-          <div className="collapse collapse-arrow bg-base-200">
-            <input type="radio" name="my-accordion-2" />
-            <div className="collapse-title text-xl font-medium">
-              Click to open this one and close others
-            </div>
-            <div className="collapse-content">
-              <p>hello</p>
-            </div>
-          </div>
-          <div className="collapse collapse-arrow bg-base-200">
-            <input type="radio" name="my-accordion-2" />
-            <div className="collapse-title text-xl font-medium">
-              Click to open this one and close others
-            </div>
-            <div className="collapse-content">
-              <p>hello</p>
-            </div>
-          </div>
-          <div className="collapse collapse-arrow bg-base-200">
-            <input type="radio" name="my-accordion-2" />
-            <div className="collapse-title text-xl font-medium">
-              Click to open this one and close others
-            </div>
-            <div className="collapse-content">
-              <p>hello</p>
-            </div>
-          </div>
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem
+              value="item-1"
+              className="border border-gray-300 bg-base-200 px-4 rounded-xl my-1"
+            >
+              <AccordionTrigger className="font-bold text-xl">
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa, velit.
+              </AccordionTrigger>
+              <AccordionContent className=" text-lg">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur cum odio quo delectus fuga iure earum rerum quia illum, facilis, nulla hic magni reprehenderit aliquid.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem
+              value="item-2"
+              className="border border-gray-300 bg-base-200 px-4 rounded-xl my-1"
+            >
+              <AccordionTrigger className="font-bold text-xl">
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa, velit.
+              </AccordionTrigger>
+              <AccordionContent className=" text-lg">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur cum odio quo delectus fuga iure earum rerum quia illum, facilis, nulla hic magni reprehenderit aliquid.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem
+              value="item-3"
+              className="border border-gray-300 bg-base-200 px-4 rounded-xl my-1"
+            >
+              <AccordionTrigger className="font-bold text-xl">
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa, velit.
+              </AccordionTrigger>
+              <AccordionContent className=" text-lg">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur cum odio quo delectus fuga iure earum rerum quia illum, facilis, nulla hic magni reprehenderit aliquid.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
       </div>
     </div>

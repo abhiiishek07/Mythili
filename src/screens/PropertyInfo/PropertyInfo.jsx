@@ -146,7 +146,7 @@ const PropertyInfo = () => {
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem
                   value="item-1"
-                  className="border border-t-gray-600 px-4"
+                  className="border border-gray-600 px-4 rounded-xl my-1"
                 >
                   <AccordionTrigger className="font-bold text-xl">
                     <div className="flex items-center">
@@ -154,12 +154,12 @@ const PropertyInfo = () => {
                     </div>
                   </AccordionTrigger>
                   <AccordionContent>
-                    Yes. It adheres to the WAI-ARIA design pattern.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi doloribus similique itaque consequatur provident voluptates eaque harum mollitia veritatis eligendi libero neque laborum iusto, ullam esse. Natus voluptate tenetur beatae modi, doloremque iure explicabo praesentium quis illo laudantium id aliquid deserunt excepturi atque ex, corporis enim iste aut consequuntur repudiandae recusandae blanditiis nemo! Assumenda repudiandae dolore commodi voluptas alias labore sunt vitae expedita velit eius, asperiores eos distinctio natus consectetur vel, ea eum enim ipsam esse repellendus? Temporibus reiciendis, autem recusandae, cumque et debitis nostrum maxime ipsa eaque laborum in nobis ea nisi provident necessitatibus. Repellendus, quia! Enim culpa placeat veritatis incidunt vel minima cupiditate repellendus tempora nostrum, inventore voluptas accusantium voluptates maiores libero commodi pariatur sapiente? Atque temporibus doloremque earum error excepturi eius voluptatibus est itaque, quod tenetur magni nisi ipsum reiciendis. Quam nostrum asperiores quas consectetur expedita non autem dicta atque illum repellat eaque, iste adipisci minima laboriosam ratione nisi? Mollitia eos nihil blanditiis iusto debitis temporibus! Consectetur veniam delectus nemo nesciunt? Error, ea voluptatum atque repudiandae sunt ipsam distinctio non neque nisi nihil animi omnis quasi repellat asperiores tempore exercitationem nobis excepturi molestias temporibus fuga eius voluptate. Error quia debitis iure autem aliquam inventore magni exercitationem mollitia?
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem
                   value="item-2"
-                  className="border border-t-gray-600 px-4"
+                  className="border border-gray-600 px-4 rounded-xl my-1"
                 >
                   <AccordionTrigger className="font-bold text-xl">
                     <div className="flex items-center">
@@ -173,7 +173,7 @@ const PropertyInfo = () => {
                 </AccordionItem>
                 <AccordionItem
                   value="item-3"
-                  className="border border-t-gray-600 px-4"
+                  className="border border-gray-600 px-4 rounded-xl my-1"
                 >
                   <AccordionTrigger className="font-bold text-xl">
                     <div className="flex items-center">
@@ -217,7 +217,7 @@ const PropertyInfo = () => {
                 </AccordionItem>
                 <AccordionItem
                   value="item-4"
-                  className="border border-t-gray-600 px-4"
+                  className="border border-gray-600 px-4 rounded-xl my-1"
                 >
                   <AccordionTrigger className="font-bold text-xl">
                     <div className="flex items-center">
@@ -231,7 +231,7 @@ const PropertyInfo = () => {
                 </AccordionItem>
                 <AccordionItem
                   value="item-5"
-                  className="border border-t-gray-600 px-4"
+                  className="border border-gray-600 px-4 rounded-xl my-1"
                 >
                   <AccordionTrigger className="font-bold text-xl">
                     <div className="flex items-center">
@@ -239,12 +239,12 @@ const PropertyInfo = () => {
                     </div>
                   </AccordionTrigger>
                   <AccordionContent>
-                    Yes. It adheres to the WAI-ARIA design pattern.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste tenetur ipsam explicabo fugit dolores laudantium sequi cum, enim aliquid, exercitationem placeat. In iste ullam alias sed, soluta corporis modi magni delectus explicabo, aut vero dignissimos. Beatae et perferendis soluta aspernatur. Non minima, rerum odio porro earum labore libero vitae corporis, ea autem perspiciatis tempore harum est. Pariatur magni dolor corporis aperiam debitis iusto quibusdam laudantium dolorum delectus rerum consequuntur nobis maxime aliquam nulla quas necessitatibus natus eum molestiae deserunt veniam, porro ratione provident doloremque. Veniam aperiam officiis quod enim, dignissimos odio culpa sequi quibusdam placeat, tenetur minus beatae, provident quidem!
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem
                   value="item-6"
-                  className="border border-t-gray-600 px-4"
+                  className="border border-gray-600 px-4 rounded-xl my-1"
                 >
                   <AccordionTrigger className="font-bold text-xl">
                     <div className="flex items-center">
@@ -292,10 +292,6 @@ const PropertyInfo = () => {
                   <span className="text-sm">250 - 1000 Sq. Ft.</span>
                 </div>
               </div>
-
-              <button className="py-2 px-4 w-full rounded-md items-center btn btn-success text-white text-lg  font-semibold">
-                Contact Builder
-              </button>
             </div>
 
             {/* contact us form */}
@@ -365,12 +361,8 @@ const PropertyInfo = () => {
 
       <div className="flex flex-col w-full max-w-5xl items-center justify-center mt-10 mb-8">
         <h2 className="text-xl text-center font-bold text-gray-900 sm:text-4xl mb-4">
-          Explore Similar Properties of Interest
+          Similar Properties
         </h2>
-        <p className="text-lg text-gray-500 mb-6 text-center">
-          Stay Up-to-Date on New Property Options, Best Investment
-          Opportunities, and What&apos;s Coming Next.
-        </p>
         <div className="w-full">
           <Slider {...SLIDER_SETTINGS_DIFF_PROP}>
             <Property />
