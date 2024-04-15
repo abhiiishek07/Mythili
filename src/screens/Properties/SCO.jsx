@@ -25,14 +25,8 @@ const SCO = () => {
           alt="Banner Image"
           class="w-full h-96  rounded-md"
         />
-        {/* <div class="relative font-[sans-serif] before:absolute before:w-full before:h-full before:inset-0 before:bg-gray-900 before:opacity-50 before:z-10 before:rounded-md">
-          
-          <div class="min-h-[300px] relative  h-full z-10  flex justify-center items-center text-center text-white text-lg  p-6 rounded-md">
-            Explore our range of SCO properties for your business needs.
-          </div>
-        </div> */}
         <div className="border w-full my-10 flex flex-col lg:flex-row p-4 justify-evenly bg-slate-50 rounded-md gap-4">
-          <div className="flex flex-col justify-center items-center">
+          <div className="flex gap-4 justify-center items-center">
             <p className="text-lg text-gray-900">Status</p>
             <select className="select select-bordered w-full font-bold">
               <option disabled selected>
@@ -43,7 +37,7 @@ const SCO = () => {
             </select>
           </div>
           <div className="divider divider-horizontal"></div>
-          <div className="flex flex-col justify-center items-center ">
+          <div className="flex gap-4  justify-center items-center ">
             <p className="text-lg text-gray-900">Location</p>
             <select className="select select-bordered w-full font-bold">
               <option disabled selected>
@@ -53,34 +47,13 @@ const SCO = () => {
               <option>Greedo</option>
             </select>
           </div>
-          <div className="divider divider-horizontal"></div>
-          <div className="flex flex-col justify-center items-center">
-            <p className="text-lg text-gray-900">Min. Price</p>
-            <select className="select select-bordered w-full font-bold">
-              <option disabled selected>
-                Select
-              </option>
-              <option>Han Solo</option>
-              <option>Greedo</option>
-            </select>
-          </div>
-          <div className="divider divider-horizontal"></div>
-          <div className="flex flex-col justify-center items-center">
-            <p className="text-lg text-gray-000">Max. Price</p>
-            <select className="select select-bordered w-full font-bold">
-              <option disabled selected>
-                Select
-              </option>
-              <option>Han Solo</option>
-              <option>Greedo</option>
-            </select>
-          </div>
+
           <div className="divider divider-horizontal"></div>
           <div className="flex  gap-3 items-center justify-center">
-            <button className="btn bg-green-500 text-white hover:bg-green-500 px-4">
+            <button className="btn bg-green-500 text-white hover:bg-green-500 px-10">
               Search
             </button>
-            <button className="btn border-secondary hover:bg-secondary px-4 bg-white">
+            <button className="btn border-red-500 hover:border-red-500 px-10 bg-white">
               Clear
             </button>
           </div>

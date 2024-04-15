@@ -24,6 +24,7 @@ import {
 } from "@/constants/constants";
 import { useEffect, useRef, useState } from "react";
 import {
+  FaArrowRight,
   FaChartArea,
   FaGlobe,
   FaPen,
@@ -33,10 +34,12 @@ import { HiMiniRocketLaunch } from "react-icons/hi2";
 import { IoLocationOutline } from "react-icons/io5";
 import { FaBuilding } from "react-icons/fa6";
 import { LuTrophy } from "react-icons/lu";
-import { TbMessage2Bolt } from "react-icons/tb";
+import { TbMessage2Bolt, TbUserHeart } from "react-icons/tb";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
+import Image from "next/image";
+import Awards from "@/components/Card/Awards";
 
 const BANNERS = [
   property_1_img,
@@ -48,7 +51,7 @@ const BANNERS = [
 const Homepage = () => {
   const [collapsed, setCollapsed] = useState(true);
   const [selectedTab, setSelectedTab] = useState("residential");
-  const [showAnnouncementBar, setShowAnnouncementBar] = useState(true);
+
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -73,10 +76,7 @@ const Homepage = () => {
       {/* Banner */}
 
       <div className="top-0 left-0 right-0 z-10 fixed">
-        {showAnnouncementBar && (
-          <AnnouncementBar setShowAnnouncementBar={setShowAnnouncementBar} />
-        )}
-
+        <AnnouncementBar />
         <Header isHomepage={true} />
       </div>
 
@@ -100,7 +100,7 @@ const Homepage = () => {
               <input
                 type="text"
                 placeholder="Search project..."
-                className="w-56 md:w-96"
+                className="w-56 md:w-[33rem]"
                 onFocus={toggleCollapsed}
               />
               <svg
@@ -158,13 +158,21 @@ const Homepage = () => {
             second to none. See who stands behind us.
           </p>
           <div className="w-full mt-2 py-4 relative ">
-            <Slider {...SLIDER_SETTINGS_A_PLUS_DEVS}>
+            <Slider
+              {...SLIDER_SETTINGS_A_PLUS_DEVS}
+              className="flex items-center justify-center  gap-4"
+            >
               {A_PLUS_DEVELOPERS.map((developer, index) => (
-                <div className="relative" key={index}>
-                  <p className="font-bold">{developer}</p>
-                </div>
+                <figure key={index}>
+                  <img
+                    src={developer.src}
+                    alt="Shoes"
+                    className="h-20 w-24 my-auto "
+                  />
+                </figure>
               ))}
             </Slider>
+
             <div className="absolute top-0 left-0 w-10 md:w-32 h-full bg-gradient-to-r from-gray-50 rounded-lg"></div>
             <div className="absolute top-0 right-0 w-10 md:w-32 h-full bg-gradient-to-l from-gray-50 rounded-lg"></div>
           </div>
@@ -194,7 +202,7 @@ const Homepage = () => {
             <a
               role="tab"
               className={`tab ${
-                selectedTab === "residential" && "bg-green-500"
+                selectedTab === "residential" && "bg-green-800 text-white"
               }`}
               onClick={() => setSelectedTab("residential")}
             >
@@ -203,7 +211,7 @@ const Homepage = () => {
             <a
               role="tab"
               className={`tab ${
-                selectedTab === "commercial" && "bg-green-500"
+                selectedTab === "commercial" && "bg-green-800 text-white"
               }`}
               onClick={() => setSelectedTab("commercial")}
             >
@@ -211,14 +219,18 @@ const Homepage = () => {
             </a>
             <a
               role="tab"
-              className={`tab ${selectedTab === "sco" && "bg-green-500"}`}
+              className={`tab ${
+                selectedTab === "sco" && "bg-green-800 text-white"
+              }`}
               onClick={() => setSelectedTab("sco")}
             >
               SCO
             </a>
             <a
               role="tab"
-              className={`tab ${selectedTab === "plots" && "bg-green-500"}`}
+              className={`tab ${
+                selectedTab === "plots" && " bg-green-800 text-white"
+              }`}
               onClick={() => setSelectedTab("plots")}
             >
               PLOTS
@@ -239,7 +251,7 @@ const Homepage = () => {
         <div className="stats  stats-vertical md:stats-horizontal shadow my-12 w-full max-w-6xl border">
           <div className="stat">
             <div className="stat-figure text-secondary">
-              <FaRegFaceSmileBeam size={28} />
+              <TbUserHeart size={28} color="#006039" />
             </div>
 
             <div className="stat-value">25000+</div>
@@ -248,7 +260,7 @@ const Homepage = () => {
 
           <div className="stat">
             <div className="stat-figure text-secondary">
-              <FaChartArea size={28} />
+              <FaChartArea size={28} color="#006039" />
             </div>
 
             <div className="stat-value">45 Million</div>
@@ -257,7 +269,7 @@ const Homepage = () => {
 
           <div className="stat">
             <div className="stat-figure text-secondary">
-              <FaBuilding size={30} />
+              <FaBuilding size={30} color="#006039" />
             </div>
             <div className="stat-value">150+</div>
             <div className="stat-title">Different Properties</div>
@@ -273,45 +285,27 @@ const Homepage = () => {
                 <h2 className="">Awards & Recognition</h2>
                 <LuTrophy />
               </div>
-
               <p className="mt-4 text-lg text-gray-600">
                 We take pride in our accomplishments and the recognition
                 we&apos;ve received.
               </p>
             </div>
             <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-              <div className="bg-white overflow-hidden shadow rounded-lg">
-                <div className="px-4 py-5 sm:p-6">
-                  <h3 className="text-lg font-semibold text-gray-900">
-                    Best Real Estate Agency 2023
-                  </h3>
-                  <p className="mt-1 text-sm text-gray-600">
-                    Awarded for our exceptional service and client satisfaction.
-                  </p>
-                </div>
-              </div>
-              <div className="bg-white overflow-hidden shadow rounded-lg">
-                <div className="px-4 py-5 sm:p-6">
-                  <h3 className="text-lg font-semibold text-gray-900">
-                    Top Seller of the Year
-                  </h3>
-                  <p className="mt-1 text-sm text-gray-600">
-                    Recognized for our outstanding performance in property
-                    sales.
-                  </p>
-                </div>
-              </div>
-              <div className="bg-white overflow-hidden shadow rounded-lg">
-                <div className="px-4 py-5 sm:p-6">
-                  <h3 className="text-lg font-semibold text-gray-900">
-                    Excellence in Customer Service
-                  </h3>
-                  <p className="mt-1 text-sm text-gray-600">
-                    Awarded for our commitment to providing top-notch customer
-                    service.
-                  </p>
-                </div>
-              </div>
+              <Awards
+                imageSrc="/path/to/image1.jpg"
+                title="Best Real Estate Agency 2023"
+                description="Awarded for our exceptional service and client satisfaction."
+              />
+              <Awards
+                imageSrc="/path/to/image2.jpg"
+                title="Top Seller of the Year"
+                description="Recognized for our outstanding performance in property sales."
+              />
+              <Awards
+                imageSrc="/path/to/image3.jpg"
+                title="Excellence in Customer Service"
+                description="Awarded for our commitment to providing top-notch customer service."
+              />
             </div>
           </div>
         </section>
@@ -395,7 +389,9 @@ const Homepage = () => {
               </div>
             </div>
             <div className="text-center mt-4">
-              <button className="btn btn-ghost text-lg">Read more blogs</button>
+              <button className="btn btn-ghost text-lg">
+                Read more blogs <FaArrowRight />
+              </button>
             </div>
           </div>
         </section>
@@ -409,10 +405,13 @@ const Homepage = () => {
               className="border border-gray-300 bg-base-200 px-4 rounded-xl my-1"
             >
               <AccordionTrigger className="font-bold text-xl">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa, velit.
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa,
+                velit.
               </AccordionTrigger>
               <AccordionContent className=" text-lg">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur cum odio quo delectus fuga iure earum rerum quia illum, facilis, nulla hic magni reprehenderit aliquid.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+                cum odio quo delectus fuga iure earum rerum quia illum, facilis,
+                nulla hic magni reprehenderit aliquid.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem
@@ -420,10 +419,13 @@ const Homepage = () => {
               className="border border-gray-300 bg-base-200 px-4 rounded-xl my-1"
             >
               <AccordionTrigger className="font-bold text-xl">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa, velit.
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa,
+                velit.
               </AccordionTrigger>
               <AccordionContent className=" text-lg">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur cum odio quo delectus fuga iure earum rerum quia illum, facilis, nulla hic magni reprehenderit aliquid.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+                cum odio quo delectus fuga iure earum rerum quia illum, facilis,
+                nulla hic magni reprehenderit aliquid.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem
@@ -431,10 +433,13 @@ const Homepage = () => {
               className="border border-gray-300 bg-base-200 px-4 rounded-xl my-1"
             >
               <AccordionTrigger className="font-bold text-xl">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa, velit.
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa,
+                velit.
               </AccordionTrigger>
               <AccordionContent className=" text-lg">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur cum odio quo delectus fuga iure earum rerum quia illum, facilis, nulla hic magni reprehenderit aliquid.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+                cum odio quo delectus fuga iure earum rerum quia illum, facilis,
+                nulla hic magni reprehenderit aliquid.
               </AccordionContent>
             </AccordionItem>
           </Accordion>

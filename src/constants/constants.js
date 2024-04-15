@@ -1,14 +1,25 @@
 import CustomNextArrow from "@/components/Buttons/CustomNextArrow";
 import CustomePrevArrow from "@/components/Buttons/CustomePrevArrow";
+import bptp_logo from "@/assets/images/bptp_logo.png";
+import dlf_logo from "@/assets/images/dlf_logo.png";
+import emaar_logo from "@/assets/images/emaar_logo.png";
+import m3m_logo from "@/assets/images/m3m-logo.png";
+import paras_logo from "@/assets/images/paras-logo.jpeg";
+import p_logo from "@/assets/images/plogo.png";
+import signature_logo from "@/assets/images/signature-global.png";
+import sobha_logo from "@/assets/images/sobha_logo.png";
+import whiteland_logo from "@/assets/images/Whiteland-logo.png";
 
 export const A_PLUS_DEVELOPERS = [
-  "Smart World",
-  "M3M",
-  "EMAAr India",
-  "DLF",
-  "Godrej",
-  "Whiteland",
-  "Omaxe",
+  bptp_logo,
+  dlf_logo,
+  emaar_logo,
+  m3m_logo,
+  paras_logo,
+  p_logo,
+  signature_logo,
+  sobha_logo,
+  whiteland_logo,
 ];
 
 export const SLIDER_SETTINGS_A_PLUS_DEVS = {

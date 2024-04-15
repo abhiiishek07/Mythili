@@ -116,7 +116,7 @@ const PropertyInfo = () => {
             <div className=" md:hidden w-full px-4 py-4 bg-base-200 rounded-lg relative slide-container ">
               <Slider
                 {...SLIDER_SETTINGS_TESTIMONIAL}
-                className="w-full h-full"
+                className="w-full h-full flex"
               >
                 {PROPERTY_IMAGES?.map((image, index) => (
                   <div key={index}>
@@ -154,7 +154,33 @@ const PropertyInfo = () => {
                     </div>
                   </AccordionTrigger>
                   <AccordionContent>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi doloribus similique itaque consequatur provident voluptates eaque harum mollitia veritatis eligendi libero neque laborum iusto, ullam esse. Natus voluptate tenetur beatae modi, doloremque iure explicabo praesentium quis illo laudantium id aliquid deserunt excepturi atque ex, corporis enim iste aut consequuntur repudiandae recusandae blanditiis nemo! Assumenda repudiandae dolore commodi voluptas alias labore sunt vitae expedita velit eius, asperiores eos distinctio natus consectetur vel, ea eum enim ipsam esse repellendus? Temporibus reiciendis, autem recusandae, cumque et debitis nostrum maxime ipsa eaque laborum in nobis ea nisi provident necessitatibus. Repellendus, quia! Enim culpa placeat veritatis incidunt vel minima cupiditate repellendus tempora nostrum, inventore voluptas accusantium voluptates maiores libero commodi pariatur sapiente? Atque temporibus doloremque earum error excepturi eius voluptatibus est itaque, quod tenetur magni nisi ipsum reiciendis. Quam nostrum asperiores quas consectetur expedita non autem dicta atque illum repellat eaque, iste adipisci minima laboriosam ratione nisi? Mollitia eos nihil blanditiis iusto debitis temporibus! Consectetur veniam delectus nemo nesciunt? Error, ea voluptatum atque repudiandae sunt ipsam distinctio non neque nisi nihil animi omnis quasi repellat asperiores tempore exercitationem nobis excepturi molestias temporibus fuga eius voluptate. Error quia debitis iure autem aliquam inventore magni exercitationem mollitia?
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Nisi doloribus similique itaque consequatur provident
+                    voluptates eaque harum mollitia veritatis eligendi libero
+                    neque laborum iusto, ullam esse. Natus voluptate tenetur
+                    beatae modi, doloremque iure explicabo praesentium quis illo
+                    laudantium id aliquid deserunt excepturi atque ex, corporis
+                    enim iste aut consequuntur repudiandae recusandae blanditiis
+                    nemo! Assumenda repudiandae dolore commodi voluptas alias
+                    labore sunt vitae expedita velit eius, asperiores eos
+                    distinctio natus consectetur vel, ea eum enim ipsam esse
+                    repellendus? Temporibus reiciendis, autem recusandae, cumque
+                    et debitis nostrum maxime ipsa eaque laborum in nobis ea
+                    nisi provident necessitatibus. Repellendus, quia! Enim culpa
+                    placeat veritatis incidunt vel minima cupiditate repellendus
+                    tempora nostrum, inventore voluptas accusantium voluptates
+                    maiores libero commodi pariatur sapiente? Atque temporibus
+                    doloremque earum error excepturi eius voluptatibus est
+                    itaque, quod tenetur magni nisi ipsum reiciendis. Quam
+                    nostrum asperiores quas consectetur expedita non autem dicta
+                    atque illum repellat eaque, iste adipisci minima laboriosam
+                    ratione nisi? Mollitia eos nihil blanditiis iusto debitis
+                    temporibus! Consectetur veniam delectus nemo nesciunt?
+                    Error, ea voluptatum atque repudiandae sunt ipsam distinctio
+                    non neque nisi nihil animi omnis quasi repellat asperiores
+                    tempore exercitationem nobis excepturi molestias temporibus
+                    fuga eius voluptate. Error quia debitis iure autem aliquam
+                    inventore magni exercitationem mollitia?
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem
@@ -239,7 +265,20 @@ const PropertyInfo = () => {
                     </div>
                   </AccordionTrigger>
                   <AccordionContent>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste tenetur ipsam explicabo fugit dolores laudantium sequi cum, enim aliquid, exercitationem placeat. In iste ullam alias sed, soluta corporis modi magni delectus explicabo, aut vero dignissimos. Beatae et perferendis soluta aspernatur. Non minima, rerum odio porro earum labore libero vitae corporis, ea autem perspiciatis tempore harum est. Pariatur magni dolor corporis aperiam debitis iusto quibusdam laudantium dolorum delectus rerum consequuntur nobis maxime aliquam nulla quas necessitatibus natus eum molestiae deserunt veniam, porro ratione provident doloremque. Veniam aperiam officiis quod enim, dignissimos odio culpa sequi quibusdam placeat, tenetur minus beatae, provident quidem!
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Iste tenetur ipsam explicabo fugit dolores laudantium sequi
+                    cum, enim aliquid, exercitationem placeat. In iste ullam
+                    alias sed, soluta corporis modi magni delectus explicabo,
+                    aut vero dignissimos. Beatae et perferendis soluta
+                    aspernatur. Non minima, rerum odio porro earum labore libero
+                    vitae corporis, ea autem perspiciatis tempore harum est.
+                    Pariatur magni dolor corporis aperiam debitis iusto
+                    quibusdam laudantium dolorum delectus rerum consequuntur
+                    nobis maxime aliquam nulla quas necessitatibus natus eum
+                    molestiae deserunt veniam, porro ratione provident
+                    doloremque. Veniam aperiam officiis quod enim, dignissimos
+                    odio culpa sequi quibusdam placeat, tenetur minus beatae,
+                    provident quidem!
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem
@@ -297,7 +336,7 @@ const PropertyInfo = () => {
             {/* contact us form */}
             <div className="flex flex-col p-4 w-full items-center bg-base-200 mt-10 rounded-md md:sticky md:top-20">
               <p className="font-bold text-xl mb-3 flex items-center gap-3">
-                Contact Us <IoMailUnreadOutline size={24} />
+                Contact an Expert <IoMailUnreadOutline size={24} />
               </p>
               <form
                 className="w-full flex flex-col items-center gap-4"
@@ -336,22 +375,11 @@ const PropertyInfo = () => {
                   required
                 />
 
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="textarea textarea-bordered w-full"
-                  placeholder="Enter your message"
-                  rows="4"
-                  required
-                ></textarea>
-
                 <button
                   type="submit"
-                  className="btn btn-success text-white text-lg w-full"
+                  className="btn bg-green-800 hover:bg-green-700 text-white text-lg w-full uppercase"
                 >
-                  Contact Now
+                  SUBMIT
                 </button>
               </form>
             </div>
@@ -365,9 +393,6 @@ const PropertyInfo = () => {
         </h2>
         <div className="w-full">
           <Slider {...SLIDER_SETTINGS_DIFF_PROP}>
-            <Property />
-            <Property />
-            <Property />
             <Property />
             <Property />
             <Property />

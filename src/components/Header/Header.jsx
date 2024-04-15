@@ -1,9 +1,10 @@
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const Header = ({ isHomepage }) => {
   const [crossBar, setCrossBar] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY >= 100) {
@@ -43,7 +44,26 @@ const Header = ({ isHomepage }) => {
             <Link href="/about-us">About us</Link>
           </li>
           <li>
-            <details>
+            <div className="dropdown dropdown-hover dropdown-end">
+              <div tabIndex={0} role="button">
+                Properties
+              </div>
+              <ul className="dropdown-content z-[1] menu  bg-base-100  rounded-t-none text-black top-8 ">
+                <li>
+                  <Link href="/commercial">commercial</Link>
+                </li>
+                <li>
+                  <Link href="/residential">residential</Link>
+                </li>
+                <li>
+                  <Link href="/sco">sco</Link>
+                </li>
+                <li>
+                  <Link href="/plots">plots</Link>
+                </li>
+              </ul>
+            </div>
+            {/* <details>
               <summary>Properties</summary>
               <ul className={`p-2 bg-base-100 rounded-t-none text-black`}>
                 <li>
@@ -59,7 +79,7 @@ const Header = ({ isHomepage }) => {
                   <Link href="/plots">plots</Link>
                 </li>
               </ul>
-            </details>
+            </details> */}
           </li>
           <li>
             <Link href="/blogs">Blogs</Link>
@@ -95,7 +115,7 @@ const Header = ({ isHomepage }) => {
         <div className="flex flex-col  absolute top-0 left-0 w-full h-screen bg-white bg-gradient-to-br from-base-200 to-bas">
           <ul className="menu menu-vertical px-1 uppercase mt-36 text-lg font-bold text-black">
             <li>
-              <Link href="/home">home</Link>
+              <Link href="/">home</Link>
             </li>
             <li>
               <Link href="/about-us">About us</Link>
