@@ -1,6 +1,9 @@
+import axios from "axios";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 const ContactUsModal = ({ openContactUs, setOpenContactUs }) => {
+  const [submitting, setSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -16,7 +19,7 @@ const ContactUsModal = ({ openContactUs, setOpenContactUs }) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Validation
     if (
@@ -28,15 +31,25 @@ const ContactUsModal = ({ openContactUs, setOpenContactUs }) => {
       alert("Please fill out all fields");
       return;
     }
-    // Send form data
-    console.log(formData);
-    // Clear form
+    setSubmitting(true);
+
+    const res = await axios.post("/api/contactUs", {
+      data: formData,
+    });
+
+    if (res.status === 200) {
+      toast.success("Thank you for getting in touch with us!");
+    } else {
+      toast.error("Something went wrong");
+    }
+
     setFormData({
       name: "",
       email: "",
       phone: "",
       message: "",
     });
+    setSubmitting(false);
   };
   return (
     <dialog id="my_modal_2" className="modal" open={openContactUs}>
@@ -97,7 +110,13 @@ const ContactUsModal = ({ openContactUs, setOpenContactUs }) => {
               required
             ></textarea>
 
-            <button type="submit" className="btn btn-primary w-full">
+            <button
+              type="submit"
+              className="btn bg-green-800 uppercase text-white w-full"
+            >
+              {submitting && (
+                <span className="loading loading-spinner loading-md"></span>
+              )}
               Submit
             </button>
           </form>

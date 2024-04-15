@@ -7,6 +7,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 const ContactUs = () => {
+  const [submitting, setSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -24,6 +25,7 @@ const ContactUs = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     // Validation
     if (
       formData.name.trim() === "" ||
@@ -31,11 +33,10 @@ const ContactUs = () => {
       formData.phone.trim() === "" ||
       formData.message.trim() === ""
     ) {
-      alert("Please fill out all fields");
+      toast.error("Please fill out all fields");
       return;
     }
-    // Send form data
-    console.log(formData);
+    setSubmitting(true);
 
     const res = await axios.post("/api/contactUs", {
       data: formData,
@@ -53,6 +54,7 @@ const ContactUs = () => {
       phone: "",
       message: "",
     });
+    setSubmitting(false);
   };
   return (
     <div className="w-full min-h-screen flex justify-center px-3">
@@ -204,6 +206,9 @@ const ContactUs = () => {
                 type="submit"
                 className="btn bg-green-800 hover:bg-green-700 text-white uppercase w-full"
               >
+                {submitting && (
+                  <span className="loading loading-spinner loading-md"></span>
+                )}
                 Submit
               </button>
             </form>

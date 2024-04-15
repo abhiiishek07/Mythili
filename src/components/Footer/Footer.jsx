@@ -18,7 +18,7 @@ const Footer = () => {
       emailId,
     });
     if (res.status === 200) {
-      toast.success("Thank for subscribing to us");
+      toast.success("Thank you for subscribing to our newsletter");
     }
     setEmailId("");
     setSubmitting(false);
@@ -108,7 +108,7 @@ const Footer = () => {
             </div>
           </nav>
         </div>
-        <form>
+        <form onSubmit={handleSubmit}>
           <h6 className="footer-title">Newsletter</h6>
           <fieldset className="form-control w-80">
             <label className="label">
@@ -124,7 +124,6 @@ const Footer = () => {
               />
               <button
                 type="submit"
-                onClick={(e) => handleSubmit(e)}
                 className="btn bg-green-800 hover:bg-green-700 join-item text-white uppercase"
               >
                 {submitting && (
