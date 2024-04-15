@@ -2,7 +2,7 @@ import React from "react";
 import { GiCancel } from "react-icons/gi";
 import { RxCross2 } from "react-icons/rx";
 
-const AnnouncementBar = ({ setShowAnnouncementBar }) => {
+const AnnouncementBar = () => {
   return (
     <div className="relative isolate flex items-center gap-x-6 overflow-hidden bg-gray-50 px-6 py-2.5 sm:px-3.5 sm:before:flex-1">
       <div
@@ -44,15 +44,7 @@ const AnnouncementBar = ({ setShowAnnouncementBar }) => {
         </p>
       </div>
 
-      <div className="flex flex-1 justify-end">
-        <button
-          type="button"
-          className=" focus-visible:outline-offset-[-4px]"
-          onClick={() => setShowAnnouncementBar(false)}
-        >
-          <RxCross2 />
-        </button>
-      </div>
+      <div className="flex flex-1 justify-end"></div>
     </div>
   );
 };

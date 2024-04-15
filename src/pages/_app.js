@@ -2,6 +2,7 @@ import Layout from "@/components/Layout/Layout";
 import "@/styles/globals.css";
 import { ThemeProvider } from "next-themes";
 import { PagesProgressBar as ProgressBar } from "next-nprogress-bar";
+import { Toaster } from "react-hot-toast";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -14,6 +15,7 @@ export default function App({ Component, pageProps }) {
       <Layout>
         <Component {...pageProps} />
       </Layout>
+      <Toaster position="bottom-center" reverseOrder={false} />
     </ThemeProvider>
   );
 }

@@ -33,7 +33,7 @@ const Residential = () => {
         </div> */}
 
         <div className="border w-full my-10 flex flex-col lg:flex-row p-4 justify-evenly bg-slate-50 rounded-md gap-4">
-          <div className="flex flex-col justify-center items-center">
+          <div className="flex gap-4 justify-center items-center">
             <p className="text-lg text-gray-900">Status</p>
             <select className="select select-bordered w-full font-bold">
               <option disabled selected>
@@ -44,7 +44,7 @@ const Residential = () => {
             </select>
           </div>
           <div className="divider divider-horizontal"></div>
-          <div className="flex flex-col justify-center items-center ">
+          <div className="flex gap-4  justify-center items-center ">
             <p className="text-lg text-gray-900">Location</p>
             <select className="select select-bordered w-full font-bold">
               <option disabled selected>
@@ -54,34 +54,13 @@ const Residential = () => {
               <option>Greedo</option>
             </select>
           </div>
-          <div className="divider divider-horizontal"></div>
-          <div className="flex flex-col justify-center items-center">
-            <p className="text-lg text-gray-900">Min. Price</p>
-            <select className="select select-bordered w-full font-bold">
-              <option disabled selected>
-                Select
-              </option>
-              <option>Han Solo</option>
-              <option>Greedo</option>
-            </select>
-          </div>
-          <div className="divider divider-horizontal"></div>
-          <div className="flex flex-col justify-center items-center">
-            <p className="text-lg text-gray-000">Max. Price</p>
-            <select className="select select-bordered w-full font-bold">
-              <option disabled selected>
-                Select
-              </option>
-              <option>Han Solo</option>
-              <option>Greedo</option>
-            </select>
-          </div>
+
           <div className="divider divider-horizontal"></div>
           <div className="flex  gap-3 items-center justify-center">
-            <button className="btn bg-green-500 text-white hover:bg-green-500 px-4">
+            <button className="btn bg-green-500 text-white hover:bg-green-500 px-10">
               Search
             </button>
-            <button className="btn border-secondary hover:bg-secondary px-4 bg-white">
+            <button className="btn border-red-500 hover:border-red-500 px-10 bg-white">
               Clear
             </button>
           </div>

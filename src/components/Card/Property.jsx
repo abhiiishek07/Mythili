@@ -40,13 +40,13 @@ const Property = ({ image }) => {
             </div>
             <span className="border border-gray-300 flex"></span>
             <div class="flex p-1 pt-2 justify-around">
-              <div className="flex flex-col items-center justify-center">
+              <div className="flex  items-center justify-center">
                 <span class="items-center justify-center m-1 p-2 rounded-full bg-gray-500 text-lg text-white">
                   <FaLocationDot />
                 </span>
                 <p>New Delhi</p>
               </div>
-              <div className="flex flex-col items-center justify-center">
+              <div className="flex  items-center justify-center">
                 <span class="items-center justify-center m-1 p-2 rounded-full bg-gray-500 text-lg text-white">
                   <FaRegSquare />
                 </span>
@@ -58,7 +58,7 @@ const Property = ({ image }) => {
                 <LuIndianRupee />
                 <span className="pr-2"> 1.25 </span> Cr* Onwards
               </p>
-              <button className="py-1 px-3 rounded-md items-center bg-green-500 border-white text-white">
+              <button className="py-1 px-3 rounded-md items-center bg-[#006039] border-white text-white">
                 View Details
               </button>
             </div>

@@ -4,11 +4,11 @@ import { IoPersonCircleSharp } from "react-icons/io5";
 const Testimonial = ({ review, index }) => {
   return (
     <div key={index}>
-      <section className="bg-gray-900 rounded-md w-full min-h-52">
+      <section className="bg-base-200 rounded-md w-full min-h-52">
         <div className="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-6">
           <figure className="max-w-screen-md mx-auto">
             <svg
-              className="h-12 mx-auto mb-3 text-gray-400 dark:text-gray-600"
+              className="h-12 mx-auto mb-3 text-gray-400 "
               viewBox="0 0 24 27"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -19,16 +19,14 @@ const Testimonial = ({ review, index }) => {
               />
             </svg>
             <blockquote>
-              <p className="text-2xl font-medium text-gray-900 dark:text-white">
+              <p className="text-2xl font-medium text-gray-900 ">
                 {review.text}
               </p>
             </blockquote>
-            <figcaption className="flex items-center justify-center mt-6 space-x-3">
-              <IoPersonCircleSharp size={28} color="white" />
+            <figcaption className="flex items-center justify-center mt-6 space-x-3 text-gray-400">
+              <IoPersonCircleSharp size={28} />
               <div className="flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700">
-                <div className="pr-3 font-medium text-gray-900 dark:text-white">
-                  {review.author}
-                </div>
+                <div className="pr-3 font-medium  ">{review.author}</div>
               </div>
             </figcaption>
           </figure>

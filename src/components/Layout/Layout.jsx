@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
         <main className="relative">
           {children}
           <button
-            className="btn btn-circle fixed bottom-4 right-4   bg-green-600 text-white shadow-xl  rounded-full hover:bg-green-700 z-50"
+            className="btn btn-circle fixed bottom-4 right-4   bg-green-800 text-white shadow-xl  rounded-full hover:bg-green-800 z-50"
             onClick={() => setOpenContactUs(true)}
           >
             <IoMailUnreadOutline size={25} />

@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { FaPhoneAlt } from "react-icons/fa";
 import { FaGlobe, FaLocationDot } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -20,7 +22,7 @@ const ContactUs = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Validation
     if (
@@ -34,7 +36,17 @@ const ContactUs = () => {
     }
     // Send form data
     console.log(formData);
-    // Clear form
+
+    const res = await axios.post("/api/contactUs", {
+      data: formData,
+    });
+
+    if (res.status === 200) {
+      toast.success("Thank you for getting in touch with us!");
+    } else {
+      toast.error("Something went wrong");
+    }
+
     setFormData({
       name: "",
       email: "",
@@ -68,8 +80,11 @@ const ContactUs = () => {
         </div>
         <div className="stats stats-vertical lg:stats-horizontal shadow my-8">
           <div className="stat">
-            <div className="stat-figure text-green-600">
-              <FaPhoneAlt size={24} />
+            <div className="stat-figure text-green-800">
+              <a href="tel:+017903570962">
+                {" "}
+                <FaPhoneAlt size={24} />
+              </a>
             </div>
             <div className="stat-value">Phone</div>
             <div className="stat-title">
@@ -78,8 +93,11 @@ const ContactUs = () => {
           </div>
 
           <div className="stat">
-            <div className="stat-figure text-green-600">
-              <MdEmail size={24} />
+            <div className="stat-figure text-green-800">
+              <a href="mailto:abhi885990@gmail.com">
+                {" "}
+                <MdEmail size={24} />
+              </a>
             </div>
             <div className="stat-value">Email</div>
             <div className=" stat-title">
@@ -88,8 +106,10 @@ const ContactUs = () => {
           </div>
 
           <div className="stat">
-            <div className="stat-figure text-green-600">
-              <FaGlobe size={24} />
+            <div className="stat-figure text-green-800">
+              <a href="google.com" target="_blank">
+                <FaGlobe size={24} />
+              </a>
             </div>
             <div className="stat-value">website</div>
             <div className="stat-title">
@@ -99,8 +119,14 @@ const ContactUs = () => {
             </div>
           </div>
           <div className="stat">
-            <div className="stat-figure text-green-600">
-              <FaLocationDot size={24} />
+            <div className="stat-figure text-green-800">
+              <a
+                href="https://www.google.com/maps/place/Hero+Homes+sector+104+Dwarka+Expressway/@28.4839323,76.9933505,17z/data=!3m1!4b1!4m6!3m5!1s0x390d1796a6464969:0x86d5a3c4aa1ab2c7!8m2!3d28.4839323!4d76.9959254!16s%2Fg%2F11h2pk4_n6?entry=ttu"
+                target="_blank"
+              >
+                {" "}
+                <FaLocationDot size={24} />
+              </a>
             </div>
             <div className="stat-value">Location</div>
             <div className="stat-title w-20">
@@ -174,7 +200,10 @@ const ContactUs = () => {
                 required
               ></textarea>
 
-              <button type="submit" className="btn btn-primary w-full">
+              <button
+                type="submit"
+                className="btn bg-green-800 hover:bg-green-700 text-white uppercase w-full"
+              >
                 Submit
               </button>
             </form>

@@ -29,7 +29,7 @@ const Commercial = () => {
         />
 
         <div className="border w-full my-10 flex flex-col lg:flex-row p-4 justify-evenly bg-slate-50 rounded-md gap-4">
-          <div className="flex flex-col justify-center items-center">
+          <div className="flex gap-4 justify-center items-center">
             <p className="text-lg text-gray-900">Status</p>
             <select className="select select-bordered w-full font-bold">
               <option disabled selected>
@@ -40,7 +40,7 @@ const Commercial = () => {
             </select>
           </div>
           <div className="divider divider-horizontal"></div>
-          <div className="flex flex-col justify-center items-center ">
+          <div className="flex gap-4  justify-center items-center ">
             <p className="text-lg text-gray-900">Location</p>
             <select className="select select-bordered w-full font-bold">
               <option disabled selected>
@@ -50,34 +50,13 @@ const Commercial = () => {
               <option>Greedo</option>
             </select>
           </div>
-          <div className="divider divider-horizontal"></div>
-          <div className="flex flex-col justify-center items-center">
-            <p className="text-lg text-gray-900">Min. Price</p>
-            <select className="select select-bordered w-full font-bold">
-              <option disabled selected>
-                Select
-              </option>
-              <option>Han Solo</option>
-              <option>Greedo</option>
-            </select>
-          </div>
-          <div className="divider divider-horizontal"></div>
-          <div className="flex flex-col justify-center items-center">
-            <p className="text-lg text-gray-000">Max. Price</p>
-            <select className="select select-bordered w-full font-bold">
-              <option disabled selected>
-                Select
-              </option>
-              <option>Han Solo</option>
-              <option>Greedo</option>
-            </select>
-          </div>
+
           <div className="divider divider-horizontal"></div>
           <div className="flex  gap-3 items-center justify-center">
-            <button className="btn bg-green-500 text-white hover:bg-green-500 px-4">
+            <button className="btn bg-green-500 text-white hover:bg-green-500 px-10">
               Search
             </button>
-            <button className="btn border-secondary hover:bg-secondary px-4 bg-white">
+            <button className="btn border-red-500 hover:border-red-500 px-10 bg-white">
               Clear
             </button>
           </div>
@@ -95,22 +74,3 @@ const Commercial = () => {
 };
 
 export default Commercial;
-{
-  /* <div className="min-h-screen w-full flex flex-col overflow-hidden px-6 md:px-10 py-2 my-6">
-
-<div className=" items-start justify-start mx-9 rounded-md max-w-md py-2">
-  <p className="text-2xl font-bold ">Commercial Property</p>
-  <p className="text-sm text-gray-600">
-    Explore our range of commercial properties for your business needs.
-  </p>
-</div>
-<span className="w-full flex border border-gray-300 my-2 mx-8"></span>
-
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-6 ">
-  <PropertyCard />
-  <PropertyCard />
-  <PropertyCard />
-  <PropertyCard />
-</div>
-</div> */
-}
