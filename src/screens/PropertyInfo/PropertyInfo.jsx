@@ -374,6 +374,19 @@ const PropertyInfo = () => {
                   placeholder="Enter your phone number"
                   required
                 />
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="whatsappNotification"
+                    name="whatsappNotification"
+                    checked={formData.whatsappNotification}
+                    // onChange={handleCheckboxChange}
+                    className="mr-2"
+                  />
+                  <label htmlFor="whatsappNotification" className="text-sm">
+                    Receive WhatsApp notification
+                  </label>
+                </div>
 
                 <button
                   type="submit"
