@@ -111,7 +111,7 @@ const PropertyInfo = () => {
           </ul>
         </div>
 
-        <div className="flex flex-col md:flex-row w-full my-8 md:my-0 md:space-x-6">
+        <div className="flex flex-col lg:flex-row w-full my-8 md:my-0 md:space-x-6">
           <div className=" w-full max-w-4xl p-3">
             <div className=" md:hidden w-full px-4 py-4 bg-base-200 rounded-lg relative slide-container ">
               <Slider
@@ -308,7 +308,7 @@ const PropertyInfo = () => {
             </div>
           </div>
 
-          <div className="flex flex-col w-full md:w-1/4 mt-4 ">
+          <div className="flex flex-col w-full lg:w-1/4 mt-4 mx-auto overflow-hidden">
             <div className="bg-base-200 rounded-md p-4 ">
               <div className="flex flex-col px-3  my-2 ">
                 <p className=" text-lg font-bold ">M3M Route 65</p>
