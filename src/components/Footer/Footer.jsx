@@ -110,17 +110,35 @@ const Footer = () => {
         </div>
         <form onSubmit={handleSubmit}>
           <h6 className="footer-title">Newsletter</h6>
-          <fieldset className="form-control w-80">
+          <fieldset className="form-control ">
             <label className="label">
               <span className="label-text">Enter your email address</span>
             </label>
-            <div className="join w-full max-w-xs">
+            <div className="flex flex-col gap-3  lg:hidden">
               <input
                 onChange={(e) => setEmailId(e.target.value)}
                 type="email"
                 value={emailId}
                 placeholder="username@site.com"
-                className="input input-bordered join-item w-32 lg:w-full"
+                className="input input-bordered join-item"
+              />
+              <button
+                type="submit"
+                className="btn bg-green-800 hover:bg-green-700 join-item text-white uppercase"
+              >
+                {submitting && (
+                  <span className="loading loading-spinner loading-md"></span>
+                )}
+                Subscribe
+              </button>
+            </div>
+            <div className="join hidden lg:flex">
+              <input
+                onChange={(e) => setEmailId(e.target.value)}
+                type="email"
+                value={emailId}
+                placeholder="username@site.com"
+                className="input input-bordered join-item"
               />
               <button
                 type="submit"
