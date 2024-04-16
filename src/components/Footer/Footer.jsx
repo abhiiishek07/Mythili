@@ -114,13 +114,13 @@ const Footer = () => {
             <label className="label">
               <span className="label-text">Enter your email address</span>
             </label>
-            <div className="join">
+            <div className="join w-full max-w-xs">
               <input
                 onChange={(e) => setEmailId(e.target.value)}
                 type="email"
                 value={emailId}
                 placeholder="username@site.com"
-                className="input input-bordered join-item"
+                className="input input-bordered join-item w-32 lg:w-full"
               />
               <button
                 type="submit"
