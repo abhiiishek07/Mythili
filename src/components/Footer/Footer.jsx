@@ -108,32 +108,43 @@ const Footer = () => {
             </div>
           </nav>
         </div>
-        <form onSubmit={handleSubmit}>
-          <h6 className="footer-title">Newsletter</h6>
-          <fieldset className="form-control w-80">
-            <label className="label">
-              <span className="label-text">Enter your email address</span>
-            </label>
-            <div className="join">
-              <input
-                onChange={(e) => setEmailId(e.target.value)}
-                type="email"
-                value={emailId}
-                placeholder="username@site.com"
-                className="input input-bordered join-item"
-              />
-              <button
-                type="submit"
-                className="btn bg-green-800 hover:bg-green-700 join-item text-white uppercase"
-              >
-                {submitting && (
-                  <span className="loading loading-spinner loading-md"></span>
-                )}
-                Subscribe
-              </button>
-            </div>
-          </fieldset>
-        </form>
+        <form onSubmit={handleSubmit} className="mt-6">
+  <h6 className="footer-title">Newsletter</h6>
+  <fieldset className="form-control">
+    <label className="label">
+      <span className="label-text">Enter your email address</span>
+    </label>
+    <div className="join flex flex-col md:flex-row items-center">
+      <input
+        onChange={(e) => setEmailId(e.target.value)}
+        type="email"
+        value={emailId}
+        placeholder="username@site.com"
+        className="input input-bordered mb-2 md:mr-2"
+      />
+      <button
+        type="submit"
+        className="btn bg-green-800 hover:bg-green-700 text-white uppercase md:w-36 md:inline-block"
+      >
+        {submitting && (
+          <span className="loading loading-spinner loading-md"></span>
+        )}
+        Subscribe
+      </button>
+      {/* For mobile, button appears below input */}
+      <button
+        type="submit"
+        className="btn bg-green-800 hover:bg-green-700 text-white uppercase mt-2 w-full md:hidden"
+      >
+        {submitting && (
+          <span className="loading loading-spinner loading-md"></span>
+        )}
+        Subscribe
+      </button>
+    </div>
+  </fieldset>
+</form>
+
       </footer>
       <footer className="footer px-8 lg:px-36 py-10 border-t bg-base-300  text-base-content border-base-300">
         <aside className="items-center grid-flow-col">
