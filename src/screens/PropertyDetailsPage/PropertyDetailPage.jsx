@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { MdEdit, MdDelete } from "react-icons/md";
 
 const PropertyDetailPage = () => {
@@ -10,12 +10,37 @@ const PropertyDetailPage = () => {
     // Add more dummy data as needed
   ];
 
+  // State variables for search query and filtered data
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredData, setFilteredData] = useState(userData);
+
+  // Function to handle changes in the search query
+  const handleSearch = (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    // Filter user data based on the search query
+    const filtered = userData.filter(
+      (property) =>
+        property.title.toLowerCase().includes(query.toLowerCase()) ||
+        property.location.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredData(filtered);
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-200">
       <div className="max-w-7xl w-full bg-white shadow-md rounded-lg overflow-hidden">
         <div className="px-6 py-4">
-          <div className="font-bold text-xl mb-2">Blogs Details</div>
-          {/* Table to display user information */}
+          <div className="font-bold text-xl mb-2">Property Details</div>
+          {/* Search input */}
+          <input
+            type="text"
+            placeholder="Search..."
+            className="w-full p-2 mb-4 border border-gray-300 rounded-lg"
+            value={searchQuery}
+            onChange={handleSearch}
+          />
+          {/* Table to display filtered user information */}
           <div className="overflow-x-auto">
             <table className="table">
               {/* head */}
@@ -29,7 +54,7 @@ const PropertyDetailPage = () => {
                 </tr>
               </thead>
               <tbody>
-                {userData.map((property) => (
+                {filteredData.map((property) => (
                   <tr key={property.id}>
                     <th>{property.id}</th>
                     <td>
@@ -41,9 +66,7 @@ const PropertyDetailPage = () => {
                         </div>
                       </div>
                     </td>
-                    <td>
-                      {property.location}
-                    </td>
+                    <td>{property.location}</td>
                     <td>
                       <button className="btn bg-green-300 hover:bg-green-500 focus:bg-green-700 flex items-center justify-center gap-1">
                         <span>Edit</span>
