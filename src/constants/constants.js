@@ -9,6 +9,7 @@ import p_logo from "@/assets/images/plogo.png";
 import signature_logo from "@/assets/images/signature-global.png";
 import sobha_logo from "@/assets/images/sobha_logo.png";
 import whiteland_logo from "@/assets/images/Whiteland-logo.png";
+import { FiSettings, FiBook, FiUsers } from "react-icons/fi";
 
 export const A_PLUS_DEVELOPERS = [
   bptp_logo,
@@ -209,3 +210,29 @@ export const REVIEWS = [
 ];
 
 export const baseUrl = "./Images";
+
+export const ADMIN_PAGE_DETAILS = [
+  {
+    id: 0,
+    title: "Properties",
+    description: "Manage property Details here",
+    viewAllLink: "/admin/properties",
+    addNewLink: "/admin/properties/new",
+    icon: FiSettings,
+  },
+  {
+    id: 1,
+    title: "Blogs",
+    description: "Manage all the blogs here",
+    viewAllLink: "/admin/blogs/edit",
+    addNewLink: "/admin/blogs/new",
+    icon: FiBook,
+  },
+  {
+    id: 0,
+    title: "Interested Users",
+    description: "See all the interested users here",
+    viewAllLink: "/admin/blog-details/edit",
+    icon: FiUsers,
+  },
+];

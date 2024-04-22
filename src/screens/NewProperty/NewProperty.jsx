@@ -1,6 +1,11 @@
-import React, { useState } from 'react';
+import { storage } from "@/lib/firebase/firebase";
+import axios from "axios";
+import React, { useState } from "react";
+import toast from "react-hot-toast";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 const NewProperty = () => {
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
     price: "",
@@ -13,6 +18,7 @@ const NewProperty = () => {
     video: "",
     developerInfo: "",
     googleMapLink: "",
+    type: "",
   });
 
   const handleChange = (e) => {
@@ -27,7 +33,7 @@ const NewProperty = () => {
     const files = Array.from(e.target.files);
     setFormData({
       ...formData,
-      images: [...formData.images, ...files], // Add the uploaded images to the images array
+      images: [...formData.images, ...files],
     });
   };
 
@@ -46,32 +52,112 @@ const NewProperty = () => {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
+  const handleBrocheureChange = (e) => {
+    const file = e.target.files[0];
     setFormData({
-      title: "",
-      price: "",
-      location: "",
-      size: "",
-      details: "",
-      images: [],
-      amenities: [],
-      brochure: null,
-      video: "",
-      developerInfo: "",
-      googleMapLink: "",
+      ...formData,
+      brochure: file,
     });
   };
 
+  const handleVideoChange = (e) => {
+    const file = e.target.files[0];
+
+    setFormData({
+      ...formData,
+      video: file,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+
+    console.log(formData);
+
+    let imagesURL = [];
+
+    try {
+      for (const imageFile of formData.images) {
+        const imageRef = ref(storage, `images/${imageFile.name}`);
+        const imageSnapshot = await uploadBytes(imageRef, imageFile);
+        const imageDownloadURL = await getDownloadURL(imageSnapshot.ref);
+        imagesURL.push(imageDownloadURL);
+      }
+
+      let brochureURL = "";
+      const pdfRef = ref(storage, `brochures/${formData.brochure.name}`);
+      const brochureSnapshot = await uploadBytes(pdfRef, formData.brochure);
+      const brocheureDownloadURL = await getDownloadURL(brochureSnapshot.ref);
+      brochureURL = brocheureDownloadURL;
+
+      let videoUrl = "";
+
+      console.log("video", formData.video);
+
+      if (formData.video) {
+        const videoRef = ref(storage, `videos/${formData.video.name}`);
+        const videoSnapshot = await uploadBytes(videoRef, formData.video);
+        const videoDownloadURL = await getDownloadURL(videoSnapshot.ref);
+        videoUrl = videoDownloadURL;
+      }
+      console.log("video url", videoUrl);
+      let data = {
+        title: formData.title,
+        price: formData.price,
+        location: formData.location,
+        size: formData.size,
+        details: formData.details,
+        images: imagesURL,
+        amenities: formData.amenities,
+        brochure: brochureURL,
+        video: videoUrl,
+        developerInfo: formData.developerInfo,
+        googleMapLink: formData.googleMapLink,
+        type: formData.type,
+      };
+
+      const res = await axios.post("/api/properties/addNew", data);
+
+      if (res.status === 200) {
+        setFormData({
+          title: "",
+          price: "",
+          location: "",
+          size: "",
+          details: "",
+          images: [],
+          amenities: [],
+          brochure: null,
+          video: "",
+          developerInfo: "",
+          googleMapLink: "",
+          type: "",
+        });
+        toast.success("Congratulations ! New Property added");
+      } else {
+        toast.error("Please try again");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Please try again");
+    }
+
+    setLoading(false);
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="w-full max-w-4xl p-8 bg-white rounded-lg shadow-lg">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-3">
+      <div className="w-full max-w-4xl p-8 bg-white rounded-lg shadow-lg my-10">
         <h2 className="text-2xl font-bold mb-4">Add New Property Listing</h2>
         <form onSubmit={handleSubmit}>
           <div className="space-y-4">
             <div>
-              <label htmlFor="title" className="block text-sm font-semibold mb-1">
+              <label
+                htmlFor="title"
+                className="block text-sm font-semibold mb-1"
+              >
                 Title:
               </label>
               <input
@@ -80,13 +166,16 @@ const NewProperty = () => {
                 name="title"
                 value={formData.title}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border rounded-md"
+                className="w-full px-4 py-2 border rounded-md input input-bordered"
                 placeholder="Enter title"
                 required
               />
             </div>
             <div>
-              <label htmlFor="price" className="block text-sm font-semibold mb-1">
+              <label
+                htmlFor="price"
+                className="block text-sm font-semibold mb-1"
+              >
                 Price:
               </label>
               <input
@@ -95,7 +184,7 @@ const NewProperty = () => {
                 name="price"
                 value={formData.price}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border rounded-md"
+                className="w-full px-4 py-2 border rounded-md input input-bordered"
                 placeholder="Enter price"
                 required
               />
@@ -113,13 +202,16 @@ const NewProperty = () => {
                 name="location"
                 value={formData.location}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border rounded-md"
+                className="w-full px-4 py-2 border rounded-md input input-bordered"
                 placeholder="Enter location"
                 required
               />
             </div>
             <div>
-              <label htmlFor="size" className="block text-sm font-semibold mb-1">
+              <label
+                htmlFor="size"
+                className="block text-sm font-semibold mb-1"
+              >
                 Size:
               </label>
               <input
@@ -128,11 +220,34 @@ const NewProperty = () => {
                 name="size"
                 value={formData.size}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border rounded-md"
+                className="w-full px-4 py-2 border rounded-md input input-bordered"
                 placeholder="Enter size"
                 required
               />
             </div>
+            <div>
+              <label
+                htmlFor="type"
+                className="block text-sm font-semibold mb-1"
+              >
+                Type of property :
+              </label>
+              <select
+                className="select select-bordered w-full"
+                onChange={handleChange}
+                id="type"
+                name="type"
+              >
+                <option disabled selected={!formData.type}>
+                  Pick one
+                </option>
+                <option value="residential">Residential</option>
+                <option value="commercial">Commercial</option>
+                <option value="sco">SCO</option>
+                <option value="plot">Plot</option>
+              </select>
+            </div>
+
             <div>
               <label
                 htmlFor="details"
@@ -145,52 +260,19 @@ const NewProperty = () => {
                 name="details"
                 value={formData.details}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border rounded-md"
+                className="w-full px-4 py-2 border rounded-md input input-bordered"
                 placeholder="Enter details"
                 required
               ></textarea>
             </div>
-            <div>
-              <label htmlFor="images" className="block text-sm font-semibold mb-1">
+            <div className="my-3">
+              <label
+                htmlFor="images"
+                className="block text-sm font-semibold mb-1"
+              >
                 Images:
               </label>
-              <div className="flex items-center space-x-4">
-                {formData.images.map((image, index) => (
-                  <div key={index} className="relative">
-                    {image && (
-                      <img
-                        src={URL.createObjectURL(image)}
-                        alt=""
-                        className="w-20 h-20 object-cover rounded-md"
-                      />
-                    )}
-                    <button
-                      type="button"
-                      onClick={() => {
-                        const updatedImages = formData.images.filter(
-                          (img) => img !== image
-                        )
-                        setFormData({ ...formData, images: updatedImages })
-                      }}
-                      className="absolute top-0 right-0 w-6 h-6 text-white bg-red-500 rounded-full flex items-center justify-center"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="w-4 h-4"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                ))}
+              <div className="flex flex-col items-center justify-center space-x-4 gap-3">
                 <input
                   type="file"
                   id="images"
@@ -201,8 +283,60 @@ const NewProperty = () => {
                   multiple
                   required
                 />
+                <div className="flex justify-start flex-wrap gap-3 w-full">
+                  {formData?.images?.map((image, index) => (
+                    <div key={index} className="relative flex">
+                      {image && (
+                        <img
+                          src={URL.createObjectURL(image)}
+                          alt=""
+                          className="w-20 h-20 object-cover rounded-md"
+                        />
+                      )}
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const updatedImages = formData.images.filter(
+                            (img) => img !== image
+                          );
+                          setFormData({ ...formData, images: updatedImages });
+                        }}
+                        className="absolute top-0 right-0 w-6 h-6 text-white bg-red-500 rounded-full flex items-center justify-center"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-4 h-4"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M6 18L18 6M6 6l12 12"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
+            <label
+              htmlFor="video"
+              className="block text-sm font-semibold mb-1 mt-4"
+            >
+              Video:
+            </label>
+            <input
+              type="file"
+              id="video"
+              name="video"
+              accept=".mp4, .mov, .avi"
+              onChange={handleVideoChange}
+              className="w-full"
+            />
             <div>
               <label className="block text-sm font-semibold mb-1">
                 Amenities:
@@ -253,13 +387,16 @@ const NewProperty = () => {
                 id="brochure"
                 name="brochure"
                 accept=".pdf"
-                onChange={handleFileUpload}
+                onChange={handleBrocheureChange}
                 className="w-full"
                 required
               />
             </div>
             <div>
-              <label htmlFor="googleMapLink" className="block text-sm font-semibold mb-1">
+              <label
+                htmlFor="googleMapLink"
+                className="block text-sm font-semibold mb-1"
+              >
                 Google Maps Link:
               </label>
               <input
@@ -268,24 +405,11 @@ const NewProperty = () => {
                 name="googleMapLink"
                 value={formData.googleMapLink}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border rounded-md"
+                className="w-full px-4 py-2 border rounded-md  input input-bordered"
                 placeholder="Enter Google Maps link"
               />
             </div>
-            <div>
-              <label htmlFor="video" className="block text-sm font-semibold mb-1">
-                Video:
-              </label>
-              <input
-                type="text"
-                id="video"
-                name="video"
-                value={formData.video}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border rounded-md"
-                placeholder="Enter video URL"
-              />
-            </div>
+
             <div>
               <label
                 htmlFor="developerInfo"
@@ -298,15 +422,19 @@ const NewProperty = () => {
                 name="developerInfo"
                 value={formData.developerInfo}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border rounded-md"
+                className="w-full px-4 py-2 border rounded-md  input input-bordered"
                 placeholder="Enter developer information"
                 required
               ></textarea>
             </div>
             <button
               type="submit"
-              className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-300"
+              disabled={loading}
+              className="w-full btn btn-primary uppercase text-white py-2 rounded-md  "
             >
+              {loading && (
+                <span className="loading loading-spinner loading-md"></span>
+              )}
               Submit
             </button>
           </div>
