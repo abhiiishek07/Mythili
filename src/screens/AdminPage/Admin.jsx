@@ -12,7 +12,7 @@ const Admin = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {ADMIN_PAGE_DETAILS.map((item) => (
             <AdminDetails
-              id={item.id}
+              key={item.id}
               title={item.title}
               description={item.description}
               viewAllLink={item.viewAllLink}

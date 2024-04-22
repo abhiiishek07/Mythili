@@ -3,7 +3,6 @@ import React from "react";
 import { FiSettings } from "react-icons/fi";
 
 const AdminDetails = ({
-  id,
   title,
   description,
   viewAllLink,
@@ -11,10 +10,7 @@ const AdminDetails = ({
   Icon,
 }) => {
   return (
-    <div
-      key={id}
-      className="hover:scale-105 duration-300 flex flex-col items-start p-6 rounded-lg shadow-md bg-base-100 border"
-    >
+    <div className="hover:scale-105 duration-300 flex flex-col items-start p-6 rounded-lg shadow-md bg-base-100 border">
       <div className="flex items-center justify-center">
         <Icon size={22} className="mr-2 pb-1" />
         <h3 className="text-xl font-semibold mb-2">{title}</h3>
