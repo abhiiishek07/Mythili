@@ -19,6 +19,7 @@ import { useState } from "react";
 import { BiDetail } from "react-icons/bi";
 import {
   FaArrowRight,
+  FaFilePdf,
   FaHouse,
   FaHouseChimney,
   FaList,
@@ -32,32 +33,25 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 
-const PROPERTY_IMAGES = [
-  property_1_img,
-  property_2_img,
-  property_3_img,
-  property_4_img,
-];
+const PropertyInfo = ({ data }) => {
+  const settings = {
+    customPaging: function (i) {
+      return (
+        <div className="h-10 w-14 my-2 rounded-md">
+          <a>
+            <img src={data.images[i]} />
+          </a>
+        </div>
+      );
+    },
+    dots: true,
+    dotsClass: "slick-dots slick-thumb",
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
 
-const settings = {
-  customPaging: function (i) {
-    return (
-      <div className="h-10 w-14 my-2 rounded-md">
-        <a>
-          <img src={PROPERTY_IMAGES[i].src} />
-        </a>
-      </div>
-    );
-  },
-  dots: true,
-  dotsClass: "slick-dots slick-thumb",
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-};
-
-const PropertyInfo = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -118,9 +112,9 @@ const PropertyInfo = () => {
                 {...SLIDER_SETTINGS_TESTIMONIAL}
                 className="w-full h-full flex"
               >
-                {PROPERTY_IMAGES?.map((image, index) => (
+                {data?.images.map((image, index) => (
                   <div key={index}>
-                    <img src={image?.src} className="rounded-md h-56 w-full" />
+                    <img src={image} className="rounded-md h-56 w-full" />
                   </div>
                 ))}
               </Slider>
@@ -131,12 +125,9 @@ const PropertyInfo = () => {
             </div>
             <div className="hidden md:block w-full  px-8 pt-5 pb-14 bg-base-300 rounded-lg relative slide-container ">
               <Slider {...settings} className="w-full h-full">
-                {PROPERTY_IMAGES?.map((image, index) => (
+                {data?.images.map((image, index) => (
                   <div key={index}>
-                    <img
-                      src={image?.src}
-                      className="rounded-md h-[33rem] w-full"
-                    />
+                    <img src={image} className="rounded-md h-[33rem] w-full" />
                   </div>
                 ))}
               </Slider>
@@ -153,35 +144,7 @@ const PropertyInfo = () => {
                       <FaHouse className=" mr-1 " /> Overview
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Nisi doloribus similique itaque consequatur provident
-                    voluptates eaque harum mollitia veritatis eligendi libero
-                    neque laborum iusto, ullam esse. Natus voluptate tenetur
-                    beatae modi, doloremque iure explicabo praesentium quis illo
-                    laudantium id aliquid deserunt excepturi atque ex, corporis
-                    enim iste aut consequuntur repudiandae recusandae blanditiis
-                    nemo! Assumenda repudiandae dolore commodi voluptas alias
-                    labore sunt vitae expedita velit eius, asperiores eos
-                    distinctio natus consectetur vel, ea eum enim ipsam esse
-                    repellendus? Temporibus reiciendis, autem recusandae, cumque
-                    et debitis nostrum maxime ipsa eaque laborum in nobis ea
-                    nisi provident necessitatibus. Repellendus, quia! Enim culpa
-                    placeat veritatis incidunt vel minima cupiditate repellendus
-                    tempora nostrum, inventore voluptas accusantium voluptates
-                    maiores libero commodi pariatur sapiente? Atque temporibus
-                    doloremque earum error excepturi eius voluptatibus est
-                    itaque, quod tenetur magni nisi ipsum reiciendis. Quam
-                    nostrum asperiores quas consectetur expedita non autem dicta
-                    atque illum repellat eaque, iste adipisci minima laboriosam
-                    ratione nisi? Mollitia eos nihil blanditiis iusto debitis
-                    temporibus! Consectetur veniam delectus nemo nesciunt?
-                    Error, ea voluptatum atque repudiandae sunt ipsam distinctio
-                    non neque nisi nihil animi omnis quasi repellat asperiores
-                    tempore exercitationem nobis excepturi molestias temporibus
-                    fuga eius voluptate. Error quia debitis iure autem aliquam
-                    inventore magni exercitationem mollitia?
-                  </AccordionContent>
+                  <AccordionContent>{data.details}</AccordionContent>
                 </AccordionItem>
                 <AccordionItem
                   value="item-2"
@@ -194,7 +157,15 @@ const PropertyInfo = () => {
                     </div>
                   </AccordionTrigger>
                   <AccordionContent>
-                    Yes. It adheres to the WAI-ARIA design pattern.
+                    <div className="w-full ">
+                      <a
+                        href={data.brochure}
+                        target="_blank"
+                        className="text-lg font-bold link link-hover italic flex items-center gap-2"
+                      >
+                        <FaFilePdf color="red" /> View brochure
+                      </a>
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem
@@ -252,7 +223,22 @@ const PropertyInfo = () => {
                     </div>
                   </AccordionTrigger>
                   <AccordionContent>
-                    Yes. It adheres to the WAI-ARIA design pattern.
+                    {data.video ? (
+                      <div className="flex items-center justify-center">
+                        <video width="520" height="340" controls preload="none">
+                          <source src={data.video} type="video/mp4" />
+                          <track
+                            src="/path/to/captions.vtt"
+                            kind="subtitles"
+                            srcLang="en"
+                            label="English"
+                          />
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    ) : (
+                      <p>Video not available</p>
+                    )}
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem
@@ -264,22 +250,7 @@ const PropertyInfo = () => {
                       <FaPersonShelter className=" mr-1" /> About the Developer
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Iste tenetur ipsam explicabo fugit dolores laudantium sequi
-                    cum, enim aliquid, exercitationem placeat. In iste ullam
-                    alias sed, soluta corporis modi magni delectus explicabo,
-                    aut vero dignissimos. Beatae et perferendis soluta
-                    aspernatur. Non minima, rerum odio porro earum labore libero
-                    vitae corporis, ea autem perspiciatis tempore harum est.
-                    Pariatur magni dolor corporis aperiam debitis iusto
-                    quibusdam laudantium dolorum delectus rerum consequuntur
-                    nobis maxime aliquam nulla quas necessitatibus natus eum
-                    molestiae deserunt veniam, porro ratione provident
-                    doloremque. Veniam aperiam officiis quod enim, dignissimos
-                    odio culpa sequi quibusdam placeat, tenetur minus beatae,
-                    provident quidem!
-                  </AccordionContent>
+                  <AccordionContent>{data.developerInfo}</AccordionContent>
                 </AccordionItem>
                 <AccordionItem
                   value="item-6"
@@ -292,15 +263,9 @@ const PropertyInfo = () => {
                   </AccordionTrigger>
                   <AccordionContent>
                     <div className="flex items-center justify-center">
-                      <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224346.54004883842!2d77.04417347155065!3d28.52725273882469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x52c2b7494e204dce!2sNew%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1710325201583!5m2!1sen!2sin"
-                        width="600"
-                        height="450"
-                        allowFullScreen=""
-                        loading="lazy"
-                        className="object-cover border border-black"
-                        referrerPolicy="no-referrer-when-downgrade"
-                      ></iframe>
+                      <div
+                        dangerouslySetInnerHTML={{ __html: data.googleMapLink }}
+                      />
                     </div>
                   </AccordionContent>
                 </AccordionItem>
@@ -311,14 +276,14 @@ const PropertyInfo = () => {
           <div className="flex flex-col w-full lg:w-1/4 mt-4 mx-auto overflow-hidden">
             <div className="bg-base-200 rounded-md p-4 ">
               <div className="flex flex-col px-3  my-2 ">
-                <p className=" text-lg font-bold ">M3M Route 65</p>
+                <p className=" text-lg font-bold ">{data.location}</p>
                 <span className="text-sm flex items-center ">
                   <FaLocationDot /> Sector 65, Gurugram
                 </span>
               </div>
               <div className="flex flex-col p-3 my-2 ">
                 <p className=" text-lg font-bold flex items-center">
-                  <LuIndianRupee size={20} /> 75 Lakh* Onwards
+                  <LuIndianRupee size={20} /> {data.price}
                 </p>
                 <span className="text-sm">
                   Status: <span className=" font-semibold">New Launch</span>
@@ -328,7 +293,7 @@ const PropertyInfo = () => {
                 <FaHouseChimney className=" text-xl  " />
                 <div className="flex flex-col mx-2">
                   <span className=" font-semibold">Project Size</span>
-                  <span className="text-sm">250 - 1000 Sq. Ft.</span>
+                  <span className="text-sm">{data.size}</span>
                 </div>
               </div>
             </div>
