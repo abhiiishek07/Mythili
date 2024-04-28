@@ -1,22 +1,15 @@
-import property_1_img from "@/assets/images/property_1.jpg";
-import property_2_img from "@/assets/images/property_2.jpg";
-import property_3_img from "@/assets/images/property_3.jpg";
-import property_4_img from "@/assets/images/property_4.jpg";
 import Property from "@/components/Card/Property";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Link, Element } from "react-scroll";
+
 import {
   SLIDER_SETTINGS_DIFF_PROP,
   SLIDER_SETTINGS_DIFF_PROP_INFO,
   SLIDER_SETTINGS_TESTIMONIAL,
 } from "@/constants/constants";
-import Link from "next/link";
+import Linked from "next/link";
 import { useState } from "react";
 import { BiDetail } from "react-icons/bi";
+import { BsHouse } from "react-icons/bs";
 import {
   FaArrowRight,
   FaFilePdf,
@@ -27,7 +20,7 @@ import {
   FaPersonShelter,
   FaVideo,
 } from "react-icons/fa6";
-import { IoMailUnreadOutline } from "react-icons/io5";
+import { IoMailUnreadOutline, IoCloudDownload } from "react-icons/io5";
 import { LuIndianRupee } from "react-icons/lu";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
@@ -50,6 +43,11 @@ const PropertyInfo = ({ data }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+  };
+
+  const [activeTab, setActiveTab] = useState("overview");
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
   };
 
   const [formData, setFormData] = useState({
@@ -96,7 +94,7 @@ const PropertyInfo = ({ data }) => {
         <div className="text-sm breadcrumbs">
           <ul>
             <li>
-              <Link href="/">Home</Link>
+              <Linked href="/">Home</Linked>
             </li>
             <li>Properties</li>
             <li>
@@ -133,167 +131,240 @@ const PropertyInfo = ({ data }) => {
               </Slider>
             </div>
 
-            <div className="py-4">
-              <Accordion type="single" collapsible className="w-full">
-                <AccordionItem
-                  value="item-1"
-                  className="border border-gray-600 px-4 rounded-xl my-1"
+            {/* All property details section*/}
+            <div className="my-4 p-2">
+              <div
+                role="tablist"
+                className="navbar sticky top-0 z-10 tabs tabs-bordered overflow-x-scroll lg:overflow-x-auto"
+              >
+                <Link
+                  role="tab"
+                  className={`tab ${
+                    activeTab == "overview" ? "tab-active" : ""
+                  }`}
+                  to="overview"
+                  smooth={true}
+                  duration={500}
+                  onClick={() => handleTabClick("overview")}
                 >
-                  <AccordionTrigger className="font-bold text-xl">
-                    <div className="flex items-center">
-                      <FaHouse className=" mr-1 " /> Overview
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent>{data.details}</AccordionContent>
-                </AccordionItem>
-                <AccordionItem
-                  value="item-2"
-                  className="border border-gray-600 px-4 rounded-xl my-1"
+                  Overview
+                </Link>
+                <Link
+                  role="tab"
+                  className={`tab ${
+                    activeTab == "brochure" ? "tab-active" : ""
+                  }`}
+                  to="brochure"
+                  smooth={true}
+                  duration={500}
+                  onClick={() => handleTabClick("brochure")}
                 >
-                  <AccordionTrigger className="font-bold text-xl">
-                    <div className="flex items-center">
-                      <BiDetail className="mr-1" />
-                      Brochure
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent>
-                    <div className="w-full ">
-                      <a
-                        href={data.brochure}
-                        target="_blank"
-                        className="text-lg font-bold link link-hover italic flex items-center gap-2"
-                      >
-                        <FaFilePdf color="red" /> View brochure
-                      </a>
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem
-                  value="item-3"
-                  className="border border-gray-600 px-4 rounded-xl my-1"
+                  Brochure
+                </Link>
+                <Link
+                  role="tab"
+                  className={`tab ${
+                    activeTab == "amenities" ? "tab-active" : ""
+                  }`}
+                  to="amenities"
+                  smooth={true}
+                  duration={500}
+                  onClick={() => handleTabClick("amenities")}
                 >
-                  <AccordionTrigger className="font-bold text-xl">
-                    <div className="flex items-center">
-                      <FaList className="mr-1" /> Ammenities
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent>
-                    <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-x-6 lg:gap-x-8 gap-y-4 md:gap-y-6 lg:gap-y-8">
-                      <div className="flex flex-col items-center justify-center bg-gray-200 rounded-lg p-6 md:p-8 lg:p-10">
-                        <FaList className="text-3xl text-green-500" />
-                        <p className="py-1 font-semibold tracking-widest">
-                          24*7 Security
-                        </p>
-                      </div>
-                      <div className="flex flex-col items-center justify-center bg-gray-200 rounded-lg p-6 md:p-8 lg:p-10">
-                        <FaList className="text-3xl text-green-500" />
-                        <p className="py-1 font-semibold tracking-widest">
-                          Elevator
-                        </p>
-                      </div>
-                      <div className="flex flex-col items-center justify-center bg-gray-200 rounded-lg p-6 md:p-8 lg:p-10">
-                        <FaList className="text-3xl text-green-500" />
-                        <p className="py-1 font-semibold tracking-widest">
-                          CCTV
-                        </p>
-                      </div>
-                      <div className="flex flex-col items-center justify-center bg-gray-200 rounded-lg p-6 md:p-8 lg:p-10">
-                        <FaList className="text-3xl text-green-500" />
-                        <p className="py-1 font-semibold tracking-widest">
-                          Parking Space
-                        </p>
-                      </div>
-                      <div className="flex flex-col items-center justify-center bg-gray-200 rounded-lg p-6 md:p-8 lg:p-10">
-                        <FaList className="text-3xl text-green-500" />
-                        <p className="py-1 font-semibold tracking-widest">
-                          Power Backup
-                        </p>
-                      </div>
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem
-                  value="item-4"
-                  className="border border-gray-600 px-4 rounded-xl my-1"
+                  Amenities
+                </Link>
+                <Link
+                  role="tab"
+                  className={`tab ${activeTab == "video" ? "tab-active" : ""}`}
+                  to="video"
+                  smooth={true}
+                  duration={500}
+                  onClick={() => handleTabClick("video")}
                 >
-                  <AccordionTrigger className="font-bold text-xl">
-                    <div className="flex items-center">
-                      <FaVideo className=" mr-2" />
-                      Video
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent>
-                    {data.video ? (
-                      <div className="flex items-center justify-center">
-                        <video width="520" height="340" controls preload="none">
-                          <source src={data.video} type="video/mp4" />
-                          <track
-                            src="/path/to/captions.vtt"
-                            kind="subtitles"
-                            srcLang="en"
-                            label="English"
-                          />
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    ) : (
-                      <p>Video not available</p>
-                    )}
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem
-                  value="item-5"
-                  className="border border-gray-600 px-4 rounded-xl my-1"
+                  Video
+                </Link>
+                <Link
+                  role="tab"
+                  className={`tab ${
+                    activeTab == "developer" ? "tab-active" : ""
+                  }`}
+                  to="developer"
+                  smooth={true}
+                  duration={500}
+                  onClick={() => handleTabClick("developer")}
                 >
-                  <AccordionTrigger className="font-bold text-xl">
-                    <div className="flex items-center">
-                      <FaPersonShelter className=" mr-1" /> About the Developer
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent>{data.developerInfo}</AccordionContent>
-                </AccordionItem>
-                <AccordionItem
-                  value="item-6"
-                  className="border border-gray-600 px-4 rounded-xl my-1"
+                  Developer
+                </Link>
+                <Link
+                  role="tab"
+                  className={`tab ${
+                    activeTab == "location" ? "tab-active" : ""
+                  }`}
+                  to="location"
+                  smooth={true}
+                  duration={500}
+                  onClick={() => handleTabClick("location")}
                 >
-                  <AccordionTrigger className="font-bold text-xl">
-                    <div className="flex items-center">
-                      <FaLocationDot className=" mr-1" /> Location
+                  Location
+                </Link>
+              </div>
+
+              <Element name="overview" className="my-3">
+                <div className="bg-gray-100 rounded-xl p-4 shadow-lg">
+                  <div className="flex items-center">
+                    <FaHouse className="mr-2 text-green-500" size={20} />
+                    <h2 className="font-bold text-xl">Overview</h2>
+                  </div>
+                  <div className="p-4 bg-white border border-gray-200 rounded-xl mt-2">
+                    <div 
+                    className="px-4"
+                    dangerouslySetInnerHTML={{ __html: data.htmlDescription }}
+                    ></div>
+                  </div>
+                </div>
+              </Element>
+
+              <Element name="brochure" className="my-3">
+                <div className="bg-gray-100 rounded-xl p-4  shadow-lg">
+                  <div className="flex items-center">
+                    <BiDetail className="mr-2 text-green-500" size={20} />
+                    <h2 className="font-bold text-xl">Brochure</h2>
+                  </div>
+                  <div className="p-4 bg-white border border-gray-200 rounded-xl mt-2 flex items-center justify-center">
+                    <a
+                      href={data.brochure}
+                      target="_blank"
+                      className="text-lg font-bold link link-hover italic flex items-center gap-2"
+                    >
+                      <IoCloudDownload color="red" /> Download brochure
+                    </a>
+                  </div>
+                </div>
+              </Element>
+
+              <Element name="amenities" className="my-3">
+                <div className="bg-gray-100 rounded-xl p-4  shadow-lg">
+                  <div className="flex items-center">
+                    <FaList className="mr-2 text-green-500" size={20} />
+                    <h2 className="font-bold text-xl">Amenities</h2>
+                  </div>
+                  <div className="p-4 bg-white border border-gray-200 rounded-xl mt-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-x-6 lg:gap-x-8 gap-y-4 md:gap-y-6 lg:gap-y-8">
+                    <div className="flex flex-col items-center justify-center bg-gray-200 rounded-lg p-6 md:p-8 lg:p-10">
+                      <FaList className="text-3xl text-green-500" />
+                      <p className="py-1 font-semibold tracking-widest">
+                        24*7 Security
+                      </p>
                     </div>
-                  </AccordionTrigger>
-                  <AccordionContent>
-                    <div className="flex items-center justify-center">
-                      <div
-                        dangerouslySetInnerHTML={{ __html: data.googleMapLink }}
-                      />
+                    {/* Add more amenities here */}
+                  </div>
+                </div>
+              </Element>
+
+              <Element name="video" className="my-3">
+                <div className="bg-gray-100 rounded-xl p-4 shadow-lg">
+                  <div className="flex items-center">
+                    <FaVideo className="mr-2 text-green-500" size={20} />
+                    <h2 className="font-bold text-xl">Video</h2>
+                  </div>
+                  {data.video ? (
+                    <div className="p-6 bg-white border border-gray-200 rounded-xl mt-2 flex items-center justify-center">
+                      <video width="550" height="350" controls preload="none">
+                        <source src={data.video} type="video/mp4" />
+                        <track
+                          src="/path/to/captions.vtt"
+                          kind="subtitles"
+                          srcLang="en"
+                          label="English"
+                        />
+                        Your browser does not support the video tag.
+                      </video>
                     </div>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
+                  ) : (
+                    <p className="p-4 bg-white border border-gray-200 rounded-xl mt-2">
+                      Video not available
+                    </p>
+                  )}
+                </div>
+              </Element>
+
+              <Element name="developer" className="my-3">
+                <div className="bg-gray-100 rounded-xl p-4  shadow-lg">
+                  <div className="flex items-center">
+                    <FaPersonShelter
+                      className="mr-2 text-green-500"
+                      size={20}
+                    />
+                    <h2 className="font-bold text-xl">About the Developer</h2>
+                  </div>
+                  <div className="p-4 bg-white border border-gray-200 rounded-xl mt-2">
+                    {data.developerInfo}
+                  </div>
+                </div>
+              </Element>
+
+              <Element name="location" className="my-3">
+                <div className="bg-gray-100 rounded-xl p-4  shadow-lg">
+                  <div className="flex items-center">
+                    <FaLocationDot className="mr-2 text-green-500" size={20} />
+                    <h2 className="font-bold text-xl">Location</h2>
+                  </div>
+                  <div
+                    className="p-4 bg-white border border-gray-200 rounded-xl mt-2 flex items-center justify-center"
+                    dangerouslySetInnerHTML={{ __html: data.googleMapLink }}
+                  />
+                </div>
+              </Element>
             </div>
           </div>
 
+          {/* Sidebar for property basic details */}
           <div className="flex flex-col w-full lg:w-1/4 mt-4 mx-auto overflow-hidden">
-            <div className="bg-base-200 rounded-md p-4 ">
-              <div className="flex flex-col px-3  my-2 ">
-                <p className=" text-lg font-bold ">{data.location}</p>
+            <div className="rounded-md p-4 ">
+              <div className="flex flex-col px-3 my-2">
+                <p className=" text-lg font-bold mb-1">M3M Towers</p>
                 <span className="text-sm flex items-center ">
-                  <FaLocationDot /> Sector 65, Gurugram
+                  <FaLocationDot size={15} className=" mr-2" />{" "}
+                  <span>{data.location}</span>
                 </span>
               </div>
-              <div className="flex flex-col p-3 my-2 ">
-                <p className=" text-lg font-bold flex items-center">
-                  <LuIndianRupee size={20} /> {data.price}
-                </p>
-                <span className="text-sm">
-                  Status: <span className=" font-semibold">New Launch</span>
-                </span>
-              </div>
-              <div className="flex items-center p-3  my-2 ">
-                <FaHouseChimney className=" text-xl  " />
+              <div className="flex items-center p-3 my-3 border border-gray-300 rounded-xl shadow-md hover:shadow-xl transition duration-300">
+                <div className="m-2">
+                  <LuIndianRupee size={30} className=" mr-1" />
+                </div>
                 <div className="flex flex-col mx-2">
-                  <span className=" font-semibold">Project Size</span>
-                  <span className="text-sm">{data.size}</span>
+                  <span className="font-bold text-xl text-gray-800">
+                    {data.price} Ownwards
+                  </span>
+                  <div className="text-sm text-gray-700">
+                    <span
+                      className={`border rounded-xl px-1 ${
+                        data.status === "Under Construction"
+                          ? "border-orange-200 bg-orange-300"
+                          : data.status === "New Launch"
+                          ? "border-blue-200 bg-blue-300"
+                          : "border-green-200 bg-green-300"
+                      }`}
+                    >
+                      {data.status}
+                    </span>
+                    {/* <span className="border border-orange-200 bg-orange-300 rounded-xl px-1">
+                      Under Contruction
+                    </span>
+                    <span className="border border-green-200 bg-green-300 rounded-xl px-1">
+                      Ready to move
+                    </span> */}
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center p-3 my-2 border border-gray-300 rounded-xl shadow-md hover:shadow-xl transition duration-300">
+                <div className="m-2">
+                  <BsHouse className="text-xl" size={30} />
+                </div>
+                <div className="flex flex-col mx-2">
+                  <span className="font-bold text-xl text-gray-800">
+                    Project Size
+                  </span>
+                  <span className="text-lg text-gray-700">{data.size}</span>
                 </div>
               </div>
             </div>

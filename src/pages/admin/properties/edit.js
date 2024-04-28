@@ -3,7 +3,7 @@ import PropertyDetailPage from "@/screens/PropertyDetailsPage/PropertyDetailPage
 import React from "react";
 
 const PropertyDetailEdit = () => {
-  return <EditProperty/>;
+  return <PropertyDetailPage/>;
 };
 
 export default PropertyDetailEdit;
