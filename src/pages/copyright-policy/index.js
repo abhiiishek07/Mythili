@@ -2,74 +2,49 @@ import React from "react";
 
 const CopyrightPolicyPage = () => {
   return (
-    <div className="p-4 flex items-center">
-      <div className="max-w-6xl w-full mx-auto border rounded-md my-4 p-4">
-        {" "}
-        <h1 className="text-2xl font-bold mb-4">Copyright Policy</h1>
-        <div className="text-base text-gray-700">
-          <p className="mb-4">
-            [Your Real Estate Website] respects the intellectual property rights
-            of others and expects its users to do the same. It is our policy to
-            respond to notices of alleged copyright infringement that comply
-            with applicable intellectual property law (including the Digital
-            Millennium Copyright Act) and to terminate the accounts of repeat
-            infringers.
-          </p>
-          <h2 className="text-lg font-semibold mb-2">
-            1. Reporting Claims of Copyright Infringement
-          </h2>
-          <p className="mb-4">
-            If you believe that material or content residing on or accessible
-            through [Your Real Estate Website] infringes a copyright, please
-            send a notice of copyright infringement containing the following
-            information to the designated agent listed below:
-          </p>
-          <ul className="list-disc ml-8 mb-4">
-            <li>
-              A physical or electronic signature of a person authorized to act
-              on behalf of the owner of the copyright that has been allegedly
-              infringed;
-            </li>
-            <li>Identification of works or materials being infringed;</li>
-            <li>
-              Identification of the material that is claimed to be infringing
-              including information regarding the location of the infringing
-              materials that the copyright owner seeks to have removed, with
-              sufficient detail so that [Your Real Estate Website] is capable of
-              finding and verifying its existence;
-            </li>
-            <li>
-              Contact information about the notifier including address,
-              telephone number, and, if available, email address;
-            </li>
-            <li>
-              A statement that the notifier has a good faith belief that the
-              material is not authorized by the copyright owner, its agent, or
-              the law; and
-            </li>
-            <li>
-              A statement made under penalty of perjury that the information
-              provided is accurate and the notifying party is authorized to make
-              the complaint on behalf of the copyright owner.
-            </li>
-          </ul>
-          <h2 className="text-lg font-semibold mb-2">2. Designated Agent</h2>
-          <p className="mb-4">
-            Name: [Your Designated Agent&apos;s Name]
-            <br />
-            Address: [Your Address]
-            <br />
-            Email: [Your Designated Agent&apos;s Email]
-            <br />
-            Phone: [Your Designated Agent&apos;s Phone Number]
-          </p>
-          <p className="mb-4">
-            Please note that you may be liable for damages (including costs and
-            attorneys fees) if you materially misrepresent that material or
-            activity is infringing your copyright.
-          </p>
-        </div>
-      </div>
+    <div className="max-w-3xl mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold mb-4 flex justify-center">Copyright Policy</h1>
+      
+      <h2 className="text-xl font-bold mb-2">Respecting Intellectual Property</h2>
+      <p className="mb-4">
+        At Mythili Realty, we respect the intellectual property rights of others and expect our users to do the same. This Copyright Policy outlines how we handle copyrighted material on our website and the limitations of use for our own content.
+      </p>
+      
+      <h2 className="text-xl font-bold mb-2">Content Ownership</h2>
+      <p className="mb-4">
+        The content displayed on our website, including text, graphics, logos, photographs, and other materials, is protected by copyright laws in India and other countries. This Content is owned by Mythili Realty or used with permission from the rights holder.
+      </p>
+      
+      <h2 className="text-xl font-bold mb-2">Limitations of Use</h2>
+      <p className="mb-4">
+        You are permitted to access and use our website for your personal, non-commercial purposes only. You may not:
+      </p>
+      <ul className="list-disc list-inside mb-4">
+        <li>Copy, modify, distribute, transmit, display, reproduce, publish, or license any Content without our prior written consent.</li>
+        <li>Create derivative works from our Content.</li>
+        <li>Use our Content for any commercial purpose, including advertising or marketing.</li>
+        <li>Remove any copyright or trademark notices from our Content.</li>
+      </ul>
+      
+      <h2 className="text-xl font-bold mb-2">User-Generated Content</h2>
+      <p className="mb-4">
+        If you submit any content to our website, such as comments or reviews, you grant Mythili Realty a non-exclusive, royalty-free, worldwide license to use, reproduce, modify, publish, and translate such User-Generated Content.
+      </p>
+      
+      <h2 className="text-xl font-bold mb-2">Copyright Infringement</h2>
+      <p className="mb-4">
+        If you believe that your copyright has been infringed upon by any Content on our website, please notify us immediately. We will take appropriate action to remove the infringing material in accordance with the Indian Copyright Act, 1957 and its amendments.
+      </p>
+      
+      <h2 className="text-xl font-bold mb-2">Changes to This Policy</h2>
+      <p className="mb-4">
+        We may update this Copyright Policy from time to time. We will notify you of any changes by posting the new Copyright Policy on our website.
+      </p>
+      
+      <h2 className="text-xl font-bold mb-2">Contact Us</h2>
+      <p>
+        If you have any questions about this Copyright Policy, please contact us.
+      </p>
     </div>
   );
 };

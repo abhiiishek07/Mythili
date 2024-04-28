@@ -40,6 +40,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import Image from "next/image";
 import Awards from "@/components/Card/Awards";
+import { PiBookmarks } from "react-icons/pi";
 
 const BANNERS = [
   property_1_img,
@@ -338,53 +339,27 @@ const Homepage = () => {
                 Stay updated with our insights and tips.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-white shadow-lg rounded-lg overflow-hidden">
-                <img
-                  src="https://blog.tkelevator.com/wp/wp-content/uploads/2018/06/shutterstock_464879318-scaled.jpg"
-                  alt="Blog 1"
-                  className="w-full h-56 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    5 Tips for First-Time Homebuyers
-                  </h3>
-                  <p className="text-gray-600">
-                    Learn valuable advice for navigating the home buying process
-                    for the first time.
-                  </p>
+            
+            <div className="grid">
+              <div className="bg-white shadow-lg rounded-lg overflow-hidden flex">
+                <div className="w-1/3">
+                  <img
+                    src="https://blog.tkelevator.com/wp/wp-content/uploads/2018/06/shutterstock_464879318-scaled.jpg"
+                    alt="Blog 1"
+                    className="w-full h-56 object-cover"
+                  />
                 </div>
-              </div>
-              <div className="bg-white shadow-lg rounded-lg overflow-hidden">
-                <img
-                  src="https://media.istockphoto.com/id/511061090/photo/business-office-building-in-london-england.jpg?s=612x612&w=0&k=20&c=nYAn4JKoCqO1hMTjZiND1PAIWoABuy1BwH1MhaEoG6w="
-                  alt="Blog 2"
-                  className="w-full h-56 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    The Benefits of Investing in Rental Properties
-                  </h3>
-                  <p className="text-gray-600">
-                    Discover why investing in rental properties can be a
-                    lucrative opportunity.
-                  </p>
-                </div>
-              </div>
-              <div className="bg-white shadow-lg rounded-lg overflow-hidden">
-                <img
-                  src="https://img.freepik.com/free-vector/city-skyline-concept-illustration_114360-8923.jpg"
-                  alt="Blog 3"
-                  className="w-full h-56 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    How to Stage Your Home for a Quick Sale
-                  </h3>
-                  <p className="text-gray-600">
-                    Learn expert tips for staging your home to attract potential
-                    buyers.
-                  </p>
+                <div className="p-6 w-2/3 flex flex-col items-center">
+                  <PiBookmarks size={35} />
+                  <div className="flex items-center flex-col py-3">
+                    <h3 className="text-3xl font-semibold text-gray-800 mb-2">
+                      5 Tips for First-Time Homebuyers
+                    </h3>
+                    <p className="text-gray-600">
+                      Learn valuable advice for navigating the home buying
+                      process for the first time.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
