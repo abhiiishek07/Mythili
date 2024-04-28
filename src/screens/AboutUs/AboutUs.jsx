@@ -1,7 +1,5 @@
 import Testimonial from "@/components/Card/Testimonial";
-import { REVIEWS, SLIDER_SETTINGS_TESTIMONIAL } from "@/constants/constants";
 import Link from "next/link";
-import React from "react";
 import {
   FaChartArea,
   FaGlobe,
@@ -10,7 +8,6 @@ import {
 } from "react-icons/fa6";
 import { RiTeamFill } from "react-icons/ri";
 import { TbMessage2Bolt } from "react-icons/tb";
-import Slider from "react-slick";
 
 const AboutUs = () => {
   return (
@@ -56,6 +53,7 @@ const AboutUs = () => {
             provide you most profitable deals, data-backed solutions, and
             full-fledged post-sales services.
           </p>
+          {/* <Editor /> */}
         </div>
         <p className="text-3xl font-bold mt-10">Why Choose us ?</p>
         <div className="stats  stats-vertical md:stats-horizontal shadow my-7 w-full max-w-6xl border">

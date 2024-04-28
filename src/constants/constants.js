@@ -229,10 +229,13 @@ export const ADMIN_PAGE_DETAILS = [
     icon: FiBook,
   },
   {
-    id: 0,
+    id: 2,
     title: "Interested Users",
     description: "See all the interested users here",
     viewAllLink: "/admin/blog-details/edit",
     icon: FiUsers,
   },
 ];
+
+export const EMPTY_EDITOR =
+  '{"root":{"children":[{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1}],"direction":null,"format":"","indent":0,"type":"root","version":1}}';
