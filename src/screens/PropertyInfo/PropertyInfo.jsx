@@ -216,9 +216,9 @@ const PropertyInfo = ({ data }) => {
                     <h2 className="font-bold text-xl">Overview</h2>
                   </div>
                   <div className="p-4 bg-white border border-gray-200 rounded-xl mt-2">
-                    <div 
-                    className="px-4"
-                    dangerouslySetInnerHTML={{ __html: data.htmlDescription }}
+                    <div
+                      className="px-4"
+                      dangerouslySetInnerHTML={{ __html: data.htmlDescription }}
                     ></div>
                   </div>
                 </div>

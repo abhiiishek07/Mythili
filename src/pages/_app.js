@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import { ThemeProvider } from "next-themes";
 import { PagesProgressBar as ProgressBar } from "next-nprogress-bar";
 import { Toaster } from "react-hot-toast";
+import "@/styles/lexical.css";
 
 export default function App({ Component, pageProps }) {
   return (
