@@ -326,7 +326,6 @@ const Homepage = () => {
             </Slider>
           </div>
         </div>
-
         {/* BLOGS */}
         <section className="bg-gray-50 py-8 w-full max-w-6xl rounded-md mt-6 px-4">
           <div className="container mx-auto px-4">
@@ -339,7 +338,6 @@ const Homepage = () => {
                 Stay updated with our insights and tips.
               </p>
             </div>
-            
             <div className="grid">
               <div className="bg-white shadow-lg rounded-lg overflow-hidden flex">
                 <div className="w-1/3">

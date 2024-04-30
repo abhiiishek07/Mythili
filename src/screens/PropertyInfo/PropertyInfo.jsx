@@ -2,12 +2,13 @@ import Property from "@/components/Card/Property";
 import { Link, Element } from "react-scroll";
 
 import {
+  AMENITIES,
   SLIDER_SETTINGS_DIFF_PROP,
   SLIDER_SETTINGS_DIFF_PROP_INFO,
   SLIDER_SETTINGS_TESTIMONIAL,
 } from "@/constants/constants";
 import Linked from "next/link";
-import { useState } from "react";
+import React, { useState } from "react";
 import { BiDetail } from "react-icons/bi";
 import { BsHouse } from "react-icons/bs";
 import {
@@ -236,7 +237,7 @@ const PropertyInfo = ({ data }) => {
                       target="_blank"
                       className="text-lg font-bold link link-hover italic flex items-center gap-2"
                     >
-                      <IoCloudDownload color="red" /> Download brochure
+                      <IoCloudDownload color="red" /> View brochure
                     </a>
                   </div>
                 </div>
@@ -249,13 +250,21 @@ const PropertyInfo = ({ data }) => {
                     <h2 className="font-bold text-xl">Amenities</h2>
                   </div>
                   <div className="p-4 bg-white border border-gray-200 rounded-xl mt-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-x-6 lg:gap-x-8 gap-y-4 md:gap-y-6 lg:gap-y-8">
-                    <div className="flex flex-col items-center justify-center bg-gray-200 rounded-lg p-6 md:p-8 lg:p-10">
-                      <FaList className="text-3xl text-green-500" />
-                      <p className="py-1 font-semibold tracking-widest">
-                        24*7 Security
-                      </p>
-                    </div>
-                    {/* Add more amenities here */}
+                    {data.amenities.map((item, index) => {
+                      return (
+                        <div
+                          key={index}
+                          className="flex flex-col items-center justify-center bg-gray-200 rounded-lg p-4 md:p-6 lg:p-8 gap-3 border border-green-600"
+                        >
+                          {React.createElement(AMENITIES[item].icon, {
+                            className: "text-4xl text-green-800",
+                          })}
+                          <p className=" font-semibold tracking-widest">
+                            {AMENITIES[item].name}
+                          </p>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </Element>
@@ -280,8 +289,8 @@ const PropertyInfo = ({ data }) => {
                       </video>
                     </div>
                   ) : (
-                    <p className="p-4 bg-white border border-gray-200 rounded-xl mt-2">
-                      Video not available
+                    <p className="p-4 bg-white border border-gray-200 rounded-xl mt-2 italic text-gray-500">
+                      Video not available for this property.
                     </p>
                   )}
                 </div>
@@ -308,8 +317,9 @@ const PropertyInfo = ({ data }) => {
                     <FaLocationDot className="mr-2 text-green-500" size={20} />
                     <h2 className="font-bold text-xl">Location</h2>
                   </div>
+
                   <div
-                    className="p-4 bg-white border border-gray-200 rounded-xl mt-2 flex items-center justify-center"
+                    className="p-4 w-full bg-white border border-gray-200 rounded-xl mt-2 flex items-center justify-center overflow-hidden"
                     dangerouslySetInnerHTML={{ __html: data.googleMapLink }}
                   />
                 </div>
@@ -318,45 +328,38 @@ const PropertyInfo = ({ data }) => {
           </div>
 
           {/* Sidebar for property basic details */}
-          <div className="flex flex-col w-full lg:w-1/4 mt-4 mx-auto overflow-hidden">
-            <div className="rounded-md p-4 ">
+          <div className="flex flex-col w-full lg:w-1/4 mt-4 mx-auto  min-h-screen">
+            <div className="rounded-md  ">
               <div className="flex flex-col px-3 my-2">
-                <p className=" text-lg font-bold mb-1">M3M Towers</p>
+                <p className=" text-2xl font-bold mb-1">{data.name}</p>
                 <span className="text-sm flex items-center ">
                   <FaLocationDot size={15} className=" mr-2" />{" "}
                   <span>{data.location}</span>
                 </span>
               </div>
-              <div className="flex items-center p-3 my-3 border border-gray-300 rounded-xl shadow-md hover:shadow-xl transition duration-300">
+              <div className="divider"></div>
+              <div className="flex items-center p-3 my-3 border border-gray-300 rounded-xl shadow-sm hover:shadow-xl transition duration-300">
                 <div className="m-2">
                   <LuIndianRupee size={30} className=" mr-1" />
                 </div>
-                <div className="flex flex-col mx-2">
+                <div className="flex flex-col mx-2 gap-1">
                   <span className="font-bold text-xl text-gray-800">
                     {data.price} Ownwards
                   </span>
-                  <div className="text-sm text-gray-700">
-                    <span
-                      className={`border rounded-xl px-1 ${
-                        data.status === "Under Construction"
-                          ? "border-orange-200 bg-orange-300"
-                          : data.status === "New Launch"
-                          ? "border-blue-200 bg-blue-300"
-                          : "border-green-200 bg-green-300"
-                      }`}
-                    >
-                      {data.status}
-                    </span>
-                    {/* <span className="border border-orange-200 bg-orange-300 rounded-xl px-1">
-                      Under Contruction
-                    </span>
-                    <span className="border border-green-200 bg-green-300 rounded-xl px-1">
-                      Ready to move
-                    </span> */}
+                  <div
+                    className={`text-xs text-gray-700 border rounded-sm px-2 py-1 w-fit ${
+                      data.status === "Under Construction"
+                        ? "border-orange-200 bg-orange-300"
+                        : data.status === "New Launch"
+                        ? "border-blue-200 bg-blue-300"
+                        : "border-green-200 bg-green-300"
+                    }`}
+                  >
+                    {data.status.name}
                   </div>
                 </div>
               </div>
-              <div className="flex items-center p-3 my-2 border border-gray-300 rounded-xl shadow-md hover:shadow-xl transition duration-300">
+              <div className="flex items-center p-3 my-2 border border-gray-300 rounded-xl shadow-sm hover:shadow-xl transition duration-300">
                 <div className="m-2">
                   <BsHouse className="text-xl" size={30} />
                 </div>
@@ -417,7 +420,7 @@ const PropertyInfo = ({ data }) => {
                     name="whatsappNotification"
                     checked={formData.whatsappNotification}
                     // onChange={handleCheckboxChange}
-                    className="mr-2"
+                    className="mr-2 bg-white checkbox"
                   />
                   <label htmlFor="whatsappNotification" className="text-sm">
                     Receive WhatsApp notification
