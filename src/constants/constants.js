@@ -92,6 +92,43 @@ export const SLIDER_SETTINGS_RECENT_PROP = {
     },
   ],
 };
+export const SLIDER_SETTINGS_BLOGS = {
+  dots: true,
+  infinite: true,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  speed: 500,
+  cssEase: "linear",
+  style: { marging: "5rem", gap: "3rem" },
+  nextArrow: <CustomNextArrow />,
+  prevArrow: <CustomePrevArrow />,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        initialSlide: 2,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+};
 
 export const SLIDER_SETTINGS_DIFF_PROP = {
   dots: true,
