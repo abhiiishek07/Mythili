@@ -26,7 +26,6 @@
 body {
  
   /* @apply overflow-hidden */
-
   .slick-dots {
     margin-left: 0;
   }
@@ -52,5 +51,27 @@ body {
   .slick-current img {
     transform: scale(1.1); 
   }
+
 }
+
+.fw-react-select__control {
+  @apply font-normal min-h-12 text-gray-300 bg-inherit rounded-xl !important;
+}
+
+.fw-react-select__menu {
+  @apply menu dropdown-content bg-base-100 rounded-box border shadow-2xl !important;
+}
+
+.fw-react-select__option {
+  @apply rounded-xl font-normal text-primary cursor-pointer !important;
+}
+
+.fw-react-select__placeholder {
+  @apply text-gray-400 !important;
+}
+
+.fw-react-select__multi-value__remove {
+  @apply text-red-500 !important;
+}
+
 

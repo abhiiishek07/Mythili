@@ -329,7 +329,6 @@ const Homepage = () => {
             </Slider>
           </div>
         </div>
-
         {/* BLOGS */}
         <section className="bg-gray-50 py-4 w-full max-w-6xl rounded-md mt-6 px-4">
           <div className="container mx-auto px-4 ">

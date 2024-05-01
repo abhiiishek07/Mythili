@@ -10,6 +10,13 @@ import signature_logo from "@/assets/images/signature-global.png";
 import sobha_logo from "@/assets/images/sobha_logo.png";
 import whiteland_logo from "@/assets/images/Whiteland-logo.png";
 import { FiSettings, FiBook, FiUsers } from "react-icons/fi";
+import { BsFillShieldLockFill } from "react-icons/bs";
+import { BiCamera, BiChild, BiDumbbell, BiRun, BiSwim } from "react-icons/bi";
+import { GrElevator, GrYoga } from "react-icons/gr";
+import { FaParking } from "react-icons/fa";
+import { SiClubhouse } from "react-icons/si";
+import { FaChildren, FaDumbbell } from "react-icons/fa6";
+import { MdOutlineMarkEmailRead } from "react-icons/md";
 
 export const A_PLUS_DEVELOPERS = [
   bptp_logo,
@@ -266,10 +273,33 @@ export const ADMIN_PAGE_DETAILS = [
     icon: FiBook,
   },
   {
-    id: 0,
+    id: 2,
     title: "Interested Users",
     description: "See all the interested users here",
     viewAllLink: "/admin/blog-details/edit",
     icon: FiUsers,
   },
+  {
+    id: 4,
+    title: "Subscribed users",
+    description: "See all the newsletter users here",
+    viewAllLink: "/admin/subscribed-users",
+    icon: MdOutlineMarkEmailRead,
+  },
+];
+
+export const EMPTY_EDITOR =
+  '{"root":{"children":[{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1}],"direction":null,"format":"","indent":0,"type":"root","version":1}}';
+
+export const AMENITIES = [
+  { id: 0, name: "24*7 Security", icon: BsFillShieldLockFill },
+  { id: 1, name: "Swimming pool", icon: BiSwim },
+  { id: 2, name: "Running track", icon: BiRun },
+  { id: 3, name: "Yoga space", icon: GrYoga },
+  { id: 4, name: "Kids play area", icon: FaChildren },
+  { id: 5, name: "CCTV", icon: BiCamera },
+  { id: 6, name: "Parking", icon: FaParking },
+  { id: 7, name: "Elevator", icon: GrElevator },
+  { id: 8, name: "Club house", icon: SiClubhouse },
+  { id: 9, name: "Gym", icon: FaDumbbell },
 ];
