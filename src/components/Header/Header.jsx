@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { RiHome2Line, RiInformationLine, RiBuilding2Line, RiArticleLine, RiContactsLine } from 'react-icons/ri';
+
 
 const Header = ({ isHomepage }) => {
   const [crossBar, setCrossBar] = useState(false);
@@ -63,23 +65,6 @@ const Header = ({ isHomepage }) => {
                 </li>
               </ul>
             </div>
-            {/* <details>
-              <summary>Properties</summary>
-              <ul className={`p-2 bg-base-100 rounded-t-none text-black`}>
-                <li>
-                  <Link href="/commercial">commercial</Link>
-                </li>
-                <li>
-                  <Link href="/residential">residential</Link>
-                </li>
-                <li>
-                  <Link href="/sco">sco</Link>
-                </li>
-                <li>
-                  <Link href="/plots">plots</Link>
-                </li>
-              </ul>
-            </details> */}
           </li>
           <li>
             <Link href="/blogs">Blogs</Link>
@@ -112,39 +97,72 @@ const Header = ({ isHomepage }) => {
       </label>
 
       {crossBar && (
-        <div className="flex flex-col  absolute top-0 left-0 w-full h-screen bg-white bg-gradient-to-br from-base-200 to-bas">
-          <ul className="menu menu-vertical px-1 uppercase mt-36 text-lg font-bold text-black">
-            <li>
-              <Link href="/">home</Link>
-            </li>
-            <li>
-              <Link href="/about-us">About us</Link>
-            </li>
-            <li>
-              <details>
-                <summary>Properties</summary>
-                <ul className="p-2 bg-base-100 rounded-t-none">
-                  <li>
-                    <Link href="/commercial">commercial</Link>
-                  </li>
-                  <li>
-                    <Link href="/residential">residential</Link>
-                  </li>
-                  <li>
-                    <Link href="/sco">sco</Link>
-                  </li>
-                  <li>
-                    <Link href="/plots">plots</Link>
-                  </li>
-                </ul>
-              </details>
-            </li>
-
-            <li>
-              <Link href="/contact-us">Contact Us</Link>
-            </li>
-          </ul>
-        </div>
+        <div className="flex flex-col items-center absolute top-0 right-0 w-1/2 h-screen bg-white bg-gradient-to-br from-base-200 to-bas">
+        <ul className="menu menu-vertical px-4 pt-12 text-lg font-semibold text-gray-800 uppercase">
+          <li>
+            <Link href="/">
+              <span className="flex items-center  ">
+                <RiHome2Line className="mr-2" />
+                Home
+              </span>
+            </Link>
+          </li>
+          <li>
+            <Link href="/about-us">
+              <span className="flex items-center  ">
+                <RiInformationLine className="mr-2" />
+                About Us
+              </span>
+            </Link>
+          </li>
+          <li>
+            <details>
+              <summary className="flex items-center">
+                <RiBuilding2Line className="mr-2" />
+                Properties
+              </summary>
+              <ul className="p-2 bg-base-100 rounded-t-none">
+                <li>
+                  <Link href="/commercial">
+                    <span className=" ">Commercial</span>
+                  </Link>
+                </li>
+                <li>
+                <Link href="/residential">
+                  <span className=" ">Residential</span>
+                </Link>
+              </li>
+                <li>
+                  <Link href="/sco">
+                    <span className=" ">SCO</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/plots">
+                    <span className=" ">Plots</span>
+                  </Link>
+                </li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <Link href="/blogs">
+              <span className="flex items-center  ">
+                <RiArticleLine className="mr-2" />
+                Blogs
+              </span>
+            </Link>
+          </li>
+          <li>
+            <Link href="/contact-us">
+              <span className="flex items-center  ">
+                <RiContactsLine className="mr-2" />
+                Contact Us
+              </span>
+            </Link>
+          </li>
+        </ul>
+      </div>
       )}
     </div>
   );

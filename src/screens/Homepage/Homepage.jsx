@@ -7,6 +7,7 @@ import Banner from "@/components/Card/Banner";
 import Property from "@/components/Card/Property";
 import Testimonial from "@/components/Card/Testimonial";
 import Header from "@/components/Header/Header";
+import Blogcard from "@/components/Card/Blogcard";
 import {
   Accordion,
   AccordionContent,
@@ -21,6 +22,7 @@ import {
   SLIDER_SETTINGS_DIFF_PROP,
   SLIDER_SETTINGS_RECENT_PROP,
   SLIDER_SETTINGS_TESTIMONIAL,
+  SLIDER_SETTINGS_BLOGS,
 } from "@/constants/constants";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -30,7 +32,6 @@ import {
   FaPen,
   FaRegFaceSmileBeam,
 } from "react-icons/fa6";
-import { HiMiniRocketLaunch } from "react-icons/hi2";
 import { IoLocationOutline } from "react-icons/io5";
 import { FaBuilding } from "react-icons/fa6";
 import { LuTrophy } from "react-icons/lu";
@@ -40,7 +41,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import Image from "next/image";
 import Awards from "@/components/Card/Awards";
-import { PiBookmarks } from "react-icons/pi";
+
 
 const BANNERS = [
   property_1_img,
@@ -77,7 +78,9 @@ const Homepage = () => {
       {/* Banner */}
 
       <div className="top-0 left-0 right-0 z-10 fixed">
-        <AnnouncementBar />
+        <div className="hidden sm:block">
+          <AnnouncementBar />
+        </div>
         <Header isHomepage={true} />
       </div>
 
@@ -193,7 +196,7 @@ const Homepage = () => {
         </div>
         <div className="flex flex-col w-full max-w-6xl items-center justify-center mt-10 ">
           <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-            What are you looking for ?
+            What are you looking for?
           </h2>
           <p className="text-lg text-gray-500 my-3 px-3 text-center">
             Stay Up-to-Date on New Property Options, Best Investment
@@ -327,8 +330,8 @@ const Homepage = () => {
           </div>
         </div>
         {/* BLOGS */}
-        <section className="bg-gray-50 py-8 w-full max-w-6xl rounded-md mt-6 px-4">
-          <div className="container mx-auto px-4">
+        <section className="bg-gray-50 py-4 w-full max-w-6xl rounded-md mt-6 px-4">
+          <div className="container mx-auto px-4 ">
             <div className="text-center mb-8">
               <div className="flex items-center gap-3 text-3xl font-extrabold text-gray-900 sm:text-4xl justify-center">
                 <h2>Explore Our Latest Blogs</h2>
@@ -338,30 +341,12 @@ const Homepage = () => {
                 Stay updated with our insights and tips.
               </p>
             </div>
-            <div className="grid">
-              <div className="bg-white shadow-lg rounded-lg overflow-hidden flex">
-                <div className="w-1/3">
-                  <img
-                    src="https://blog.tkelevator.com/wp/wp-content/uploads/2018/06/shutterstock_464879318-scaled.jpg"
-                    alt="Blog 1"
-                    className="w-full h-56 object-cover"
-                  />
-                </div>
-                <div className="p-6 w-2/3 flex flex-col items-center">
-                  <PiBookmarks size={35} />
-                  <div className="flex items-center flex-col py-3">
-                    <h3 className="text-3xl font-semibold text-gray-800 mb-2">
-                      5 Tips for First-Time Homebuyers
-                    </h3>
-                    <p className="text-gray-600">
-                      Learn valuable advice for navigating the home buying
-                      process for the first time.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="text-center mt-4">
+            <Slider className="" {...SLIDER_SETTINGS_BLOGS}>
+              <Blogcard/>
+              <Blogcard/>
+              <Blogcard/>
+            </Slider>
+            <div className="text-center mt-7">
               <button className="btn btn-ghost text-lg">
                 Read more blogs <FaArrowRight />
               </button>
