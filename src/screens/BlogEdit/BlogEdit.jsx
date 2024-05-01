@@ -1,210 +1,84 @@
-import React, { useState } from "react";
+// Importing necessary modules
+import React from "react";
+import { useState } from "react";
+import { MdEdit, MdDelete } from "react-icons/md";
 
-const EditProperty = () => {
-  const [formData, setFormData] = useState({
-    title: "",
-    price: "",
-    location: "",
-    size: "",
-    details: "",
-    brochure: null,
-    video: "",
-    developerInfo: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleFileUpload = (e) => {
-    const file = e.target.files[0];
-    setFormData({
-      ...formData,
-      images: [...formData.images, file], // Add the uploaded image to the images array
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
-    setFormData({
-      title: "",
-      price: "",
-      location: "",
-      size: "",
-      details: "",
-      images: [], // Reset the images array
-      brochure: null,
-      video: "",
-      developerInfo: "",
-    });
-  };
+const BlogEdit = () => {
+  const userData = [
+    {
+      id: 1,
+      title: "Why to buy in Gurugram",
+      sub_information: "New Delhi",
+      link: "abcd.com",
+    },
+    {
+      id: 2,
+      title: "Top Properties among ...",
+      sub_information: "Gurugram",
+      link: "abcd.com",
+    },
+    {
+      id: 3,
+      title: "Builder M3M largest residentials building",
+      sub_information: "Noida",
+      link: "abcd.com",
+    },
+  ];
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full p-8 bg-white rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold mb-4">Create New Property</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label htmlFor="title" className="block text-sm font-semibold mb-1">
-              Title:
-            </label>
-            <input
-              type="text"
-              id="title"
-              name="title"
-              value={formData.title}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-md"
-              placeholder="Enter title"
-              required
-            />
+    <div className="min-h-screen flex items-center justify-center bg-gray-200">
+      <div className="max-w-7xl w-full bg-white shadow-md rounded-lg overflow-hidden">
+        <div className="px-6 py-4">
+          <div className="font-bold text-xl mb-2">Blogs Details</div>
+          {/* Table to display user information */}
+          <div className="overflow-x-auto">
+            <table className="table">
+              {/* head */}
+              <thead>
+                <tr className="bg-base-200 text-lg">
+                  <th>ID</th>
+                  <th>Title</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {userData.map((blogs) => (
+                  <tr key={blogs.id}>
+                    <td>{blogs.id}</td>
+                    <td>
+                      <div className="flex items-center gap-3">
+                        <div>
+                          <div className="font-bold flex-wrap">
+                            {blogs.title}
+                          </div>
+                          <div className="text-sm opacity-50">
+                            {blogs.sub_information}
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <button className="btn bg-green-300 hover:bg-green-500 focus:bg-green-700 flex items-center justify-center gap-1">
+                        <span>Edit</span>
+                        <MdEdit className="text-lg" />
+                      </button>
+                    </td>
+                    <td>
+                      <button className="btn bg-red-300 hover:bg-red-500 focus:bg-red-700 flex items-center justify-center gap-1">
+                        <span>Delete</span>
+                        <MdDelete className="text-lg" />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-          <div>
-            <label htmlFor="price" className="block text-sm font-semibold mb-1">
-              Price:
-            </label>
-            <input
-              type="text"
-              id="price"
-              name="price"
-              value={formData.price}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-md"
-              placeholder="Enter price"
-              required
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="location"
-              className="block text-sm font-semibold mb-1"
-            >
-              Location:
-            </label>
-            <input
-              type="text"
-              id="location"
-              name="location"
-              value={formData.location}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-md"
-              placeholder="Enter location"
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="size" className="block text-sm font-semibold mb-1">
-              Size:
-            </label>
-            <input
-              type="text"
-              id="size"
-              name="size"
-              value={formData.size}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-md"
-              placeholder="Enter size"
-              required
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="details"
-              className="block text-sm font-semibold mb-1"
-            >
-              Details:
-            </label>
-            <textarea
-              id="details"
-              name="details"
-              value={formData.details}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-md"
-              placeholder="Enter details"
-              required
-            ></textarea>
-          </div>
-          <div>
-            <label
-              htmlFor="images"
-              className="block text-sm font-semibold mb-1"
-            >
-              Images:
-            </label>
-            <input
-              type="file"
-              id="images"
-              name="images"
-              accept="image/*"
-              onChange={handleFileUpload}
-              className="w-full"
-              multiple
-              required
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="brochure"
-              className="block text-sm font-semibold mb-1"
-            >
-              Brochure (PDF):
-            </label>
-            <input
-              type="file"
-              id="brochure"
-              name="brochure"
-              accept=".pdf"
-              onChange={handleFileUpload}
-              className="w-full"
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="video" className="block text-sm font-semibold mb-1">
-              Video:
-            </label>
-            <input
-              type="text"
-              id="video"
-              name="video"
-              value={formData.video}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-md"
-              placeholder="Enter video URL"
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="developerInfo"
-              className="block text-sm font-semibold mb-1"
-            >
-              Developer Information:
-            </label>
-            <textarea
-              id="developerInfo"
-              name="developerInfo"
-              value={formData.developerInfo}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-md"
-              placeholder="Enter developer information"
-              required
-            ></textarea>
-          </div>
-          <button
-            type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-300"
-          >
-            Create Property
-          </button>
-        </form>
+        </div>
       </div>
     </div>
   );
 };
 
-export default EditProperty;
+export default BlogEdit;

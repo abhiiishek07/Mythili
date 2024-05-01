@@ -73,6 +73,11 @@ const PropertyInfo = ({ data }) => {
     });
   };
 
+  const handleDownload = () => {
+    // setting the modal on to make it display
+    console.log("Done the button")
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // Validation
@@ -243,7 +248,7 @@ const PropertyInfo = ({ data }) => {
                       onClick={handleBrochureDownload}
                       className="text-lg font-bold link link-hover italic flex items-center gap-2"
                     >
-                      <IoCloudDownload color="red" /> View brochure
+                      <IoCloudDownload color="red"  /> Download brochure
                     </a>
                   </div>
                 </div>
