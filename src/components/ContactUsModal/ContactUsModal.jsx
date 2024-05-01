@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 
-const ContactUsModal = ({ openContactUs, setOpenContactUs }) => {
+const ContactUsModal = ({ openContactUs, setOpenContactUs , forBrochure , setForBrochure }) => {
   const [submitting, setSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -59,6 +59,10 @@ const ContactUsModal = ({ openContactUs, setOpenContactUs }) => {
           phone: "",
           message: "",
         });
+        if (forBrochure) {
+          window.open(setForBrochure )
+        }
+        setOpenContactUs(false)
       } else {
         toast.error("Something went wrong");
       }

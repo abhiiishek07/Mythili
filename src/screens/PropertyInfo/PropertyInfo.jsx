@@ -1,5 +1,6 @@
 import Property from "@/components/Card/Property";
 import { Link, Element } from "react-scroll";
+import ContactUsModal from "@/components/ContactUsModal/ContactUsModal";
 
 import {
   AMENITIES,
@@ -28,6 +29,8 @@ import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 
 const PropertyInfo = ({ data }) => {
+  const [openContactus, setOpenContactUs] = useState(false)
+  const [forBrochure, setForBrochure] = useState(true)
   const settings = {
     customPaging: function (i) {
       return (
@@ -57,6 +60,10 @@ const PropertyInfo = ({ data }) => {
     phone: "",
     message: "",
   });
+
+  const handleBrochureDownload = (e) => {
+    setOpenContactUs(true);
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -238,8 +245,7 @@ const PropertyInfo = ({ data }) => {
                   </div>
                   <div className="p-4 bg-white border border-gray-200 rounded-xl mt-2 flex items-center justify-center">
                     <a
-                      href={data.brochure}
-                      onClick={handleDownload}
+                      onClick={handleBrochureDownload}
                       className="text-lg font-bold link link-hover italic flex items-center gap-2"
                     >
                       <IoCloudDownload color="red"  /> Download brochure
@@ -455,6 +461,14 @@ const PropertyInfo = ({ data }) => {
             <Property />
           </Slider>
         </div>
+      </div>
+      <div>
+      <ContactUsModal
+        forBrochure={forBrochure}
+        setForBrochure = {data.brochure}
+        openContactUs={openContactus}
+        setOpenContactUs={setOpenContactUs}
+      />
       </div>
     </div>
   );
