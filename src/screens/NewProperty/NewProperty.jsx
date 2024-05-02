@@ -392,7 +392,7 @@ const NewProperty = () => {
           <label className="block text-sm font-semibold mb-1">Amenities:</label>
           <div className="grid grid-cols-4 gap-x-8 gap-y-2">
             {AMENITIES.map((item) => (
-              <div className="flex items-center  w-full max-w-xs justify-between">
+              <div key={item.id} className="flex items-center  w-full max-w-xs justify-between">
                 <span className="label-text">{item.name}</span>
                 <input
                   type="checkbox"

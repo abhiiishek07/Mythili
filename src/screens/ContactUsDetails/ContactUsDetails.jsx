@@ -12,7 +12,6 @@ const ContactUsDetails = () => {
       phone: "9191902101",
       property: "M3Ms",
       whatsappConfirmation: false,
-      message: "want all info about this property",
     },
     {
       id: 2,
@@ -21,7 +20,6 @@ const ContactUsDetails = () => {
       phone: "9191902101",
       property: "M3Ms",
       whatsappConfirmation: false,
-      message: "want all info about this property",
     },
     {
       id: 3,
@@ -30,7 +28,6 @@ const ContactUsDetails = () => {
       phone: "9191902101",
       property: "M3Ms",
       whatsappConfirmation: false,
-      message: "want all info about this property",
     },
     // Add more dummy data as needed
   ];
@@ -52,7 +49,6 @@ const ContactUsDetails = () => {
                   <th>Phone No.</th>
                   <th>Property Info Required</th>
                   <th>Whatsapp Confirmation</th>
-                  <th>Message</th>
                   <th></th>
                 </tr>
               </thead>
@@ -78,29 +74,6 @@ const ContactUsDetails = () => {
                     <td>{user.phone}</td>
                     <td>{user.property}</td>
                     <td>{user.whatsappConfirmation ? "Yes" : "No"}</td>
-                    <td>
-                      <button
-                        className="btn"
-                        onClick={() =>
-                          document.getElementById("my_modal_3").showModal()
-                        }
-                      >
-                        Read Message
-                      </button>
-                      <dialog id="my_modal_3" className="modal">
-                        <div className="modal-box">
-                          <form method="dialog">
-                            {/* if there is a button in form, it will close the modal */}
-                            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-                              ✕
-                            </button>
-                          </form>
-                          <p className="py-4">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore possimus molestiae delectus tempora quis deleniti impedit ipsum, labore nesciunt porro incidunt. Dolor a ipsa aliquam ad nostrum facere est ducimus!
-                          </p>
-                        </div>
-                      </dialog>
-                    </td>
                     <td>
                       <button className="btn bg-red-300 hover:bg-red-500 focus:bg-red-700 flex items-center justify-center gap-1">
                         <span>Delete</span>
