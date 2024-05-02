@@ -268,7 +268,7 @@ export const ADMIN_PAGE_DETAILS = [
     id: 1,
     title: "Blogs",
     description: "Manage all the blogs here",
-    viewAllLink: "/admin/blogs/edit",
+    viewAllLink: "/admin/blogs",
     addNewLink: "/admin/blogs/new",
     icon: FiBook,
   },
@@ -276,7 +276,7 @@ export const ADMIN_PAGE_DETAILS = [
     id: 2,
     title: "Interested Users",
     description: "See all the interested users here",
-    viewAllLink: "/admin/blog-details/edit",
+    viewAllLink: "/admin/contact-us",
     icon: FiUsers,
   },
   {
