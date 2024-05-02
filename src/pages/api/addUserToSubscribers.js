@@ -9,10 +9,13 @@ export default async function handler(req, res) {
 
   const { emailId } = req.body;
 
+  const d = new Date().toDateString();
+  let dateString = d.toString();
+
   try {
     await admin.firestore().collection("subscribers").add({
       emailId,
-      joined: new Date(),
+      joined: dateString,
     });
 
     return res.status(200).json({
