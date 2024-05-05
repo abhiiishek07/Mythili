@@ -1,7 +1,14 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { RiHome2Line, RiInformationLine, RiBuilding2Line, RiArticleLine, RiContactsLine } from 'react-icons/ri';
-
+import {
+  RiHome2Line,
+  RiInformationLine,
+  RiBuilding2Line,
+  RiArticleLine,
+  RiContactsLine,
+} from "react-icons/ri";
+import logo from "@/assets/images/mythili_realty_logo.png";
+import Image from "next/image";
 
 const Header = ({ isHomepage }) => {
   const [crossBar, setCrossBar] = useState(false);
@@ -25,15 +32,21 @@ const Header = ({ isHomepage }) => {
 
   return (
     <div
-      className={`navbar py-3 rounded-md sticky top-0 z-20  ${
+      className={`navbar  rounded-md sticky h-20 top-0 z-20  overflow-hidden  ${
         isHomepage && !showBackground
           ? "bg-transparent text-white"
           : "bg-base-100 backdrop-filter backdrop-blur-lg bg-opacity-30  "
       }`}
     >
       <div className="flex-1">
-        <Link className="btn btn-ghost normal-case text-3xl font-bold" href="/">
-          Real Estate
+        <Link className="  flex items-center justify-center pl-6" href="/">
+          <Image
+            src={logo.src}
+            alt="logo"
+            height={5}
+            width={220}
+            className={!showBackground && "brightness-100"}
+          />
         </Link>
       </div>
 
@@ -98,71 +111,71 @@ const Header = ({ isHomepage }) => {
 
       {crossBar && (
         <div className="flex flex-col items-center absolute top-0 right-0 w-1/2 h-screen bg-white bg-gradient-to-br from-base-200 to-bas">
-        <ul className="menu menu-vertical px-4 pt-12 text-lg font-semibold text-gray-800 uppercase">
-          <li>
-            <Link href="/">
-              <span className="flex items-center  ">
-                <RiHome2Line className="mr-2" />
-                Home
-              </span>
-            </Link>
-          </li>
-          <li>
-            <Link href="/about-us">
-              <span className="flex items-center  ">
-                <RiInformationLine className="mr-2" />
-                About Us
-              </span>
-            </Link>
-          </li>
-          <li>
-            <details>
-              <summary className="flex items-center">
-                <RiBuilding2Line className="mr-2" />
-                Properties
-              </summary>
-              <ul className="p-2 bg-base-100 rounded-t-none">
-                <li>
-                  <Link href="/commercial">
-                    <span className=" ">Commercial</span>
-                  </Link>
-                </li>
-                <li>
-                <Link href="/residential">
-                  <span className=" ">Residential</span>
-                </Link>
-              </li>
-                <li>
-                  <Link href="/sco">
-                    <span className=" ">SCO</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/plots">
-                    <span className=" ">Plots</span>
-                  </Link>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <Link href="/blogs">
-              <span className="flex items-center  ">
-                <RiArticleLine className="mr-2" />
-                Blogs
-              </span>
-            </Link>
-          </li>
-          <li>
-            <Link href="/contact-us">
-              <span className="flex items-center  ">
-                <RiContactsLine className="mr-2" />
-                Contact Us
-              </span>
-            </Link>
-          </li>
-        </ul>
-      </div>
+          <ul className="menu menu-vertical px-4 pt-12 text-lg font-semibold text-gray-800 uppercase">
+            <li>
+              <Link href="/">
+                <span className="flex items-center  ">
+                  <RiHome2Line className="mr-2" />
+                  Home
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/about-us">
+                <span className="flex items-center  ">
+                  <RiInformationLine className="mr-2" />
+                  About Us
+                </span>
+              </Link>
+            </li>
+            <li>
+              <details>
+                <summary className="flex items-center">
+                  <RiBuilding2Line className="mr-2" />
+                  Properties
+                </summary>
+                <ul className="p-2 bg-base-100 rounded-t-none">
+                  <li>
+                    <Link href="/commercial">
+                      <span className=" ">Commercial</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/residential">
+                      <span className=" ">Residential</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/sco">
+                      <span className=" ">SCO</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/plots">
+                      <span className=" ">Plots</span>
+                    </Link>
+                  </li>
+                </ul>
+              </details>
+            </li>
+            <li>
+              <Link href="/blogs">
+                <span className="flex items-center  ">
+                  <RiArticleLine className="mr-2" />
+                  Blogs
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact-us">
+                <span className="flex items-center  ">
+                  <RiContactsLine className="mr-2" />
+                  Contact Us
+                </span>
+              </Link>
+            </li>
+          </ul>
+        </div>
       )}
     </div>
   );

@@ -3,7 +3,24 @@ import { getAllContactUsUsers } from "@/pages/api/getAllContactUsUsers";
 import { useMemo, useState } from "react";
 import { usePagination, useSortBy, useTable } from "react-table";
 
-export async function getServerSideProps() {
+import { sessionOptions } from "@/lib/utils";
+import { getIronSession } from "iron-session";
+
+export async function getServerSideProps(context) {
+  const session = await getIronSession(
+    context.req,
+    context.res,
+    sessionOptions
+  );
+
+  if (!session.isLoggedIn) {
+    return {
+      redirect: {
+        destination: "/admin/login",
+        permanent: false,
+      },
+    };
+  }
   const list = await getAllContactUsUsers();
 
   return {

@@ -1,8 +1,29 @@
-import React from 'react'
-import BlogEdit from '@/screens/BlogEdit/BlogEdit'
+import React from "react";
+import BlogEdit from "@/screens/BlogEdit/BlogEdit";
 
-const BlogsEditpage = () => {
-  return <BlogEdit/>
+export async function getServerSideProps(context) {
+  const session = await getIronSession(
+    context.req,
+    context.res,
+    sessionOptions
+  );
+
+  if (!session.isLoggedIn) {
+    return {
+      redirect: {
+        destination: "/admin/login",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
 }
 
-export default BlogsEditpage
+const BlogsEditpage = () => {
+  return <BlogEdit />;
+};
+
+export default BlogsEditpage;
