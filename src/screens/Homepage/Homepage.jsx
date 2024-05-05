@@ -54,7 +54,6 @@ const Homepage = ({ data }) => {
   const [selectedTab, setSelectedTab] = useState("residential");
 
   const inputRef = useRef(null);
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (inputRef.current && !inputRef.current.contains(event.target)) {
@@ -401,6 +400,13 @@ const Homepage = ({ data }) => {
             </AccordionItem>
           </Accordion>
         </div>
+      </div>
+
+      <div>
+        <ContactUsModal
+          openContactUs={showModal}
+          setOpenContactUs={setShowModal}
+        />
       </div>
     </div>
   );

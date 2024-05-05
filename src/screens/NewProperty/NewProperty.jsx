@@ -158,7 +158,7 @@ const NewProperty = () => {
       const embeddedLink = convertToEmbeddedLink(formData.googleMapLink);
 
       let data = {
-        name: formData.title,
+        title: formData.title,
         price: formData.price,
         address: formData.address,
         size: formData.size,
@@ -180,7 +180,7 @@ const NewProperty = () => {
 
       if (res.status === 200) {
         setFormData({
-          name: "",
+          title: "",
           price: "",
           address: "",
           size: "",
@@ -217,7 +217,7 @@ const NewProperty = () => {
             type="text"
             id="title"
             name="title"
-            value={formData.name}
+            value={formData.title}
             onChange={handleChange}
             className="w-full px-4 py-2 border rounded-md input input-bordered"
             placeholder="Enter property name"
