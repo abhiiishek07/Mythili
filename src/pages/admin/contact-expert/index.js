@@ -1,4 +1,6 @@
+import { sessionOptions } from "@/lib/utils";
 import { getAllContactExpert } from "@/pages/api/getAllContactExpert";
+import { getIronSession } from "iron-session";
 import Link from "next/link";
 import { useMemo } from "react";
 import { usePagination, useSortBy, useTable } from "react-table";
@@ -38,7 +40,22 @@ const columns = [
   },
 ];
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+  const session = await getIronSession(
+    context.req,
+    context.res,
+    sessionOptions
+  );
+
+  if (!session.isLoggedIn) {
+    return {
+      redirect: {
+        destination: "/admin/login",
+        permanent: false,
+      },
+    };
+  }
+
   const data = await getAllContactExpert();
 
   return {

@@ -2,6 +2,8 @@ import { getAllBrochure } from "@/pages/api/getAllBrochure";
 import Link from "next/link";
 import { useMemo } from "react";
 import { usePagination, useSortBy, useTable } from "react-table";
+import { sessionOptions } from "@/lib/utils";
+import { getIronSession } from "iron-session";
 
 const columns = [
   {
@@ -33,6 +35,30 @@ const columns = [
     accessor: "time",
   },
 ];
+
+export async function getServerSideProps(context) {
+  const session = await getIronSession(
+    context.req,
+    context.res,
+    sessionOptions
+  );
+
+  if (!session.isLoggedIn) {
+    return {
+      redirect: {
+        destination: "/admin/login",
+        permanent: false,
+      },
+    };
+  }
+  const data = await getAllBrochure();
+
+  return {
+    props: {
+      list: JSON.parse(JSON.stringify(data)),
+    },
+  };
+}
 
 const BrochureDownloads = ({ list }) => {
   const data = useMemo(() => list);
@@ -162,13 +188,3 @@ const BrochureDownloads = ({ list }) => {
 };
 
 export default BrochureDownloads;
-
-export async function getServerSideProps() {
-  const data = await getAllBrochure();
-
-  return {
-    props: {
-      list: JSON.parse(JSON.stringify(data)),
-    },
-  };
-}

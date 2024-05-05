@@ -1,8 +1,29 @@
-import React from 'react'
-import NewBlog from '@/screens/NewBlog/NewBlog'
+import React from "react";
+import NewBlog from "@/screens/NewBlog/NewBlog";
 
-const BlogsNew = () => {
-  return <NewBlog/>
+export async function getServerSideProps(context) {
+  const session = await getIronSession(
+    context.req,
+    context.res,
+    sessionOptions
+  );
+
+  if (!session.isLoggedIn) {
+    return {
+      redirect: {
+        destination: "/admin/login",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
 }
 
-export default BlogsNew
+const BlogsNew = () => {
+  return <NewBlog />;
+};
+
+export default BlogsNew;
