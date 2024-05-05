@@ -50,10 +50,42 @@ const BANNERS = [
 ];
 
 const Homepage = ({ data }) => {
+  console.log("Complete data" , data);
   const [collapsed, setCollapsed] = useState(true);
   const [selectedTab, setSelectedTab] = useState("residential");
+  const [selectedProperty, setSelectedProperty] = useState([]);
 
   const inputRef = useRef(null);
+
+  const newLaunchData = data.filter(item => item.status.value === "new-launch").slice(0, 8);
+
+  useEffect(() => {
+    // Filter data based on the selected tab when the selectedTab state changes
+    filterProperties();
+  }, [selectedTab, data]);
+  
+  const filterProperties = () => {
+    // Filter data based on the selected tab and limit to first 8 items
+    const filteredData = data.filter(item => {
+      switch (selectedTab) {
+        case "residential":
+          return item.type === "residential";
+        case "commercial":
+          return item.type === "commercial";
+        case "sco":
+          return item.type === "sco";
+        case "plot":
+          return item.type === "plot";
+        default:
+          return true;
+      }
+    }).slice(0, 7);
+
+    // Update selectedProperty state with the filtered data
+    setSelectedProperty(filteredData);
+  };
+
+
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -186,10 +218,9 @@ const Homepage = ({ data }) => {
           </div>
           <div className="w-full mt-2">
             <Slider className="" {...SLIDER_SETTINGS_RECENT_PROP}>
-              <Property image={property_1_img} />
-              <Property image={property_2_img} />
-              <Property image={property_3_img} />
-              <Property image={property_4_img} />
+            {newLaunchData.map((data, index) => (
+              <Property key={index} data={data}/>
+            ))}
             </Slider>
           </div>
         </div>
@@ -232,9 +263,9 @@ const Homepage = ({ data }) => {
             <a
               role="tab"
               className={`tab ${
-                selectedTab === "plots" && " bg-green-800 text-white"
+                selectedTab === "plot" && " bg-green-800 text-white"
               }`}
-              onClick={() => setSelectedTab("plots")}
+              onClick={() => setSelectedTab("plot")}
             >
               PLOTS
             </a>
@@ -242,10 +273,9 @@ const Homepage = ({ data }) => {
         </div>
         <div className="w-full max-w-6xl mt-1 mb-10">
           <Slider {...SLIDER_SETTINGS_DIFF_PROP}>
-            <Property image={property_1_img} />
-            <Property image={property_2_img} />
-            <Property image={property_3_img} />
-            <Property image={property_4_img} />
+            {selectedProperty.map((item,index) => (
+              <Property key={index} data={item}/>
+            ))}
           </Slider>
         </div>
 

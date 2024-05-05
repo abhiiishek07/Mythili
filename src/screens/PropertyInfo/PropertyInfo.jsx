@@ -33,6 +33,8 @@ const PropertyInfo = ({ data }) => {
   const [forBrochure, setForBrochure] = useState(true);
   const [loading, setLoading] = useState(false);
 
+  const currentType = data.type;
+
   const settings = {
     customPaging: function (i) {
       return (
@@ -396,7 +398,7 @@ const PropertyInfo = ({ data }) => {
           <div className="flex flex-col w-full lg:w-1/4 mt-4 mx-auto  min-h-screen">
             <div className="rounded-md  ">
               <div className="flex flex-col px-3 my-2">
-                <p className=" text-2xl font-bold mb-1">{data.name}</p>
+                <p className=" text-2xl font-bold mb-1">{data.title}</p>
                 <span className="text-sm flex items-center ">
                   <FaLocationDot size={15} className=" mr-2" />{" "}
                   <span>{data.address}</span>
@@ -516,9 +518,9 @@ const PropertyInfo = ({ data }) => {
         </h2>
         <div className="w-full">
           <Slider {...SLIDER_SETTINGS_DIFF_PROP}>
+            {/* <Property />
             <Property />
-            <Property />
-            <Property />
+            <Property /> */}
           </Slider>
         </div>
       </div>

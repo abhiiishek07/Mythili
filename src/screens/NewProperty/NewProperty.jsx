@@ -24,6 +24,8 @@ const NewProperty = () => {
   const checkEmptyFields = () => {
     if (
       !formData.amenities ||
+      !formData.city ||
+      !formData.address ||
       !formData.brochure ||
       !formData.developerInfo ||
       !formData.googleMapLink ||
@@ -42,6 +44,7 @@ const NewProperty = () => {
     title: "",
     price: "",
     address: "",
+    city: "",
     size: "",
 
     images: [],
@@ -104,24 +107,6 @@ const NewProperty = () => {
     });
   };
 
-  function convertToEmbeddedLink(normalLink) {
-    // Extract latitude and longitude from the normal link
-    const regex = /@([-0-9.]+),([-0-9.]+)/;
-    const match = normalLink.match(regex);
-
-    if (match && match.length >= 3) {
-      const latitude = match[1];
-      const longitude = match[2];
-
-      // Construct embedded link
-      const embeddedLink = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d112178.64480204455!2d${longitude}!3d${latitude}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1`;
-
-      return embeddedLink;
-    } else {
-      return null; // Invalid Google Maps link
-    }
-  }
-
   const handleSubmit = async () => {
     console.log("d", formData);
     if (checkEmptyFields()) {
@@ -155,20 +140,18 @@ const NewProperty = () => {
         videoUrl = videoDownloadURL;
       }
 
-      const embeddedLink = convertToEmbeddedLink(formData.googleMapLink);
-
       let data = {
         title: formData.title,
         price: formData.price,
         address: formData.address,
+        city: formData.city,
         size: formData.size,
-
         images: imagesURL,
         amenities: formData.amenities,
         brochure: brochureURL,
         video: videoUrl,
         developerInfo: formData.developerInfo,
-        googleMapLink: embeddedLink,
+        googleMapLink: formData.googleMapLink,
         type: formData.type,
         description: JSON.stringify(description),
         htmlDescription: htmlDescription,
@@ -183,6 +166,7 @@ const NewProperty = () => {
           title: "",
           price: "",
           address: "",
+          city: "",
           size: "",
 
           images: [],
@@ -251,6 +235,21 @@ const NewProperty = () => {
             onChange={handleChange}
             className="w-full px-4 py-2 border rounded-md input input-bordered"
             placeholder="Enter property address"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="city" className="block text-sm font-semibold mb-1">
+            City* :
+          </label>
+          <input
+            type="text"
+            id="city"
+            name="city"
+            value={formData.city}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-md input input-bordered"
+            placeholder="Enter property City"
             required
           />
         </div>

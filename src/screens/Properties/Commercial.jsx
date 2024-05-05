@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FaShop } from "react-icons/fa6";
 import property_3_img from "@/assets/images/property_3.jpg";
 
-const Commercial = () => {
+const Commercial = ({data}) => {
   return (
     <div className=" flex justify-center px-4 ">
       <div className="flex flex-col w-full max-w-6xl  mt-8">
@@ -62,11 +62,9 @@ const Commercial = () => {
           </div>
         </div>
         <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  ">
-          <Property />
-          <Property />
-          <Property />
-          <Property />
-          <Property />
+          {data.map((item,index) => (
+            <Property key={index} data={item} />
+          ))}
         </div>
       </div>
     </div>

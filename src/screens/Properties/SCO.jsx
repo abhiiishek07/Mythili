@@ -2,7 +2,7 @@ import Property from "@/components/Card/Property";
 import Link from "next/link";
 import { MdHomeWork } from "react-icons/md";
 
-const SCO = () => {
+const SCO = ({data}) => {
   return (
     <div className=" flex justify-center px-4 ">
       <div className="flex flex-col w-full max-w-6xl  mt-8">
@@ -59,11 +59,9 @@ const SCO = () => {
           </div>
         </div>
         <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  ">
-          <Property />
-          <Property />
-          <Property />
-          <Property />
-          <Property />
+        {data.map((item,index) => (
+            <Property key={index} data={item} />
+          ))}
         </div>
       </div>
     </div>

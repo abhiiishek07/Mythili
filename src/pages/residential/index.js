@@ -1,5 +1,6 @@
 import Residential from "@/screens/Properties/Residential";
 import React from "react";
+import { getPropertiesByType } from "../api/properties/getPropertiesByType";
 
 export async function getServerSideProps() {
   const data = await getPropertiesByType("residential");
@@ -11,8 +12,8 @@ export async function getServerSideProps() {
   };
 }
 
-const ResidentialPage = () => {
-  return <Residential />;
+const ResidentialPage = ({data}) => {
+  return <Residential data={data} />;
 };
 
 export default ResidentialPage;
