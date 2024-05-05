@@ -139,7 +139,7 @@ const NewProperty = () => {
       }
       console.log("video url", videoUrl);
       let data = {
-        name: formData.title,
+        title: formData.title,
         price: formData.price,
         location: formData.location,
         size: formData.size,
@@ -161,7 +161,7 @@ const NewProperty = () => {
 
       if (res.status === 200) {
         setFormData({
-          name: "",
+          title: "",
           price: "",
           location: "",
           size: "",
@@ -198,7 +198,7 @@ const NewProperty = () => {
             type="text"
             id="title"
             name="title"
-            value={formData.name}
+            value={formData.title}
             onChange={handleChange}
             className="w-full px-4 py-2 border rounded-md input input-bordered"
             placeholder="Enter property name"

@@ -41,7 +41,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import Image from "next/image";
 import Awards from "@/components/Card/Awards";
-
+import ContactUsModal from "@/components/ContactUsModal/ContactUsModal";
 
 const BANNERS = [
   property_1_img,
@@ -51,11 +51,11 @@ const BANNERS = [
 ];
 
 const Homepage = () => {
+  const [showModal, setShowModal] = useState(false);
   const [collapsed, setCollapsed] = useState(true);
   const [selectedTab, setSelectedTab] = useState("residential");
 
   const inputRef = useRef(null);
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (inputRef.current && !inputRef.current.contains(event.target)) {
@@ -342,9 +342,9 @@ const Homepage = () => {
               </p>
             </div>
             <Slider className="" {...SLIDER_SETTINGS_BLOGS}>
-              <Blogcard/>
-              <Blogcard/>
-              <Blogcard/>
+              <Blogcard />
+              <Blogcard />
+              <Blogcard />
             </Slider>
             <div className="text-center mt-7">
               <button className="btn btn-ghost text-lg">
@@ -402,6 +402,13 @@ const Homepage = () => {
             </AccordionItem>
           </Accordion>
         </div>
+      </div>
+
+      <div>
+        <ContactUsModal
+          openContactUs={showModal}
+          setOpenContactUs={setShowModal}
+        />
       </div>
     </div>
   );
