@@ -41,9 +41,9 @@ const NewProperty = () => {
   const [formData, setFormData] = useState({
     title: "",
     price: "",
-    location: "",
+    address: "",
     size: "",
-    details: "",
+
     images: [],
     amenities: [],
     brochure: null,
@@ -104,7 +104,26 @@ const NewProperty = () => {
     });
   };
 
+  function convertToEmbeddedLink(normalLink) {
+    // Extract latitude and longitude from the normal link
+    const regex = /@([-0-9.]+),([-0-9.]+)/;
+    const match = normalLink.match(regex);
+
+    if (match && match.length >= 3) {
+      const latitude = match[1];
+      const longitude = match[2];
+
+      // Construct embedded link
+      const embeddedLink = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d112178.64480204455!2d${longitude}!3d${latitude}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1`;
+
+      return embeddedLink;
+    } else {
+      return null; // Invalid Google Maps link
+    }
+  }
+
   const handleSubmit = async () => {
+    console.log("d", formData);
     if (checkEmptyFields()) {
       return toast.error("Please enter all the required feilds !");
     }
@@ -129,27 +148,27 @@ const NewProperty = () => {
 
       let videoUrl = "";
 
-      console.log("video", formData.video);
-
       if (formData.video) {
         const videoRef = ref(storage, `videos/${formData.video.name}`);
         const videoSnapshot = await uploadBytes(videoRef, formData.video);
         const videoDownloadURL = await getDownloadURL(videoSnapshot.ref);
         videoUrl = videoDownloadURL;
       }
-      console.log("video url", videoUrl);
+
+      const embeddedLink = convertToEmbeddedLink(formData.googleMapLink);
+
       let data = {
         title: formData.title,
         price: formData.price,
-        location: formData.location,
+        address: formData.address,
         size: formData.size,
-        details: formData.details,
+
         images: imagesURL,
         amenities: formData.amenities,
         brochure: brochureURL,
         video: videoUrl,
         developerInfo: formData.developerInfo,
-        googleMapLink: formData.googleMapLink,
+        googleMapLink: embeddedLink,
         type: formData.type,
         description: JSON.stringify(description),
         htmlDescription: htmlDescription,
@@ -163,9 +182,9 @@ const NewProperty = () => {
         setFormData({
           title: "",
           price: "",
-          location: "",
+          address: "",
           size: "",
-          details: "",
+
           images: [],
           amenities: [],
           brochure: null,
@@ -221,20 +240,17 @@ const NewProperty = () => {
           />
         </div>
         <div>
-          <label
-            htmlFor="location"
-            className="block text-sm font-semibold mb-1"
-          >
-            Location* :
+          <label htmlFor="address" className="block text-sm font-semibold mb-1">
+            Address* :
           </label>
           <input
             type="text"
-            id="location"
-            name="location"
-            value={formData.location}
+            id="address"
+            name="address"
+            value={formData.address}
             onChange={handleChange}
             className="w-full px-4 py-2 border rounded-md input input-bordered"
-            placeholder="Enter location"
+            placeholder="Enter property address"
             required
           />
         </div>
@@ -392,7 +408,10 @@ const NewProperty = () => {
           <label className="block text-sm font-semibold mb-1">Amenities:</label>
           <div className="grid grid-cols-4 gap-x-8 gap-y-2">
             {AMENITIES.map((item) => (
-              <div key={item.id} className="flex items-center  w-full max-w-xs justify-between">
+              <div
+                key={item.id}
+                className="flex items-center  w-full max-w-xs justify-between"
+              >
                 <span className="label-text">{item.name}</span>
                 <input
                   type="checkbox"
@@ -453,7 +472,7 @@ const NewProperty = () => {
             name="developerInfo"
             value={formData.developerInfo}
             onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-md  input input-bordered"
+            className="w-full px-4 py-2 border rounded-md  textarea textarea-bordered text-area-lg"
             placeholder="Enter developer information"
             required
           ></textarea>

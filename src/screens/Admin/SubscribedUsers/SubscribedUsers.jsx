@@ -1,17 +1,6 @@
-import { getAllContactUsUsers } from "@/pages/api/getAllContactUsUsers";
-
+import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 import { usePagination, useSortBy, useTable } from "react-table";
-
-export async function getServerSideProps() {
-  const list = await getAllContactUsUsers();
-
-  return {
-    props: {
-      list: JSON.parse(JSON.stringify(list)),
-    },
-  };
-}
 
 const columns = [
   {
@@ -19,24 +8,16 @@ const columns = [
     accessor: "index",
   },
   {
-    Header: "Name",
-    accessor: "name",
-  },
-  {
     Header: "Email",
-    accessor: "email",
-  },
-  {
-    Header: "Phone",
-    accessor: "phone",
+    accessor: "emailId",
   },
   {
     Header: "Date",
-    accessor: "time",
+    accessor: "joined",
   },
 ];
 
-const ContactUsAdminPage = ({ list }) => {
+const SubscribedUsers = ({ list }) => {
   const data = useMemo(() => list);
 
   const {
@@ -154,4 +135,4 @@ const ContactUsAdminPage = ({ list }) => {
   );
 };
 
-export default ContactUsAdminPage;
+export default SubscribedUsers;

@@ -1,17 +1,7 @@
-import { getAllContactUsUsers } from "@/pages/api/getAllContactUsUsers";
-
-import { useMemo, useState } from "react";
+import { getAllContactExpert } from "@/pages/api/getAllContactExpert";
+import Link from "next/link";
+import { useMemo } from "react";
 import { usePagination, useSortBy, useTable } from "react-table";
-
-export async function getServerSideProps() {
-  const list = await getAllContactUsUsers();
-
-  return {
-    props: {
-      list: JSON.parse(JSON.stringify(list)),
-    },
-  };
-}
 
 const columns = [
   {
@@ -19,16 +9,28 @@ const columns = [
     accessor: "index",
   },
   {
-    Header: "Name",
-    accessor: "name",
+    Header: "Property Name",
+    accessor: "propertyName",
+  },
+  {
+    Header: "Property Link",
+    accessor: "propertyId",
   },
   {
     Header: "Email",
     accessor: "email",
   },
   {
+    Header: "Name",
+    accessor: "name",
+  },
+  {
     Header: "Phone",
     accessor: "phone",
+  },
+  {
+    Header: "Whatsapp Permission",
+    accessor: "whatsappPermission",
   },
   {
     Header: "Date",
@@ -36,7 +38,17 @@ const columns = [
   },
 ];
 
-const ContactUsAdminPage = ({ list }) => {
+export async function getServerSideProps() {
+  const data = await getAllContactExpert();
+
+  return {
+    props: {
+      list: JSON.parse(JSON.stringify(data)),
+    },
+  };
+}
+
+const BrochureDownloads = ({ list }) => {
   const data = useMemo(() => list);
 
   const {
@@ -65,7 +77,7 @@ const ContactUsAdminPage = ({ list }) => {
   return (
     <div className="min-h-screen w-full flex justify-center  bg-gray-200">
       <div className="max-w-7xl w-full h-fit my-12 mx-auto p-4 bg-white shadow-md rounded-lg ">
-        <div className="font-bold text-xl mb-2 ">Subscribed Users</div>
+        <div className="font-bold text-xl mb-2 ">Contact Expert</div>
 
         {/* Table to display filtered user information */}
         <div className="overflow-x-auto">
@@ -104,9 +116,18 @@ const ContactUsAdminPage = ({ list }) => {
                           className=" text-left w-56 overflow-hidden"
                           key={columnIndex}
                         >
-                          <p className="capitalize">
-                            {row.values[column.accessor]}
-                          </p>
+                          {column.accessor === "propertyId" ? (
+                            <Link
+                              href={`/property/${row.values.propertyId}`}
+                              target="_blank"
+                            >
+                              {row.values.propertyId}
+                            </Link>
+                          ) : (
+                            <p className="capitalize">
+                              {row.values[column.accessor]}
+                            </p>
+                          )}
                         </td>
                       );
                     })}
@@ -154,4 +175,4 @@ const ContactUsAdminPage = ({ list }) => {
   );
 };
 
-export default ContactUsAdminPage;
+export default BrochureDownloads;

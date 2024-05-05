@@ -8,12 +8,9 @@ export default async function handler(req, res) {
   }
 
   const { data } = req.body;
-  const d = new Date().toDateString();
-  let dateString = d.toString();
-  data.time = dateString;
 
   try {
-    await admin.firestore().collection("contactUs").add(data);
+    await admin.firestore().collection("brochure").add(data);
 
     return res.status(200).json({
       success: true,

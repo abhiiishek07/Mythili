@@ -7,13 +7,13 @@ export default async function handler(req, res) {
     return res.status(405).end();
   }
 
-  const { data } = req.body;
-  const d = new Date().toDateString();
-  let dateString = d.toString();
-  data.time = dateString;
+  const { contact_expert_data } = req.body;
 
   try {
-    await admin.firestore().collection("contactUs").add(data);
+    await admin
+      .firestore()
+      .collection("contact-expert")
+      .add(contact_expert_data);
 
     return res.status(200).json({
       success: true,

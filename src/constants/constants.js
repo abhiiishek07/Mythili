@@ -15,7 +15,12 @@ import { BiCamera, BiChild, BiDumbbell, BiRun, BiSwim } from "react-icons/bi";
 import { GrElevator, GrYoga } from "react-icons/gr";
 import { FaParking } from "react-icons/fa";
 import { SiClubhouse } from "react-icons/si";
-import { FaChildren, FaDumbbell } from "react-icons/fa6";
+import {
+  FaBuildingShield,
+  FaChildren,
+  FaDumbbell,
+  FaFilePdf,
+} from "react-icons/fa6";
 import { MdOutlineMarkEmailRead } from "react-icons/md";
 
 export const A_PLUS_DEVELOPERS = [
@@ -274,15 +279,29 @@ export const ADMIN_PAGE_DETAILS = [
   },
   {
     id: 2,
-    title: "Interested Users",
+    title: "Contact Us",
     description: "See all the interested users here",
     viewAllLink: "/admin/contact-us",
     icon: FiUsers,
   },
   {
+    id: 3,
+    title: "Brochure Downloads",
+    description: "See all the users who have downlaoded brochures",
+    viewAllLink: "/admin/brochure-downloads",
+    icon: FaFilePdf,
+  },
+  {
     id: 4,
+    title: "Property Info Requests (Contact Expert )",
+    description: "See all the users who have request for property info.",
+    viewAllLink: "/admin/contact-expert",
+    icon: FaBuildingShield,
+  },
+  {
+    id: 5,
     title: "Subscribed users",
-    description: "See all the newsletter users here",
+    description: "See all the users who have subscribed to newsletter",
     viewAllLink: "/admin/subscribed-users",
     icon: MdOutlineMarkEmailRead,
   },
