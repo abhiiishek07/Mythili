@@ -1,13 +1,13 @@
 import { initializeFirebaseAdmin } from "@/lib/firebase/initializeFirebaseAdmin";
 import admin from "firebase-admin";
 
-export const getAllCommercialProperties = async () => {
+export const getPropertiesByType = async (type) => {
   initializeFirebaseAdmin();
 
   const propertiesSnap = await admin
     .firestore()
     .collection("properties")
-    .where("type", "==", "commercial")
+    .where("type", "==", type)
     .get();
 
   let data = [];

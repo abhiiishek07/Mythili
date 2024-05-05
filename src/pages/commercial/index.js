@@ -1,9 +1,9 @@
 import Commercial from "@/screens/Properties/Commercial";
 import React from "react";
-import { getAllCommercialProperties } from "../api/properties/getCommercialProperties";
+import { getPropertiesByType } from "../api/properties/getPropertiesByType";
 
 export async function getServerSideProps() {
-  const data = await getAllCommercialProperties();
+  const data = await getPropertiesByType("commercial");
 
   return {
     props: {
@@ -14,7 +14,7 @@ export async function getServerSideProps() {
 
 const Index = ({ data }) => {
   console.log("daty", data);
-  return <Commercial />;
+  return <Commercial data={data} />;
 };
 
 export default Index;
