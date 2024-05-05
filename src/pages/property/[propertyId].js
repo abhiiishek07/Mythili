@@ -8,6 +8,8 @@ export async function getServerSideProps(context) {
 
   const data = (await getPropertyInfo(propertyId)) || null;
 
+  data.id = propertyId;
+
   return {
     props: {
       data,

@@ -1,11 +1,10 @@
 import Property from "@/components/Card/Property";
-import { Link, Element } from "react-scroll";
 import ContactUsModal from "@/components/ContactUsModal/ContactUsModal";
+import { Element, Link } from "react-scroll";
 
 import {
   AMENITIES,
   SLIDER_SETTINGS_DIFF_PROP,
-  SLIDER_SETTINGS_DIFF_PROP_INFO,
   SLIDER_SETTINGS_TESTIMONIAL,
 } from "@/constants/constants";
 import Linked from "next/link";
@@ -14,23 +13,26 @@ import { BiDetail } from "react-icons/bi";
 import { BsHouse } from "react-icons/bs";
 import {
   FaArrowRight,
-  FaFilePdf,
   FaHouse,
-  FaHouseChimney,
   FaList,
   FaLocationDot,
   FaPersonShelter,
   FaVideo,
 } from "react-icons/fa6";
-import { IoMailUnreadOutline, IoCloudDownload } from "react-icons/io5";
+import { IoCloudDownload, IoMailUnreadOutline } from "react-icons/io5";
 import { LuIndianRupee } from "react-icons/lu";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
+import toast from "react-hot-toast";
+import Image from "next/image";
+import axios from "axios";
 
 const PropertyInfo = ({ data }) => {
-  const [openContactus, setOpenContactUs] = useState(false)
-  const [forBrochure, setForBrochure] = useState(true)
+  const [openContactus, setOpenContactUs] = useState(false);
+  const [forBrochure, setForBrochure] = useState(true);
+  const [loading, setLoading] = useState(false);
+
   const settings = {
     customPaging: function (i) {
       return (
@@ -58,12 +60,12 @@ const PropertyInfo = ({ data }) => {
     name: "",
     email: "",
     phone: "",
-    message: "",
+    whatsappPermission: "no",
   });
 
   const handleBrochureDownload = (e) => {
     setOpenContactUs(true);
-  }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -73,32 +75,59 @@ const PropertyInfo = ({ data }) => {
     });
   };
 
-  const handleDownload = () => {
-    // setting the modal on to make it display
-    console.log("Done the button")
-  }
+  const handlewhatsapp = (e) => {
+    const { checked } = e.target;
+    if (checked) {
+      setFormData({
+        ...formData,
+        whatsappPermission: "Yes",
+      });
+    } else {
+      setFormData({
+        ...formData,
+        whatsappPermission: "No",
+      });
+    }
+  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Validation
+
     if (
       formData.name.trim() === "" ||
       formData.email.trim() === "" ||
-      formData.phone.trim() === "" ||
-      formData.message.trim() === ""
+      formData.phone.trim() === ""
     ) {
-      alert("Please fill out all fields");
+      toast.error("Please fill all the required feild");
       return;
     }
-    // Send form data
-    console.log(formData);
-    // Clear form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
+
+    setLoading(true);
+
+    const contact_expert_data = {
+      ...formData,
+      propertyName: data.name,
+      propertyId: data.id,
+      time: new Date().toDateString().toString(),
+    };
+
+    const res = await axios.post("/api/contact-expert", {
+      contact_expert_data,
     });
+
+    if (res.status === 200) {
+      toast.success("An Expert will contact you shortly!");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        whatsappPermission: "No",
+      });
+    } else {
+      toast.error("Something went wrong. Please try again");
+    }
+
+    setLoading(false);
   };
 
   return (
@@ -119,30 +148,55 @@ const PropertyInfo = ({ data }) => {
         <div className="flex flex-col lg:flex-row w-full my-8 md:my-0 md:space-x-6">
           <div className=" w-full max-w-4xl p-3">
             <div className=" md:hidden w-full px-4 py-4 bg-base-200 rounded-lg relative slide-container ">
-              <Slider
-                {...SLIDER_SETTINGS_TESTIMONIAL}
-                className="w-full h-full flex"
-              >
-                {data?.images.map((image, index) => (
-                  <div key={index}>
-                    <img src={image} className="rounded-md h-56 w-full" />
-                  </div>
-                ))}
-              </Slider>
+              {data.images.length === 1 ? (
+                <Image
+                  src={data.images[0]}
+                  alt="banner"
+                  height={700}
+                  width={500}
+                />
+              ) : (
+                <Slider
+                  {...SLIDER_SETTINGS_TESTIMONIAL}
+                  className="w-full h-full flex"
+                >
+                  {data?.images.map((image, index) => (
+                    <div key={index}>
+                      <img src={image} className="rounded-md h-56 w-full" />
+                    </div>
+                  ))}
+                </Slider>
+              )}
               <div className="mx-auto w-full flex justify-center items-center gap-2 text-gray-400">
                 <p className="font-bold">swipe</p>
                 <FaArrowRight />
               </div>
             </div>
-            <div className="hidden md:block w-full  px-8 pt-5 pb-14 bg-base-300 rounded-lg relative slide-container ">
-              <Slider {...settings} className="w-full h-full">
-                {data?.images.map((image, index) => (
-                  <div key={index}>
-                    <img src={image} className="rounded-md h-[33rem] w-full" />
-                  </div>
-                ))}
-              </Slider>
-            </div>
+
+            {data.images.length === 1 ? (
+              <div className="hidden md:block w-full  p-5 bg-base-300 rounded-lg ">
+                <Image
+                  src={data.images[0]}
+                  alt="banner"
+                  height={600}
+                  width={600}
+                  className="object-fill w-full"
+                />
+              </div>
+            ) : (
+              <div className="hidden md:block w-full  px-8 pt-5 pb-14 bg-base-300 rounded-lg relative slide-container ">
+                <Slider {...settings} className="w-full h-full">
+                  {data?.images.map((image, index) => (
+                    <div key={index}>
+                      <img
+                        src={image}
+                        className="rounded-md h-[33rem] w-full"
+                      />
+                    </div>
+                  ))}
+                </Slider>
+              </div>
+            )}
 
             {/* All property details section*/}
             <div className="my-4 p-2">
@@ -248,7 +302,7 @@ const PropertyInfo = ({ data }) => {
                       onClick={handleBrochureDownload}
                       className="text-lg font-bold link link-hover italic flex items-center gap-2"
                     >
-                      <IoCloudDownload color="red"  /> Download brochure
+                      <IoCloudDownload color="red" /> Download brochure
                     </a>
                   </div>
                 </div>
@@ -260,17 +314,17 @@ const PropertyInfo = ({ data }) => {
                     <FaList className="mr-2 text-green-500" size={20} />
                     <h2 className="font-bold text-xl">Amenities</h2>
                   </div>
-                  <div className="p-4 bg-white border border-gray-200 rounded-xl mt-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-x-6 lg:gap-x-8 gap-y-4 md:gap-y-6 lg:gap-y-8">
+                  <div className="p-4 bg-white border border-gray-200 rounded-xl mt-2 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-x-6 lg:gap-x-8 gap-y-4 md:gap-y-6 lg:gap-y-8">
                     {data.amenities.map((item, index) => {
                       return (
                         <div
                           key={index}
-                          className="flex flex-col items-center justify-center bg-gray-200 rounded-lg p-4 md:p-6 lg:p-8 gap-3 border border-green-600"
+                          className="flex flex-col items-center justify-center bg-gray-200 rounded-lg p-3 md:p-3 lg:p-4 gap-3 border border-green-600"
                         >
                           {React.createElement(AMENITIES[item].icon, {
                             className: "text-4xl text-green-800",
                           })}
-                          <p className=" font-semibold tracking-widest">
+                          <p className=" font-semibold tracking-widest text-xs lg:text-md break-words text-center">
                             {AMENITIES[item].name}
                           </p>
                         </div>
@@ -345,7 +399,7 @@ const PropertyInfo = ({ data }) => {
                 <p className=" text-2xl font-bold mb-1">{data.name}</p>
                 <span className="text-sm flex items-center ">
                   <FaLocationDot size={15} className=" mr-2" />{" "}
-                  <span>{data.location}</span>
+                  <span>{data.address}</span>
                 </span>
               </div>
               <div className="divider"></div>
@@ -415,7 +469,7 @@ const PropertyInfo = ({ data }) => {
                 />
 
                 <input
-                  type="tel"
+                  type="number"
                   id="phone"
                   name="phone"
                   value={formData.phone}
@@ -429,19 +483,25 @@ const PropertyInfo = ({ data }) => {
                     type="checkbox"
                     id="whatsappNotification"
                     name="whatsappNotification"
-                    checked={formData.whatsappNotification}
-                    // onChange={handleCheckboxChange}
+                    checked={
+                      formData.whatsappPermission === "Yes" ? true : false
+                    }
+                    onChange={handlewhatsapp}
                     className="mr-2 bg-white checkbox"
                   />
                   <label htmlFor="whatsappNotification" className="text-sm">
-                    Receive WhatsApp notification
+                    Receive Whatsapp Notification
                   </label>
                 </div>
 
                 <button
                   type="submit"
+                  disabled={loading}
                   className="btn bg-green-800 hover:bg-green-700 text-white text-lg w-full uppercase"
                 >
+                  {loading && (
+                    <span className="loading loading-spinner loading-md"></span>
+                  )}
                   SUBMIT
                 </button>
               </form>
@@ -463,12 +523,13 @@ const PropertyInfo = ({ data }) => {
         </div>
       </div>
       <div>
-      <ContactUsModal
-        forBrochure={forBrochure}
-        setForBrochure = {data.brochure}
-        openContactUs={openContactus}
-        setOpenContactUs={setOpenContactUs}
-      />
+        <ContactUsModal
+          forBrochure={forBrochure}
+          setForBrochure={data.brochure}
+          openContactUs={openContactus}
+          setOpenContactUs={setOpenContactUs}
+          propertyData={data}
+        />
       </div>
     </div>
   );

@@ -2,13 +2,18 @@ import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 
-const ContactUsModal = ({ openContactUs, setOpenContactUs , forBrochure , setForBrochure }) => {
+const ContactUsModal = ({
+  openContactUs,
+  setOpenContactUs,
+  forBrochure,
+  setForBrochure,
+  propertyData,
+}) => {
   const [submitting, setSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    message: "",
   });
   const [errors, setErrors] = useState({});
 
@@ -27,7 +32,7 @@ const ContactUsModal = ({ openContactUs, setOpenContactUs , forBrochure , setFor
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Validation
     const validationErrors = {};
     if (formData.name.trim() === "") {
@@ -46,28 +51,58 @@ const ContactUsModal = ({ openContactUs, setOpenContactUs , forBrochure , setFor
 
     setSubmitting(true);
 
-    try {
-      const res = await axios.post("/api/contactUs", {
-        data: formData,
-      });
-
-      if (res.status === 200) {
-        toast.success("Thank you for getting in touch with us!");
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          message: "",
+    if (forBrochure) {
+      let data = {
+        ...formData,
+        propertyName: propertyData.name,
+        propertyId: propertyData.id,
+        time: new Date().toDateString().toString(),
+      };
+      try {
+        const res = await axios.post("/api/brochure", {
+          data,
         });
-        if (forBrochure) {
-          window.open(setForBrochure )
+
+        if (res.status === 200) {
+          toast.success("Thank you for enquiring about this property");
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+          });
+
+          if (forBrochure) {
+            window.open(setForBrochure);
+          }
+
+          setOpenContactUs(false);
+        } else {
+          toast.error("Something went wrong");
         }
-        setOpenContactUs(false)
-      } else {
+      } catch (error) {
         toast.error("Something went wrong");
       }
-    } catch (error) {
-      toast.error("Something went wrong");
+    } else {
+      try {
+        const res = await axios.post("/api/contactUs", {
+          data: formData,
+        });
+
+        if (res.status === 200) {
+          toast.success("Thank you for getting in touch with us!");
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+          });
+
+          setOpenContactUs(false);
+        } else {
+          toast.error("Something went wrong");
+        }
+      } catch (error) {
+        toast.error("Something went wrong");
+      }
     }
 
     setSubmitting(false);
@@ -83,13 +118,20 @@ const ContactUsModal = ({ openContactUs, setOpenContactUs , forBrochure , setFor
           ✕
         </button>
         <div className="flex flex-col px-3 w-full items-center">
-          <p className="font-bold text-3xl my-2">Write To Us</p>
+          <p className="font-bold text-3xl my-2">
+            {forBrochure ? "Enquire Now" : "Write to Us"}
+          </p>
           <form
             className="w-full flex flex-col items-center gap-4"
             onSubmit={handleSubmit}
           >
             <div className="w-full">
-              <label htmlFor="name" className="block mb-1 text-sm font-medium text-gray-700">Name</label>
+              <label
+                htmlFor="name"
+                className="block mb-1 text-sm font-medium text-gray-700"
+              >
+                Name
+              </label>
               <input
                 type="text"
                 id="name"
@@ -104,7 +146,12 @@ const ContactUsModal = ({ openContactUs, setOpenContactUs , forBrochure , setFor
             </div>
 
             <div className="w-full">
-              <label htmlFor="email" className="block mb-1 text-sm font-medium text-gray-700">Email</label>
+              <label
+                htmlFor="email"
+                className="block mb-1 text-sm font-medium text-gray-700"
+              >
+                Email
+              </label>
               <input
                 type="email"
                 id="email"
@@ -119,9 +166,14 @@ const ContactUsModal = ({ openContactUs, setOpenContactUs , forBrochure , setFor
             </div>
 
             <div className="w-full">
-            <label htmlFor="phone" className="block mb-1 text-sm font-medium text-gray-700">Phone Number</label>
+              <label
+                htmlFor="phone"
+                className="block mb-1 text-sm font-medium text-gray-700"
+              >
+                Phone Number
+              </label>
               <input
-                type="tel"
+                type="number"
                 id="phone"
                 name="phone"
                 value={formData.phone}

@@ -1,10 +1,6 @@
-import axios from "axios";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useMemo, useState } from "react";
-import toast from "react-hot-toast";
-import { MdEdit, MdDelete } from "react-icons/md";
-import { useTable, useSortBy, usePagination } from "react-table";
+import { useMemo, useState } from "react";
+import { usePagination, useSortBy, useTable } from "react-table";
 
 const columns = [
   {
@@ -22,13 +18,6 @@ const columns = [
 ];
 
 const SubscribedUsers = ({ list }) => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [properties, setProperties] = useState(list);
-  const [selectedProperty, setSelectedProperty] = useState("");
-  const [open, setOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const router = useRouter();
-
   const data = useMemo(() => list);
 
   const {

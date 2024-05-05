@@ -42,7 +42,6 @@ import "slick-carousel/slick/slick.css";
 import Image from "next/image";
 import Awards from "@/components/Card/Awards";
 
-
 const BANNERS = [
   property_1_img,
   property_2_img,
@@ -50,7 +49,7 @@ const BANNERS = [
   property_4_img,
 ];
 
-const Homepage = () => {
+const Homepage = ({ data }) => {
   const [collapsed, setCollapsed] = useState(true);
   const [selectedTab, setSelectedTab] = useState("residential");
 
@@ -342,9 +341,9 @@ const Homepage = () => {
               </p>
             </div>
             <Slider className="" {...SLIDER_SETTINGS_BLOGS}>
-              <Blogcard/>
-              <Blogcard/>
-              <Blogcard/>
+              <Blogcard />
+              <Blogcard />
+              <Blogcard />
             </Slider>
             <div className="text-center mt-7">
               <button className="btn btn-ghost text-lg">
