@@ -10,7 +10,7 @@ export default function App({ Component, pageProps }) {
     <ThemeProvider defaultTheme="light">
       <ProgressBar
         height="2px"
-        color="#00FF00"
+        color="#15803D"
         options={{ showSpinner: false }}
       />
       <Layout>

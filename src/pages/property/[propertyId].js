@@ -4,9 +4,9 @@ import { getPropertyInfo } from "../api/properties/getPropertyInfo";
 import Error from "next/error";
 
 export async function getServerSideProps(context) {
-  const { propertyid } = context.params;
+  const { propertyId } = context.params;
 
-  const data = (await getPropertyInfo(propertyid)) || null;
+  const data = (await getPropertyInfo(propertyId)) || null;
 
   data.id = propertyId;
 
