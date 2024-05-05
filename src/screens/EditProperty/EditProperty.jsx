@@ -35,7 +35,8 @@ const EditProperty = ({ data }) => {
     if (!formData.developerInfo) emptyFields.push("Developer Info");
     if (!formData.googleMapLink) emptyFields.push("Google Map Link");
     if (!formData.images) emptyFields.push("Images");
-    if (!formData.location) emptyFields.push("Location");
+    if (!formData.address) emptyFields.push("Address");
+    if (!formData.city) emptyFields.push("City");
     if (!formData.price) emptyFields.push("Price");
     if (!formData.title) emptyFields.push("Title");
     if (!formData.size) emptyFields.push("Size");
@@ -127,7 +128,8 @@ const EditProperty = ({ data }) => {
         id: id,
         title: formData.title,
         price: formData.price,
-        location: formData.location,
+        address: formData.address,
+        city: formData.city,
         size: formData.size,
         details: formData.details,
         images: imagesURL,
@@ -197,20 +199,39 @@ const EditProperty = ({ data }) => {
         </div>
         <div>
           <label
-            htmlFor="location"
+            htmlFor="address"
             className="block text-sm font-semibold mb-1"
           >
             {" "}
-            Location* :{" "}
+            Address* :{" "}
           </label>
           <input
             type="text"
-            id="location"
-            name="location"
-            value={formData.location}
+            id="address"
+            name="address"
+            value={formData.address}
             onChange={handleChange}
             className="w-full px-4 py-2 border rounded-md input input-bordered"
-            placeholder="Enter location"
+            placeholder="Enter property address"
+            required
+          />
+        </div>
+        <div>
+          <label
+            htmlFor="city"
+            className="block text-sm font-semibold mb-1"
+          >
+            {" "}
+            City* :{" "}
+          </label>
+          <input
+            type="text"
+            id="City"
+            name="City"
+            value={formData.City}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-md input input-bordered"
+            placeholder="Enter property City"
             required
           />
         </div>

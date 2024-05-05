@@ -1,4 +1,6 @@
 /* @import "./editor.css"; */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400&family=Great+Vibes&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

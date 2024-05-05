@@ -13,8 +13,8 @@ export async function getServerSideProps() {
   };
 }
 
-const SCOPage = () => {
-  return <SCO />;
+const SCOPage = ({data}) => {
+  return <SCO data={data} />;
 };
 
 export default SCOPage;
