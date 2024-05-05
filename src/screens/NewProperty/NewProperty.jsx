@@ -249,7 +249,7 @@ const NewProperty = () => {
             value={formData.city}
             onChange={handleChange}
             className="w-full px-4 py-2 border rounded-md input input-bordered"
-            placeholder="Enter property address"
+            placeholder="Enter property City"
             required
           />
         </div>
