@@ -13,11 +13,11 @@ const columns = [
   },
   {
     Header: "Name",
-    accessor: "name",
+    accessor: "title",
   },
   {
-    Header: "Location",
-    accessor: "location",
+    Header: "City",
+    accessor: "city",
   },
   {
     Header: "Type",
@@ -146,7 +146,9 @@ const PropertyDetailPage = ({ list }) => {
                     })}
                     <td className="px-4 py-4 text-left">
                       <button className="btn btn-primary">
-                        <Link href={`/admin/property/${row.original.id}`}>
+                        <Link
+                          href={`/admin/properties/edit/${row.original.id}`}
+                        >
                           Edit
                         </Link>
                       </button>

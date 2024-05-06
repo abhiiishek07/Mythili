@@ -43,49 +43,50 @@ import Image from "next/image";
 import Awards from "@/components/Card/Awards";
 
 const BANNERS = [
+  property_3_img,
   property_1_img,
   property_2_img,
-  property_3_img,
   property_4_img,
 ];
 
 const Homepage = ({ data }) => {
-  console.log("Complete data" , data);
   const [collapsed, setCollapsed] = useState(true);
   const [selectedTab, setSelectedTab] = useState("residential");
   const [selectedProperty, setSelectedProperty] = useState([]);
 
   const inputRef = useRef(null);
 
-  const newLaunchData = data.filter(item => item.status.value === "new-launch").slice(0, 8);
+  const newLaunchData = data
+    .filter((item) => item.status.value === "new-launch")
+    .slice(0, 8);
 
   useEffect(() => {
     // Filter data based on the selected tab when the selectedTab state changes
     filterProperties();
   }, [selectedTab, data]);
-  
+
   const filterProperties = () => {
     // Filter data based on the selected tab and limit to first 8 items
-    const filteredData = data.filter(item => {
-      switch (selectedTab) {
-        case "residential":
-          return item.type === "residential";
-        case "commercial":
-          return item.type === "commercial";
-        case "sco":
-          return item.type === "sco";
-        case "plot":
-          return item.type === "plot";
-        default:
-          return true;
-      }
-    }).slice(0, 7);
+    const filteredData = data
+      .filter((item) => {
+        switch (selectedTab) {
+          case "residential":
+            return item.type === "residential";
+          case "commercial":
+            return item.type === "commercial";
+          case "sco":
+            return item.type === "sco";
+          case "plot":
+            return item.type === "plot";
+          default:
+            return true;
+        }
+      })
+      .slice(0, 7);
 
     // Update selectedProperty state with the filtered data
     setSelectedProperty(filteredData);
   };
-
-
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -178,7 +179,9 @@ const Homepage = ({ data }) => {
                 <option>Han Solo</option>
                 <option>Greedo</option>
               </select>
-              <button className="btn btn-primary">Search</button>
+              <button className="btn bg-green-700 text-white uppercase">
+                Search
+              </button>
             </div>
           </div>
         </div>
@@ -218,9 +221,9 @@ const Homepage = ({ data }) => {
           </div>
           <div className="w-full mt-2">
             <Slider className="" {...SLIDER_SETTINGS_RECENT_PROP}>
-            {newLaunchData.map((data, index) => (
-              <Property key={index} data={data}/>
-            ))}
+              {newLaunchData.map((data, index) => (
+                <Property key={index} data={data} />
+              ))}
             </Slider>
           </div>
         </div>
@@ -273,8 +276,8 @@ const Homepage = ({ data }) => {
         </div>
         <div className="w-full max-w-6xl mt-1 mb-10">
           <Slider {...SLIDER_SETTINGS_DIFF_PROP}>
-            {selectedProperty.map((item,index) => (
-              <Property key={index} data={item}/>
+            {selectedProperty.map((item, index) => (
+              <Property key={index} data={item} />
             ))}
           </Slider>
         </div>
