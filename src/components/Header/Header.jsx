@@ -32,7 +32,7 @@ const Header = ({ isHomepage }) => {
 
   return (
     <div
-      className={`navbar  rounded-md sticky h-20 top-0 z-20  overflow-hidden  ${
+      className={`navbar  rounded-md sticky h-20 top-0 z-20  lg:overflow-hidden  ${
         isHomepage && !showBackground
           ? "bg-transparent text-white"
           : "bg-base-100 backdrop-filter backdrop-blur-lg bg-opacity-30  "
@@ -45,7 +45,7 @@ const Header = ({ isHomepage }) => {
             alt="logo"
             height={5}
             width={220}
-            className={!showBackground && "brightness-100"}
+            className="w-40 lg:w-60"
           />
         </Link>
       </div>
@@ -110,8 +110,8 @@ const Header = ({ isHomepage }) => {
       </label>
 
       {crossBar && (
-        <div className="flex flex-col items-center absolute top-0 right-0 w-1/2 h-screen bg-white bg-gradient-to-br from-base-200 to-bas">
-          <ul className="menu menu-vertical px-4 pt-12 text-lg font-semibold text-gray-800 uppercase">
+        <div className="flex flex-col items-center absolute top-0 right-0 w-1/2 bg-white">
+          <ul className="h-fit menu menu-vertical px-4 pt-12 text-lg font-semibold text-gray-800 uppercase">
             <li>
               <Link href="/">
                 <span className="flex items-center  ">

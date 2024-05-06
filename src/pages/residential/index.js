@@ -12,7 +12,7 @@ export async function getServerSideProps() {
   };
 }
 
-const ResidentialPage = ({data}) => {
+const ResidentialPage = ({ data }) => {
   return <Residential data={data} />;
 };
 

@@ -17,7 +17,7 @@ const Property = ({ data }) => {
               <img
                 class="absolute inset-0 h-full w-full object-cover"
                 src={
-                  (data.images[0]) ||
+                  data.images[0] ||
                   "https://images.unsplash.com/photo-1475855581690-80accde3ae2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
                 }
                 alt=""
@@ -27,9 +27,7 @@ const Property = ({ data }) => {
               <span class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">
                 {data.status.name}
               </span>
-              <h2 class="mt-2 mb-2  font-bold">
-                {data.title}
-              </h2>
+              <h2 class="mt-2 mb-2 text-xl font-extrabold">{data.title}</h2>
               <div className="line-clamp-2 text-sm">
                 {" "}
                 <p>

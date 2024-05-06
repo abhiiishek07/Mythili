@@ -1,9 +1,15 @@
 /* @import "./editor.css"; */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400&family=Great+Vibes&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  font-family: "Cormorant SC";
+  font-weight: 700;
+  font-style: normal;/* Add a subtle text shadow */
+}
+
 
 @keyframes zoom-in {
   0% {
