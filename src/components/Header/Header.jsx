@@ -110,7 +110,7 @@ const Header = ({ isHomepage }) => {
       </label>
 
       {crossBar && (
-        <div className="flex flex-col items-center absolute top-0 right-0 w-1/2 bg-white">
+        <div className="flex flex-col items-center absolute top-0 right-0 w-1/2 bg-white h-screen">
           <ul className="h-fit menu menu-vertical px-4 pt-12 text-lg font-semibold text-gray-800 uppercase">
             <li>
               <Link href="/">
