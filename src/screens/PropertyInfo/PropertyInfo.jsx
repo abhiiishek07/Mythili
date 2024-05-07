@@ -28,12 +28,12 @@ import toast from "react-hot-toast";
 import Image from "next/image";
 import axios from "axios";
 
-const PropertyInfo = ({ data }) => {
+const PropertyInfo = ({ data, similarProperty }) => {
   const [openContactus, setOpenContactUs] = useState(false);
   const [forBrochure, setForBrochure] = useState(true);
   const [loading, setLoading] = useState(false);
 
-  const currentType = data.type;
+  console.log("-->", similarProperty);
 
   const settings = {
     customPaging: function (i) {
@@ -518,9 +518,9 @@ const PropertyInfo = ({ data }) => {
         </h2>
         <div className="w-full">
           <Slider {...SLIDER_SETTINGS_DIFF_PROP}>
-            {/* <Property />
-            <Property />
-            <Property /> */}
+            {similarProperty.slice(0, 6).map((item, index) => (
+              <Property key={index} data={item} />
+            ))}
           </Slider>
         </div>
       </div>
