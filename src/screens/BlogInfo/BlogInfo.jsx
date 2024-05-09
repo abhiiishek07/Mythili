@@ -11,7 +11,7 @@ const BlogInfo = () => {
               <Link href="/">Home</Link>
             </li>
             <li>
-            <Link href="/Blogs">Blogs</Link>
+            <Link href="/blog">Blogs</Link>
             </li>
             <li>
               <a>Why to buy property in this rate?</a>
