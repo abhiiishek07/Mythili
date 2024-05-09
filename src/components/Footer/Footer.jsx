@@ -87,7 +87,7 @@ const Footer = () => {
                 Plots
               </Link>
 
-              <Link href="/blogs" className="link-hover">
+              <Link href="/blog" className="link-hover">
                 Blogs
               </Link>
 
