@@ -314,7 +314,7 @@ const Homepage = ({ data }) => {
 
         {/* AWARDS SECTION */}
 
-        <section className="bg-gray-100 py-16 max-w-6xl rounded-md my-6">
+        {/* <section className="bg-gray-100 py-16 max-w-6xl rounded-md my-6">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <div className="flex items-center gap-4 text-3xl font-extrabold text-gray-900 sm:text-4xl justify-center">
@@ -344,7 +344,7 @@ const Homepage = ({ data }) => {
               />
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Testimonial */}
 
@@ -367,7 +367,7 @@ const Homepage = ({ data }) => {
             <div className="text-center mb-8">
               <div className="flex items-center gap-3 text-3xl font-extrabold text-gray-900 sm:text-4xl justify-center">
                 <h2>Explore Our Latest Blogs</h2>
-                <FaPen size={35} className="pt-2" />
+                {/* <FaPen size={35} className="pt-2" /> */}
               </div>
               <p className="text-lg text-gray-600">
                 Stay updated with our insights and tips.

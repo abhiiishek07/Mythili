@@ -32,7 +32,7 @@ const Header = ({ isHomepage }) => {
 
   return (
     <div
-      className={`navbar  rounded-md sticky h-20 top-0 z-20  lg:overflow-hidden  ${
+      className={`navbar h-20 rounded-md sticky top-0 z-20  ${
         isHomepage && !showBackground
           ? "bg-transparent text-white"
           : "bg-base-100 backdrop-filter backdrop-blur-lg bg-opacity-30  "
@@ -63,7 +63,7 @@ const Header = ({ isHomepage }) => {
               <div tabIndex={0} role="button">
                 Properties
               </div>
-              <ul className="dropdown-content z-[1] menu  bg-base-100  rounded-t-none text-black top-8 ">
+              <ul className="dropdown-content z-[1] menu  bg-base-100 rounded-lg text-black top-8 ">
                 <li>
                   <Link href="/commercial">commercial</Link>
                 </li>
@@ -80,7 +80,7 @@ const Header = ({ isHomepage }) => {
             </div>
           </li>
           <li>
-            <Link href="/blogs">Blogs</Link>
+            <Link href="/blog">Blogs</Link>
           </li>
           <li>
             <Link href="/contact-us">Contact Us</Link>
@@ -110,7 +110,7 @@ const Header = ({ isHomepage }) => {
       </label>
 
       {crossBar && (
-        <div className="flex flex-col items-center absolute top-0 right-0 w-1/2 bg-white">
+        <div className="flex flex-col items-center absolute top-0 right-0 w-1/2 bg-white h-screen">
           <ul className="h-fit menu menu-vertical px-4 pt-12 text-lg font-semibold text-gray-800 uppercase">
             <li>
               <Link href="/">
@@ -159,7 +159,7 @@ const Header = ({ isHomepage }) => {
               </details>
             </li>
             <li>
-              <Link href="/blogs">
+              <Link href="/blog">
                 <span className="flex items-center  ">
                   <RiArticleLine className="mr-2" />
                   Blogs
