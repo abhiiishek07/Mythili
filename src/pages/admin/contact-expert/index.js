@@ -138,7 +138,7 @@ const BrochureDownloads = ({ list }) => {
                               href={`/property/${row.values.propertyId}`}
                               target="_blank"
                             >
-                              {row.values.propertyId}
+                              Link
                             </Link>
                           ) : (
                             <p className="capitalize">

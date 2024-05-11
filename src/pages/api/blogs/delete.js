@@ -19,7 +19,7 @@ export default async function handler(req, res) {
   const { id } = req.body;
 
   try {
-    await admin.firestore().collection("properties").doc(id).delete();
+    await admin.firestore().collection("blogs").doc(id).delete();
 
     return res.status(200).json({
       success: true,

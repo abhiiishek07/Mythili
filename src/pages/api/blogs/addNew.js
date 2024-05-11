@@ -1,7 +1,8 @@
+// pages/api/addProperty.js
+
 import { initializeFirebaseAdmin } from "@/lib/firebase/initializeFirebaseAdmin";
 import { sessionOptions } from "@/lib/utils";
 import admin from "firebase-admin";
-
 import { getIronSession } from "iron-session";
 
 export default async function handler(req, res) {
@@ -16,11 +17,10 @@ export default async function handler(req, res) {
     return res.status(405).json({ success: false, message: "Unauthorized" });
   }
 
-  const { id } = req.body;
+  const data = req.body;
 
   try {
-    await admin.firestore().collection("properties").doc(id).delete();
-
+    await admin.firestore().collection("blogs").add(data);
     return res.status(200).json({
       success: true,
     });
@@ -28,6 +28,6 @@ export default async function handler(req, res) {
     console.error("Error in API route:", error);
     return res
       .status(500)
-      .json({ success: false, message: "Internal servor error" });
+      .json({ success: false, message: "Internal server error" });
   }
 }

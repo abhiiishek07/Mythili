@@ -37,7 +37,7 @@ const AdminPage = () => {
           Admin Dashboard
         </h2>
         <button
-          className="btn btn-outline m-0 p-0 px-6 py-2 btn-error"
+          className="btn btn-outline m-0 p-0 px-6 py-2 border-red-500 hover:bg-red-500 hover:border-none hover:text-white"
           onClick={(event) => {
             event.preventDefault();
             logout(null, {
@@ -47,7 +47,7 @@ const AdminPage = () => {
             router.push("/admin/login");
           }}
         >
-          Logout
+          LOGOUT
         </button>
       </div>
 
