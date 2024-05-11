@@ -8,19 +8,19 @@ export async function getServerSideProps(context) {
 
   const data = (await getPropertyInfo(propertyId)) || null;
 
-  data.id = propertyId;
-
   return {
     props: {
       data,
+      propertyId,
     },
   };
 }
 
-const Property = ({ data }) => {
+const Property = ({ data, propertyId }) => {
   if (!data) {
     return <Error statusCode={404} title="Property Not Found" />;
   }
+  data.id = propertyId;
   return <PropertyInfo data={data} />;
 };
 

@@ -22,11 +22,8 @@ export async function getServerSideProps(context) {
     };
   }
   const { propertyid } = context.params;
-  console.log("propertyid");
-  console.log(propertyid);
 
   const data = (await getPropertyInfo(propertyid)) || null;
-  console.log(data);
 
   return {
     props: {

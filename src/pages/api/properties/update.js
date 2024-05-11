@@ -1,5 +1,6 @@
 // pages/api/addProperty.js
 import { initializeFirebaseAdmin } from "@/lib/firebase/initializeFirebaseAdmin";
+import { sessionOptions } from "@/lib/utils";
 import admin from "firebase-admin";
 
 import { getIronSession } from "iron-session";

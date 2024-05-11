@@ -9,7 +9,6 @@ import { $getRoot } from "lexical";
 import { useRouter } from "next/router";
 
 const EditProperty = ({ data }) => {
-  console.log("Ammenities from data" , data.amenities);
   const [loading, setLoading] = useState(false);
   const [description, setDescription] = useState(data.description);
   const [htmlDescription, setHTMLDescription] = useState();
@@ -89,7 +88,7 @@ const EditProperty = ({ data }) => {
   };
 
   const handleSubmit = async () => {
-    console.log(formData.amenities.includes('0').toString() );
+    console.log(formData.amenities.includes("0").toString());
     if (checkEmptyFields()) {
       return toast.error("Please enter all the required fields!");
     }
@@ -198,10 +197,7 @@ const EditProperty = ({ data }) => {
           />
         </div>
         <div>
-          <label
-            htmlFor="address"
-            className="block text-sm font-semibold mb-1"
-          >
+          <label htmlFor="address" className="block text-sm font-semibold mb-1">
             {" "}
             Address* :{" "}
           </label>
@@ -217,10 +213,7 @@ const EditProperty = ({ data }) => {
           />
         </div>
         <div>
-          <label
-            htmlFor="city"
-            className="block text-sm font-semibold mb-1"
-          >
+          <label htmlFor="city" className="block text-sm font-semibold mb-1">
             {" "}
             City* :{" "}
           </label>
