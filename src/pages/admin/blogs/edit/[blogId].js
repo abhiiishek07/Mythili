@@ -12,6 +12,8 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "@/lib/firebase/firebase";
 import axios from "axios";
 import toast from "react-hot-toast";
+import Error from "next/error";
+import { notFound } from "next/navigation";
 
 export async function getServerSideProps(context) {
   const session = await getIronSession(
@@ -33,16 +35,19 @@ export async function getServerSideProps(context) {
 
   const data = await getblogData(blogId);
 
+  if (!data) {
+    return {
+      notFound: true,
+      message: "Blog not found",
+    };
+  }
+
   return {
     props: { data: JSON.parse(JSON.stringify(data)), blogId },
   };
 }
 
 const BlogsEdit = ({ data, blogId }) => {
-  if (!data) {
-    return <Error statusCode={404} title="Property Not Found" />;
-  }
-
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     title: data.title,
