@@ -32,7 +32,7 @@ const Header = ({ isHomepage }) => {
 
   return (
     <div
-      className={`navbar  rounded-md sticky h-20 top-0 z-20  lg:overflow-hidden  ${
+      className={`navbar h-20 rounded-md sticky top-0 z-20  ${
         isHomepage && !showBackground
           ? "bg-transparent text-white"
           : "bg-base-100 backdrop-filter backdrop-blur-lg bg-opacity-30  "
@@ -63,7 +63,7 @@ const Header = ({ isHomepage }) => {
               <div tabIndex={0} role="button">
                 Properties
               </div>
-              <ul className="dropdown-content z-[1] menu  bg-base-100  rounded-t-none text-black top-8 ">
+              <ul className="dropdown-content z-[1] menu  bg-base-100 rounded-lg text-black top-8 ">
                 <li>
                   <Link href="/commercial">commercial</Link>
                 </li>
