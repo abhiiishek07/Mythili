@@ -14,6 +14,14 @@ const Commercial = ({ data }) => {
   const router = useRouter();
 
   const handleSearch = () => {
+    setCurrentPage(0);
+    let { query } = router;
+    query.page = 1;
+
+    router.push({
+      pathname: "/residential",
+      query: query,
+    });
     let filtered = data;
 
     // Filter by status
@@ -38,6 +46,14 @@ const Commercial = ({ data }) => {
   };
 
   const handleClear = () => {
+    setCurrentPage(0);
+    let { query } = router;
+    query.page = 1;
+
+    router.push({
+      pathname: "/residential",
+      query: query,
+    });
     setStatus("");
     setLocation("");
     setFilteredData(data);

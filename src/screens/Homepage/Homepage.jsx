@@ -274,13 +274,17 @@ const Homepage = ({ data }) => {
             </a>
           </div>
         </div>
-        <div className="w-full max-w-6xl mt-1 mb-10">
-          <Slider {...SLIDER_SETTINGS_DIFF_PROP}>
-            {selectedProperty.map((item, index) => (
-              <Property key={index} data={item} />
-            ))}
-          </Slider>
-        </div>
+        {/* <div className="w-full max-w-6xl mt-1 mb-10">
+          {selectedProperty.length > 1 ? (
+            <Slider {...SLIDER_SETTINGS_DIFF_PROP}>
+              {selectedProperty.map((item, index) => (
+                <Property key={index} data={item} />
+              ))}
+            </Slider>
+          ) : (
+            <Property key={0} data={selectedProperty[0]} />
+          )}
+        </div> */}
 
         {/* STATS */}
 

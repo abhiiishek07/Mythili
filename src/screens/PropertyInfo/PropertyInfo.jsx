@@ -28,7 +28,7 @@ import toast from "react-hot-toast";
 import Image from "next/image";
 import axios from "axios";
 
-const PropertyInfo = ({ data, similarProperty }) => {
+const PropertyInfo = ({ data, similarProperties }) => {
   const [openContactus, setOpenContactUs] = useState(false);
   const [forBrochure, setForBrochure] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -509,19 +509,22 @@ const PropertyInfo = ({ data, similarProperty }) => {
           </div>
         </div>
       </div>
-
-      <div className="flex flex-col w-full max-w-5xl items-center justify-center mt-10 mb-8">
-        <h2 className="text-xl text-center font-bold text-gray-900 sm:text-4xl mb-4">
-          Similar Properties
-        </h2>
-        <div className="w-full">
-          <Slider {...SLIDER_SETTINGS_DIFF_PROP}>
-            {similarProperty?.slice(0, 6).map((item, index) => (
-              <Property key={index} data={item} />
-            ))}
-          </Slider>
+      {similarProperties.length > 2 && (
+        <div className="flex flex-col w-full max-w-5xl items-center justify-center mt-10 mb-8">
+          <h2 className="text-xl text-center font-bold text-gray-900 sm:text-4xl mb-4">
+            Similar Properties
+          </h2>
+          <div className="w-full">
+            <Slider {...SLIDER_SETTINGS_DIFF_PROP}>
+              {similarProperties.map((item, index) => {
+                return item.id !== data.id ? (
+                  <Property key={index} data={item} />
+                ) : null;
+              })}
+            </Slider>
+          </div>
         </div>
-      </div>
+      )}
       <div>
         <ContactUsModal
           forBrochure={forBrochure}

@@ -13,7 +13,23 @@ const Residential = ({ data }) => {
   const [filteredData, setFilteredData] = useState(data);
   const router = useRouter();
 
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 6;
+  const pageCount = Math.ceil(filteredData.length / itemsPerPage);
+  const startIndex = currentPage * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentItems = filteredData.slice(startIndex, endIndex);
+
   const handleSearch = () => {
+    setCurrentPage(0);
+    let { query } = router;
+    query.page = 1;
+
+    router.push({
+      pathname: "/residential",
+      query: query,
+    });
+
     let filtered = data;
 
     if (status) {
@@ -35,19 +51,18 @@ const Residential = ({ data }) => {
   };
 
   const handleClear = () => {
+    setCurrentPage(0);
+    let { query } = router;
+    query.page = 1;
+
+    router.push({
+      pathname: "/residential",
+      query: query,
+    });
     setStatus("");
     setLocation("");
     setFilteredData(data);
   };
-
-  const [currentPage, setCurrentPage] = useState(
-    parseInt(router.query.page) - 1 || 0
-  );
-  const itemsPerPage = 6;
-  const pageCount = Math.ceil(filteredData.length / itemsPerPage);
-  const startIndex = currentPage * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentItems = filteredData.slice(startIndex, endIndex);
 
   const handlePageClick = (selectedPage) => {
     setCurrentPage(selectedPage.selected);
