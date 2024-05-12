@@ -197,7 +197,50 @@ const PropertyInfo = ({ data, similarProperties }) => {
                 </Slider>
               </div>
             )}
-
+            <div className=" lg:hidden my-4">
+              <div className="rounded-md ">
+                <div className="flex flex-col px-3 my-2">
+                  <p className=" text-2xl font-bold mb-1 text-center">{data.title}</p>
+                  <span className="text-sm flex items-center">
+                    <FaLocationDot size={15} className=" mr-2" />{" "}
+                    <span>{data.address}</span>
+                  </span>
+                </div>
+                <div className="divider"></div>
+                <div className="flex items-center p-3 my-3 border border-gray-300 rounded-xl shadow-sm hover:shadow-xl transition duration-300">
+                  <div className="m-2">
+                    <LuIndianRupee size={30} className=" mr-1" />
+                  </div>
+                  <div className="flex flex-col mx-2 gap-1">
+                    <span className="font-bold text-xl text-gray-800">
+                      {data.price} Ownwards
+                    </span>
+                    <div
+                      className={`text-xs text-gray-700 border rounded-lg px-2 py-1 w-fit ${
+                        data.status === "Under Construction"
+                          ? "border-orange-200 bg-orange-300"
+                          : data.status === "New Launch"
+                          ? "border-blue-200 bg-blue-300"
+                          : "border-green-200 bg-green-300"
+                      }`}
+                    >
+                      {data.status.name}
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-center p-3 my-2 border border-gray-300 rounded-xl shadow-sm hover:shadow-xl transition duration-300">
+                  <div className="m-2">
+                    <BsHouse className="text-xl" size={30} />
+                  </div>
+                  <div className="flex flex-col mx-2">
+                    <span className="font-bold text-xl text-gray-800">
+                      Project Size
+                    </span>
+                    <span className="text-lg text-gray-700">{data.size}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
             {/* All property details section*/}
             <div className="my-4 p-2">
               <div
@@ -394,7 +437,7 @@ const PropertyInfo = ({ data, similarProperties }) => {
 
           {/* Sidebar for property basic details */}
           <div className="flex flex-col w-full lg:w-1/4 mt-4 mx-auto  min-h-screen">
-            <div className="rounded-md  ">
+            <div className="hidden rounded-md lg:flex flex-col">
               <div className="flex flex-col px-3 my-2">
                 <p className=" text-2xl font-bold mb-1">{data.title}</p>
                 <span className="text-sm flex items-center ">
@@ -412,7 +455,7 @@ const PropertyInfo = ({ data, similarProperties }) => {
                     {data.price} Ownwards
                   </span>
                   <div
-                    className={`text-xs text-gray-700 border rounded-sm px-2 py-1 w-fit ${
+                    className={`text-xs text-gray-700 border rounded-lg px-2 py-1 w-fit ${
                       data.status === "Under Construction"
                         ? "border-orange-200 bg-orange-300"
                         : data.status === "New Launch"
