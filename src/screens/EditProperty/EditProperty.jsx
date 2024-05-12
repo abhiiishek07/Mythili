@@ -146,7 +146,7 @@ const EditProperty = ({ data }) => {
       console.log("new Data to be submitted : ");
       console.log(data);
 
-      const res = await axios.put("/api/properties/update", data);
+      const res = await axios.post("/api/properties/update", data);
 
       if (res.status === 200) {
         toast.success("Congratulations ! Property edited Successfully");
@@ -221,7 +221,7 @@ const EditProperty = ({ data }) => {
             type="text"
             id="City"
             name="City"
-            value={formData.City}
+            value={formData.city}
             onChange={handleChange}
             className="w-full px-4 py-2 border rounded-md input input-bordered"
             placeholder="Enter property City"
@@ -259,10 +259,24 @@ const EditProperty = ({ data }) => {
               {" "}
               Pick one{" "}
             </option>
-            <option value="residential">Residential</option>
-            <option value="commercial">Commercial</option>
-            <option value="sco">SCO</option>
-            <option value="plot">Plot</option>
+            <option
+              value="residential"
+              selected={formData.type === "residential"}
+            >
+              Residential
+            </option>
+            <option
+              value="commercial"
+              selected={formData.type === "commercial"}
+            >
+              Commercial
+            </option>
+            <option value="sco" selected={formData.type === "sco"}>
+              SCO
+            </option>
+            <option value="plot" selected={formData.type === "plot"}>
+              Plot
+            </option>
           </select>
         </div>
 
@@ -501,7 +515,7 @@ const EditProperty = ({ data }) => {
           type="submit"
           onClick={handleSubmit}
           disabled={loading}
-          className="w-full btn btn-primary uppercase text-white py-2 rounded-md  "
+          className="w-full btn bg-green-700 uppercase text-white py-2 rounded-md  "
         >
           {loading && (
             <span className="loading loading-spinner loading-md"></span>

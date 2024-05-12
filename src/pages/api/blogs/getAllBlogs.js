@@ -14,5 +14,17 @@ export const getAllBlogs = async () => {
     ...doc.data(),
   }));
 
+  // Sort the data by timestamp in descending order
+  data.sort((a, b) => {
+    // Convert timestamp strings to ISO 8601 format for comparison
+    const dateA = new Date(a.time).toISOString();
+    const dateB = new Date(b.time).toISOString();
+
+    // Compare ISO 8601 formatted timestamps
+    if (dateA < dateB) return 1; // Sort descending
+    if (dateA > dateB) return -1; // Sort descending
+    return 0;
+  });
+
   return data;
 };

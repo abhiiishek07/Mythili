@@ -33,8 +33,6 @@ const PropertyInfo = ({ data, similarProperty }) => {
   const [forBrochure, setForBrochure] = useState(true);
   const [loading, setLoading] = useState(false);
 
-  console.log("-->", similarProperty);
-
   const settings = {
     customPaging: function (i) {
       return (
@@ -518,7 +516,7 @@ const PropertyInfo = ({ data, similarProperty }) => {
         </h2>
         <div className="w-full">
           <Slider {...SLIDER_SETTINGS_DIFF_PROP}>
-            {similarProperty.slice(0, 6).map((item, index) => (
+            {similarProperty?.slice(0, 6).map((item, index) => (
               <Property key={index} data={item} />
             ))}
           </Slider>
