@@ -40,8 +40,9 @@ const PropertyDetailPage = ({ list }) => {
     } else {
       return properties.filter(
         (property) =>
-          property.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          property.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          property.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          property.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          property.city.toLowerCase().includes(searchQuery.toLowerCase()) ||
           property.type.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
@@ -145,13 +146,9 @@ const PropertyDetailPage = ({ list }) => {
                       );
                     })}
                     <td className="px-4 py-4 text-left">
-                      <button className="btn btn-primary">
-                        <Link
-                          href={`/admin/properties/edit/${row.original.id}`}
-                        >
-                          Edit
-                        </Link>
-                      </button>
+                      <Link href={`/admin/properties/edit/${row.original.id}`}>
+                        <button className="btn btn-primary">Edit</button>
+                      </Link>
                     </td>
                     <td className="px-4 py-4 text-left">
                       <button

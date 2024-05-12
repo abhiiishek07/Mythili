@@ -11,7 +11,7 @@ const Property = ({ data }) => {
         <div class="w-full p-4">
           <Link
             href={`/property/${data.id}`}
-            class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden"
+            class="c-card block bg-white shadow-sm hover:shadow-md rounded-lg overflow-hidden"
           >
             <div class="relative pb-48 overflow-hidden">
               <img

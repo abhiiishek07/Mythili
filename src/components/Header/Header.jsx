@@ -80,7 +80,7 @@ const Header = ({ isHomepage }) => {
             </div>
           </li>
           <li>
-            <Link href="/blog">Blogs</Link>
+            <Link href="/blogs">Blogs</Link>
           </li>
           <li>
             <Link href="/contact-us">Contact Us</Link>
@@ -159,7 +159,7 @@ const Header = ({ isHomepage }) => {
               </details>
             </li>
             <li>
-              <Link href="/blog">
+              <Link href="/blogs">
                 <span className="flex items-center  ">
                   <RiArticleLine className="mr-2" />
                   Blogs
