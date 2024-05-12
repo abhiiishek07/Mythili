@@ -5,6 +5,7 @@ import { LuIndianRupee } from "react-icons/lu";
 import Link from "next/link";
 
 const Property = ({ data }) => {
+  console.log("d", data);
   return (
     <div class="container mx-auto max-w-md">
       <div class="flex flex-wrap ">

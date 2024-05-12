@@ -75,8 +75,7 @@ export const SLIDER_SETTINGS_RECENT_PROP = {
   speed: 500,
   cssEase: "linear",
   style: { marging: "5rem", gap: "3rem" },
-  nextArrow: <CustomNextArrow />,
-  prevArrow: <CustomePrevArrow />,
+
   responsive: [
     {
       breakpoint: 1024,
