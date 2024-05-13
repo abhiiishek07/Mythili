@@ -366,7 +366,7 @@ const Homepage = ({ data }) => {
           </div>
         </div>
         {/* BLOGS */}
-        <section className="bg-gray-50 py-4 w-full max-w-6xl rounded-md mt-6 px-4">
+        <section className="py-4 w-full max-w-6xl rounded-md mt-6 px-4">
           <div className="container mx-auto px-4 ">
             <div className="text-center mb-8">
               <div className="flex items-center gap-3 text-3xl font-extrabold text-gray-900 sm:text-4xl justify-center">
@@ -378,6 +378,7 @@ const Homepage = ({ data }) => {
               </p>
             </div>
             <Slider className="" {...SLIDER_SETTINGS_BLOGS}>
+              <Blogcard />
               <Blogcard />
               <Blogcard />
               <Blogcard />
