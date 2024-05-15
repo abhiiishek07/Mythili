@@ -8,7 +8,7 @@ import {
   SLIDER_SETTINGS_TESTIMONIAL,
 } from "@/constants/constants";
 import Linked from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BiDetail } from "react-icons/bi";
 import { BsHouse } from "react-icons/bs";
 import {
@@ -32,6 +32,26 @@ const PropertyInfo = ({ data, similarProperties }) => {
   const [openContactus, setOpenContactUs] = useState(false);
   const [forBrochure, setForBrochure] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [mapEmbedLink, setMapEmbedLink] = useState("");
+
+  useEffect(() => {
+    // Assuming data contains the Google Maps embed link
+    if (data && data.googleMapLink) {
+      // Modify the width and height of the embed link
+      const modifiedMapLink = data.googleMapLink
+        .replace(
+          /width="\d+"/,
+          'width="800"' // Update width as needed
+        )
+        .replace(
+          /height="\d+"/,
+          'height="400"' // Update height as needed
+        );
+
+      // Set the modified embed link
+      setMapEmbedLink(modifiedMapLink);
+    }
+  }, [data]);
 
   const settings = {
     customPaging: function (i) {
@@ -282,9 +302,8 @@ const PropertyInfo = ({ data, similarProperties }) => {
                     <FaHouse className="mr-2 text-green-500" size={20} />
                     <h2 className="font-bold text-xl">Overview</h2>
                   </div>
-                  <div className="p-4 bg-white border border-gray-200 rounded-xl mt-2">
+                  <div className="p-2 lg:p-4 bg-white border border-gray-200 rounded-xl mt-2">
                     <div
-                      className="px-4"
                       dangerouslySetInnerHTML={{ __html: data.htmlDescription }}
                     ></div>
                   </div>
@@ -384,8 +403,8 @@ const PropertyInfo = ({ data, similarProperties }) => {
                   </div>
 
                   <div
-                    className="p-4 w-full bg-white border border-gray-200 rounded-xl mt-2 flex items-center justify-center overflow-hidden"
-                    dangerouslySetInnerHTML={{ __html: data.googleMapLink }}
+                    className="p-2 w-full bg-white border border-gray-200  rounded-xl mt-2 flex items-center justify-center overflow-hidden"
+                    dangerouslySetInnerHTML={{ __html: mapEmbedLink }}
                   />
                 </div>
               </Element>
