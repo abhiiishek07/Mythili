@@ -41,6 +41,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import Image from "next/image";
 import Awards from "@/components/Card/Awards";
+import { useRouter } from "next/router";
 
 const BANNERS = [
   property_3_img,
@@ -53,6 +54,17 @@ const Homepage = ({ data }) => {
   const [collapsed, setCollapsed] = useState(true);
   const [selectedTab, setSelectedTab] = useState("residential");
   const [selectedProperty, setSelectedProperty] = useState([]);
+  const [inputValue, setInputValue] = useState("");
+  const [filteredProperties, setFilteredProperties] = useState([]);
+  const [searching, setSearching] = useState(false);
+  const [search, setSearch] = useState({
+    name: "",
+    id: "",
+    location: "",
+    status: {},
+  });
+  const router = useRouter();
+  const [showProperty, setShowProperty] = useState(false);
 
   const inputRef = useRef(null);
 
@@ -92,6 +104,7 @@ const Homepage = ({ data }) => {
     const handleClickOutside = (event) => {
       if (inputRef.current && !inputRef.current.contains(event.target)) {
         setCollapsed(true);
+        setInputValue("");
       }
     };
 
@@ -101,6 +114,52 @@ const Homepage = ({ data }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  const handleSearch = () => {
+    const { location, name, status, id } = search;
+    const query = {};
+
+    if (name) {
+      query.property = encodeURIComponent(name);
+    }
+    if (location) {
+      query.location = encodeURIComponent(location); // Encode the location value
+    }
+
+    if (status && status.value) {
+      query.status = status.value;
+    }
+
+    if (id) {
+      query.state = id;
+    }
+
+    const queryString = new URLSearchParams(query).toString();
+    const navigationPath = `/properties?${queryString}`;
+
+    // Navigate to the new page with the constructed query string
+    router.push(navigationPath);
+  };
+
+  useEffect(() => {
+    const debounceTimer = setTimeout(() => {
+      const filtered = data.filter((property) =>
+        property.title.toLowerCase().includes(inputValue.toLowerCase())
+      );
+      setFilteredProperties(filtered);
+      setSearching(false); // Set searching indicator to false after debounce
+    }, 300); // Adjust debounce time as needed (in milliseconds)
+
+    // Cleanup function to clear timeout if component unmounts or inputValue changes
+    return () => clearTimeout(debounceTimer);
+  }, [inputValue, data]); // Trigger effect when inputValue or properties change
+
+  const handleInputChange = (e) => {
+    setShowProperty(true);
+    const value = e.target.value;
+    setInputValue(value);
+    setSearching(true); // Set searching indicator to true while typing
+  };
 
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
@@ -136,7 +195,9 @@ const Homepage = ({ data }) => {
               <input
                 type="text"
                 placeholder="Search project..."
+                value={inputValue}
                 className="w-56 md:w-[33rem]"
+                onChange={handleInputChange}
                 onFocus={toggleCollapsed}
               />
               <svg
@@ -152,34 +213,98 @@ const Homepage = ({ data }) => {
                 />
               </svg>
             </label>
+            {!collapsed && showProperty && inputValue.length > 0 && (
+              <div className="z-50 bg-white rounded-lg absolute w-full text-start border ml-5 max-w-lg">
+                {searching && (
+                  <div className="h-28">
+                    <p className="font-normal px-4">Searching...</p>
+                  </div>
+                )}
+                {!searching &&
+                  (filteredProperties.length > 0 ? (
+                    <ul>
+                      {filteredProperties.map((item) => (
+                        <li
+                          className=" border-b p-2 text-sm cursor-pointer"
+                          onClick={() => {
+                            setSearch({
+                              ...search,
+                              name: item.title,
+                              id: item.id,
+                            });
+                            setInputValue(item.title);
+                            setShowProperty(false);
+                          }}
+                        >
+                          <p>{item.title}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <div className="h-28">
+                      <p className="font-normal px-4">No property found</p>
+                    </div>
+                  ))}
+              </div>
+            )}
 
             <div
               className={`absolute w-full top-full left-0 mt-1 bg-white border-l border-r border-b border-gray-300 rounded-md shadow-md z-10 ${
                 collapsed ? "opacity-0 scale-0" : "opacity-100 scale-100"
               }  duration-300 transition-transform ease-in-out flex p-2 gap-2 flex-col`}
             >
-              <select className="select select-bordered w-full ">
+              <select
+                className="select select-bordered w-full "
+                onChange={(e) => {
+                  setSearch({ ...search, location: e.target.value });
+                }}
+              >
                 <option disabled selected>
                   Location
                 </option>
-                <option>Han Solo</option>
-                <option>Greedo</option>
+                <option value="new Delhi">New Delhi</option>
+                <option value="gurugram">Gurugram</option>
+                <option value="noida">Noida</option>
               </select>{" "}
-              <select className="select select-bordered w-full">
-                <option disabled selected>
-                  Type
+              <select
+                className="select select-bordered w-full"
+                onChange={(e) => {
+                  setSearch({ ...search, status: JSON.parse(e.target.value) });
+                }}
+                id="status"
+                name="status"
+                // value={JSON.stringify(formData.status)} // Ensure the select value is a stringified object
+              >
+                <option value="">Status</option>
+                <option
+                  value={JSON.stringify({
+                    name: "New Launch",
+                    value: "new-launch",
+                  })}
+                >
+                  New Launch
                 </option>
-                <option>Han Solo</option>
-                <option>Greedo</option>
-              </select>{" "}
-              <select className="select select-bordered w-full ">
-                <option disabled selected>
-                  Price
+                <option
+                  value={JSON.stringify({
+                    name: "Under Construction",
+                    value: "under-construction",
+                  })}
+                >
+                  Under Construction
                 </option>
-                <option>Han Solo</option>
-                <option>Greedo</option>
+                <option
+                  value={JSON.stringify({
+                    name: "Ready to Move",
+                    value: "ready-to-move",
+                  })}
+                >
+                  Ready To Move
+                </option>
               </select>
-              <button className="btn bg-green-700 text-white uppercase">
+              <button
+                className="btn bg-green-700 text-white uppercase"
+                onClick={handleSearch}
+              >
                 Search
               </button>
             </div>
@@ -220,7 +345,7 @@ const Homepage = ({ data }) => {
             <h2>Our Latest Launches</h2>
           </div>
           <div className="w-full mt-2">
-            <Slider className="" {...SLIDER_SETTINGS_RECENT_PROP}>
+            <Slider className="gap-3" {...SLIDER_SETTINGS_RECENT_PROP}>
               {newLaunchData.map((data, index) => (
                 <Property key={index} data={data} />
               ))}
@@ -274,17 +399,13 @@ const Homepage = ({ data }) => {
             </a>
           </div>
         </div>
-        {/* <div className="w-full max-w-6xl mt-1 mb-10">
-          {selectedProperty.length > 1 ? (
-            <Slider {...SLIDER_SETTINGS_DIFF_PROP}>
-              {selectedProperty.map((item, index) => (
-                <Property key={index} data={item} />
-              ))}
-            </Slider>
-          ) : (
-            <Property key={0} data={selectedProperty[0]} />
-          )}
-        </div> */}
+        <div className="w-full max-w-6xl mt-1 mb-10">
+          <Slider {...SLIDER_SETTINGS_DIFF_PROP}>
+            {selectedProperty.map((item, index) => (
+              <Property key={index} data={item} />
+            ))}
+          </Slider>
+        </div>
 
         {/* STATS */}
 

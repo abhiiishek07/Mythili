@@ -35,7 +35,7 @@ const Header = ({ isHomepage }) => {
       className={`navbar h-20 rounded-md sticky top-0 z-20  ${
         isHomepage && !showBackground
           ? "bg-transparent text-white"
-          : "bg-base-100 backdrop-filter backdrop-blur-lg bg-opacity-30  "
+          : "bg-base-100 border-b "
       }`}
     >
       <div className="flex-1">
@@ -65,16 +65,19 @@ const Header = ({ isHomepage }) => {
               </div>
               <ul className="dropdown-content z-[1] menu  bg-base-100 rounded-lg text-black top-8 ">
                 <li>
-                  <Link href="/commercial">commercial</Link>
+                  <Link href="/properties">All</Link>
                 </li>
                 <li>
-                  <Link href="/residential">residential</Link>
+                  <Link href="/commercial">Commercial</Link>
                 </li>
                 <li>
-                  <Link href="/sco">sco</Link>
+                  <Link href="/residential">Residential</Link>
                 </li>
                 <li>
-                  <Link href="/plots">plots</Link>
+                  <Link href="/sco">SCO</Link>
+                </li>
+                <li>
+                  <Link href="/plots">Plots</Link>
                 </li>
               </ul>
             </div>

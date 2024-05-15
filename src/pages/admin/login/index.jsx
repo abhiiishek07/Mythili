@@ -127,7 +127,7 @@ const LoginPage = () => {
           <button
             type="submit"
             disabled={loading}
-            className="btn btn-success w-full uppercase text-white text-lg"
+            className="btn bg-green-700 w-full uppercase text-white text-lg"
           >
             {loading && (
               <span className="loading loading-spinner loading-md"></span>

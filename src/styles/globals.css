@@ -4,11 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
+/* html {
   font-family: "Cormorant SC";
   font-weight: 700;
-  font-style: normal;/* Add a subtle text shadow */
-}
+  font-style: normal;
+} */
 
 
 @keyframes zoom-in {
@@ -83,3 +83,10 @@ body {
 }
 
 
+.bg-banner {
+  height: 45vh;
+  background-image: url("https://loving-travel.com/wp-content/uploads/2021/04/New-York-City-Guide-210413141238001.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
