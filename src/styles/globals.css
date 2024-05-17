@@ -90,3 +90,32 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.bg-banner_sco {
+  height: 45vh;
+  background-image: url("https://www.hindustantimes.com/ht-img/img/2023/12/20/550x309/DLF_shops_cum_office_project_in_Gurgaon_1703077004021_1703077012666.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.bg-banner_residential {
+  height: 45vh;
+  background-image: url("https://t4.ftcdn.net/jpg/06/50/04/89/240_F_650048974_qV9nvGZxunByUDb5QRTvgSn5E8Gpwa5V.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.bg-banner_commercial {
+  height: 45vh;
+  background-image: url("https://t3.ftcdn.net/jpg/06/48/55/20/240_F_648552064_oKfVg8uuaad5rQh7VozwXwQj53dkkvTc.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.bg-banner_plot {
+  height: 45vh;
+  background-image: url("https://d27p8o2qkwv41j.cloudfront.net/wp-content/uploads/2022/01/Buying-Plots-Yield-Better-Returns-Than-Investing-in-Apartments-shutterstock_2035101980.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
