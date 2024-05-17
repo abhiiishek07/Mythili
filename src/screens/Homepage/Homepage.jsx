@@ -223,8 +223,8 @@ const Homepage = ({ data }) => {
                 {!searching &&
                   (filteredProperties.length > 0 ? (
                     <ul>
-                      {filteredProperties.map((item) => (
-                        <li
+                      {filteredProperties.map((item,index) => (
+                        <li key={index}
                           className=" border-b p-2 text-sm cursor-pointer"
                           onClick={() => {
                             setSearch({

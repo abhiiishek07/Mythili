@@ -3,7 +3,6 @@ import Pagination from "@/components/Pagination/Pagination";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { MdHomeWork } from "react-icons/md";
 import EmptyData from "@/assets/images/Empty_Data.png";
 
 const SCO = ({ data }) => {
@@ -18,7 +17,7 @@ const SCO = ({ data }) => {
     query.page = 1;
 
     router.push({
-      pathname: "/residential",
+      pathname: "/sco",
       query: query,
     });
     let filtered = data;
@@ -50,7 +49,7 @@ const SCO = ({ data }) => {
     query.page = 1;
 
     router.push({
-      pathname: "/residential",
+      pathname: "/sco",
       query: query,
     });
     setStatus("");
@@ -80,27 +79,30 @@ const SCO = ({ data }) => {
   };
 
   return (
-    <div className=" flex justify-center px-4 ">
-      <div className="flex flex-col w-full max-w-6xl  mt-8">
-        <div className="text-sm breadcrumbs">
+    <div>
+      {/* BANNNER */}
+      <div className="w-full bg-banner_sco">
+        <div className="w-full h-full bg-black bg-opacity-60 flex items-center">
+          <div className="container pl-4 lg:pl-28">
+            <h1 className="mt-2 text-2xl font-bold  lg:text-4xl  text-white">
+              SCO Properties
+            </h1>
+          </div>
+        </div>
+      </div>
+
+      <div className="container max-w-7xl w-full mx-auto my-6 px-3">
+        {/* BREADCRUMBS */}
+        <div className="text-sm breadcrumbs font-bold">
           <ul>
             <li>
               <Link href="/">Home</Link>
             </li>
-            <li>
-              <a>Sco</a>
-            </li>
+            <li className="text-green-600 font-bold">SCO Properties</li>
           </ul>
         </div>
-        <div className=" w-fit font-bold text-3xl flex items-center gap-2 justify-center py-2">
-          <p> SCO Properties </p>
-          <MdHomeWork />
-        </div>
-        <img
-          src="https://www.hindustantimes.com/ht-img/img/2023/12/20/550x309/DLF_shops_cum_office_project_in_Gurgaon_1703077004021_1703077012666.jpeg"
-          alt="Banner Image"
-          class="w-full h-96  rounded-md"
-        />
+        {/* DIVIDER */}
+        <div className="divider m-0 p-0 h-1 mb-10"></div>
         <div className="border w-full my-10 flex flex-col lg:flex-row p-4 justify-evenly bg-slate-50 rounded-md gap-4">
           <div className="flex gap-4 justify-center items-center">
             <p className="text-lg text-gray-900">Status</p>
@@ -149,8 +151,10 @@ const SCO = ({ data }) => {
             </button>
           </div>
         </div>
+
+        {/* ALL PROPERTIES */}
         {currentItems.length === 0 ? (
-          <div className="max-w-xl mx-auto my-5">
+          <div className="max-w-xl mx-auto my-5 w-full">
             <img src={EmptyData.src} alt="No property" />
             <p className="text-2xl text-center font-bold text-gray-400">
               Oops! No Property Found
@@ -158,7 +162,7 @@ const SCO = ({ data }) => {
           </div>
         ) : (
           <>
-            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  ">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 w-full">
               {currentItems.map((item, index) => (
                 <Property key={index} data={item} />
               ))}
