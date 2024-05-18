@@ -399,7 +399,7 @@ const Homepage = ({ data }) => {
             </a>
           </div>
         </div>
-        <div className="w-full max-w-6xl mt-1 mb-10">
+        <div className="w-full max-w-6xl mt-1 mb-10 scroll-smooth">
           <Slider {...SLIDER_SETTINGS_DIFF_PROP}>
             {selectedProperty.map((item, index) => (
               <Property key={index} data={item} />

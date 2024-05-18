@@ -576,7 +576,7 @@ const PropertyInfo = ({ data, similarProperties }) => {
           <h2 className="text-xl text-center font-bold text-gray-900 sm:text-4xl mb-4">
             Similar Properties
           </h2>
-          <div className="w-full">
+          <div className="w-full mt-2">
             <Slider {...SLIDER_SETTINGS_DIFF_PROP}>
               {similarProperties.map((item, index) => {
                 return item.id !== data.id ? (
