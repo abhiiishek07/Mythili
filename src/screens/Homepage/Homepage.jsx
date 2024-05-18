@@ -169,7 +169,7 @@ const Homepage = ({ data }) => {
       {/* Banner */}
 
       <div className="top-0 left-0 right-0 z-10 fixed">
-        <div className="hidden sm:block">
+        <div className="sm:block text-sm">
           <AnnouncementBar />
         </div>
         <Header isHomepage={true} />

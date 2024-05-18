@@ -98,27 +98,27 @@ const ContactUs = () => {
         <div className="stats stats-vertical lg:stats-horizontal shadow my-8">
           <div className="stat">
             <div className="stat-figure text-green-800">
-              <a href="tel:+017903570962">
+              <a href="tel:+8826638919">
                 {" "}
                 <FaPhoneAlt size={24} />
               </a>
             </div>
             <div className="stat-value">Phone</div>
             <div className="stat-title">
-              <a href="tel:+017903570962">987654321</a>
+              <a href="tel:+8826638919">8826638919</a>
             </div>
           </div>
 
           <div className="stat">
             <div className="stat-figure text-green-800">
-              <a href="mailto:abhi885990@gmail.com">
+              <a href="mailto:marketing.mythilirealty@gmail.com">
                 {" "}
                 <MdEmail size={24} />
               </a>
             </div>
             <div className="stat-value">Email</div>
             <div className=" stat-title">
-              <a href="mailto:abhi885990@gmail.com">realestate@gmail.com</a>
+              <a href="mailto:marketing.mythilirealty@gmail.com">marketing.mythilirealty@gmail.com</a>
             </div>
           </div>
 

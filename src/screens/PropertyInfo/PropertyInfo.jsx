@@ -364,7 +364,7 @@ const PropertyInfo = ({ data, similarProperties }) => {
                       onClick={handleBrochureDownload}
                       className="text-lg font-bold link link-hover italic flex items-center gap-2"
                     >
-                      <IoCloudDownload color="red" /> Download brochure
+                      <IoCloudDownload color="green" /> Download brochure
                     </a>
                   </div>
                 </div>
