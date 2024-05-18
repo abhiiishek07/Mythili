@@ -32,9 +32,9 @@ const Header = ({ isHomepage }) => {
 
   return (
     <div
-      className={`navbar h-20 rounded-md sticky top-0 z-20  ${
+      className={`navbar h-20 sticky top-0 z-20  ${
         isHomepage && !showBackground
-          ? "bg-transparent text-white"
+          ? " bg-base-100 text-black"
           : "bg-base-100 border-b "
       }`}
     >

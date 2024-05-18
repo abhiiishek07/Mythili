@@ -30,18 +30,15 @@ const AnnouncementBar = () => {
         />
       </div>
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-        <p className="text-sm leading-6 text-gray-900">
-          {/* <strong className="font-semibold">real-estate</strong> */}
-          {/* <svg
-            viewBox="0 0 2 2"
-            className="mx-2 inline h-0.5 w-0.5 fill-current"
-            aria-hidden="true"
-          >
-            <circle cx={1} cy={1} r={1} />
-          </svg> */}
-          Explore Our Latest Property Listings! New Residential, Commercial, and
-          Plot Options Available.
-        </p>
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+          <p className="text-sm leading-6 text-gray-900 text-center sm:hidden">
+            Explore Our Latest Property Listings!
+          </p>
+          <p className="md:text-sm leading-6 text-gray-900 text-center hidden sm:block">
+            Explore Our Latest Property Listings! New Residential, Commercial,
+            and Plot Options Available.
+          </p>
+        </div>
       </div>
 
       <div className="flex flex-1 justify-end"></div>
