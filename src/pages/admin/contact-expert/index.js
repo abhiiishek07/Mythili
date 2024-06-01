@@ -66,7 +66,7 @@ export async function getServerSideProps(context) {
 }
 
 const BrochureDownloads = ({ list }) => {
-  const data = useMemo(() => list);
+  const data = useMemo(() => list, [list]);
 
   const {
     getTableProps,
@@ -91,10 +91,38 @@ const BrochureDownloads = ({ list }) => {
     usePagination
   );
 
+  const convertToCSV = (data) => {
+    const header = columns.map((col) => col.Header).join(",");
+    const rows = data.map((row) =>
+      columns.map((col) => row[col.accessor]).join(",")
+    );
+    return [header, ...rows].join("\n");
+  };
+
+  const exportToCSV = () => {
+    const csvData = convertToCSV(list);
+    const blob = new Blob([csvData], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "ContactExpert.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
-    <div className="min-h-screen w-full flex justify-center  bg-gray-200">
-      <div className="max-w-7xl w-full h-fit my-12 mx-auto p-4 bg-white shadow-md rounded-lg ">
-        <div className="font-bold text-xl mb-2 ">Contact Expert</div>
+    <div className="min-h-screen w-full flex justify-center bg-gray-200">
+      <div className="max-w-7xl w-full h-fit my-12 mx-auto p-4 bg-white shadow-md rounded-lg">
+        <div className="font-bold text-xl mb-2 flex justify-between items-center">
+          <span>Contact Expert</span>
+          <button
+            onClick={exportToCSV}
+            className="btn btn-primary"
+          >
+            Export to Excel
+          </button>
+        </div>
 
         {/* Table to display filtered user information */}
         <div className="overflow-x-auto">
@@ -105,7 +133,7 @@ const BrochureDownloads = ({ list }) => {
                   {headerGroup.headers.map((column) => (
                     <th
                       {...column.getHeaderProps(column.getSortByToggleProps())}
-                      className="px-4 py-4 text-left cursor-pointer "
+                      className="px-4 py-4 text-left cursor-pointer"
                       key={column.id}
                     >
                       {column.render("Header")}
@@ -130,7 +158,7 @@ const BrochureDownloads = ({ list }) => {
                       return (
                         <td
                           {...row.cells[columnIndex].getCellProps()}
-                          className=" text-left w-56 overflow-hidden"
+                          className="text-left w-56 overflow-hidden"
                           key={columnIndex}
                         >
                           {column.accessor === "propertyId" ? (
@@ -178,13 +206,13 @@ const BrochureDownloads = ({ list }) => {
               className="btn btn-neutral"
             >
               Next
-            </button>{" "}
+            </button>
             <button
               onClick={() => gotoPage(pageCount - 1)}
               disabled={!canNextPage}
             >
               {">>"}
-            </button>{" "}
+            </button>
           </div>
         )}
       </div>

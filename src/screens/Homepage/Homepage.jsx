@@ -8,12 +8,7 @@ import Property from "@/components/Card/Property";
 import Testimonial from "@/components/Card/Testimonial";
 import Header from "@/components/Header/Header";
 import Blogcard from "@/components/Card/Blogcard";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+
 import {
   A_PLUS_DEVELOPERS,
   REVIEWS,
@@ -344,7 +339,7 @@ const Homepage = ({ data }) => {
           <div className="flex items-center gap-4 text-3xl font-extrabold text-gray-900 sm:text-4xl justify-center">
             <h2>Our Latest Launches</h2>
           </div>
-          <div className="w-full mt-2">
+          <div className="w-full mt-8">
             <Slider className="gap-3" {...SLIDER_SETTINGS_RECENT_PROP}>
               {newLaunchData.map((data, index) => (
                 <Property key={index} data={data} />
@@ -399,7 +394,7 @@ const Homepage = ({ data }) => {
             </a>
           </div>
         </div>
-        <div className="w-full max-w-6xl mt-1 mb-10 scroll-smooth">
+        <div className="w-full max-w-6xl mt-8 mb-10 scroll-smooth">
           <Slider {...SLIDER_SETTINGS_DIFF_PROP}>
             {selectedProperty.map((item, index) => (
               <Property key={index} data={item} />
@@ -512,54 +507,7 @@ const Homepage = ({ data }) => {
           </div>
         </section>
 
-        {/* FAQ */}
-        <div className="flex flex-col w-full max-w-6xl gap-3 my-12">
-          <p className="font-bold text-3xl">FAQs</p>
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem
-              value="item-1"
-              className="border border-gray-300 bg-base-200 px-4 rounded-xl my-1"
-            >
-              <AccordionTrigger className="font-bold text-xl">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa,
-                velit.
-              </AccordionTrigger>
-              <AccordionContent className=" text-lg">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-                cum odio quo delectus fuga iure earum rerum quia illum, facilis,
-                nulla hic magni reprehenderit aliquid.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem
-              value="item-2"
-              className="border border-gray-300 bg-base-200 px-4 rounded-xl my-1"
-            >
-              <AccordionTrigger className="font-bold text-xl">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa,
-                velit.
-              </AccordionTrigger>
-              <AccordionContent className=" text-lg">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-                cum odio quo delectus fuga iure earum rerum quia illum, facilis,
-                nulla hic magni reprehenderit aliquid.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem
-              value="item-3"
-              className="border border-gray-300 bg-base-200 px-4 rounded-xl my-1"
-            >
-              <AccordionTrigger className="font-bold text-xl">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa,
-                velit.
-              </AccordionTrigger>
-              <AccordionContent className=" text-lg">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-                cum odio quo delectus fuga iure earum rerum quia illum, facilis,
-                nulla hic magni reprehenderit aliquid.
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </div>
+        
       </div>
     </div>
   );

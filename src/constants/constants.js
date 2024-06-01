@@ -41,8 +41,8 @@ export const SLIDER_SETTINGS_A_PLUS_DEVS = {
   slidesToShow: 5,
   slidesToScroll: 1,
   autoplay: true,
-  speed: 2000,
-  autoplaySpeed: 2000,
+  speed: 3000,
+  autoplaySpeed: 3000,
   arrows: false,
   cssEase: "linear",
   responsive: [

@@ -1,7 +1,12 @@
 import Property from "@/components/Card/Property";
 import ContactUsModal from "@/components/ContactUsModal/ContactUsModal";
 import { Element, Link } from "react-scroll";
-
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import {
   AMENITIES,
   SLIDER_SETTINGS_DIFF_PROP,
@@ -571,13 +576,61 @@ const PropertyInfo = ({ data, similarProperties }) => {
           </div>
         </div>
       </div>
+      {/* FAQ */}
+      <div className="flex flex-col w-full max-w-6xl gap-3 my-12">
+          <p className="font-bold text-3xl">FAQs</p>
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem
+              value="item-1"
+              className="border border-gray-300 bg-base-200 px-4 rounded-xl my-1"
+            >
+              <AccordionTrigger className="font-bold text-xl">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa,
+                velit.
+              </AccordionTrigger>
+              <AccordionContent className=" text-lg">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+                cum odio quo delectus fuga iure earum rerum quia illum, facilis,
+                nulla hic magni reprehenderit aliquid.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem
+              value="item-2"
+              className="border border-gray-300 bg-base-200 px-4 rounded-xl my-1"
+            >
+              <AccordionTrigger className="font-bold text-xl">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa,
+                velit.
+              </AccordionTrigger>
+              <AccordionContent className=" text-lg">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+                cum odio quo delectus fuga iure earum rerum quia illum, facilis,
+                nulla hic magni reprehenderit aliquid.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem
+              value="item-3"
+              className="border border-gray-300 bg-base-200 px-4 rounded-xl my-1"
+            >
+              <AccordionTrigger className="font-bold text-xl">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa,
+                velit.
+              </AccordionTrigger>
+              <AccordionContent className=" text-lg">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+                cum odio quo delectus fuga iure earum rerum quia illum, facilis,
+                nulla hic magni reprehenderit aliquid.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
       {similarProperties.length > 2 && (
-        <div className="flex flex-col w-full max-w-5xl items-center justify-center mt-10 mb-8">
+        <div className="flex flex-col w-full max-w-7xl items-center justify-center mt-10 mb-8">
           <h2 className="text-xl text-center font-bold text-gray-900 sm:text-4xl mb-4">
             Similar Properties
           </h2>
           <div className="w-full mt-2">
-            <Slider {...SLIDER_SETTINGS_DIFF_PROP}>
+            <Slider className="gap-3" {...SLIDER_SETTINGS_DIFF_PROP}>
               {similarProperties.map((item, index) => {
                 return item.id !== data.id ? (
                   <Property key={index} data={item} />
