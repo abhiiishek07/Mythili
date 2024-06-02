@@ -2,7 +2,7 @@ import Property from "@/components/Card/Property";
 import Link from "next/link";
 import { FaShop } from "react-icons/fa6";
 import property_3_img from "@/assets/images/property_3.jpg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Pagination from "@/components/Pagination/Pagination";
 import { useRouter } from "next/router";
 import EmptyData from "@/assets/images/Empty_Data.png";
@@ -11,7 +11,13 @@ const Commercial = ({ data }) => {
   const [status, setStatus] = useState("");
   const [location, setLocation] = useState("");
   const [filteredData, setFilteredData] = useState(data);
+  const [uniqueCities, setUniqueCities] = useState([]);
   const router = useRouter();
+
+  useEffect(() => {
+    const cities = data.map((item) => item.city);
+    setUniqueCities([...new Set(cities)]);
+  }, [data]);
 
   const handleSearch = () => {
     setCurrentPage(0);
@@ -122,7 +128,7 @@ const Commercial = ({ data }) => {
             </select>
           </div>
           <div className="divider divider-horizontal"></div>
-          <div className="flex gap-4 justify-center items-center ">
+          <div className="flex gap-4 justify-center items-center">
             <p className="text-lg text-gray-900">Location</p>
             <select
               className="select select-bordered w-full font-bold"
@@ -132,8 +138,11 @@ const Commercial = ({ data }) => {
               <option disabled value="">
                 Select
               </option>
-              <option value="Delhi">Delhi</option>
-              <option value="Noida">Noida</option>
+              {uniqueCities.map((city, index) => (
+                <option key={index} value={city}>
+                  {city}
+                </option>
+              ))}
             </select>
           </div>
 

@@ -119,3 +119,10 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
+.bg-banner_aboutUs {
+  height: 30vh;
+  background-image: url("https://prateekgroup.com/assets/img/overview-banner1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}

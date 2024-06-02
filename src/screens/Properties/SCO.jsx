@@ -2,7 +2,7 @@ import Property from "@/components/Card/Property";
 import Pagination from "@/components/Pagination/Pagination";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import EmptyData from "@/assets/images/Empty_Data.png";
 
 const SCO = ({ data }) => {
@@ -10,6 +10,12 @@ const SCO = ({ data }) => {
   const [location, setLocation] = useState("");
   const [filteredData, setFilteredData] = useState(data);
   const router = useRouter();
+
+  const [uniqueCities, setUniqueCities] = useState([]);
+  useEffect(() => {
+    const cities = data.map((item) => item.city);
+    setUniqueCities([...new Set(cities)]);
+  }, [data]);
 
   const handleSearch = () => {
     setCurrentPage(0);
@@ -120,7 +126,7 @@ const SCO = ({ data }) => {
             </select>
           </div>
           <div className="divider divider-horizontal"></div>
-          <div className="flex gap-4 justify-center items-center ">
+          <div className="flex gap-4 justify-center items-center">
             <p className="text-lg text-gray-900">Location</p>
             <select
               className="select select-bordered w-full font-bold"
@@ -130,8 +136,11 @@ const SCO = ({ data }) => {
               <option disabled value="">
                 Select
               </option>
-              <option value="Delhi">Delhi</option>
-              <option value="Noida">Noida</option>
+              {uniqueCities.map((city, index) => (
+                <option key={index} value={city}>
+                  {city}
+                </option>
+              ))}
             </select>
           </div>
 
