@@ -34,76 +34,44 @@ const AboutUs = () => {
             className="rounded-md object-cover"
           />
         </div>
-        <div className="mt-11 flex flex-col">
-          <p className="text-3xl font-bold">
-            WE HELP YOU BUY, OCCUPY & INVEST IN REAL ESTATE ASSETS.
-          </p>
-          <p className="text-lg mt-4 text-balance">
-            With an absolutely integrated and robust Real Estate platform, we
-            started our journey of addressing the realty needs of Gurugram
-            commercial and residential segment in 2012. We have a core vision to
-            deliver the best and most viable investment opportunities PAN India.
-            As the name suggests, we are dedicated to providing exclusive and
-            superior services in terms of proficiency and quality. Since our
-            inception, we have been serving the objective of elevating our
-            customers monetary well-being. To date, we have sold an area of
-            about 45 million sq. ft. with more than 25,000 happy and regular
-            customers. From best deals to effortless transactions and property
-            management, our experienced team of consultants and market experts
-            provide you most profitable deals, data-backed solutions, and
-            full-fledged post-sales services.
-          </p>
-          {/* <Editor /> */}
-        </div>
-        <p className="text-3xl font-bold mt-10">Why Choose us ?</p>
-        <div className="stats  stats-vertical md:stats-horizontal shadow my-7 w-full max-w-6xl border">
-          <div className="stat">
-            <div className="stat-figure text-secondary">
-              <FaRegFaceSmileBeam size={28} />
-            </div>
-
-            <div className="stat-value">25000+</div>
-            <div className="stat-title">Happy Customers</div>
-          </div>
-
-          <div className="stat">
-            <div className="stat-figure text-secondary">
-              <FaChartArea size={28} />
-            </div>
-
-            <div className="stat-value">45 Million</div>
-            <div className="stat-title"> Sq.Ft Area Sold</div>
-          </div>
-
-          <div className="stat">
-            <div className="stat-figure text-secondary">
-              <RiTeamFill size={28} />
-            </div>
-            <div className="stat-value">500+</div>
-            <div className="stat-title"> Skilled Professionals</div>
-          </div>
-          <div className="stat">
-            <div className="stat-figure text-secondary">
-              <FaGlobe size={28} />
-            </div>
-            <div className="stat-value">750+</div>
-            <div className="stat-title"> Channel Associates</div>
-          </div>
-        </div>
-        <div className="w-full max-w-6xl flex flex-col items-center gap-4 my-8">
-          <div className="flex items-center gap-4 text-3xl font-extrabold text-gray-900 sm:text-4xl justify-center">
-            <h2>What Our Client Say</h2>
-            <TbMessage2Bolt size={40} className="pt-2" />
-          </div>
-          <div className="w-full">
-            <Testimonial
-              review={{
-                text: "I recently bought a beautiful house through this agency. The entire process was smooth and efficient. Highly recommended!",
-                author: "Samantha Johnson",
-              }}
-            />
-          </div>
-        </div>
+        <div className=" mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold mb-4 flex justify-center">About Mythili Realty</h1>
+      
+      <h2 className="text-xl font-bold mb-2">Your Trusted Guide in the Indian Real Estate Market</h2>
+      <p className="mb-4">
+        At Mythili Realty, we&apos;ve been navigating the ever-changing landscape of Indian real estate for over 16 years. We understand that buying or selling property is an important decision, and we&apos;ve here to guide you through the process with experience and expertise.
+      </p>
+      
+      <h2 className="text-xl font-bold mb-2">Why Choose Mythili Realty?</h2>
+      <p className="mb-4">
+        <strong>Local Market Expertise:</strong> We have a deep understanding of the local market dynamics, including current trends, property values, and upcoming developments. This allows us to provide you with informed advice and strategic recommendations.
+      </p>
+      <p className="mb-4">
+        <strong>Personalized Service:</strong> We believe in building strong relationships with our clients. We take the time to understand your specific needs, preferences, and budget.
+      </p>
+      <p className="mb-4">
+        <strong>Proven Track Record:</strong> Over the years, we&apos;ve helped countless clients successfully navigate the real estate market. Our commitment to transparency and integrity has resulted in a strong reputation for delivering results.
+      </p>
+      <p className="mb-4">
+        <strong>Seamless Transactions:</strong> We handle all the complex paperwork and negotiations, ensuring a smooth and stress-free experience for you.
+      </p>
+      
+      <h2 className="text-xl font-bold mb-2">Our Approach</h2>
+      <p className="mb-4">
+        At Mythili Realty, we go beyond simply buying or selling property. We focus on building long-term relationships with our clients. Here&apos;s what you can expect when you partner with us:
+      </p>
+      <ul className="list-disc list-inside mb-4">
+        <li><strong>Clear Communication:</strong> We keep you informed throughout the entire process, ensuring you understand every step of the way.</li>
+        <li><strong>Proactive Negotiation:</strong> We are skilled negotiators who will fight for your best interests, whether you&apos;re buying or selling.</li>
+        <li><strong>Market Insights:</strong> We leverage our market knowledge to identify the best opportunities and help you make informed decisions.</li>
+        <li><strong>Dedicated Support:</strong> We are available to answer your questions and address your concerns every step of the way.</li>
+      </ul>
+      
+      <h2 className="text-xl font-bold mb-2">Ready to Take the Next Step?</h2>
+      <p className="mb-4">
+        If you&apos;re looking for a reliable and experienced real estate consultant in India, look no further than Mythili Realty. Contact us today for a free consultation and let us help you achieve your real estate goals.
+      </p>
+    </div>
       </div>
     </div>
   );
