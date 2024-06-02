@@ -60,6 +60,11 @@ const Homepage = ({ data }) => {
   });
   const router = useRouter();
   const [showProperty, setShowProperty] = useState(false);
+  const [uniqueCities, setUniqueCities] = useState([]);
+  useEffect(() => {
+    const cities = data.map((item) => item.city);
+    setUniqueCities([...new Set(cities)]);
+  }, [data]);
 
   const inputRef = useRef(null);
 
@@ -257,9 +262,11 @@ const Homepage = ({ data }) => {
                 <option disabled selected>
                   Location
                 </option>
-                <option value="new Delhi">New Delhi</option>
-                <option value="gurugram">Gurugram</option>
-                <option value="noida">Noida</option>
+                {uniqueCities.map((city, index) => (
+                <option key={index} value={city}>
+                  {city}
+                </option>
+              ))}
               </select>{" "}
               <select
                 className="select select-bordered w-full"
