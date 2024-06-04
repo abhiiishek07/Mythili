@@ -7,8 +7,9 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { AiFillInstagram } from "react-icons/ai";
 import Image from "next/image";
-import logo from "@/assets/images/mythili_realty_logo.png";
+// import logo from "@/assets/images/mythili_realty_logo.png";
 import { FaXTwitter } from "react-icons/fa6";
+import logo from "@/assets/images/logo_white.png";
 
 const Footer = () => {
   const [emailId, setEmailId] = useState("");
@@ -28,18 +29,18 @@ const Footer = () => {
     setSubmitting(false);
   };
   return (
-    <div className="flex flex-col  bg-base-200 ">
-      <footer className="footer text-base-content px-10 py-10 flex flex-col max-w-7xl mx-auto">
-        <div className="flex items-center justify-between px-5 w-full border-t border-gray-400 border-b py-3">
-          <div className="flex">
-            <p>LOGO</p>
+    <div className="flex flex-col  bg-black/95 text-white ">
+      <footer className="footer text-gray-400 px-10 text-sm py-10 flex flex-col max-w-7xl mx-auto">
+        <div className="flex items-center justify-between border-y border-gray-600  w-full   py-3">
+          <div className="flex overflow-hidden">
+            <img src={logo.src} className="w-20 lg:w-40" />
           </div>
           <div className="flex flex-col items-center justify-center">
             <h6 className="footer-title mt-4 lg:mt-0">Call</h6>
             <p className="font-semibold">+91 8192074256</p>
           </div>
         </div>
-        <div className="flex">
+        <div className="flex flex-col lg:flex-row gap-5">
           <div className=" w-full grid grid-cols-1 lg:grid-cols-3 justify-around gap-6">
             <nav>
               <h6 className="footer-title">Contact</h6>
@@ -126,27 +127,29 @@ const Footer = () => {
             <h6 className="footer-title">Newsletter</h6>
             <fieldset className="form-control ">
               <label className="label">
-                <span className="label-text">Enter your email address</span>
+                {/* <span className="label-text text-gray-400">
+                  Enter your email address
+                </span> */}
               </label>
-              <div className="flex flex-col gap-3  lg:hidden">
+              {/* <div className="flex flex-col gap-3  lg:hidden">
                 <input
                   onChange={(e) => setEmailId(e.target.value)}
                   type="email"
                   value={emailId}
-                  placeholder="username@site.com"
+                  placeholder="Enter your email address"
                   className="input input-bordered join-item"
                 />
                 <button
                   type="submit"
-                  className="btn bg-green-800 hover:bg-green-700 join-item text-white uppercase"
+                  className="btn bg-green-800 hover:bg-green-700 join-item uppercase"
                 >
                   {submitting && (
                     <span className="loading loading-spinner loading-md"></span>
                   )}
                   Subscribe
                 </button>
-              </div>
-              <div className="join hidden lg:flex">
+              </div> */}
+              <div className="join flex ">
                 <input
                   onChange={(e) => setEmailId(e.target.value)}
                   type="email"
@@ -156,10 +159,10 @@ const Footer = () => {
                 />
                 <button
                   type="submit"
-                  className="btn bg-green-800 hover:bg-green-700 join-item text-white uppercase"
+                  className="btn bg-green-800 hover:bg-green-700 join-item text-white uppercase text-x"
                 >
                   {submitting && (
-                    <span className="loading loading-spinner loading-md"></span>
+                    <span className="loading loading-spinner loading-md s"></span>
                   )}
                   Subscribe
                 </button>
@@ -168,7 +171,7 @@ const Footer = () => {
           </form>
         </div>
       </footer>
-      <footer className="footer flex justify-around items-center p-4 bg-neutral text-neutral-content">
+      <footer className="footer flex justify-around items-center p-4  text-gray-400">
         <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
           <a
             className=" hover:cursor-pointer"

@@ -5,7 +5,7 @@ import property_3_img from "@/assets/images/property_3.jpg";
 import { useState } from "react";
 import Pagination from "@/components/Pagination/Pagination";
 import { useRouter } from "next/router";
-import EmptyData from "@/assets/images/Empty_Data.png";
+import EmptyData from "@/assets/images/searching_home.png";
 
 const Commercial = ({ data }) => {
   const [status, setStatus] = useState("");
@@ -87,7 +87,7 @@ const Commercial = ({ data }) => {
         <div className="w-full h-full bg-black bg-opacity-60 flex items-center">
           <div className="container pl-4 lg:pl-28">
             <h1 className="mt-2 text-2xl font-bold  lg:text-4xl  text-white">
-            Commercial Properties
+              Commercial Properties
             </h1>
           </div>
         </div>
@@ -105,7 +105,7 @@ const Commercial = ({ data }) => {
         </div>
         {/* DIVIDER */}
         <div className="divider m-0 p-0 h-1 mb-10"></div>
-        <div className="border w-full my-10 flex flex-col lg:flex-row p-4 justify-evenly bg-slate-50 rounded-md gap-4">
+        <div className="border w-full my-10 flex flex-col lg:flex-row p-4 justify-between bg-slate-50 rounded-md gap-4">
           <div className="flex gap-4 justify-center items-center">
             <p className="text-lg text-gray-900">Status</p>
             <select
@@ -158,8 +158,8 @@ const Commercial = ({ data }) => {
         {currentItems.length === 0 ? (
           <div className="max-w-xl mx-auto my-5 w-full">
             <img src={EmptyData.src} alt="No property" />
-            <p className="text-2xl text-center font-bold text-gray-400">
-              Oops! No Property Found
+            <p className="text-xl text-center  text-gray-400">
+              Oops! We were not able to find any property.
             </p>
           </div>
         ) : (

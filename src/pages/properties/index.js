@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { getAllProperties } from "../api/properties/getAllProperties";
 import { useRouter } from "next/router";
-import EmptyData from "@/assets/images/Empty_Data.png";
+import EmptyData from "@/assets/images/searching_home.png";
 
 export async function getServerSideProps() {
   const data = await getAllProperties();
@@ -40,7 +40,7 @@ const AllPropertiesPage = ({ data }) => {
     }
 
     setFilteredData(filtered);
-  }, [location, name, status]);
+  }, [location, state, status]);
 
   return (
     <div>
@@ -72,8 +72,8 @@ const AllPropertiesPage = ({ data }) => {
         {filteredData.length === 0 && (
           <div className="max-w-xl mx-auto my-5 w-full">
             <img src={EmptyData.src} alt="No property" />
-            <p className="text-2xl text-center font-bold text-gray-400">
-              Oops! No Property Found
+            <p className="text-xl text-center  text-gray-400">
+              Oops! We were not able to find any property.
             </p>
           </div>
         )}

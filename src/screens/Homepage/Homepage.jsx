@@ -37,6 +37,8 @@ import "slick-carousel/slick/slick.css";
 import Image from "next/image";
 import Awards from "@/components/Card/Awards";
 import { useRouter } from "next/router";
+import BlogCard from "@/components/Blog/BlogCard";
+import Link from "next/link";
 
 const BANNERS = [
   property_3_img,
@@ -45,7 +47,7 @@ const BANNERS = [
   property_4_img,
 ];
 
-const Homepage = ({ data }) => {
+const Homepage = ({ data, blogs }) => {
   const [collapsed, setCollapsed] = useState(true);
   const [selectedTab, setSelectedTab] = useState("residential");
   const [selectedProperty, setSelectedProperty] = useState([]);
@@ -170,17 +172,17 @@ const Homepage = ({ data }) => {
         <Header isHomepage={true} />
       </div>
 
-      <div className="relative w-full">
+      <div className="relative w-full property">
         <Slider {...SLIDER_SETTINGS_BANNER}>
           {BANNERS.map((image, index) => {
             return <Banner image={image.src} key={index} />;
           })}
         </Slider>
         <div className="absolute inset-0 flex flex-col justify-center items-center w-full px-4 text-center ">
-          <p className=" text-white text-3xl font-bold max-w-3xl ">
+          <p className=" text-white text-xl lg:text-3xl font-bold max-w-3xl ">
             Explore our curated listings today.
           </p>
-          <p className=" text-white text-3xl font-bold max-w-3xl mt-2">
+          <p className=" text-white text-xl lg:text-3xl font-bold max-w-3xl mt-2">
             Where Every Door Opens to Possibilities.
           </p>
 
@@ -218,8 +220,9 @@ const Homepage = ({ data }) => {
                 {!searching &&
                   (filteredProperties.length > 0 ? (
                     <ul>
-                      {filteredProperties.map((item,index) => (
-                        <li key={index}
+                      {filteredProperties.map((item, index) => (
+                        <li
+                          key={index}
                           className=" border-b p-2 text-sm cursor-pointer"
                           onClick={() => {
                             setSearch({
@@ -310,8 +313,8 @@ const Homepage = ({ data }) => {
       <div className="p-3  w-full flex flex-col mx-auto items-center">
         {/* Trusted Partners */}
         <div className="w-full  my-12 flex flex-col gap-3 items-center justify-center border max-w-6xl p-4 rounded-lg">
-          <p className="font-bold text-3xl">Trusted Partners</p>
-          <p className="text-lg">
+          <p className="font-bold text-xl lg:text-3xl">Trusted Partners</p>
+          <p className="text-sm lg:text-lg">
             We partner with the finest to ensure your home buying experience is
             second to none. See who stands behind us.
           </p>
@@ -325,7 +328,7 @@ const Homepage = ({ data }) => {
                   <img
                     src={developer.src}
                     alt="Shoes"
-                    className="h-20 w-24 my-auto "
+                    className="h-10 lg:h-20 w-10  lg:w-24 my-auto "
                   />
                 </figure>
               ))}
@@ -336,7 +339,7 @@ const Homepage = ({ data }) => {
           </div>
         </div>
         <div className="flex flex-col w-full max-w-6xl items-center mb-10 ">
-          <div className="flex items-center gap-4 text-3xl font-extrabold text-gray-900 sm:text-4xl justify-center">
+          <div className="flex items-center gap-4 text-xl lg:text-3xl font-extrabold text-gray-900 sm:text-4xl justify-center">
             <h2>Our Latest Launches</h2>
           </div>
           <div className="w-full mt-8">
@@ -348,14 +351,14 @@ const Homepage = ({ data }) => {
           </div>
         </div>
         <div className="flex flex-col w-full max-w-6xl items-center justify-center mt-10 ">
-          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+          <h2 className="text-xl lg:text-3xl font-extrabold text-gray-900 sm:text-4xl">
             What are you looking for?
           </h2>
-          <p className="text-lg text-gray-500 my-3 px-3 text-center">
+          <p className="text-sm lg:text-lg text-gray-500 my-3 px-3 text-center">
             Stay Up-to-Date on New Property Options, Best Investment
             Opportunities, and What&apos;s Coming Next.
           </p>
-          <div role="tablist" className="tabs tabs-boxed tabs-md p-2">
+          <div role="tablist" className="tabs tabs-boxed tabs-md  ">
             <a
               role="tab"
               className={`tab ${
@@ -469,7 +472,7 @@ const Homepage = ({ data }) => {
         {/* Testimonial */}
 
         <div className="w-full max-w-6xl flex flex-col items-center gap-4 my-8">
-          <div className="flex items-center gap-4 text-3xl font-extrabold text-gray-900 sm:text-4xl justify-center">
+          <div className="flex items-center gap-4 text-3xl font-extrabold text-gray-900 justify-center">
             <h2>What Our Clients Say</h2>
             <TbMessage2Bolt size={40} className="pt-2" />
           </div>
@@ -485,29 +488,47 @@ const Homepage = ({ data }) => {
         <section className="py-4 w-full max-w-6xl rounded-md mt-6 px-4">
           <div className="container mx-auto px-4 ">
             <div className="text-center mb-8">
-              <div className="flex items-center gap-3 text-3xl font-extrabold text-gray-900 sm:text-4xl justify-center">
+              <div className="flex items-center gap-3 text-3xl font-extrabold text-gray-900  justify-center">
                 <h2>Explore Our Latest Blogs</h2>
                 {/* <FaPen size={35} className="pt-2" /> */}
               </div>
-              <p className="text-lg text-gray-600">
+              <p className="text-lg text-gray-600 pt-2">
                 Stay updated with our insights and tips.
               </p>
             </div>
-            <Slider className="" {...SLIDER_SETTINGS_BLOGS}>
-              <Blogcard />
-              <Blogcard />
-              <Blogcard />
-              <Blogcard />
-            </Slider>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+              {blogs?.slice(0, 3).map((item) => (
+                <BlogCard
+                  key={item.id}
+                  id={item.id}
+                  title={item.title}
+                  plainTextDescription={item.plainTextDescription}
+                  image={item.image}
+                  time={item.time}
+                />
+              ))}
+            </div>
+            {/* <Slider className="" {...SLIDER_SETTINGS_BLOGS}>
+              {blogs?.map((item) => (
+                <BlogCard
+                  key={item.id}
+                  id={item.id}
+                  title={item.title}
+                  plainTextDescription={item.plainTextDescription}
+                  image={item.image}
+                  time={item.time}
+                />
+              ))}
+            </Slider> */}
             <div className="text-center mt-7">
-              <button className="btn btn-ghost text-lg">
-                Read more blogs <FaArrowRight />
-              </button>
+              <Link href="/blogs">
+                <button className="btn btn-ghost text-lg">
+                  Read more blogs <FaArrowRight />
+                </button>
+              </Link>
             </div>
           </div>
         </section>
-
-        
       </div>
     </div>
   );

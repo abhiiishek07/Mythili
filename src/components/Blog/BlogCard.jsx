@@ -5,7 +5,7 @@ const BlogCard = ({ id, image, title, plainTextDescription, time }) => {
   return (
     <Link
       href={`/blogs/${id}`}
-      className="max-w-md flex flex-col border p-3 rounded-lg shadow-md"
+      className="max-w-md flex flex-col border p-3 rounded-lg shadow-md mx-2"
     >
       <div className="w-full h-48">
         <img
@@ -14,7 +14,7 @@ const BlogCard = ({ id, image, title, plainTextDescription, time }) => {
           className="h-full w-full object-cover rounded-lg "
         />
       </div>
-      <p className="font-extrabold text-2xl text-black mt-2">{title}</p>
+      <p className="font-bold text-xl text-black mt-2">{title}</p>
       <div className="line-clamp-4 my-2">
         {" "}
         <p>{plainTextDescription}</p>
