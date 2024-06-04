@@ -8,7 +8,7 @@ const Property = ({ data }) => {
   const router = useRouter();
   return (
     <div className="px-3">
-      <div className="rounded-lg shadow-sm border hover:shadow-md group  h-[28rem]">
+      <div className="rounded-lg shadow-sm border hover:shadow-md group  ">
         <Link href={`/property/${data.id}`}>
           <div className="relative overflow-hidden">
             <img
@@ -33,8 +33,10 @@ const Property = ({ data }) => {
           </div>
 
           <div className="px-5">
-            <h2 className="mt-1 text-2xl font-bold">{data.title}</h2>
-            <div className="line-clamp-2 text-xs text-gray-400">
+            <div className="line-clamp-1">
+              <h2 className="mt-1 text-lg font-bold">{data.title}</h2>
+            </div>
+            <div className="line-clamp-2 text-xs py-1 text-gray-400">
               <p>{data.plainTextDescription}</p>
             </div>
             <div className="mt-2 grid ">
@@ -55,15 +57,15 @@ const Property = ({ data }) => {
 
             <div className="divider m-0 p-0 h-1 my-2" />
 
-            <div class=" flex items-center justify-between mb-4">
+            <div class=" flex flex-wrap items-center justify-between mb-4">
               <div className="flex items-center gap-1">
                 <LuIndianRupee size={20} />
                 <p className="flex items-center justify-center text-sm lg:text-lg  font-bold ">
                   <span className="pr-2"> {data.price} Onwards* </span>
                 </p>
               </div>
-              <button className="py-1 px-3 rounded-md items-center bg-green-700  border-white text-white">
-                <p className="text-sm lg:text-lg"> View Details</p>
+              <button className="py-1 px-3 rounded-md items-center bg-green-700 border-white text-white">
+                <p className="text-sm "> View Details</p>
               </button>
             </div>
           </div>

@@ -210,7 +210,7 @@ const PropertyInfo = ({ data, similarProperties }) => {
                 />
               </div>
             ) : (
-              <div className="hidden md:block w-full  px-8 pt-5 pb-14 bg-base-300 rounded-lg relative slide-container property">
+              <div className="hidden md:block w-full  px-8 pt-8 pb-14 bg-base-300 rounded-lg relative slide-container property">
                 <Slider {...settings} className="w-full h-full">
                   {data?.images.map((image, index) => (
                     <div key={index}>
@@ -256,7 +256,7 @@ const PropertyInfo = ({ data, similarProperties }) => {
                     </div>
                   </div>
                 </div>
-                <div className="flex items-center p-3 my-2 border border-gray-300 rounded-xl shadow-sm hover:shadow-xl transition duration-300">
+                <div className="flex items-center p-3 my-2 border border-gray-300 rounded-xl shadow-sm hover:shadow-sm transition duration-300">
                   <div className="m-2">
                     <BsHouse className="text-xl" size={30} />
                   </div>
@@ -470,15 +470,15 @@ const PropertyInfo = ({ data, similarProperties }) => {
           {/* Sidebar for property basic details */}
           <div className="flex flex-col w-full lg:w-1/4 mt-4 mx-auto  min-h-screen">
             <div className="hidden rounded-md lg:flex flex-col">
-              <div className="flex flex-col px-3 my-2">
+              <div className="flex flex-col px-3 ">
                 <p className=" text-2xl font-bold mb-1">{data.title}</p>
                 <span className="text-sm flex items-center ">
                   <FaLocationDot size={15} className=" mr-2" />{" "}
                   <span>{data.address}</span>
                 </span>
               </div>
-              <div className="divider"></div>
-              <div className="flex items-center p-3 my-3 border border-gray-300 rounded-xl shadow-sm hover:shadow-xl transition duration-300">
+              <div className="divider m-0 mt-2 p-0"></div>
+              <div className="flex items-center p-3 my-3 border border-gray-300 rounded-xl hover:shadow-sm  transition duration-300 ">
                 <div className="m-2">
                   <LuIndianRupee size={30} className=" mr-1" />
                 </div>
@@ -499,7 +499,7 @@ const PropertyInfo = ({ data, similarProperties }) => {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center p-3 my-2 border border-gray-300 rounded-xl shadow-sm hover:shadow-xl transition duration-300">
+              <div className="flex items-center p-3 my-2 border border-gray-300 rounded-xl hover:shadow-sm  transition duration-300 ">
                 <div className="m-2">
                   <BsHouse className="text-xl" size={30} />
                 </div>
