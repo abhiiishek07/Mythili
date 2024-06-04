@@ -505,11 +505,10 @@ const Homepage = ({ data, blogs }) => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
               {blogs?.slice(0, 3).map((item) => (
-                <BlogCard
+                <Blogcard
                   key={item.id}
                   id={item.id}
                   title={item.title}
-                  plainTextDescription={item.plainTextDescription}
                   image={item.image}
                   time={item.time}
                 />

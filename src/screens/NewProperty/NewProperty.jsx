@@ -481,7 +481,7 @@ const NewProperty = () => {
           type="submit"
           onClick={handleSubmit}
           disabled={loading}
-          className="w-full btn btn-primary uppercase text-white py-2 rounded-md  "
+          className="w-full btn bg-green-700 uppercase text-white py-2 rounded-md  "
         >
           {loading && (
             <span className="loading loading-spinner loading-md"></span>

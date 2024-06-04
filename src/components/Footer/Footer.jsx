@@ -40,122 +40,97 @@ const Footer = () => {
             <p className="font-semibold">+91 8192074256</p>
           </div>
         </div>
-        <div className="flex flex-col lg:flex-row gap-5">
-          <div className=" w-full grid grid-cols-1 lg:grid-cols-3 justify-around gap-6">
-            <nav>
-              <h6 className="footer-title">Contact</h6>
-              <div className="flex flex-col gap-1">
-                <div className="flex items-center gap-1">
-                  <FaLocationDot size={14} />
-                  <a
-                    className="w-40 link link-hover"
-                    href="https://www.google.com/maps/place/Delhi/@28.6436846,76.7635744,10z/data=!3m1!4b1!4m6!3m5!1s0x390cfd5b347eb62d:0x37205b715389640!8m2!3d28.7040592!4d77.1024902!16zL20vMDlmMDc?entry=ttu"
-                    target="_blank"
-                  >
-                    Office no.1, Pillar no.148, Sec 103, Main, Northern
-                    Peripheral Rd, opp. Hero Homes, Gurugram, Haryana 122006,
-                    India
-                  </a>
-                </div>
-                <div className="flex items-center gap-2 link link-hover">
-                  <MdEmail size={14} />
-                  <a href="mailto:marketing.mythilirealty@gmail.com">
-                    marketing.mythilirealty@gmail.com
-                  </a>
-                </div>
-                <div className="flex items-center gap-2 link link-hover">
-                  <FaPhoneAlt size={14} />
-                  <a href="tel:8826638919">8826638919</a>
-                </div>
-                <div className="flex items-center gap-2 link link-hover">
-                  <FaGlobe size={14} />
-                  <a href="google.com" target="_blank">
-                    www.google.com
-                  </a>
-                </div>
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-5 ">
+          <nav>
+            <h6 className="footer-title">Contact</h6>
+            <div className="flex flex-col gap-1">
+              <div className="flex items-center gap-1">
+                <FaLocationDot size={14} />
+                <a
+                  className="w-40 link link-hover"
+                  href="https://www.google.com/maps/place/Delhi/@28.6436846,76.7635744,10z/data=!3m1!4b1!4m6!3m5!1s0x390cfd5b347eb62d:0x37205b715389640!8m2!3d28.7040592!4d77.1024902!16zL20vMDlmMDc?entry=ttu"
+                  target="_blank"
+                >
+                  Office no.1, Pillar no.148, Sec 103, Main, Northern Peripheral
+                  Rd, opp. Hero Homes, Gurugram, Haryana 122006, India
+                </a>
               </div>
-            </nav>
-            <nav>
-              <h6 className="footer-title mt-4 lg:mt-0">Company</h6>
-              <div className="flex flex-col">
-                <Link href="/" className="link-hover">
-                  Home
-                </Link>
-
-                <Link href="/about-us" className="link-hover">
-                  About us
-                </Link>
-
-                <Link href="/commercial" className="link-hover">
-                  Commercial
-                </Link>
-
-                <Link href="/residential" className="link-hover">
-                  Residential
-                </Link>
-
-                <Link href="/sco" className="link-hover">
-                  SCO
-                </Link>
-
-                <Link href="/plots" className="link-hover">
-                  Plots
-                </Link>
-
-                <Link href="/blog" className="link-hover">
-                  Blogs
-                </Link>
-
-                <Link href="/contact-us" className="link-hover">
-                  Contact Us
-                </Link>
+              <div className="flex items-center gap-2 link link-hover">
+                <MdEmail size={14} />
+                <a href="mailto:marketing.mythilirealty@gmail.com">
+                  marketing.mythilirealty@gmail.com
+                </a>
               </div>
-            </nav>
-            <nav>
-              <h6 className="footer-title">Legal</h6>
-              <div className="flex flex-col">
-                <Link href="/privacy-policy" className="link-hover">
-                  Privacy Policy
-                </Link>
-                <Link href="/copyright-policy" className="link-hover">
-                  Copyright Policy
-                </Link>
+              <div className="flex items-center gap-2 link link-hover">
+                <FaPhoneAlt size={14} />
+                <a href="tel:8826638919">8826638919</a>
               </div>
-            </nav>
-          </div>
-          <form onSubmit={handleSubmit}>
+              <div className="flex items-center gap-2 link link-hover">
+                <FaGlobe size={14} />
+                <a href="google.com" target="_blank">
+                  www.google.com
+                </a>
+              </div>
+            </div>
+          </nav>
+          <nav>
+            <h6 className="footer-title mt-4 lg:mt-0">Company</h6>
+            <div className="flex flex-col">
+              <Link href="/" className="link-hover">
+                Home
+              </Link>
+
+              <Link href="/about-us" className="link-hover">
+                About us
+              </Link>
+
+              <Link href="/commercial" className="link-hover">
+                Commercial
+              </Link>
+
+              <Link href="/residential" className="link-hover">
+                Residential
+              </Link>
+
+              <Link href="/sco" className="link-hover">
+                SCO
+              </Link>
+
+              <Link href="/plots" className="link-hover">
+                Plots
+              </Link>
+
+              <Link href="/blog" className="link-hover">
+                Blogs
+              </Link>
+
+              <Link href="/contact-us" className="link-hover">
+                Contact Us
+              </Link>
+            </div>
+          </nav>
+          <nav>
+            <h6 className="footer-title">Legal</h6>
+            <div className="flex flex-col">
+              <Link href="/privacy-policy" className="link-hover">
+                Privacy Policy
+              </Link>
+              <Link href="/copyright-policy" className="link-hover">
+                Copyright Policy
+              </Link>
+            </div>
+          </nav>
+
+          <form onSubmit={handleSubmit} className="">
             <h6 className="footer-title">Newsletter</h6>
             <fieldset className="form-control ">
-              <label className="label">
-                {/* <span className="label-text text-gray-400">
-                  Enter your email address
-                </span> */}
-              </label>
-              {/* <div className="flex flex-col gap-3  lg:hidden">
+              <div className="join flex">
                 <input
                   onChange={(e) => setEmailId(e.target.value)}
                   type="email"
                   value={emailId}
-                  placeholder="Enter your email address"
-                  className="input input-bordered join-item"
-                />
-                <button
-                  type="submit"
-                  className="btn bg-green-800 hover:bg-green-700 join-item uppercase"
-                >
-                  {submitting && (
-                    <span className="loading loading-spinner loading-md"></span>
-                  )}
-                  Subscribe
-                </button>
-              </div> */}
-              <div className="join flex ">
-                <input
-                  onChange={(e) => setEmailId(e.target.value)}
-                  type="email"
-                  value={emailId}
-                  placeholder="username@site.com"
-                  className="input input-bordered join-item"
+                  placeholder="your email id"
+                  className="input input-bordered join-item w-36 lg:w-full"
                 />
                 <button
                   type="submit"
