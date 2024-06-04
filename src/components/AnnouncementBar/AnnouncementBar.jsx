@@ -30,13 +30,12 @@ const AnnouncementBar = () => {
         />
       </div>
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-          <p className="text-sm leading-6 text-gray-900 text-center sm:hidden">
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-2">
+          <p className="hidden lg:block md:text-sm leading-6 text-gray-900 text-center sm:hidden">
             Explore Our Latest Property Listings!
           </p>
-          <p className="md:text-sm leading-6 text-gray-900 text-center hidden sm:block">
-            Explore Our Latest Property Listings! New Residential, Commercial,
-            and Plot Options Available.
+          <p className="text-xs lg:text-sm leading-6 text-gray-900 text-center ">
+            New Residential, Commercial, and Plot Options Available.
           </p>
         </div>
       </div>

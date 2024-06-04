@@ -32,6 +32,7 @@ import "slick-carousel/slick/slick.css";
 import toast from "react-hot-toast";
 import Image from "next/image";
 import axios from "axios";
+import ReactPlayer from "react-player";
 
 const PropertyInfo = ({ data, similarProperties }) => {
   const [openContactus, setOpenContactUs] = useState(false);
@@ -172,7 +173,7 @@ const PropertyInfo = ({ data, similarProperties }) => {
 
         <div className="flex flex-col lg:flex-row w-full my-8 md:my-0 md:space-x-6">
           <div className=" w-full max-w-4xl p-3">
-            <div className=" md:hidden w-full px-4 py-4 bg-base-200 rounded-lg relative slide-container ">
+            <div className=" md:hidden w-full px-4 py-4 bg-base-200 rounded-lg relative slide-container property">
               {data.images.length === 1 ? (
                 <Image
                   src={data.images[0]}
@@ -183,11 +184,11 @@ const PropertyInfo = ({ data, similarProperties }) => {
               ) : (
                 <Slider
                   {...SLIDER_SETTINGS_TESTIMONIAL}
-                  className="w-full h-full flex"
+                  className="w-full h-full flex "
                 >
                   {data?.images.map((image, index) => (
                     <div key={index}>
-                      <img src={image} className="rounded-md h-56 w-full" />
+                      <img src={image} className="rounded-md h-56 w-full " />
                     </div>
                   ))}
                 </Slider>
@@ -209,7 +210,7 @@ const PropertyInfo = ({ data, similarProperties }) => {
                 />
               </div>
             ) : (
-              <div className="hidden md:block w-full  px-8 pt-5 pb-14 bg-base-300 rounded-lg relative slide-container ">
+              <div className="hidden md:block w-full  px-8 pt-5 pb-14 bg-base-300 rounded-lg relative slide-container property">
                 <Slider {...settings} className="w-full h-full">
                   {data?.images.map((image, index) => (
                     <div key={index}>
@@ -225,7 +226,9 @@ const PropertyInfo = ({ data, similarProperties }) => {
             <div className=" lg:hidden my-4">
               <div className="rounded-md ">
                 <div className="flex flex-col px-3 my-2">
-                  <p className=" text-2xl font-bold mb-1 text-center">{data.title}</p>
+                  <p className=" text-2xl font-bold mb-1 text-center">
+                    {data.title}
+                  </p>
                   <span className="text-sm flex items-center">
                     <FaLocationDot size={15} className=" mr-2" />{" "}
                     <span>{data.address}</span>
@@ -267,10 +270,10 @@ const PropertyInfo = ({ data, similarProperties }) => {
               </div>
             </div>
             {/* All property details section*/}
-            <div className="my-4 p-2">
+            <div className="my-4 p-2 ">
               <div
                 role="tablist"
-                className="navbar sticky top-0 z-10 tabs tabs-bordered overflow-x-scroll lg:overflow-x-auto"
+                className="navbar sticky top-0 z-10 tabs tabs-bordered overflow-x-scroll lg:overflow-x-auto "
               >
                 <Link
                   role="tab"
@@ -409,7 +412,12 @@ const PropertyInfo = ({ data, similarProperties }) => {
                   </div>
                   {data.video ? (
                     <div className="p-6 bg-white border border-gray-200 rounded-xl mt-2 flex items-center justify-center">
-                      <video width="550" height="350" controls preload="none">
+                      {/* <ReactPlayer
+                        url={data.video}
+                        playing={true}
+                        controls={true}
+                      /> */}
+                      {/* <video width="550" height="350" controls preload="none">
                         <source src={data.video} type="video/mp4" />
                         <track
                           src="/path/to/captions.vtt"
@@ -418,7 +426,7 @@ const PropertyInfo = ({ data, similarProperties }) => {
                           label="English"
                         />
                         Your browser does not support the video tag.
-                      </video>
+                      </video> */}
                     </div>
                   ) : (
                     <p className="p-4 bg-white border border-gray-200 rounded-xl mt-2 italic text-gray-500">
@@ -578,52 +586,52 @@ const PropertyInfo = ({ data, similarProperties }) => {
       </div>
       {/* FAQ */}
       <div className="flex flex-col w-full max-w-6xl gap-3 my-12">
-          <p className="font-bold text-3xl">FAQs</p>
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem
-              value="item-1"
-              className="border border-gray-300 bg-base-200 px-4 rounded-xl my-1"
-            >
-              <AccordionTrigger className="font-bold text-xl">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa,
-                velit.
-              </AccordionTrigger>
-              <AccordionContent className=" text-lg">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-                cum odio quo delectus fuga iure earum rerum quia illum, facilis,
-                nulla hic magni reprehenderit aliquid.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem
-              value="item-2"
-              className="border border-gray-300 bg-base-200 px-4 rounded-xl my-1"
-            >
-              <AccordionTrigger className="font-bold text-xl">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa,
-                velit.
-              </AccordionTrigger>
-              <AccordionContent className=" text-lg">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-                cum odio quo delectus fuga iure earum rerum quia illum, facilis,
-                nulla hic magni reprehenderit aliquid.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem
-              value="item-3"
-              className="border border-gray-300 bg-base-200 px-4 rounded-xl my-1"
-            >
-              <AccordionTrigger className="font-bold text-xl">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa,
-                velit.
-              </AccordionTrigger>
-              <AccordionContent className=" text-lg">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-                cum odio quo delectus fuga iure earum rerum quia illum, facilis,
-                nulla hic magni reprehenderit aliquid.
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </div>
+        <p className="font-bold text-3xl">FAQs</p>
+        <Accordion type="single" collapsible className="w-full">
+          <AccordionItem
+            value="item-1"
+            className="border border-gray-300 bg-base-200 px-4 rounded-xl my-1"
+          >
+            <AccordionTrigger className="font-bold text-xl">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa,
+              velit.
+            </AccordionTrigger>
+            <AccordionContent className=" text-lg">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+              cum odio quo delectus fuga iure earum rerum quia illum, facilis,
+              nulla hic magni reprehenderit aliquid.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem
+            value="item-2"
+            className="border border-gray-300 bg-base-200 px-4 rounded-xl my-1"
+          >
+            <AccordionTrigger className="font-bold text-xl">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa,
+              velit.
+            </AccordionTrigger>
+            <AccordionContent className=" text-lg">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+              cum odio quo delectus fuga iure earum rerum quia illum, facilis,
+              nulla hic magni reprehenderit aliquid.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem
+            value="item-3"
+            className="border border-gray-300 bg-base-200 px-4 rounded-xl my-1"
+          >
+            <AccordionTrigger className="font-bold text-xl">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa,
+              velit.
+            </AccordionTrigger>
+            <AccordionContent className=" text-lg">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+              cum odio quo delectus fuga iure earum rerum quia illum, facilis,
+              nulla hic magni reprehenderit aliquid.
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </div>
       {similarProperties.length > 2 && (
         <div className="flex flex-col w-full max-w-7xl items-center justify-center mt-10 mb-8">
           <h2 className="text-xl text-center font-bold text-gray-900 sm:text-4xl mb-4">

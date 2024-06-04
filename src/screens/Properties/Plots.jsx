@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { GiFlatPlatform } from "react-icons/gi";
-import EmptyData from "@/assets/images/Empty_Data.png";
+import EmptyData from "@/assets/images/searching_home.png";
 
 const Plots = ({ data }) => {
   const [status, setStatus] = useState("");
@@ -110,7 +110,7 @@ const Plots = ({ data }) => {
         </div>
         {/* DIVIDER */}
         <div className="divider m-0 p-0 h-1 mb-10"></div>
-        <div className="border w-full my-10 flex flex-col lg:flex-row p-4 justify-evenly bg-slate-50 rounded-md gap-4">
+        <div className="border w-full my-10 flex flex-col lg:flex-row p-4 justify-between bg-slate-50 rounded-md gap-4">
           <div className="flex gap-4 justify-center items-center">
             <p className="text-lg text-gray-900">Status</p>
             <select
@@ -166,8 +166,8 @@ const Plots = ({ data }) => {
         {currentItems.length === 0 ? (
           <div className="max-w-xl mx-auto my-5 w-full">
             <img src={EmptyData.src} alt="No property" />
-            <p className="text-2xl text-center font-bold text-gray-400">
-              Oops! No Property Found
+            <p className="text-xl text-center  text-gray-400">
+              Oops! We were not able to find any property.
             </p>
           </div>
         ) : (

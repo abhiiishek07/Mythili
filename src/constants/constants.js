@@ -61,7 +61,7 @@ export const SLIDER_SETTINGS_A_PLUS_DEVS = {
     {
       breakpoint: 640,
       settings: {
-        slidesToShow: 2,
+        slidesToShow: 5,
       },
     },
   ],

@@ -52,11 +52,11 @@ body {
   .slick-thumb li.slick-active img{
       filter: grayscale(0%);
   } 
-  .slick-slide img {
+  .property .slick-slide img {
     transition: transform 6s;
   }
   
-  .slick-current img {
+  .property .slick-current img {
     transform: scale(1.1); 
   }
 
@@ -92,33 +92,42 @@ body {
 }
 
 .bg-banner_sco {
-  height: 45vh;
-  background-image: url("https://www.hindustantimes.com/ht-img/img/2023/12/20/550x309/DLF_shops_cum_office_project_in_Gurgaon_1703077004021_1703077012666.jpeg");
+  height: 40vh;
+  background-image: url("https://www.trueassetconsultancy.com/wp-content/uploads/2023/09/dlf-sector-67-banner-25752.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 .bg-banner_residential {
-  height: 45vh;
-  background-image: url("https://t4.ftcdn.net/jpg/06/50/04/89/240_F_650048974_qV9nvGZxunByUDb5QRTvgSn5E8Gpwa5V.jpg");
+  height: 40vh;
+  background-image: url("https://dashmeshproperties.in/wp-content/uploads/2024/04/img1-1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 .bg-banner_commercial {
-  height: 45vh;
-  background-image: url("https://t3.ftcdn.net/jpg/06/48/55/20/240_F_648552064_oKfVg8uuaad5rQh7VozwXwQj53dkkvTc.jpg");
+  height: 40vh;
+  background-image: url("https://bimsmithstorage.blob.core.windows.net/news-content/2020723_b_office-building-designs-architectures-ideas_office-decoration.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 .bg-banner_plot {
-  height: 45vh;
+  height: 40vh;
   background-image: url("https://d27p8o2qkwv41j.cloudfront.net/wp-content/uploads/2022/01/Buying-Plots-Yield-Better-Returns-Than-Investing-in-Apartments-shutterstock_2035101980.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
+
+
+.bg-banner_logo {
+  background-image: url("https://d27p8o2qkwv41j.cloudfront.net/wp-content/uploads/2022/01/Buying-Plots-Yield-Better-Returns-Than-Investing-in-Apartments-shutterstock_2035101980.jpg");
+  background-position: bottom right;
+  background-repeat: no-repeat; /* Ensure the image doesn't repeat */
+  background-size: right; /* Adjust this if you want the image to cover the div completely */
+}
+
 .bg-banner_aboutUs {
   height: 30vh;
   background-image: url("https://prateekgroup.com/assets/img/overview-banner1.jpg");
@@ -126,3 +135,4 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
+
