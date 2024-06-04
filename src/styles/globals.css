@@ -120,9 +120,19 @@ body {
   background-position: center;
 }
 
+
 .bg-banner_logo {
   background-image: url("https://d27p8o2qkwv41j.cloudfront.net/wp-content/uploads/2022/01/Buying-Plots-Yield-Better-Returns-Than-Investing-in-Apartments-shutterstock_2035101980.jpg");
   background-position: bottom right;
   background-repeat: no-repeat; /* Ensure the image doesn't repeat */
   background-size: right; /* Adjust this if you want the image to cover the div completely */
 }
+
+.bg-banner_aboutUs {
+  height: 30vh;
+  background-image: url("https://prateekgroup.com/assets/img/overview-banner1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
