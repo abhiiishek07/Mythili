@@ -52,9 +52,9 @@ const Header = ({ isHomepage }) => {
 
       <div className=" font-medium hidden md:flex">
         <ul className="menu menu-horizontal px-1 uppercase">
-          <li>
+          {/* <li>
             <Link href="/">Home</Link>
-          </li>
+          </li> */}
           <li>
             <Link href="/about-us">About us</Link>
           </li>
@@ -113,14 +113,14 @@ const Header = ({ isHomepage }) => {
       {crossBar && (
         <div className="flex flex-col items-center absolute top-0 right-0 w-1/2 bg-base-200 h-screen">
           <ul className="h-fit menu menu-vertical px-4 pt-12 text-lg font-semibold text-gray-800 uppercase">
-            <li>
+            {/* <li>
               <Link href="/">
                 <span className="flex items-center  ">
                   <RiHome2Line className="mr-2" />
                   Home
                 </span>
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link href="/about-us">
                 <span className="flex items-center  ">
