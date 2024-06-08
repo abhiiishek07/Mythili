@@ -5,7 +5,7 @@ import ContactUsModal from "../ContactUsModal/ContactUsModal";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import { FaWhatsapp } from "react-icons/fa";
-
+import AnnouncementBar from "../AnnouncementBar/AnnouncementBar";
 
 const Layout = ({ children }) => {
   const [openContactus, setOpenContactUs] = useState(false);
@@ -14,7 +14,8 @@ const Layout = ({ children }) => {
   return (
     <Fragment>
       <div className={` ${openContactus && "blur-md"}`}>
-        {router.pathname !== "/" && <Header />}
+        {router.pathname === "/" && <AnnouncementBar />}
+        <Header />
         <main className="relative">
           {children}
           <button

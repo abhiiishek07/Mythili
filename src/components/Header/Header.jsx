@@ -12,31 +12,28 @@ import Image from "next/image";
 
 const Header = ({ isHomepage }) => {
   const [crossBar, setCrossBar] = useState(false);
-  const [showBackground, setShowBackground] = useState(false);
+  // const [showBackground, setShowBackground] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY >= 100) {
-        setShowBackground(true);
-      } else {
-        setShowBackground(false);
-      }
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (window.scrollY >= 100) {
+  //       setShowBackground(true);
+  //     } else {
+  //       setShowBackground(false);
+  //     }
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
+  //   window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   return (
     <div
-      className={`navbar  rounded-md sticky h-20 top-0  z-20    ${
-        isHomepage && !showBackground
-          ? "bg-transparent text-white"
-          : "bg-base-100 backdrop-filter backdrop-blur-lg bg-opacity-30  "
-      } ${!isHomepage && "border-b "}`}
+      className={`navbar  rounded-md sticky h-20 top-0  z-20    
+            bg-white text-black border-b`}
     >
       <div className="flex-1">
         <Link className="  flex items-center justify-center pl-6" href="/">
@@ -183,3 +180,24 @@ const Header = ({ isHomepage }) => {
 };
 
 export default Header;
+
+{
+  /* <div
+className={`navbar  rounded-md sticky h-20 top-0  z-20    ${
+  isHomepage && !showBackground
+    ? "bg-transparent text-white"
+    : "bg-base-100 backdrop-filter backdrop-blur-lg bg-opacity-30  "
+} ${!isHomepage && "border-b "}`}
+>
+<div className="flex-1">
+  <Link className="  flex items-center justify-center pl-6" href="/">
+    <Image
+      src={logo.src}
+      alt="logo"
+      height={5}
+      width={220}
+      className="w-40 lg:w-60"
+    />
+  </Link>
+</div> */
+}

@@ -446,7 +446,7 @@ const NewProperty = () => {
             htmlFor="googleMapLink"
             className="block text-sm font-semibold mb-1"
           >
-            Google Maps Link* :
+            Google Maps Embeded link* :
           </label>
           <input
             type="text"

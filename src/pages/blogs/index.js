@@ -22,8 +22,8 @@ export async function getServerSideProps() {
 }
 const BlogsPage = ({ data }) => {
   return (
-    <div className="container min-h-screen w-full">
-      <div className="w-full max-w-7xl mx-auto my-12">
+    <div className="min-h-screen w-full ">
+      <div className="w-full max-w-7xl mx-auto my-12 ">
         <Swiper
           pagination={{ type: "fraction" }}
           autoplay={{ delay: 3000 }}
