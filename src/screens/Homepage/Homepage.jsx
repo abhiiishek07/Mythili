@@ -2,12 +2,10 @@ import property_1_img from "@/assets/images/property_1.jpg";
 import property_2_img from "@/assets/images/property_2.jpg";
 import property_3_img from "@/assets/images/property_3.jpg";
 import property_4_img from "@/assets/images/property_4.jpg";
-import AnnouncementBar from "@/components/AnnouncementBar/AnnouncementBar";
 import Banner from "@/components/Card/Banner";
+import Blogcard from "@/components/Card/Blogcard";
 import Property from "@/components/Card/Property";
 import Testimonial from "@/components/Card/Testimonial";
-import Header from "@/components/Header/Header";
-import Blogcard from "@/components/Card/Blogcard";
 
 import {
   A_PLUS_DEVELOPERS,
@@ -17,28 +15,17 @@ import {
   SLIDER_SETTINGS_DIFF_PROP,
   SLIDER_SETTINGS_RECENT_PROP,
   SLIDER_SETTINGS_TESTIMONIAL,
-  SLIDER_SETTINGS_BLOGS,
 } from "@/constants/constants";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
-import {
-  FaArrowRight,
-  FaChartArea,
-  FaGlobe,
-  FaPen,
-  FaRegFaceSmileBeam,
-} from "react-icons/fa6";
+import { FaArrowRight, FaBuilding, FaChartArea } from "react-icons/fa6";
 import { IoLocationOutline } from "react-icons/io5";
-import { FaBuilding } from "react-icons/fa6";
-import { LuTrophy } from "react-icons/lu";
 import { TbMessage2Bolt, TbUserHeart } from "react-icons/tb";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
-import Image from "next/image";
-import Awards from "@/components/Card/Awards";
-import { useRouter } from "next/router";
-import BlogCard from "@/components/Blog/BlogCard";
-import Link from "next/link";
+import Marquee from "react-fast-marquee";
 
 const BANNERS = [
   property_3_img,
@@ -170,12 +157,12 @@ const Homepage = ({ data, blogs }) => {
     <div className="relative w-full flex flex-col items-center overflow-hidden  lg:px-0">
       {/* Banner */}
 
-      <div className="top-0 left-0 right-0 z-10 fixed">
+      {/* <div className="top-0 left-0 right-0 z-10 fixed">
         <div className="sm:block text-sm">
           <AnnouncementBar />
         </div>
         <Header isHomepage={true} />
-      </div>
+      </div> */}
 
       <div className="relative w-full property">
         <Slider {...SLIDER_SETTINGS_BANNER}>
@@ -184,10 +171,10 @@ const Homepage = ({ data, blogs }) => {
           })}
         </Slider>
         <div className="absolute inset-0 flex flex-col justify-center items-center w-full px-4 text-center ">
-          <p className=" text-white text-xl lg:text-3xl font-bold max-w-3xl ">
-            Explore our curated listings today.
+          <p className=" text-gray-300 text-xl lg:text-3xl font-bold max-w-3xl ">
+            Find Your Dream Home Today.
           </p>
-          <p className=" text-white text-xl lg:text-3xl font-bold max-w-3xl mt-2">
+          <p className=" text-gray-200 text-xl lg:text-3xl font-bold max-w-3xl mt-2">
             Where Every Door Opens to Possibilities.
           </p>
 
@@ -319,13 +306,26 @@ const Homepage = ({ data, blogs }) => {
 
       <div className="p-3  w-full flex flex-col mx-auto items-center">
         {/* Trusted Partners */}
-        <div className="w-full  my-12 flex flex-col gap-3 items-center justify-center border max-w-6xl p-4 rounded-lg">
+        <div className="w-full  my-12 flex flex-col gap-3 items-center justify-center p-4 rounded-lg">
           <p className="font-bold text-xl lg:text-3xl">Trusted Partners</p>
           <p className="text-sm lg:text-lg">
             We partner with the finest to ensure your home buying experience is
             second to none. See who stands behind us.
           </p>
-          <div className="w-full mt-2 py-4 relative ">
+          <div className="w-full flex gap-8">
+            <Marquee autoFill>
+              {A_PLUS_DEVELOPERS.map((developer, index) => (
+                <figure key={index}>
+                  <img
+                    src={developer.src}
+                    alt="Partners"
+                    className="w-16 lg:w-32 mx-2 lg:mx-10"
+                  />
+                </figure>
+              ))}
+            </Marquee>
+          </div>
+          {/* <div className="w-full mt-2 py-4 relative ">
             <Slider
               {...SLIDER_SETTINGS_A_PLUS_DEVS}
               className="flex items-center justify-center  gap-4"
@@ -343,13 +343,14 @@ const Homepage = ({ data, blogs }) => {
 
             <div className="absolute top-0 left-0 w-10 md:w-32 h-full bg-gradient-to-r from-gray-50 rounded-lg"></div>
             <div className="absolute top-0 right-0 w-10 md:w-32 h-full bg-gradient-to-l from-gray-50 rounded-lg"></div>
-          </div>
+          </div> */}
         </div>
-        <div className="flex flex-col w-full max-w-6xl items-center mb-10 ">
+
+        <div className="flex flex-col w-full max-w-7xl items-center mb-10 ">
           <div className="flex items-center gap-4 text-xl lg:text-3xl font-extrabold text-gray-900 sm:text-4xl justify-center">
             <h2>Our Latest Launches</h2>
           </div>
-          <div className="w-full mt-8">
+          <div className="w-full mt-4 lg:mt-8">
             <Slider className="gap-3" {...SLIDER_SETTINGS_RECENT_PROP}>
               {newLaunchData.map((data, index) => (
                 <Property key={index} data={data} />
@@ -357,7 +358,7 @@ const Homepage = ({ data, blogs }) => {
             </Slider>
           </div>
         </div>
-        <div className="flex flex-col w-full max-w-6xl items-center justify-center mt-10 ">
+        <div className="flex flex-col w-full max-w-7xl items-center justify-center mt-10 ">
           <h2 className="text-xl lg:text-3xl font-extrabold text-gray-900 sm:text-4xl">
             What are you looking for?
           </h2>
@@ -365,11 +366,12 @@ const Homepage = ({ data, blogs }) => {
             Stay Up-to-Date on New Property Options, Best Investment
             Opportunities, and What&apos;s Coming Next.
           </p>
-          <div role="tablist" className="tabs tabs-boxed tabs-md  ">
+          <div role="tablist" className="tabs tabs-boxed tabs-md">
             <a
               role="tab"
-              className={`tab ${
-                selectedTab === "residential" && "bg-green-800 text-white"
+              className={`tab transition duration-300 ease-in-out transform ${
+                selectedTab === "residential" &&
+                "bg-green-800 text-white scale-105"
               }`}
               onClick={() => setSelectedTab("residential")}
             >
@@ -377,8 +379,9 @@ const Homepage = ({ data, blogs }) => {
             </a>
             <a
               role="tab"
-              className={`tab ${
-                selectedTab === "commercial" && "bg-green-800 text-white"
+              className={`tab transition duration-300 ease-in-out transform ${
+                selectedTab === "commercial" &&
+                "bg-green-800 text-white scale-105"
               }`}
               onClick={() => setSelectedTab("commercial")}
             >
@@ -386,8 +389,8 @@ const Homepage = ({ data, blogs }) => {
             </a>
             <a
               role="tab"
-              className={`tab ${
-                selectedTab === "sco" && "bg-green-800 text-white"
+              className={`tab transition duration-300 ease-in-out transform ${
+                selectedTab === "sco" && "bg-green-800 text-white scale-105"
               }`}
               onClick={() => setSelectedTab("sco")}
             >
@@ -395,8 +398,8 @@ const Homepage = ({ data, blogs }) => {
             </a>
             <a
               role="tab"
-              className={`tab ${
-                selectedTab === "plot" && " bg-green-800 text-white"
+              className={`tab transition duration-300 ease-in-out transform ${
+                selectedTab === "plot" && "bg-green-800 text-white scale-105"
               }`}
               onClick={() => setSelectedTab("plot")}
             >
@@ -404,7 +407,7 @@ const Homepage = ({ data, blogs }) => {
             </a>
           </div>
         </div>
-        <div className="w-full max-w-6xl mt-8 mb-10 scroll-smooth">
+        <div className="w-full max-w-7xl mt-8 mb-10 scroll-smooth transition-all delay-300 ease-in">
           <Slider {...SLIDER_SETTINGS_DIFF_PROP}>
             {selectedProperty.map((item, index) => (
               <Property key={index} data={item} />
@@ -414,7 +417,7 @@ const Homepage = ({ data, blogs }) => {
 
         {/* STATS */}
 
-        <div className="stats  stats-vertical md:stats-horizontal shadow my-12 w-full max-w-6xl border">
+        <div className="stats  stats-vertical md:stats-horizontal shadow my-12 w-full max-w-7xl border">
           <div className="stat">
             <div className="stat-figure text-secondary">
               <TbUserHeart size={28} color="#006039" />
@@ -444,8 +447,8 @@ const Homepage = ({ data, blogs }) => {
 
         {/* AWARDS SECTION */}
 
-        {/* <section className="bg-gray-100 py-16 max-w-6xl rounded-md my-6">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* <section className="bg-gray-100 py-16 max-w-7xl rounded-md my-6">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <div className="flex items-center gap-4 text-3xl font-extrabold text-gray-900 sm:text-4xl justify-center">
                 <h2 className="">Awards & Recognition</h2>
@@ -478,7 +481,7 @@ const Homepage = ({ data, blogs }) => {
 
         {/* Testimonial */}
 
-        <div className="w-full max-w-6xl flex flex-col items-center gap-4 my-8">
+        <div className="w-full max-w-7xl flex flex-col items-center gap-4 my-8">
           <div className="flex items-center gap-4 text-3xl font-extrabold text-gray-900 justify-center">
             <h2>What Our Clients Say</h2>
             <TbMessage2Bolt size={40} className="pt-2" />
@@ -492,7 +495,7 @@ const Homepage = ({ data, blogs }) => {
           </div>
         </div>
         {/* BLOGS */}
-        <section className="py-4 w-full max-w-6xl rounded-md mt-6 px-4">
+        <section className="py-4 w-full max-w-7xl rounded-md mt-6 px-4">
           <div className="container mx-auto px-4 ">
             <div className="text-center mb-8">
               <div className="flex items-center gap-3 text-3xl font-extrabold text-gray-900  justify-center">

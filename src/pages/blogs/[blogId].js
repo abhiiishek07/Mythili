@@ -24,13 +24,15 @@ const BlogsInfoPage = ({ data }) => {
   return (
     <section className="section min-h-screen w-full flex flex-col items-center justify-center p-4 mb-16 ">
       <div className=" container flex flex-col w-full max-w-4xl h-full mt-10 ">
-        <Link
-          href="/blogs"
-          className="btn btn-success btn-outline btn-sm mb-6 self-start"
-        >
-          <FaBackspace />
-          Go Back
-        </Link>
+        <div className="py-5">
+          <Link
+            href="/blogs"
+            className="btn btn-success btn-outline btn-sm self-center"
+          >
+            <FaBackspace />
+            Go Back
+          </Link>
+        </div>
         <p className="text-3xl font-bold">{data.title}</p>
         <p className="py-2 text-sm text-gray-400">{data.time}</p>
 

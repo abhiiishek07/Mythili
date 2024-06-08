@@ -128,11 +128,45 @@ body {
   background-size: right; /* Adjust this if you want the image to cover the div completely */
 }
 
+
+.bg-banner_contact_us {
+  height: 40vh;
+  background-image: url("../assets/images/conatctUs1.jpg");
+
 .bg-banner_aboutUs {
   height: 30vh;
   background-image: url("https://prateekgroup.com/assets/img/overview-banner1.jpg");
+
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
+
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  background: #000; /* Optional: set a background color */
+}
+
+.responsive-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none; /* Optional: remove border if any */
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
 

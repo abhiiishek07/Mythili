@@ -72,8 +72,11 @@ export const SLIDER_SETTINGS_RECENT_PROP = {
   infinite: true,
   slidesToShow: 3,
   slidesToScroll: 1,
-  speed: 500,
+  autoplay: true,
+  speed: 1000,
+  autoplaySpeed: 4000,
   cssEase: "linear",
+
   style: { marging: "5rem", gap: "3rem" },
 
   responsive: [
@@ -108,7 +111,7 @@ export const SLIDER_SETTINGS_BLOGS = {
   infinite: true,
   slidesToShow: 3,
   slidesToScroll: 1,
-  speed: 500,
+  speed: 1000,
   cssEase: "linear",
   style: { marging: "5rem", gap: "3rem" },
   responsive: [

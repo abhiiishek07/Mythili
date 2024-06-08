@@ -75,6 +75,7 @@ const PropertyInfo = ({ data, similarProperties }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    arrows: false,
   };
 
   const [activeTab, setActiveTab] = useState("overview");
@@ -157,8 +158,8 @@ const PropertyInfo = ({ data, similarProperties }) => {
   };
 
   return (
-    <div className="w-full min-h-screen flex flex-col items-center px-5 ">
-      <div className="flex flex-col w-full max-w-7xl my-4">
+    <div className="w-full  flex flex-col items-center px-5 ">
+      <div className="flex flex-col w-full max-w-7xl my-6">
         <div className="text-sm breadcrumbs">
           <ul>
             <li>
@@ -166,14 +167,18 @@ const PropertyInfo = ({ data, similarProperties }) => {
             </li>
             <li>Properties</li>
             <li>
-              <a>Details</a>
+              <a>
+                {data.title.length < 20
+                  ? data.title
+                  : data.title.slice(0, 20) + "..."}
+              </a>
             </li>
           </ul>
         </div>
 
-        <div className="flex flex-col lg:flex-row w-full my-8 md:my-0 md:space-x-6">
+        <div className="flex flex-col lg:flex-row w-full my-4  md:my-0 md:space-x-6 ">
           <div className=" w-full max-w-4xl p-3">
-            <div className=" md:hidden w-full px-4 py-4 bg-base-200 rounded-lg relative slide-container property">
+            <div className=" md:hidden w-full p-2 bg-base-200 rounded-lg relative slide-container property">
               {data.images.length === 1 ? (
                 <Image
                   src={data.images[0]}
@@ -193,10 +198,10 @@ const PropertyInfo = ({ data, similarProperties }) => {
                   ))}
                 </Slider>
               )}
-              <div className="mx-auto w-full flex justify-center items-center gap-2 text-gray-400">
+              {/* <div className="mx-auto w-full flex justify-center items-center gap-2 text-gray-400">
                 <p className="font-bold">swipe</p>
                 <FaArrowRight />
-              </div>
+              </div> */}
             </div>
 
             {data.images.length === 1 ? (
@@ -210,13 +215,13 @@ const PropertyInfo = ({ data, similarProperties }) => {
                 />
               </div>
             ) : (
-              <div className="hidden md:block w-full  px-8 pt-8 pb-14 bg-base-300 rounded-lg relative slide-container property">
+              <div className="hidden md:block w-full  px-4 pt-4 pb-14 border shadow-sm rounded-lg relative slide-container property">
                 <Slider {...settings} className="w-full h-full">
                   {data?.images.map((image, index) => (
                     <div key={index}>
                       <img
                         src={image}
-                        className="rounded-md h-[33rem] w-full"
+                        className="rounded-lg h-[33rem] w-full"
                       />
                     </div>
                   ))}
@@ -226,9 +231,7 @@ const PropertyInfo = ({ data, similarProperties }) => {
             <div className=" lg:hidden my-4">
               <div className="rounded-md ">
                 <div className="flex flex-col px-3 my-2">
-                  <p className=" text-2xl font-bold mb-1 text-center">
-                    {data.title}
-                  </p>
+                  <p className=" text-lg font-bold mb-1 ">{data.title}</p>
                   <span className="text-sm flex items-center">
                     <FaLocationDot size={15} className=" mr-2" />{" "}
                     <span>{data.address}</span>
@@ -270,7 +273,7 @@ const PropertyInfo = ({ data, similarProperties }) => {
               </div>
             </div>
             {/* All property details section*/}
-            <div className="my-4 p-2 ">
+            <div className="my-4 ">
               <div
                 role="tablist"
                 className="navbar sticky top-0 z-10 tabs tabs-bordered overflow-x-scroll lg:overflow-x-auto "
@@ -348,7 +351,7 @@ const PropertyInfo = ({ data, similarProperties }) => {
               </div>
 
               <Element name="overview" className="my-3">
-                <div className="bg-gray-100 rounded-xl p-4 shadow-lg">
+                <div className="bg-gray-100 rounded-xl p-2 lg:p-4 shadow-lg">
                   <div className="flex items-center">
                     <FaHouse className="mr-2 text-green-500" size={20} />
                     <h2 className="font-bold text-xl">Overview</h2>
@@ -356,6 +359,7 @@ const PropertyInfo = ({ data, similarProperties }) => {
                   <div className="p-2 lg:p-4 bg-white border border-gray-200 rounded-xl mt-2">
                     <div
                       dangerouslySetInnerHTML={{ __html: data.htmlDescription }}
+                      className="text-xs md:text-md lg:text-lg"
                     ></div>
                   </div>
                 </div>
@@ -370,7 +374,7 @@ const PropertyInfo = ({ data, similarProperties }) => {
                   <div className="p-4 bg-white border border-gray-200 rounded-xl mt-2 flex items-center justify-center">
                     <a
                       onClick={handleBrochureDownload}
-                      className="text-lg font-bold link link-hover italic flex items-center gap-2"
+                      className="text-sm lg:text-lg font-bold link link-hover italic flex items-center gap-2"
                     >
                       <IoCloudDownload color="green" /> Download brochure
                     </a>
@@ -411,13 +415,19 @@ const PropertyInfo = ({ data, similarProperties }) => {
                     <h2 className="font-bold text-xl">Video</h2>
                   </div>
                   {data.video ? (
-                    <div className="p-6 bg-white border border-gray-200 rounded-xl mt-2 flex items-center justify-center">
+                    <div className=" p-6 bg-white border border-gray-200 rounded-xl mt-2 flex items-center justify-center">
                       {/* <ReactPlayer
                         url={data.video}
                         playing={true}
                         controls={true}
                       /> */}
-                      {/* <video width="550" height="350" controls preload="none">
+                      <video
+                        width="550"
+                        height="350"
+                        controls
+                        preload="none"
+                        className="w-full "
+                      >
                         <source src={data.video} type="video/mp4" />
                         <track
                           src="/path/to/captions.vtt"
@@ -426,11 +436,11 @@ const PropertyInfo = ({ data, similarProperties }) => {
                           label="English"
                         />
                         Your browser does not support the video tag.
-                      </video> */}
+                      </video>
                     </div>
                   ) : (
                     <p className="p-4 bg-white border border-gray-200 rounded-xl mt-2 italic text-gray-500">
-                      Video not available for this property.
+                      No video is available for this property.
                     </p>
                   )}
                 </div>
@@ -445,7 +455,7 @@ const PropertyInfo = ({ data, similarProperties }) => {
                     />
                     <h2 className="font-bold text-xl">About the Developer</h2>
                   </div>
-                  <div className="p-4 bg-white border border-gray-200 rounded-xl mt-2">
+                  <div className="p-4 bg-white border border-gray-200 rounded-xl mt-2 text-xs md:text-md lg:text-lg">
                     {data.developerInfo}
                   </div>
                 </div>
@@ -468,7 +478,7 @@ const PropertyInfo = ({ data, similarProperties }) => {
           </div>
 
           {/* Sidebar for property basic details */}
-          <div className="flex flex-col w-full lg:w-1/4 mt-4 mx-auto  min-h-screen">
+          <div className="flex flex-col w-full lg:w-1/4 mt-4 mx-auto ">
             <div className="hidden rounded-md lg:flex flex-col">
               <div className="flex flex-col px-3 ">
                 <p className=" text-2xl font-bold mb-1">{data.title}</p>
@@ -512,7 +522,6 @@ const PropertyInfo = ({ data, similarProperties }) => {
               </div>
             </div>
 
-            {/* contact us form */}
             <div className="flex flex-col p-4 w-full items-center bg-base-200 mt-10 rounded-md md:sticky md:top-20">
               <p className="font-bold text-xl mb-3 flex items-center gap-3">
                 Contact an Expert <IoMailUnreadOutline size={24} />
@@ -585,18 +594,18 @@ const PropertyInfo = ({ data, similarProperties }) => {
         </div>
       </div>
       {/* FAQ */}
-      <div className="flex flex-col w-full max-w-6xl gap-3 my-12">
+      <div className="flex flex-col w-full max-w-7xl gap-3 ">
         <p className="font-bold text-3xl">FAQs</p>
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem
             value="item-1"
             className="border border-gray-300 bg-base-200 px-4 rounded-xl my-1"
           >
-            <AccordionTrigger className="font-bold text-xl">
+            <AccordionTrigger className="font-bold text-sm lg:text-xl">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa,
               velit.
             </AccordionTrigger>
-            <AccordionContent className=" text-lg">
+            <AccordionContent className=" text-xs lg:text-lg">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
               cum odio quo delectus fuga iure earum rerum quia illum, facilis,
               nulla hic magni reprehenderit aliquid.
@@ -606,11 +615,11 @@ const PropertyInfo = ({ data, similarProperties }) => {
             value="item-2"
             className="border border-gray-300 bg-base-200 px-4 rounded-xl my-1"
           >
-            <AccordionTrigger className="font-bold text-xl">
+            <AccordionTrigger className="font-bold text-sm lg:text-xl">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa,
               velit.
             </AccordionTrigger>
-            <AccordionContent className=" text-lg">
+            <AccordionContent className=" text-xs lg:text-lg">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
               cum odio quo delectus fuga iure earum rerum quia illum, facilis,
               nulla hic magni reprehenderit aliquid.
@@ -620,11 +629,11 @@ const PropertyInfo = ({ data, similarProperties }) => {
             value="item-3"
             className="border border-gray-300 bg-base-200 px-4 rounded-xl my-1"
           >
-            <AccordionTrigger className="font-bold text-xl">
+            <AccordionTrigger className="font-bold text-sm lg:text-xl">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa,
               velit.
             </AccordionTrigger>
-            <AccordionContent className=" text-lg">
+            <AccordionContent className=" text-xs lg:text-lg">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
               cum odio quo delectus fuga iure earum rerum quia illum, facilis,
               nulla hic magni reprehenderit aliquid.
@@ -633,11 +642,11 @@ const PropertyInfo = ({ data, similarProperties }) => {
         </Accordion>
       </div>
       {similarProperties.length > 2 && (
-        <div className="flex flex-col w-full max-w-7xl items-center justify-center mt-10 mb-8">
-          <h2 className="text-xl text-center font-bold text-gray-900 sm:text-4xl mb-4">
+        <div className="flex flex-col w-full max-w-7xl items-center justify-center my-10">
+          <h2 className="text-xl text-center font-bold text-gray-900 sm:text-3xl mb-4">
             Similar Properties
           </h2>
-          <div className="w-full mt-2">
+          <div className="w-full mt-2 mb-4">
             <Slider className="gap-3" {...SLIDER_SETTINGS_DIFF_PROP}>
               {similarProperties.map((item, index) => {
                 return item.id !== data.id ? (
