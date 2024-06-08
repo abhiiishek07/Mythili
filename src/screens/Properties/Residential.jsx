@@ -2,7 +2,7 @@ import Property from "@/components/Card/Property";
 import Link from "next/link";
 import { FaHome } from "react-icons/fa";
 import property_4_img from "@/assets/images/property_4.jpg";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useRouter } from "next/router";
 import Pagination from "@/components/Pagination/Pagination";
 import EmptyData from "@/assets/images/searching_home.png";
@@ -12,6 +12,12 @@ const Residential = ({ data }) => {
   const [location, setLocation] = useState("");
   const [filteredData, setFilteredData] = useState(data);
   const router = useRouter();
+
+  const [uniqueCities, setUniqueCities] = useState([]);
+  useEffect(() => {
+    const cities = data.map((item) => item.city);
+    setUniqueCities([...new Set(cities)]);
+  }, [data]);
 
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 6;
@@ -118,7 +124,7 @@ const Residential = ({ data }) => {
             </select>
           </div>
           <div className="divider divider-horizontal"></div>
-          <div className="flex gap-4 justify-center items-center ">
+          <div className="flex gap-4 justify-center items-center">
             <p className="text-lg text-gray-900">Location</p>
             <select
               className="select select-bordered w-full font-bold"
@@ -128,8 +134,11 @@ const Residential = ({ data }) => {
               <option disabled value="">
                 Select
               </option>
-              <option value="Delhi">Delhi</option>
-              <option value="Noida">Noida</option>
+              {uniqueCities.map((city, index) => (
+                <option key={index} value={city}>
+                  {city}
+                </option>
+              ))}
             </select>
           </div>
 

@@ -178,6 +178,7 @@ const NewProperty = () => {
           type: "",
         });
         toast.success("Congratulations ! New Property added");
+        window.location.reload();
       } else {
         toast.error("Please try again");
       }
