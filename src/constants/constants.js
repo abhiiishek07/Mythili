@@ -15,6 +15,8 @@ import { BiCamera, BiChild, BiDumbbell, BiRun, BiSwim } from "react-icons/bi";
 import { GrElevator, GrYoga } from "react-icons/gr";
 import { FaParking } from "react-icons/fa";
 import { SiClubhouse } from "react-icons/si";
+import { VscWorkspaceTrusted } from "react-icons/vsc";
+
 import {
   FaBuildingShield,
   FaChildren,
@@ -301,6 +303,13 @@ export const ADMIN_PAGE_DETAILS = [
     description: "See all the users who have subscribed to newsletter",
     viewAllLink: "/admin/subscribed-users",
     icon: MdOutlineMarkEmailRead,
+  },
+  {
+    id: 6,
+    title: "Trusted Partners",
+    description: "See all the Trusted partner",
+    viewAllLink: "/admin/trustedPartner",
+    icon: VscWorkspaceTrusted,
   },
 ];
 
