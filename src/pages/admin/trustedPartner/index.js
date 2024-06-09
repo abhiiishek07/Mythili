@@ -5,6 +5,8 @@ import toast from 'react-hot-toast';
 import { getIronSession } from "iron-session";
 import { defaultSession, sessionOptions } from "@/lib/utils";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { storage } from "@/lib/firebase/firebase";
+
 
 
 export async function getServerSideProps(context) {
