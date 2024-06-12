@@ -602,13 +602,10 @@ const PropertyInfo = ({ data, similarProperties }) => {
             className="border border-gray-300 bg-base-200 px-4 rounded-xl my-1"
           >
             <AccordionTrigger className="font-bold text-sm lg:text-xl">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa,
-              velit.
+            {formData.ques1 ? formData.ques1 : "ques1"}
             </AccordionTrigger>
             <AccordionContent className=" text-xs lg:text-lg">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-              cum odio quo delectus fuga iure earum rerum quia illum, facilis,
-              nulla hic magni reprehenderit aliquid.
+            {formData.ans1 ? formData.ans1 : "Ans1"}
             </AccordionContent>
           </AccordionItem>
           <AccordionItem
@@ -616,13 +613,10 @@ const PropertyInfo = ({ data, similarProperties }) => {
             className="border border-gray-300 bg-base-200 px-4 rounded-xl my-1"
           >
             <AccordionTrigger className="font-bold text-sm lg:text-xl">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa,
-              velit.
+            {formData.ques2 ? formData.ques2 : "ques2"}
             </AccordionTrigger>
             <AccordionContent className=" text-xs lg:text-lg">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-              cum odio quo delectus fuga iure earum rerum quia illum, facilis,
-              nulla hic magni reprehenderit aliquid.
+            {formData.ans2 ? formData.ans2 : "Ans2"}
             </AccordionContent>
           </AccordionItem>
           <AccordionItem
@@ -630,13 +624,10 @@ const PropertyInfo = ({ data, similarProperties }) => {
             className="border border-gray-300 bg-base-200 px-4 rounded-xl my-1"
           >
             <AccordionTrigger className="font-bold text-sm lg:text-xl">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa,
-              velit.
+            {formData.ques3 ? formData.ques3 : "ques3"}
             </AccordionTrigger>
             <AccordionContent className=" text-xs lg:text-lg">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-              cum odio quo delectus fuga iure earum rerum quia illum, facilis,
-              nulla hic magni reprehenderit aliquid.
+            {formData.ans3 ? formData.ans3 : "Ans3"}
             </AccordionContent>
           </AccordionItem>
         </Accordion>

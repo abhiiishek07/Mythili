@@ -55,6 +55,12 @@ const NewProperty = () => {
     googleMapLink: "",
     type: "",
     status: "",
+    ques1: "",
+    ans1: "",
+    ques2: "",
+    ans2: "",
+    ques3: "",
+    ans3: "",
   });
 
   const handleChange = (e) => {
@@ -157,6 +163,12 @@ const NewProperty = () => {
         htmlDescription: htmlDescription,
         plainTextDescription: plainTextDescription,
         status: formData.status,
+        ques1: formData.ques1,
+        ans1: formData.ans1,
+        ques2: formData.ques2,
+        ans2: formData.ans2,
+        ques3: formData.ques3,
+        ans3: formData.ans3,
       };
 
       const res = await axios.post("/api/properties/addNew", data);
@@ -476,6 +488,102 @@ const NewProperty = () => {
             placeholder="Enter developer information"
             required
           ></textarea>
+        </div>
+        <div>
+          <p className="font-bold text-lg">Enter FAQs Data</p>
+          <div className="p-2">
+            <div className="my-2">
+              <label htmlFor="ques1" className="block text-sm font-semibold mb-1">
+                Question1* :
+              </label>
+              <input
+                type="text"
+                id="ques1"
+                name="ques1"
+                value={formData.ques1}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border rounded-md input input-bordered"
+                placeholder="Enter question Here"
+                required
+              />
+            </div>
+            <div className="my-2">
+              <label htmlFor="ans1" className="block text-sm font-semibold mb-1">
+                Answer1* :
+              </label>
+              <textarea
+                id="ans1"
+                name="ans1"
+                value={formData.ans1}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border rounded-md  textarea textarea-bordered text-area-lg"
+                placeholder="Enter Information here"
+                required
+              ></textarea>
+            </div>
+          </div>
+          <div className="p-2">
+            <div className="my-2">
+              <label htmlFor="ques2" className="block text-sm font-semibold mb-1">
+                Question2* :
+              </label>
+              <input
+                type="text"
+                id="ques2"
+                name="ques2"
+                value={formData.ques2}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border rounded-md input input-bordered"
+                placeholder="Enter question Here"
+                required
+              />
+            </div>
+            <div className="my-2">
+              <label htmlFor="ans2" className="block text-sm font-semibold mb-1">
+                Answer2* :
+              </label>
+              <textarea
+                id="ans2"
+                name="ans2"
+                value={formData.ans2}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border rounded-md  textarea textarea-bordered text-area-lg"
+                placeholder="Enter Information here"
+                required
+              ></textarea>
+            </div>
+          </div>
+          <div className="p-2">
+            <div className="my-2">
+              <label htmlFor="ques3" className="block text-sm font-semibold mb-1">
+                Question3* :
+              </label>
+              <input
+                type="text"
+                id="ques3"
+                name="ques3"
+                value={formData.ques3}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border rounded-md input input-bordered"
+                placeholder="Enter question Here"
+                required
+              />
+            </div>
+            <div className="my-2">
+              <label htmlFor="ans3" className="block text-sm font-semibold mb-1">
+                Answer3* :
+              </label>
+              <textarea
+                id="ans3"
+                name="ans3"
+                value={formData.ans3}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border rounded-md  textarea textarea-bordered text-area-lg"
+                placeholder="Enter Information here"
+                required
+              ></textarea>
+            </div>
+          </div>
         </div>
         <button
           type="submit"
