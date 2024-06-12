@@ -61,6 +61,7 @@ const NewProperty = () => {
     ans2: "",
     ques3: "",
     ans3: "",
+    isPublished: false,
   });
 
   const handleChange = (e) => {
@@ -169,6 +170,7 @@ const NewProperty = () => {
         ans2: formData.ans2,
         ques3: formData.ques3,
         ans3: formData.ans3,
+        isPublished: formData.isPublished,
       };
 
       const res = await axios.post("/api/properties/addNew", data);
