@@ -30,6 +30,7 @@ const NewProperty = () => {
       !formData.developerInfo ||
       !formData.googleMapLink ||
       !formData.images ||
+      !formData.floorPlan ||
       !formData.price ||
       !formData.size ||
       !formData.title ||
@@ -48,6 +49,7 @@ const NewProperty = () => {
     size: "",
 
     images: [],
+    floorPlan: [],
     amenities: [],
     brochure: null,
     video: "",
@@ -78,6 +80,13 @@ const NewProperty = () => {
     setFormData({
       ...formData,
       images: [...formData.images, ...files],
+    });
+  };
+  const handleFloorplanUpload = (e) => {
+    const files = Array.from(e.target.files);
+    setFormData({
+      ...formData,
+      floorPlan: [...formData.floorPlan, ...files],
     });
   };
 
@@ -123,6 +132,7 @@ const NewProperty = () => {
     setLoading(true);
 
     let imagesURL = [];
+    let floorPlanUrl = []
 
     try {
       for (const imageFile of formData.images) {
@@ -130,6 +140,13 @@ const NewProperty = () => {
         const imageSnapshot = await uploadBytes(imageRef, imageFile);
         const imageDownloadURL = await getDownloadURL(imageSnapshot.ref);
         imagesURL.push(imageDownloadURL);
+      }
+
+      for (const imageFile of formData.floorPlan) {
+        const imageRef = ref(storage, `images/${imageFile.name}`);
+        const imageSnapshot = await uploadBytes(imageRef, imageFile);
+        const imageDownloadURL = await getDownloadURL(imageSnapshot.ref);
+        floorPlanUrl.push(imageDownloadURL);
       }
 
       let brochureURL = "";
@@ -154,6 +171,7 @@ const NewProperty = () => {
         city: formData.city,
         size: formData.size,
         images: imagesURL,
+        floorPlan: floorPlanUrl,
         amenities: formData.amenities,
         brochure: brochureURL,
         video: videoUrl,
@@ -184,6 +202,7 @@ const NewProperty = () => {
           size: "",
 
           images: [],
+          floorPlan: [],
           amenities: [],
           brochure: null,
           video: "",
@@ -381,6 +400,61 @@ const NewProperty = () => {
                         (img) => img !== image
                       );
                       setFormData({ ...formData, images: updatedImages });
+                    }}
+                    className="absolute top-0 right-0 w-6 h-6 text-white bg-red-500 rounded-full flex items-center justify-center"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-4 h-4"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="my-3">
+          <label htmlFor="floorPlan" className="block text-sm font-semibold mb-1">
+            Floor Plan Image* :
+          </label>
+          <div className="flex flex-col items-center justify-center space-x-4 gap-3">
+            <input
+              type="file"
+              id="floorPlan"
+              name="floorPlan"
+              accept="image/*"
+              onChange={handleFloorplanUpload}
+              className="w-full"
+              multiple
+              required
+            />
+            <div className="flex justify-start flex-wrap gap-3 w-full">
+              {formData?.floorPlan?.map((image, index) => (
+                <div key={index} className="relative flex">
+                  {image && (
+                    <img
+                      src={URL.createObjectURL(image)}
+                      alt=""
+                      className="w-20 h-20 object-cover rounded-md"
+                    />
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const updatedImages = formData.floorPlan.filter(
+                        (img) => img !== image
+                      );
+                      setFormData({ ...formData, floorPlan: updatedImages });
                     }}
                     className="absolute top-0 right-0 w-6 h-6 text-white bg-red-500 rounded-full flex items-center justify-center"
                   >

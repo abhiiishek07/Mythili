@@ -52,7 +52,7 @@ export async function getServerSideProps(context) {
     };
   }
   const data = await getAllBrochure();
-  const filteredData = data.filter(item => !item.isFloorPlan);
+  const filteredData = data.filter(item => item.isFloorPlan);
 
 
   return {
@@ -62,7 +62,7 @@ export async function getServerSideProps(context) {
   };
 }
 
-const BrochureDownloads = ({ list }) => {
+const FloorPlanDownload = ({ list }) => {
   const data = useMemo(() => list, [list]);
 
   const {
@@ -102,7 +102,7 @@ const BrochureDownloads = ({ list }) => {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.setAttribute("download", "BrochureDownloads.csv");
+    link.setAttribute("download", "FloorPlanDownload.csv");
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -112,7 +112,7 @@ const BrochureDownloads = ({ list }) => {
     <div className="min-h-screen w-full flex justify-center bg-gray-200">
       <div className="max-w-7xl w-full h-fit my-12 mx-auto p-4 bg-white shadow-md rounded-lg">
         <div className="font-bold text-xl mb-2 flex justify-between items-center">
-          <span>Brochure Downloads</span>
+          <span>Floor Plan Downloads</span>
           <button
             onClick={exportToCSV}
             className="btn btn-primary"
@@ -203,7 +203,7 @@ const BrochureDownloads = ({ list }) => {
               className="btn btn-neutral"
             >
               Next
-            </button>
+            </button>a
             <button
               onClick={() => gotoPage(pageCount - 1)}
               disabled={!canNextPage}
@@ -217,4 +217,4 @@ const BrochureDownloads = ({ list }) => {
   );
 };
 
-export default BrochureDownloads;
+export default FloorPlanDownload;

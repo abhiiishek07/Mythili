@@ -15,6 +15,8 @@ import { BiCamera, BiChild, BiDumbbell, BiRun, BiSwim } from "react-icons/bi";
 import { GrElevator, GrYoga } from "react-icons/gr";
 import { FaParking } from "react-icons/fa";
 import { SiClubhouse } from "react-icons/si";
+import { FaRegMap } from "react-icons/fa";
+
 import {
   FaBuildingShield,
   FaChildren,
@@ -304,6 +306,13 @@ export const ADMIN_PAGE_DETAILS = [
     description: "See all the users who have subscribed to newsletter",
     viewAllLink: "/admin/subscribed-users",
     icon: MdOutlineMarkEmailRead,
+  },
+  {
+    id: 6,
+    title: "Floor Plan Download",
+    description: "See all the users who have downloaded Floor Plan",
+    viewAllLink: "/admin/floorplan",
+    icon: FaRegMap,
   },
 ];
 

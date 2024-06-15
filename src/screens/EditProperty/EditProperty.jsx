@@ -34,6 +34,7 @@ const EditProperty = ({ data }) => {
     if (!formData.developerInfo) emptyFields.push("Developer Info");
     if (!formData.googleMapLink) emptyFields.push("Google Map Link");
     if (!formData.images) emptyFields.push("Images");
+    if (!formData.floorPlan) emptyFields.push("FloorPlan");
     if (!formData.address) emptyFields.push("Address");
     if (!formData.city) emptyFields.push("City");
     if (!formData.price) emptyFields.push("Price");
@@ -59,6 +60,11 @@ const EditProperty = ({ data }) => {
     const files = Array.from(e.target.files);
     setFormData({ ...formData, images: [...formData.images, ...files] });
   };
+  const handleFloorplanUpload = (e) => {
+    const files = Array.from(e.target.files);
+    setFormData({ ...formData, floorPlan: [...formData.floorPlan, ...files] });
+  };
+
 
   const handleAmenitiesChange = (e) => {
     const { value, checked } = e.target;
@@ -94,6 +100,7 @@ const EditProperty = ({ data }) => {
     }
     setLoading(true);
     let imagesURL = [];
+    let floorPlanURL = [];
     try {
       for (const image of formData.images) {
         let imageName = "";
@@ -106,6 +113,19 @@ const EditProperty = ({ data }) => {
           const imageSnapshot = await uploadBytes(imageRef, image);
           const imageDownloadURL = await getDownloadURL(imageSnapshot.ref);
           imagesURL.push(imageDownloadURL);
+        }
+      }
+      for (const image of formData.floorPlan) {
+        let imageName = "";
+
+        if (typeof image === "string") {
+          imagesURL.push(image);
+        } else {
+          imageName = image.name;
+          const imageRef = ref(storage, `images/${imageName}`);
+          const imageSnapshot = await uploadBytes(imageRef, image);
+          const imageDownloadURL = await getDownloadURL(imageSnapshot.ref);
+          floorPlanURL.push(imageDownloadURL);
         }
       }
 
@@ -132,6 +152,7 @@ const EditProperty = ({ data }) => {
         size: formData.size,
         details: formData.details,
         images: imagesURL,
+        floorPlan: floorPlanURL,
         amenities: formData.amenities,
         brochure: brochureURL,
         video: videoUrl,
@@ -370,6 +391,63 @@ const EditProperty = ({ data }) => {
                         (img, i) => i !== index
                       );
                       setFormData({ ...formData, images: updatedImages });
+                    }}
+                    className="absolute top-0 right-0 w-6 h-6 text-white bg-red-500 rounded-full flex items-center justify-center"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-4 h-4"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="my-3">
+          <label htmlFor="floorPlan" className="block text-sm font-semibold mb-1">
+            Images*:
+          </label>
+          <div className="flex flex-col items-center justify-center space-x-4 gap-3">
+            <input
+              type="file"
+              id="floorPlan"
+              name="floorPlan"
+              accept="image/*"
+              onChange={handleFloorplanUpload}
+              className="w-full"
+              multiple
+              required
+            />
+            <div className="flex justify-start flex-wrap gap-3 w-full">
+              {formData?.floorPlan?.map((image, index) => (
+                <div key={index} className="relative flex">
+                  <img
+                    src={
+                      typeof image === "string"
+                        ? image
+                        : URL.createObjectURL(image)
+                    }
+                    alt=""
+                    className="w-20 h-20 object-cover rounded-md"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const updatedImages = formData.floorPlan.filter(
+                        (img, i) => i !== index
+                      );
+                      setFormData({ ...formData, floorPlan: updatedImages });
                     }}
                     className="absolute top-0 right-0 w-6 h-6 text-white bg-red-500 rounded-full flex items-center justify-center"
                   >

@@ -6,6 +6,8 @@ const ContactUsModal = ({
   openContactUs,
   setOpenContactUs,
   forBrochure,
+  forFloorplan,
+  dataForFloorPlan,
   setForBrochure,
   propertyData,
 }) => {
@@ -14,6 +16,7 @@ const ContactUsModal = ({
     name: "",
     email: "",
     phone: "",
+    isFloorPlan: false,
   });
   const [errors, setErrors] = useState({});
 
@@ -51,20 +54,26 @@ const ContactUsModal = ({
 
     setSubmitting(true);
 
-    if (forBrochure) {
+    if (forBrochure || forFloorplan) {
       let data = {
         ...formData,
-        propertyName: propertyData.name,
+        propertyName: propertyData.title,
         propertyId: propertyData.id,
         time: new Date().toDateString().toString(),
+        isFloorPlan: forFloorplan ? true : false,
       };
+      console.log("data-->" , data);
       try {
         const res = await axios.post("/api/brochure", {
           data,
         });
 
         if (res.status === 200) {
-          toast.success("Thank you for enquiring about this property");
+          toast.success(
+            `Thank you for enquiring about this property ${
+              forBrochure ? "brochure" : "floorplan"
+            }`
+          );
           setFormData({
             name: "",
             email: "",
@@ -73,6 +82,10 @@ const ContactUsModal = ({
 
           if (forBrochure) {
             window.open(setForBrochure);
+          }
+
+          if(forFloorplan) {
+            window.open(dataForFloorPlan);
           }
 
           setOpenContactUs(false);
@@ -119,7 +132,7 @@ const ContactUsModal = ({
         </button>
         <div className="flex flex-col px-3 w-full items-center">
           <p className="font-bold text-3xl my-2">
-            {forBrochure ? "Enquire Now" : "Write to Us"}
+            {forBrochure ? "Enquire Now" : forFloorplan ? "Request Floorplan" : "Write to Us"}
           </p>
           <form
             className="w-full flex flex-col items-center gap-4"

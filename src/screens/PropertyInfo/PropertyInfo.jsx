@@ -25,6 +25,7 @@ import {
   FaVideo,
 } from "react-icons/fa6";
 import { IoCloudDownload, IoMailUnreadOutline } from "react-icons/io5";
+import { MdOutlineArchitecture } from "react-icons/md";
 import { LuIndianRupee } from "react-icons/lu";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
@@ -36,7 +37,8 @@ import ReactPlayer from "react-player";
 
 const PropertyInfo = ({ data, similarProperties }) => {
   const [openContactus, setOpenContactUs] = useState(false);
-  const [forBrochure, setForBrochure] = useState(true);
+  const [forBrochure, setForBrochure] = useState(false);
+  const [forFloorPlan, setForFloorPlan] = useState(false);
   const [loading, setLoading] = useState(false);
   const [mapEmbedLink, setMapEmbedLink] = useState("");
 
@@ -91,6 +93,13 @@ const PropertyInfo = ({ data, similarProperties }) => {
   });
 
   const handleBrochureDownload = (e) => {
+    setForFloorPlan(false)
+    setForBrochure(true);
+    setOpenContactUs(true);
+  };
+
+  const handleFloorPlan = (e) => {
+    setForFloorPlan(true);
     setOpenContactUs(true);
   };
 
@@ -316,6 +325,18 @@ const PropertyInfo = ({ data, similarProperties }) => {
                 </Link>
                 <Link
                   role="tab"
+                  className={`tab ${
+                    activeTab == "amenities" ? "tab-active" : ""
+                  }`}
+                  to="floorPlan"
+                  smooth={true}
+                  duration={500}
+                  onClick={() => handleTabClick("amenities")}
+                >
+                  Floor Plan
+                </Link>
+                <Link
+                  role="tab"
                   className={`tab ${activeTab == "video" ? "tab-active" : ""}`}
                   to="video"
                   smooth={true}
@@ -404,6 +425,23 @@ const PropertyInfo = ({ data, similarProperties }) => {
                         </div>
                       );
                     })}
+                  </div>
+                </div>
+              </Element>
+
+              <Element name="floorPlan" className="my-3">
+                <div className="bg-gray-100 rounded-xl p-4  shadow-lg">
+                  <div className="flex items-center">
+                    <MdOutlineArchitecture className="mr-2 font-bold text-green-500" size={20} />
+                    <h2 className="font-bold text-xl">Floor Plan</h2>
+                  </div>
+                  <div className="p-4 bg-white border border-gray-200 rounded-xl mt-2 flex items-center justify-center">
+                    <a
+                      onClick={handleFloorPlan}
+                      className="text-sm lg:text-lg font-bold link link-hover italic flex items-center gap-2"
+                    >
+                      <IoCloudDownload color="green" /> Download Floor Plan
+                    </a>
                   </div>
                 </div>
               </Element>
@@ -653,6 +691,8 @@ const PropertyInfo = ({ data, similarProperties }) => {
           forBrochure={forBrochure}
           setForBrochure={data.brochure}
           openContactUs={openContactus}
+          forFloorplan={forFloorPlan}
+          dataForFloorPlan={data.floorPlan}
           setOpenContactUs={setOpenContactUs}
           propertyData={data}
         />
