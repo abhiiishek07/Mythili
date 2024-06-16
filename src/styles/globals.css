@@ -132,12 +132,14 @@ body {
 .bg-banner_contact_us {
   height: 40vh;
   background-image: url("../assets/images/conatctUs1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .bg-banner_aboutUs {
   height: 30vh;
   background-image: url("https://prateekgroup.com/assets/img/overview-banner1.jpg");
-
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -169,5 +171,23 @@ input[type=number]::-webkit-outer-spin-button {
     appearance: none;
     margin: 0; 
 }
+
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+.tabs::-webkit-scrollbar {
+  display: none; /* Hide the scrollbar in WebKit browsers */
+}
+
+
+
 
 

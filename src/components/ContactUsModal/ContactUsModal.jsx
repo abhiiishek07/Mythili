@@ -62,7 +62,7 @@ const ContactUsModal = ({
         time: new Date().toDateString().toString(),
         isFloorPlan: forFloorplan ? true : false,
       };
-      console.log("data-->" , data);
+      console.log("data-->", data);
       try {
         const res = await axios.post("/api/brochure", {
           data,
@@ -84,7 +84,7 @@ const ContactUsModal = ({
             window.open(setForBrochure);
           }
 
-          if(forFloorplan) {
+          if (forFloorplan) {
             window.open(dataForFloorPlan);
           }
 
@@ -132,7 +132,11 @@ const ContactUsModal = ({
         </button>
         <div className="flex flex-col px-3 w-full items-center">
           <p className="font-bold text-3xl my-2">
-            {forBrochure ? "Enquire Now" : forFloorplan ? "Request Floorplan" : "Write to Us"}
+            {forBrochure
+              ? "Enquire Now"
+              : forFloorplan
+              ? "Request Floor Plan"
+              : "Write to Us"}
           </p>
           <form
             className="w-full flex flex-col items-center gap-4"

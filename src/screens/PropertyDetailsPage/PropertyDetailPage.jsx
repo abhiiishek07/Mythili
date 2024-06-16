@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import React, { useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import { MdEdit, MdDelete } from "react-icons/md";
+import { TbWorldOff, TbWorldUp } from "react-icons/tb";
 import { useTable, useSortBy, usePagination } from "react-table";
 
 const columns = [
@@ -22,6 +23,10 @@ const columns = [
   {
     Header: "Type",
     accessor: "type",
+  },
+  {
+    Header: "Published",
+    accessor: "isPublic",
   },
 ];
 
@@ -90,6 +95,28 @@ const PropertyDetailPage = ({ list }) => {
     setOpen(false);
   };
 
+  const handlePublish = async (id, isPublic) => {
+    const isPublished = !isPublic;
+    const res = await axios.post("/api/properties/toggle-publish", {
+      propertyId: id,
+      isPublic: isPublished,
+    });
+
+    if (res.status === 200) {
+      const updatedProperties = properties.map((property) =>
+        property.id === id ? { ...property, isPublic: isPublished } : property
+      );
+      setProperties(updatedProperties);
+      {
+        isPublished
+          ? toast.success("Congratulations🎉 !  Property is now live ")
+          : toast.success("Property is now unpublished");
+      }
+    } else {
+      toast.error("Something went wrong");
+    }
+  };
+
   return (
     <div className="min-h-screen w-full flex justify-center  bg-gray-200">
       <div className="max-w-7xl w-full h-fit my-12 mx-auto p-4 bg-white shadow-md rounded-lg ">
@@ -133,26 +160,53 @@ const PropertyDetailPage = ({ list }) => {
                     key={rowIndex}
                   >
                     {columns.map((column, columnIndex) => {
-                      return (
+                      return column.accessor !== "isPublic" ? (
                         <td
                           {...row.cells[columnIndex].getCellProps()}
-                          className=" text-left w-56 overflow-hidden"
+                          className="text-left w-56 overflow-hidden"
                           key={columnIndex}
                         >
-                          <p className="capitalize">
-                            {row.values[column.accessor]}
-                          </p>
+                          <div className="line-clamp-1">
+                            <p className="capitalize">
+                              {row.values[column.accessor]}
+                            </p>
+                          </div>
+                        </td>
+                      ) : (
+                        <td className="p-4 text-left" key={columnIndex}>
+                          <button
+                            className="btn btn-outline btn-success btn-sm"
+                            onClick={() =>
+                              handlePublish(
+                                row.original.id,
+                                row.values.isPublic
+                              )
+                            }
+                          >
+                            {row.values.isPublic ? (
+                              <div className="flex items-center gap-1">
+                                Unpublish <TbWorldOff size={16} />
+                              </div>
+                            ) : (
+                              <div className="flex items-center gap-1">
+                                Publish <TbWorldUp size={16} />
+                              </div>
+                            )}
+                          </button>
                         </td>
                       );
                     })}
+
                     <td className="px-4 py-4 text-left">
                       <Link href={`/admin/properties/edit/${row.original.id}`}>
-                        <button className="btn btn-primary">Edit</button>
+                        <button className="btn btn-outline btn-primary text-xs btn-sm">
+                          Edit
+                        </button>
                       </Link>
                     </td>
                     <td className="px-4 py-4 text-left">
                       <button
-                        className="btn btn-outline btn-secondary"
+                        className="btn btn-outline btn-secondary text-xs btn-sm"
                         onClick={() => {
                           setSelectedProperty(row.original.id);
                           setOpen(true);
@@ -180,10 +234,7 @@ const PropertyDetailPage = ({ list }) => {
               Prev
             </button>
             <span>
-              Page{" "}
-              <strong>
-                {pageIndex + 1} of {pageCount}
-              </strong>{" "}
+              Page <strong>{pageIndex + 1}</strong>/<strong>{pageCount}</strong>{" "}
             </span>
             <button
               onClick={nextPage}

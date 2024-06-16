@@ -171,7 +171,7 @@ const Homepage = ({ data, blogs }) => {
           })}
         </Slider>
         <div className="absolute inset-0 flex flex-col justify-center items-center w-full px-4 text-center ">
-          <p className=" text-gray-300 text-xl lg:text-3xl font-bold max-w-3xl ">
+          <p className=" text-gray-200 text-xl lg:text-3xl font-bold max-w-3xl ">
             Find Your Dream Home Today.
           </p>
           <p className=" text-gray-200 text-xl lg:text-3xl font-bold max-w-3xl mt-2">
@@ -253,10 +253,10 @@ const Homepage = ({ data, blogs }) => {
                   Location
                 </option>
                 {uniqueCities.map((city, index) => (
-                <option key={index} value={city}>
-                  {city}
-                </option>
-              ))}
+                  <option key={index} value={city}>
+                    {city}
+                  </option>
+                ))}
               </select>{" "}
               <select
                 className="select select-bordered w-full"
@@ -366,7 +366,7 @@ const Homepage = ({ data, blogs }) => {
             Stay Up-to-Date on New Property Options, Best Investment
             Opportunities, and What&apos;s Coming Next.
           </p>
-          <div role="tablist" className="tabs tabs-boxed tabs-md">
+          <div role="tablist" className="tabs tabs-boxed lg:tabs-md tabs-sm">
             <a
               role="tab"
               className={`tab transition duration-300 ease-in-out transform ${
@@ -423,7 +423,7 @@ const Homepage = ({ data, blogs }) => {
               <TbUserHeart size={28} color="#006039" />
             </div>
 
-            <div className="stat-value">25000+</div>
+            <div className="stat-value text-3xl">25000+</div>
             <div className="stat-title">Happy Customers</div>
           </div>
 
@@ -432,7 +432,7 @@ const Homepage = ({ data, blogs }) => {
               <FaChartArea size={28} color="#006039" />
             </div>
 
-            <div className="stat-value">45 Million</div>
+            <div className="stat-value text-3xl">45 Million</div>
             <div className="stat-title"> Sq.Ft Area Sold</div>
           </div>
 
@@ -440,7 +440,7 @@ const Homepage = ({ data, blogs }) => {
             <div className="stat-figure text-secondary">
               <FaBuilding size={30} color="#006039" />
             </div>
-            <div className="stat-value">150+</div>
+            <div className="stat-value text-3xl">150+</div>
             <div className="stat-title">Different Properties</div>
           </div>
         </div>
@@ -482,7 +482,7 @@ const Homepage = ({ data, blogs }) => {
         {/* Testimonial */}
 
         <div className="w-full max-w-7xl flex flex-col items-center gap-4 my-8">
-          <div className="flex items-center gap-4 text-3xl font-extrabold text-gray-900 justify-center">
+          <div className="flex items-center gap-4 text-xl lg:text-3xl font-extrabold text-gray-900 justify-center">
             <h2>What Our Clients Say</h2>
             <TbMessage2Bolt size={40} className="pt-2" />
           </div>
@@ -498,7 +498,7 @@ const Homepage = ({ data, blogs }) => {
         <section className="py-4 w-full max-w-7xl rounded-md mt-6 px-4">
           <div className="container mx-auto px-4 ">
             <div className="text-center mb-8">
-              <div className="flex items-center gap-3 text-3xl font-extrabold text-gray-900  justify-center">
+              <div className="flex items-center gap-3 text-xl lg:text-3xl font-extrabold text-gray-900  justify-center">
                 <h2>Explore Our Latest Blogs</h2>
                 {/* <FaPen size={35} className="pt-2" /> */}
               </div>

@@ -1,9 +1,9 @@
-import { getAllProperties } from "@/pages/api/properties/getAllProperties";
 import PropertyDetailPage from "@/screens/PropertyDetailsPage/PropertyDetailPage";
 import React from "react";
 
 import { sessionOptions } from "@/lib/utils";
 import { getIronSession } from "iron-session";
+import { getAllPropertiesAdmin } from "@/pages/api/properties/getAllPropertiesAdmin";
 
 export async function getServerSideProps(context) {
   const session = await getIronSession(
@@ -20,7 +20,7 @@ export async function getServerSideProps(context) {
       },
     };
   }
-  const data = await getAllProperties();
+  const data = await getAllPropertiesAdmin();
 
   return {
     props: {
