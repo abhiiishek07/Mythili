@@ -43,18 +43,10 @@ const PropertyInfo = ({ data, similarProperties }) => {
   const [mapEmbedLink, setMapEmbedLink] = useState("");
 
   useEffect(() => {
-    // Assuming data contains the Google Maps embed link
     if (data && data.googleMapLink) {
-      // Modify the width and height of the embed link
       const modifiedMapLink = data.googleMapLink
-        .replace(
-          /width="\d+"/,
-          'width="800"' // Update width as needed
-        )
-        .replace(
-          /height="\d+"/,
-          'height="400"' // Update height as needed
-        );
+        .replace(/width="\d+"/, 'width="850"')
+        .replace(/height="\d+"/, 'height="400"');
 
       // Set the modified embed link
       setMapEmbedLink(modifiedMapLink);
@@ -93,7 +85,7 @@ const PropertyInfo = ({ data, similarProperties }) => {
   });
 
   const handleBrochureDownload = (e) => {
-    setForFloorPlan(false)
+    setForFloorPlan(false);
     setForBrochure(true);
     setOpenContactUs(true);
   };
@@ -167,7 +159,7 @@ const PropertyInfo = ({ data, similarProperties }) => {
   };
 
   return (
-    <div className="w-full  flex flex-col items-center px-5 ">
+    <div className="w-full  flex flex-col items-center justify-center px-5 ">
       <div className="flex flex-col w-full max-w-7xl my-6">
         <div className="text-sm breadcrumbs">
           <ul>
@@ -186,7 +178,7 @@ const PropertyInfo = ({ data, similarProperties }) => {
         </div>
 
         <div className="flex flex-col lg:flex-row w-full my-4  md:my-0 md:space-x-6 ">
-          <div className=" w-full max-w-4xl p-3">
+          <div className=" w-full max-w-4xl ">
             <div className=" md:hidden w-full p-2 bg-base-200 rounded-lg relative slide-container property">
               {data.images.length === 1 ? (
                 <Image
@@ -207,10 +199,6 @@ const PropertyInfo = ({ data, similarProperties }) => {
                   ))}
                 </Slider>
               )}
-              {/* <div className="mx-auto w-full flex justify-center items-center gap-2 text-gray-400">
-                <p className="font-bold">swipe</p>
-                <FaArrowRight />
-              </div> */}
             </div>
 
             {data.images.length === 1 ? (
@@ -333,7 +321,7 @@ const PropertyInfo = ({ data, similarProperties }) => {
                   duration={500}
                   onClick={() => handleTabClick("amenities")}
                 >
-                  Floor Plan
+                  <p className="flex-none"> Floor Plan</p>
                 </Link>
                 <Link
                   role="tab"
@@ -375,7 +363,7 @@ const PropertyInfo = ({ data, similarProperties }) => {
                 <div className="bg-gray-100 rounded-xl p-2 lg:p-4 shadow-lg">
                   <div className="flex items-center">
                     <FaHouse className="mr-2 text-green-500" size={20} />
-                    <h2 className="font-bold text-xl">Overview</h2>
+                    <h2 className="font-bold text-lg lg:text-xl">Overview</h2>
                   </div>
                   <div className="p-2 lg:p-4 bg-white border border-gray-200 rounded-xl mt-2">
                     <div
@@ -390,7 +378,7 @@ const PropertyInfo = ({ data, similarProperties }) => {
                 <div className="bg-gray-100 rounded-xl p-4  shadow-lg">
                   <div className="flex items-center">
                     <BiDetail className="mr-2 text-green-500" size={20} />
-                    <h2 className="font-bold text-xl">Brochure</h2>
+                    <h2 className="font-bold text-lg lg:text-xl">Brochure</h2>
                   </div>
                   <div className="p-4 bg-white border border-gray-200 rounded-xl mt-2 flex items-center justify-center">
                     <a
@@ -407,7 +395,7 @@ const PropertyInfo = ({ data, similarProperties }) => {
                 <div className="bg-gray-100 rounded-xl p-4  shadow-lg">
                   <div className="flex items-center">
                     <FaList className="mr-2 text-green-500" size={20} />
-                    <h2 className="font-bold text-xl">Amenities</h2>
+                    <h2 className="font-bold text-lg lg:text-xl">Amenities</h2>
                   </div>
                   <div className="p-4 bg-white border border-gray-200 rounded-xl mt-2 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-x-6 lg:gap-x-8 gap-y-4 md:gap-y-6 lg:gap-y-8">
                     {data.amenities.map((item, index) => {
@@ -432,8 +420,11 @@ const PropertyInfo = ({ data, similarProperties }) => {
               <Element name="floorPlan" className="my-3">
                 <div className="bg-gray-100 rounded-xl p-4  shadow-lg">
                   <div className="flex items-center">
-                    <MdOutlineArchitecture className="mr-2 font-bold text-green-500" size={20} />
-                    <h2 className="font-bold text-xl">Floor Plan</h2>
+                    <MdOutlineArchitecture
+                      className="mr-2 font-bold text-green-500"
+                      size={20}
+                    />
+                    <h2 className="font-bold text-lg lg:text-xl">Floor Plan</h2>
                   </div>
                   <div className="p-4 bg-white border border-gray-200 rounded-xl mt-2 flex items-center justify-center">
                     <a
@@ -450,15 +441,10 @@ const PropertyInfo = ({ data, similarProperties }) => {
                 <div className="bg-gray-100 rounded-xl p-4 shadow-lg">
                   <div className="flex items-center">
                     <FaVideo className="mr-2 text-green-500" size={20} />
-                    <h2 className="font-bold text-xl">Video</h2>
+                    <h2 className="font-bold text-lg lg:text-xl">Video</h2>
                   </div>
                   {data.video ? (
                     <div className=" p-6 bg-white border border-gray-200 rounded-xl mt-2 flex items-center justify-center">
-                      {/* <ReactPlayer
-                        url={data.video}
-                        playing={true}
-                        controls={true}
-                      /> */}
                       <video
                         width="550"
                         height="350"
@@ -491,23 +477,25 @@ const PropertyInfo = ({ data, similarProperties }) => {
                       className="mr-2 text-green-500"
                       size={20}
                     />
-                    <h2 className="font-bold text-xl">About the Developer</h2>
+                    <h2 className="font-bold text-lg lg:text-xl">
+                      About the Developer
+                    </h2>
                   </div>
-                  <div className="p-4 bg-white border border-gray-200 rounded-xl mt-2 text-xs md:text-md lg:text-lg">
+                  <div className="p-2 lg:p-4 bg-white border border-gray-200 rounded-xl mt-2 text-xs md:text-md lg:text-lg">
                     {data.developerInfo}
                   </div>
                 </div>
               </Element>
 
               <Element name="location" className="my-3">
-                <div className="bg-gray-100 rounded-xl p-4  shadow-lg">
+                <div className="bg-gray-100 rounded-xl p-4 px-2  shadow-lg">
                   <div className="flex items-center">
                     <FaLocationDot className="mr-2 text-green-500" size={20} />
-                    <h2 className="font-bold text-xl">Location</h2>
+                    <h2 className="font-bold text-lg lg:text-xl">Location</h2>
                   </div>
 
                   <div
-                    className="p-2 w-full bg-white border border-gray-200  rounded-xl mt-2 flex items-center justify-center overflow-hidden"
+                    className="p-2  w-full  bg-white border border-gray-200  rounded-xl mt-2 flex items-center justify-center overflow-hidden"
                     dangerouslySetInnerHTML={{ __html: mapEmbedLink }}
                   />
                 </div>
@@ -560,7 +548,7 @@ const PropertyInfo = ({ data, similarProperties }) => {
               </div>
             </div>
 
-            <div className="flex flex-col p-4 w-full items-center bg-base-200 mt-10 rounded-md md:sticky md:top-20">
+            <div className="flex flex-col p-4 w-full items-center bg-gray-100 mt-10 rounded-md md:sticky md:top-[94px]">
               <p className="font-bold text-xl mb-3 flex items-center gap-3">
                 Contact an Expert <IoMailUnreadOutline size={24} />
               </p>
@@ -632,46 +620,46 @@ const PropertyInfo = ({ data, similarProperties }) => {
         </div>
       </div>
       {/* FAQ */}
-      <div className="flex flex-col w-full max-w-7xl gap-3 ">
-        <p className="font-bold text-3xl">FAQs</p>
+      <div className="flex flex-col w-full max-w-7xl gap-3 px-6">
+        <p className="font-bold text-lg md:text-xl">FAQs</p>
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem
             value="item-1"
-            className="border border-gray-300 bg-base-200 px-4 rounded-xl my-1"
+            className="border border-gray-300 bg-gray-100 px-4 rounded-xl my-1"
           >
-            <AccordionTrigger className="font-bold text-sm lg:text-xl">
-            {formData.ques1 ? formData.ques1 : "ques1"}
+            <AccordionTrigger className="font-bold text-sm lg:text-lg">
+              {formData.ques1 ? formData.ques1 : "ques1"}
             </AccordionTrigger>
             <AccordionContent className=" text-xs lg:text-lg">
-            {formData.ans1 ? formData.ans1 : "Ans1"}
+              {formData.ans1 ? formData.ans1 : "Ans1"}
             </AccordionContent>
           </AccordionItem>
           <AccordionItem
             value="item-2"
-            className="border border-gray-300 bg-base-200 px-4 rounded-xl my-1"
+            className="border border-gray-300 bg-gray-100 px-4 rounded-xl my-1"
           >
-            <AccordionTrigger className="font-bold text-sm lg:text-xl">
-            {formData.ques2 ? formData.ques2 : "ques2"}
+            <AccordionTrigger className="font-bold text-sm lg:text-lg">
+              {formData.ques2 ? formData.ques2 : "ques2"}
             </AccordionTrigger>
             <AccordionContent className=" text-xs lg:text-lg">
-            {formData.ans2 ? formData.ans2 : "Ans2"}
+              {formData.ans2 ? formData.ans2 : "Ans2"}
             </AccordionContent>
           </AccordionItem>
           <AccordionItem
             value="item-3"
-            className="border border-gray-300 bg-base-200 px-4 rounded-xl my-1"
+            className="border border-gray-300 bg-gray-100 px-4 rounded-xl my-1"
           >
-            <AccordionTrigger className="font-bold text-sm lg:text-xl">
-            {formData.ques3 ? formData.ques3 : "ques3"}
+            <AccordionTrigger className="font-bold text-sm lg:text-lg">
+              {formData.ques3 ? formData.ques3 : "ques3"}
             </AccordionTrigger>
             <AccordionContent className=" text-xs lg:text-lg">
-            {formData.ans3 ? formData.ans3 : "Ans3"}
+              {formData.ans3 ? formData.ans3 : "Ans3"}
             </AccordionContent>
           </AccordionItem>
         </Accordion>
       </div>
       {similarProperties.length > 2 && (
-        <div className="flex flex-col w-full max-w-7xl items-center justify-center my-10">
+        <div className="flex flex-col w-full max-w-7xl items-center justify-center my-10 overflow-hidden">
           <h2 className="text-xl text-center font-bold text-gray-900 sm:text-3xl mb-4">
             Similar Properties
           </h2>
